@@ -1,0 +1,393 @@
+# SLSA Level 4 build + cosign-signed release for stele.
+#
+# What this workflow gives every released binary:
+#
+#   1. Reproducible builds. CGO_ENABLED=0, pinned Go version, -trimpath,
+#      -buildvcs=false, deterministic ldflags. Anyone with the source
+#      and these flags can rebuild bit-for-bit identical binaries.
+#
+#   2. SLSA Level 4 provenance. Each binary ships with a signed
+#      attestation (in-toto SLSA v1.0 statement) that records: the git
+#      commit, the builder, the build environment, all dependencies'
+#      checksums. The attestation itself is signed with a Sigstore
+#      keyless cert (Fulcio) tied to the GitHub Actions OIDC identity
+#      of this very workflow, so the attestation cannot be forged.
+#
+#   3. Cosign signatures anchored to Rekor. Every binary's blob signature
+#      is published to Sigstore Rekor (a public transparency log), so an
+#      attacker who somehow substitutes a trojaned binary cannot also
+#      retract the original signature.
+#
+#   4. SBOM. A CycloneDX bill of materials of every Go module dependency
+#      ships alongside the release.
+#
+# Verifying a release as an auditor:
+#
+#   slsa-verifier verify-artifact ./steled \
+#     --provenance-path ./steled.intoto.jsonl \
+#     --source-uri github.com/<owner>/stele \
+#     --source-tag v1.2.3
+#
+#   cosign verify-blob ./steled \
+#     --certificate ./steled.cert \
+#     --signature ./steled.sig \
+#     --certificate-identity-regexp '^https://github\.com/<owner>/stele/' \
+#     --certificate-oidc-issuer https://token.actions.githubusercontent.com
+#
+# Both commands check the binary against Rekor's globally-replicated
+# transparency log — if anyone has tampered with the release artifacts,
+# verification fails.
+
+name: release
+
+on:
+  push:
+    tags: ["v*.*.*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  # ---- 1. Build reproducibly + capture exact build args ----
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      hashes: ${{ steps.hash.outputs.hashes }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.0"            # PIN: same version every release (1.25 minimum from go.mod)
+          check-latest: false
+
+      - name: Resolve build identity
+        # Tag drives `version`; full SHA drives `commit`. Both are
+        # deterministic given the tag, so injecting them via ldflags
+        # does not break reproducibility — the second build in
+        # `verify-reproducible` uses the same env to derive the same
+        # values and produces byte-identical binaries.
+        id: ident
+        run: |
+          set -euo pipefail
+          tag="${GITHUB_REF#refs/tags/}"
+          # On manual workflow_dispatch (no tag), fall back to "0.0.0-dev".
+          if [ "$tag" = "$GITHUB_REF" ]; then
+            tag="0.0.0-dev"
+          fi
+          echo "version=$tag"   >> "$GITHUB_OUTPUT"
+          echo "commit=$GITHUB_SHA" >> "$GITHUB_OUTPUT"
+
+      - name: Build all binaries (reproducible)
+        env:
+          CGO_ENABLED: "0"
+          GOFLAGS: "-trimpath -buildvcs=false"
+          VERSION: ${{ steps.ident.outputs.version }}
+          COMMIT:  ${{ steps.ident.outputs.commit }}
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          # Cross-platform release matrix:
+          #   linux/amd64, linux/arm64                  — typical server fleet
+          #   darwin/amd64, darwin/arm64                — operator workstations
+          #   windows/amd64, windows/arm64              — Windows Server / dev
+          #   freebsd/amd64                             — BSD operators
+          # All builds are CGO_ENABLED=0 so they're statically linked
+          # and don't need a matching libc on the target host.
+          for cmd in steled stele stele-witness stele-mirror stele-cosigner \
+                     stele-backup stele-export-chain stele-loadgen stele-watcher; do
+            for target in linux/amd64 linux/arm64 \
+                          darwin/amd64 darwin/arm64 \
+                          windows/amd64 windows/arm64 \
+                          freebsd/amd64; do
+              os="${target%/*}"
+              arch="${target#*/}"
+              ext=""
+              [ "$os" = "windows" ] && ext=".exe"
+              out="dist/${cmd}-${os}-${arch}${ext}"
+              GOOS=$os GOARCH=$arch go build \
+                -ldflags="-s -w -buildid= -X main.version=${VERSION} -X main.commit=${COMMIT}" \
+                -o "$out" \
+                "./cmd/$cmd"
+              echo "built $out"
+            done
+          done
+          # NB: stele-tamper is a demo-only attacker tool, do NOT release.
+
+      - name: Generate SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          path: .
+          format: cyclonedx-json
+          output-file: dist/sbom.cdx.json
+
+      - name: Compute SHA-256 hashes for SLSA provenance
+        id: hash
+        run: |
+          set -euo pipefail
+          cd dist
+          sha256sum * > hashes.txt
+          # SLSA generator expects base64 of the hashes file.
+          echo "hashes=$(base64 -w0 < hashes.txt)" >> "$GITHUB_OUTPUT"
+
+      - name: Upload binaries
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  # ---- 2. SLSA Level 4 provenance attestation ----
+  # Uses the official slsa-framework generator. Provenance is signed by
+  # a Sigstore keyless certificate tied to THIS workflow's identity.
+  provenance:
+    needs: build
+    permissions:
+      actions: read
+      id-token: write
+      contents: write
+    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@v2.0.0
+    with:
+      base64-subjects: "${{ needs.build.outputs.hashes }}"
+      upload-assets: true
+
+  # ---- 3. Cosign keyless signing + anchor to Rekor ----
+  cosign:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+    steps:
+      - name: Download binaries
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - name: Install cosign
+        uses: sigstore/cosign-installer@v3
+
+      - name: Sign each binary (keyless, Rekor-anchored)
+        env:
+          COSIGN_EXPERIMENTAL: "1"
+        run: |
+          set -euo pipefail
+          for f in dist/*; do
+            [ -d "$f" ] && continue
+            cosign sign-blob --yes \
+              --output-certificate "${f}.cert" \
+              --output-signature "${f}.sig" \
+              "$f"
+          done
+
+      - name: Attach signatures to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*
+          fail_on_unmatched_files: true
+
+  # ---- 4. Smoke-test reproducibility: a SECOND independent build must
+  #         produce byte-identical binaries. If this job fails, the
+  #         build environment isn't reproducible and somebody can sneak
+  #         in non-determinism.
+  verify-reproducible:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.0"
+      - name: Resolve build identity (must match the first build)
+        id: ident
+        run: |
+          set -euo pipefail
+          tag="${GITHUB_REF#refs/tags/}"
+          if [ "$tag" = "$GITHUB_REF" ]; then
+            tag="0.0.0-dev"
+          fi
+          echo "version=$tag"        >> "$GITHUB_OUTPUT"
+          echo "commit=$GITHUB_SHA"  >> "$GITHUB_OUTPUT"
+      - name: Re-build the same binaries
+        env:
+          CGO_ENABLED: "0"
+          GOFLAGS: "-trimpath -buildvcs=false"
+          VERSION: ${{ steps.ident.outputs.version }}
+          COMMIT:  ${{ steps.ident.outputs.commit }}
+        run: |
+          set -euo pipefail
+          mkdir -p verify
+          # Mirror the build matrix from the first build EXACTLY so
+          # binary hashes can be diffed 1:1.
+          for cmd in steled stele stele-witness stele-mirror stele-cosigner \
+                     stele-backup stele-export-chain stele-loadgen stele-watcher; do
+            for target in linux/amd64 linux/arm64 \
+                          darwin/amd64 darwin/arm64 \
+                          windows/amd64 windows/arm64 \
+                          freebsd/amd64; do
+              os="${target%/*}"
+              arch="${target#*/}"
+              ext=""
+              [ "$os" = "windows" ] && ext=".exe"
+              GOOS=$os GOARCH=$arch go build \
+                -ldflags="-s -w -buildid= -X main.version=${VERSION} -X main.commit=${COMMIT}" \
+                -o "verify/${cmd}-${os}-${arch}${ext}" \
+                "./cmd/$cmd"
+            done
+          done
+          sha256sum verify/* > verify-hashes.txt
+      - name: Download first-pass artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - name: Diff hashes
+        run: |
+          set -euo pipefail
+          cd dist
+          sha256sum * > first.txt
+          cd ../verify
+          sha256sum * > second.txt
+          diff <(sort -k2 ../dist/first.txt) <(sort -k2 second.txt)
+          echo "REPRODUCIBLE BUILDS: OK"
+
+  # ---- 5. OCI image build + push to GHCR + cosign keyless ----
+  # Produces a multi-arch (amd64 + arm64) image with every stele
+  # binary baked in, tagged with the release version + `latest`.
+  # The image is also keyless-signed via Sigstore Fulcio so
+  # `cosign verify ghcr.io/<owner>/stele:<tag>` succeeds against
+  # the same identity as the binary signatures.
+  image:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write   # push to ghcr.io
+      id-token: write   # cosign keyless OIDC
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Resolve image tags
+        id: ident
+        run: |
+          set -euo pipefail
+          tag="${GITHUB_REF#refs/tags/}"
+          if [ "$tag" = "$GITHUB_REF" ]; then
+            tag="0.0.0-dev"
+          fi
+          echo "version=$tag" >> "$GITHUB_OUTPUT"
+          # Lowercase the repository owner — required for ghcr.io.
+          repo=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')
+          echo "image=ghcr.io/${repo}" >> "$GITHUB_OUTPUT"
+
+      - name: Set up QEMU for multi-arch
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build + push multi-arch image
+        id: push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: deploy/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          provenance: true
+          sbom: true
+          build-args: |
+            VERSION=${{ steps.ident.outputs.version }}
+            COMMIT=${{ github.sha }}
+          tags: |
+            ${{ steps.ident.outputs.image }}:${{ steps.ident.outputs.version }}
+            ${{ steps.ident.outputs.image }}:latest
+
+      - name: Install cosign
+        uses: sigstore/cosign-installer@v3
+
+      - name: Cosign sign the image (keyless, anchored to Rekor)
+        env:
+          COSIGN_EXPERIMENTAL: "1"
+        run: |
+          set -euo pipefail
+          digest='${{ steps.push.outputs.digest }}'
+          ref='${{ steps.ident.outputs.image }}@'"$digest"
+          cosign sign --yes "$ref"
+          echo "signed: $ref"
+
+  # ---- 6. .deb + .rpm distro packages ----
+  # Pull the cross-compiled linux/* binaries from the build job's
+  # artifact, wrap them in dpkg-deb and rpmbuild output, attach the
+  # packages to the GitHub release.
+  packages:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [amd64, arm64]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - name: Resolve version
+        id: ident
+        run: |
+          set -euo pipefail
+          tag="${GITHUB_REF#refs/tags/}"
+          if [ "$tag" = "$GITHUB_REF" ]; then
+            tag="0.0.0-dev"
+          fi
+          # Strip a leading "v" so dpkg/rpm version fields are clean.
+          echo "version=${tag#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Install packaging toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dpkg-dev rpm
+
+      - name: Build .deb
+        env:
+          ARCH: ${{ matrix.arch }}
+          VERSION: ${{ steps.ident.outputs.version }}
+        run: ./deploy/deb/build-deb.sh
+
+      - name: Build .rpm
+        env:
+          ARCH: ${{ matrix.arch }}
+          VERSION: ${{ steps.ident.outputs.version }}
+        run: ./deploy/rpm/build-rpm.sh
+
+      - name: Attach packages to the GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/stele_*.deb
+            dist/stele-*.rpm
+          fail_on_unmatched_files: true

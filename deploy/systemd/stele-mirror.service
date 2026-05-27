@@ -1,0 +1,52 @@
+[Unit]
+Description=stele read-only mirror
+Documentation=https://github.com/desledishant10/stele
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=stele
+Group=stele
+WorkingDirectory=/var/lib/stele-mirror
+
+EnvironmentFile=/etc/stele/mirror.env
+
+ExecStart=/usr/local/bin/stele-mirror \
+    --addr=${STELE_MIRROR_ADDR} \
+    --dir=/var/lib/stele-mirror \
+    --upstream=${STELE_MIRROR_UPSTREAM} \
+    $STELE_MIRROR_FLAGS
+
+Restart=on-failure
+RestartSec=5s
+StandardOutput=journal
+StandardError=journal
+
+# Mirror holds no operator key — no CAP_IPC_LOCK needed.
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/stele-mirror
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+RestrictNamespaces=true
+RestrictRealtime=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictSUIDSGID=true
+NoNewPrivileges=true
+CapabilityBoundingSet=
+AmbientCapabilities=
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources @debug @mount @swap @reboot @raw-io @cpu-emulation
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

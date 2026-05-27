@@ -1,0 +1,216 @@
+# Production-leaning defaults for stele.
+#
+# What this chart deploys by default:
+#   - 1× operator (steled)         StatefulSet, 1 replica, persistent
+#   - 1× mirror (stele-mirror)     Deployment, 1 replica, persistent
+#   - 3× witness (stele-witness)   StatefulSet, 3 replicas, persistent
+#
+# Override patterns:
+#   - Disable mirror:     mirror.enabled: false
+#   - Run more witnesses: witnesses.replicaCount: 5
+#   - mTLS:               operator.tls.* (see below)
+#   - HSM:                operator.hsm.* (requires a CGO-enabled image)
+#   - Threshold mode:     operator.threshold.* + cosigners.enabled: true
+
+# ---------- shared image config ----------
+image:
+  repository: ghcr.io/desledishant10/stele
+  tag: ""            # empty = use Chart.appVersion
+  pullPolicy: IfNotPresent
+  pullSecrets: []
+
+# ---------- shared pod hardening ----------
+# These defaults are applied to every pod in the chart. Override
+# per-component below if needed.
+securityContext:
+  runAsNonRoot: true
+  runAsUser: 65532
+  runAsGroup: 65532
+  fsGroup: 65532
+  seccompProfile:
+    type: RuntimeDefault
+containerSecurityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  capabilities:
+    drop:
+      - ALL
+    # CAP_IPC_LOCK lets the operator mlock its key memory without
+    # being root. Granted via Ambient on systemd; on k8s we add to
+    # the bounding set explicitly. Witnesses + mirror don't need it.
+    add: []
+
+# ---------- operator (steled) ----------
+operator:
+  enabled: true
+  origin: "stele.local/log"
+
+  # `--require-enrollment` forces every producer to go through the
+  # two-step proof-of-possession ceremony. Strong default for
+  # production; set false during initial migration only.
+  requireEnrollment: true
+
+  # Resource defaults sized for ~200 RPS sustained. Bump for higher
+  # workloads. The benchmark in HARDENING.md is a reasonable starting
+  # point.
+  resources:
+    requests:
+      cpu: 200m
+      memory: 256Mi
+    limits:
+      cpu: 2000m
+      memory: 1Gi
+
+  service:
+    type: ClusterIP
+    port: 8080
+
+  ingest:
+    maxConcurrentAppends: 256
+    perProducerRPS: 100
+    perProducerBurst: 200
+    perAdminRPS: 5
+    perAdminBurst: 10
+    appendBodyMax: 65536
+    adminBodyMax: 262144
+
+  watchdog:
+    enabled: true
+    rotateEvery: "1h"
+    watchKeys: true
+    watchRate: false
+
+  tripwire:
+    enabled: true
+    interval: "1h"
+
+  readLog:
+    enabled: true
+
+  pqMode: "classical"   # "hybrid" enables Ed25519 + Dilithium3 everywhere
+
+  # mTLS for producer authentication. Requires the cert + key to be
+  # pre-populated in a Secret (this chart does NOT mint them).
+  tls:
+    enabled: false
+    secretName: ""           # contains tls.crt + tls.key
+    clientCASecretName: ""   # contains ca.crt; enables mTLS
+
+  # PKCS#11 HSM. Requires a custom image built with CGO_ENABLED=1
+  # and the HSM client library mounted at /usr/lib/...
+  hsm:
+    enabled: false
+    module: ""               # path to libpkcs11.so inside the container
+    slot: 0
+    pinSecret: ""            # secret name; key STELE_HSM_PIN
+
+  beacon:
+    enabled: false
+    endpoint: ""             # drand endpoint; empty disables
+
+  rekor:
+    enabled: false
+    endpoint: ""
+
+  honeyWebhook: ""           # POST honeylog alerts here
+
+  # OpenTelemetry traces.
+  otel:
+    enabled: false
+    endpoint: ""             # e.g. http://otel-collector:4318
+
+  persistence:
+    enabled: true
+    size: 50Gi
+    storageClass: ""         # empty = cluster default
+    accessMode: ReadWriteOnce
+
+  # /data is the data dir; /keys is split out so it can be on a
+  # separate (and ideally more-secure) PV.
+  keysPersistence:
+    enabled: true
+    size: 1Gi
+    storageClass: ""
+    accessMode: ReadWriteOnce
+
+# ---------- mirror (stele-mirror) ----------
+mirror:
+  enabled: true
+  pollInterval: "30s"
+  service:
+    type: ClusterIP
+    port: 8444
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 1000m
+      memory: 512Mi
+  persistence:
+    enabled: true
+    size: 50Gi
+    storageClass: ""
+    accessMode: ReadWriteOnce
+
+# ---------- witnesses (stele-witness) ----------
+witnesses:
+  enabled: true
+  replicaCount: 3
+  service:
+    type: ClusterIP
+    port: 9090
+  gossipInterval: "30s"
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 500m
+      memory: 256Mi
+  persistence:
+    enabled: true
+    size: 10Gi
+    storageClass: ""
+    accessMode: ReadWriteOnce
+
+# ---------- cosigners (threshold mode) ----------
+# Disabled by default. Enable + provide a groupConfigMap to switch
+# the operator into t-of-N threshold mode.
+cosigners:
+  enabled: false
+  replicaCount: 3
+  service:
+    type: ClusterIP
+    port: 9101
+  trustedCallers: []       # X-Stele-Caller tokens this cosigner accepts
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 500m
+      memory: 256Mi
+  persistence:
+    enabled: true
+    size: 1Gi
+    storageClass: ""
+    accessMode: ReadWriteOnce
+
+# ---------- observability ----------
+serviceMonitor:
+  enabled: false           # set true if prometheus-operator is installed
+  namespace: ""
+  interval: 15s
+  scrapeTimeout: 10s
+  labels: {}
+
+# ---------- network policy ----------
+# Default-deny ingress + egress except the in-cluster traffic stele
+# components need. Many cluster operators prefer to manage this
+# centrally; set to false if so.
+networkPolicy:
+  enabled: false
+  # Pod selectors that may reach the operator's /api/v0/append. By
+  # default empty == nobody until you fill it in.
+  allowedAppendClients: []

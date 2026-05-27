@@ -1,0 +1,36 @@
+{
+  "name": "@stele/sdk",
+  "version": "0.1.0",
+  "description": "Producer SDK for the stele provenance-anchored audit log",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/desledishant10/stele.git",
+    "directory": "sdk/typescript"
+  },
+  "keywords": ["audit-log", "transparency", "tamper-evident", "stele"],
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json && tsc -p tsconfig.types.json",
+    "test": "node --test --experimental-test-coverage test/*.test.mjs",
+    "test:nocoverage": "node --test test/*.test.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.4.0"
+  }
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "name": "witness-a",
+    "listen": "0.0.0.0:19090",
+    "upstream": "witness-a:9090",
+    "enabled": true
+  },
+  {
+    "name": "witness-b",
+    "listen": "0.0.0.0:19091",
+    "upstream": "witness-b:9090",
+    "enabled": true
+  },
+  {
+    "name": "witness-c",
+    "listen": "0.0.0.0:19092",
+    "upstream": "witness-c:9090",
+    "enabled": true
+  }
+]

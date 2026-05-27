@@ -1,0 +1,55 @@
+[Unit]
+Description=stele witness
+Documentation=https://github.com/desledishant10/stele
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=stele
+Group=stele
+WorkingDirectory=/var/lib/stele-witness
+
+EnvironmentFile=/etc/stele/witness.env
+
+ExecStart=/usr/local/bin/stele-witness \
+    --addr=${STELE_WITNESS_ADDR} \
+    --dir=/var/lib/stele-witness \
+    --id=${STELE_WITNESS_ID} \
+    $STELE_WITNESS_FLAGS
+
+Restart=on-failure
+RestartSec=5s
+StandardOutput=journal
+StandardError=journal
+
+# Same hardening as steled.service. Witnesses don't need CAP_IPC_LOCK
+# because their key is held but not as load-bearing as the operator's
+# — we still grant it for parity with the operator's threat model.
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/stele-witness
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+RestrictNamespaces=true
+RestrictRealtime=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictSUIDSGID=true
+NoNewPrivileges=true
+CapabilityBoundingSet=CAP_IPC_LOCK
+AmbientCapabilities=CAP_IPC_LOCK
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources @debug @mount @swap @reboot @raw-io @cpu-emulation
+LimitMEMLOCK=2M
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

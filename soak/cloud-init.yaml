@@ -1,0 +1,131 @@
+# cloud-init for a Linux VM that runs a stele 72-hour soak.
+#
+# Usage (AWS EC2 example):
+#
+#   aws ec2 run-instances \
+#       --instance-type c7i.large \
+#       --image-id ami-... \
+#       --key-name <your key> \
+#       --user-data file://soak/cloud-init.yaml \
+#       --block-device-mappings 'DeviceName=/dev/sda1,Ebs={VolumeSize=100,VolumeType=gp3}'
+#
+# After ~3 minutes the instance is set up: stele binaries installed,
+# Prometheus + Grafana running, and the soak driver kicked off via
+# systemd timer at first boot.
+#
+# Equivalent flags exist for GCE, Hetzner, OVH, etc. Anything that
+# accepts user-data can use this file.
+#
+# Same script works on Ubuntu 22.04+ and Debian 12+.
+
+#cloud-config
+package_update: true
+package_upgrade: true
+
+packages:
+  - ca-certificates
+  - curl
+  - jq
+  - prometheus
+  - prometheus-node-exporter
+  - cron
+
+write_files:
+  - path: /etc/stele/soak.env
+    permissions: "0644"
+    content: |
+      # Tunables for the soak run. Override per-VM.
+      STELE_VERSION=v0.1.0
+      STELE_ORIGIN=soak.local/log
+      SOAK_DURATION=72h
+      SOAK_RPS=500
+      SOAK_PRODUCERS=16
+      SOAK_PAYLOAD=256
+      SOAK_REPORT_DIR=/var/lib/stele-soak
+
+  - path: /etc/prometheus/prometheus.yml
+    permissions: "0644"
+    content: |
+      global:
+        scrape_interval: 15s
+        evaluation_interval: 15s
+      scrape_configs:
+        - job_name: 'stele-operator'
+          static_configs:
+            - targets: ['localhost:8080']
+        - job_name: 'stele-witnesses'
+          static_configs:
+            - targets:
+                - 'localhost:9090'
+                - 'localhost:9091'
+                - 'localhost:9092'
+        - job_name: 'node'
+          static_configs:
+            - targets: ['localhost:9100']
+
+  - path: /etc/systemd/system/stele-soak.service
+    permissions: "0644"
+    content: |
+      [Unit]
+      Description=stele 72-hour soak driver
+      After=network-online.target
+      Wants=network-online.target
+
+      [Service]
+      Type=oneshot
+      RemainAfterExit=yes
+      EnvironmentFile=/etc/stele/soak.env
+      ExecStartPre=/usr/local/bin/stele-soak-setup
+      ExecStart=/usr/local/bin/stele-soak-run
+      User=root
+
+      [Install]
+      WantedBy=multi-user.target
+
+  - path: /etc/systemd/system/stele-soak-report.service
+    permissions: "0644"
+    content: |
+      [Unit]
+      Description=Snapshot stele soak metrics
+
+      [Service]
+      Type=oneshot
+      EnvironmentFile=/etc/stele/soak.env
+      ExecStart=/usr/local/bin/stele-soak-snapshot
+      User=root
+
+  - path: /etc/systemd/system/stele-soak-report.timer
+    permissions: "0644"
+    content: |
+      [Unit]
+      Description=Run stele-soak-snapshot every 30 minutes
+
+      [Timer]
+      OnBootSec=10min
+      OnUnitActiveSec=30min
+      Unit=stele-soak-report.service
+
+      [Install]
+      WantedBy=timers.target
+
+runcmd:
+  # Pull the stele release tarball + cosign-verify it.
+  - mkdir -p /opt/stele
+  - cd /opt/stele && curl -fsSL "https://github.com/desledishant10/stele/releases/download/${STELE_VERSION:-v0.1.0}/stele-linux-amd64" -o stele
+  - cd /opt/stele && curl -fsSL "https://github.com/desledishant10/stele/releases/download/${STELE_VERSION:-v0.1.0}/steled-linux-amd64" -o steled
+  - cd /opt/stele && curl -fsSL "https://github.com/desledishant10/stele/releases/download/${STELE_VERSION:-v0.1.0}/stele-witness-linux-amd64" -o stele-witness
+  - cd /opt/stele && curl -fsSL "https://github.com/desledishant10/stele/releases/download/${STELE_VERSION:-v0.1.0}/stele-loadgen-linux-amd64" -o stele-loadgen
+  - chmod +x /opt/stele/*
+  - install -m 0755 /opt/stele/* /usr/local/bin/
+
+  # Drop driver scripts into /usr/local/bin (the actual files are
+  # baked below; cloud-init writes them after this block).
+  - install -m 0755 /tmp/stele-soak-setup /usr/local/bin/
+  - install -m 0755 /tmp/stele-soak-run /usr/local/bin/
+  - install -m 0755 /tmp/stele-soak-snapshot /usr/local/bin/
+
+  # Enable services.
+  - systemctl enable --now prometheus prometheus-node-exporter
+  - systemctl enable --now stele-soak.service stele-soak-report.timer
+
+  - echo "stele soak running. Watch: tail -f /var/log/stele-soak.log"

@@ -1,0 +1,33 @@
+# CODEOWNERS for stele.
+#
+# Each line maps a file glob to one or more reviewers who get
+# automatically requested when a PR touches matching files.
+#
+# Until the project has more than one maintainer, the global owner
+# covers everything. Add per-area reviewers as the team grows.
+
+# Global default owner (everything not matched by a more specific rule).
+* @desledishant10
+
+# Crypto / protocol layer: extra eyes on anything that touches
+# signatures, hashing, the rotation chain, or the threshold protocol.
+/pkg/checkpoint/   @desledishant10
+/pkg/fwdsec/       @desledishant10
+/pkg/hybrid/       @desledishant10
+/pkg/merkle/       @desledishant10
+/pkg/threshold/    @desledishant10
+/pkg/witness/      @desledishant10
+/pkg/hsm/          @desledishant10
+/pkg/keyguard/     @desledishant10
+
+# Supply-chain + release tooling. Changes here can affect the
+# verifiability of every release.
+/.github/workflows/release.yml @desledishant10
+/.github/workflows/hardening.yml @desledishant10
+/deploy/Dockerfile @desledishant10
+
+# Threat model + governance docs need a maintainer review before
+# they shift.
+/THREATMODEL.md @desledishant10
+/SECURITY.md    @desledishant10
+/HARDENING.md   @desledishant10

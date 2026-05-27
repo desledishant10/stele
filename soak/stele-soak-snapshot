@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# stele-soak-snapshot — captures a metric snapshot every 30 minutes.
+# Invoked by stele-soak-report.timer.
+#
+# Each run appends one JSON line to ${SOAK_REPORT_DIR}/timeline.ndjson.
+# The lifetime view of all snapshots becomes the soak's narrative.
+
+set -euo pipefail
+. /etc/stele/soak.env
+mkdir -p "${SOAK_REPORT_DIR}"
+
+ts=$(date -u +%FT%TZ)
+out="${SOAK_REPORT_DIR}/timeline.ndjson"
+
+# Operator metrics (filtered to the ones that matter for soak signal).
+operator_metrics=$(curl -fsS http://127.0.0.1:8080/metrics \
+    | awk '/^stele_(tree_size|active_epoch|appends_total|ingest_rejects_total|tripwire_runs_total|honeypots_total|append_duration_seconds_count|witness_cosign_total|checkpoints_total|rotations_total)/' \
+    | jq -R -s 'split("\n") | map(select(length > 0))')
+
+# Process memory + CPU.
+mem_rss=$(grep VmRSS /proc/$(pgrep -f '^/usr/local/bin/steled' | head -1)/status 2>/dev/null | awk '{print $2}')
+cpu_pct=$(top -bn1 -p $(pgrep -f '^/usr/local/bin/steled' | head -1) 2>/dev/null | awk 'NR==8 {print $9}')
+
+# Read /readyz: operator must remain ready throughout the soak.
+readyz_code=$(curl -fsSL -o /dev/null -w "%{http_code}" http://127.0.0.1:8080/readyz)
+
+# Loadgen running?
+loadgen_running="false"
+if [ -f "${SOAK_REPORT_DIR}/loadgen.pid" ] && kill -0 "$(cat ${SOAK_REPORT_DIR}/loadgen.pid)" 2>/dev/null; then
+    loadgen_running="true"
+fi
+
+# Build the snapshot line.
+jq -nc \
+    --arg ts "$ts" \
+    --arg readyz_code "$readyz_code" \
+    --arg mem_rss_kb "${mem_rss:-0}" \
+    --arg cpu_pct "${cpu_pct:-0}" \
+    --arg loadgen_running "$loadgen_running" \
+    --argjson operator_metrics "$operator_metrics" \
+    '{
+       ts: $ts,
+       readyz_code: ($readyz_code | tonumber),
+       operator_rss_kb: ($mem_rss_kb | tonumber),
+       operator_cpu_pct: ($cpu_pct | tonumber),
+       loadgen_running: ($loadgen_running == "true"),
+       metrics: $operator_metrics
+     }' >> "$out"
+
+echo "snapshot recorded at $ts (readyz=$readyz_code)" >> /var/log/stele-soak.log

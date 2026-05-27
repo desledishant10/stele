@@ -1,0 +1,43 @@
+name: Feature request
+description: Propose a new capability or improvement
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filing, please skim [STRENGTHENING.md](../../STRENGTHENING.md)
+        and [PLAYBOOK.md](../../PLAYBOOK.md) to confirm the feature
+        isn't already in the project or explicitly out of scope.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem you're trying to solve
+      description: What can't you do today? Who is affected?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed approach
+      description: A rough sketch is fine. If you'd prefer a discussion first, say so.
+    validations:
+      required: true
+
+  - type: textarea
+    id: threat-impact
+    attributes:
+      label: Threat-model impact
+      description: |
+        What new defence does this add, or what existing defence does it
+        change? If your feature loosens any guarantee (e.g. adds a flag
+        that lets producers skip enrollment), call it out — the
+        maintainers will need to weigh that.
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered

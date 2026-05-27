@@ -1,0 +1,12 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/desledishant10/stele/security/advisories/new
+    about: |
+      DO NOT file a public issue for a security vulnerability. Use the
+      private Security advisory flow. See SECURITY.md.
+  - name: Question / discussion
+    url: https://github.com/desledishant10/stele/discussions
+    about: |
+      Use Discussions for usage questions, design conversations, or
+      "is this the right tool for X."

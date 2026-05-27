@@ -1,0 +1,65 @@
+{
+  "cases": [
+    {
+      "old_size": 0,
+      "new_size": 5,
+      "old_root_hex": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "new_root_hex": "c716344fb0ed8d65ca6beb3c8a75e1b1f5b09953f9494a8e432a1268131cdf1f",
+      "proof_hex": []
+    },
+    {
+      "old_size": 1,
+      "new_size": 5,
+      "old_root_hex": "5fb2264dccfd136a8a671ae33fd4de58dee5309c119fcebf0b70b24906cf8e6b",
+      "new_root_hex": "c716344fb0ed8d65ca6beb3c8a75e1b1f5b09953f9494a8e432a1268131cdf1f",
+      "proof_hex": [
+        "fbf1a258d085914402f1158213fdbe4ddd23541a2eb63f523fc6700f7972df99",
+        "a3f8bec0be88f5d3503d53eb549ef266723f03d9f1f3c0984b451deddbe5ec08",
+        "4553c5c8e45b45a98df22a475132f35f0aafb2c720732728b7c1ce81ba9e5c3d"
+      ]
+    },
+    {
+      "old_size": 3,
+      "new_size": 8,
+      "old_root_hex": "7334e29dda4286288438a9ef4de2509a44f60bc43eab9de7f1c9d9bc00ece15c",
+      "new_root_hex": "40a2ec7018fea9fd741bd1b02979e735030b2aea92dc87bf1a2fa793ff74fe85",
+      "proof_hex": [
+        "cb58b88ea4a642fa4024279a1eacda004bf18ccea40d48feb09e1be5ee481b2f",
+        "b8affc4a6e5253e1e68b732daed6f6da07c80be259c24f51411c78e6c5900b83",
+        "8d441d1a70f7ca176e76f0b94f44bd165349684f25c6e514523a65cfa5a93cb6",
+        "454d83006506ea306c4107c15682e3b4669cab8f080241093cc08489ee084a5c"
+      ]
+    },
+    {
+      "old_size": 8,
+      "new_size": 100,
+      "old_root_hex": "40a2ec7018fea9fd741bd1b02979e735030b2aea92dc87bf1a2fa793ff74fe85",
+      "new_root_hex": "0e0fce12226bc221080aa18674b8b4e6306379787fdee6cf12644fa5168c34c2",
+      "proof_hex": [
+        "6eb78c61a4408f0955f8ecbc64df04db9134767ca4daf6d468bc743ebe9d0ea6",
+        "f4f9c6878506f8bffbe1e52e17adb2ede1af5eeefdde1944ac2560d8ef673275",
+        "7f1270269303b633a5c8a18f21a75ec61f6b9bfde57d7098f87d2c200fff814f",
+        "282b330313c1e7ecc98c22c32a675840ec4aa82f73bfe8475ea6a53d29629c96"
+      ]
+    },
+    {
+      "old_size": 50,
+      "new_size": 1000,
+      "old_root_hex": "7a338a03fbeab624456141063bb7097f86ba3499dfcb9b5789e9bd3edc1be015",
+      "new_root_hex": "0fe72280251db97880b55697d8ff13021d13fd75197b345c8bc31bb5a4f7d113",
+      "proof_hex": [
+        "182cdfbb62f7df5cce1677f2c331570be3a42b09e0fe4039ed618aeff2bd34e2",
+        "d50234c0ab720da054459e2c52c5e23276b56981dfb700952bb89ebe92714a36",
+        "c3dbd03451ae68aa29d1d72b72e98b91eccc748d12e0ba56412b22dc91028ef7",
+        "71e4f71f582ebb8db576bd88a71748db207e69b480f1b5d872f8df810af12472",
+        "822fdae7832dad0a05b9cb5c766958ff57f0bc169ced1a697206cb514e5cca9b",
+        "2325d12dad65642b103255ee6c33e736d144d189073cdfe37dda36f78739b2d6",
+        "cd3168951dfec3fb002862d76b803d4bf226279ff105c0fdc22c86fd90519942",
+        "334650a2791ddbc121148602faab8af767f17fd6e755627a05778e9868b437b4",
+        "5c8e30062a51577d20127ec0fe218e8f5f790e4cdd560985f368570f2ec37e15",
+        "5c09426d30b3275e5f71506aec5321b7bdfd0e18a574ad6b22b11424d11eb918"
+      ]
+    }
+  ],
+  "description": "RFC 6962 consistency proofs. VerifyConsistency(old_size, new_size, proof, old_root, new_root) must return nil."
+}

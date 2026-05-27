@@ -1,0 +1,63 @@
+# Dependabot keeps stele's dependencies current.
+#
+# Strategy:
+#   - Go module updates: weekly; group by ecosystem (cosmetic chunking
+#     keeps PR noise low). Patch + minor are auto-PR; majors require
+#     manual review (Dependabot opens them; CI flags via govulncheck).
+#   - GitHub Actions updates: weekly. Pinning action SHAs is good
+#     practice, and Dependabot auto-bumps them with provenance.
+#   - No npm/pip/etc. — stele is pure Go.
+#
+# We deliberately do NOT auto-merge anything. Every bump is reviewed
+# in a PR that runs the full `hardening.yml` test suite — including
+# govulncheck and gosec — before a human approves it.
+
+version: 2
+updates:
+  - package-ecosystem: gomod
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: "Etc/UTC"
+    open-pull-requests-limit: 8
+    labels:
+      - dependencies
+      - go
+    groups:
+      crypto:
+        patterns:
+          - "github.com/cloudflare/circl*"
+          - "github.com/miekg/pkcs11*"
+      observability:
+        patterns:
+          - "go.opentelemetry.io/*"
+          - "github.com/prometheus/*"
+      storage:
+        patterns:
+          - "github.com/dgraph-io/badger*"
+      transparency:
+        patterns:
+          - "github.com/transparency-dev/*"
+          - "github.com/sigstore/*"
+    # Block any commit-pin updates without explicit human review.
+    versioning-strategy: increase
+    commit-message:
+      prefix: "deps"
+      include: scope
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: "Etc/UTC"
+    open-pull-requests-limit: 4
+    labels:
+      - dependencies
+      - github-actions
+    commit-message:
+      prefix: "ci"
+      include: scope

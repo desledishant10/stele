@@ -1,0 +1,207 @@
+{{- if .Values.operator.enabled -}}
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "stele.fullname" . }}-operator
+  labels:
+    {{- include "stele.labels" . | nindent 4 }}
+    app.kubernetes.io/component: operator
+spec:
+  serviceName: {{ include "stele.fullname" . }}-operator
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: {{ .Release.Name }}
+      app.kubernetes.io/component: operator
+  template:
+    metadata:
+      labels:
+        {{- include "stele.labels" . | nindent 8 }}
+        app.kubernetes.io/component: operator
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "{{ .Values.operator.service.port }}"
+        prometheus.io/path: "/metrics"
+    spec:
+      securityContext:
+        {{- include "stele.podSecurityContext" . | nindent 8 }}
+      {{- with .Values.image.pullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: steled
+          image: {{ include "stele.image" . }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          securityContext:
+            {{- include "stele.containerSecurityContext" . | nindent 12 }}
+          command: ["steled"]
+          args:
+            - --addr=:{{ .Values.operator.service.port }}
+            - --dir=/var/lib/stele
+            - --origin={{ .Values.operator.origin }}
+            - --init
+            - --pq-mode={{ .Values.operator.pqMode }}
+            {{- if .Values.operator.requireEnrollment }}
+            - --require-enrollment
+            {{- end }}
+            - --max-concurrent-appends={{ .Values.operator.ingest.maxConcurrentAppends }}
+            - --per-producer-rps={{ .Values.operator.ingest.perProducerRPS }}
+            - --per-producer-burst={{ .Values.operator.ingest.perProducerBurst }}
+            - --per-admin-rps={{ .Values.operator.ingest.perAdminRPS }}
+            - --per-admin-burst={{ .Values.operator.ingest.perAdminBurst }}
+            - --append-body-max={{ .Values.operator.ingest.appendBodyMax }}
+            - --admin-body-max={{ .Values.operator.ingest.adminBodyMax }}
+            {{- if .Values.operator.watchdog.enabled }}
+            - --rotate-every={{ .Values.operator.watchdog.rotateEvery }}
+            - --watch-keys={{ .Values.operator.watchdog.watchKeys }}
+            - --watch-rate={{ .Values.operator.watchdog.watchRate }}
+            {{- else }}
+            - --rotate-every=0
+            - --watch-keys=false
+            - --watch-rate=false
+            {{- end }}
+            {{- if .Values.operator.tripwire.enabled }}
+            - --tripwire-every={{ .Values.operator.tripwire.interval }}
+            {{- else }}
+            - --tripwire-every=0
+            {{- end }}
+            - --read-log={{ .Values.operator.readLog.enabled }}
+            {{- if .Values.operator.beacon.enabled }}
+            - --beacon={{ .Values.operator.beacon.endpoint }}
+            {{- else }}
+            - --beacon=
+            {{- end }}
+            {{- if .Values.operator.rekor.enabled }}
+            - --rekor={{ .Values.operator.rekor.endpoint }}
+            {{- end }}
+            {{- if .Values.operator.honeyWebhook }}
+            - --honey-webhook={{ .Values.operator.honeyWebhook }}
+            {{- end }}
+            {{- if .Values.operator.otel.enabled }}
+            - --otlp-endpoint={{ .Values.operator.otel.endpoint }}
+            {{- end }}
+            {{- if .Values.operator.tls.enabled }}
+            - --tls-cert=/etc/stele/tls/tls.crt
+            - --tls-key=/etc/stele/tls/tls.key
+            {{- if .Values.operator.tls.clientCASecretName }}
+            - --client-ca=/etc/stele/client-ca/ca.crt
+            {{- end }}
+            {{- end }}
+            {{- if .Values.operator.hsm.enabled }}
+            - --hsm-module={{ .Values.operator.hsm.module }}
+            - --hsm-slot={{ .Values.operator.hsm.slot }}
+            {{- end }}
+          env:
+            - name: STELE_LOG_FORMAT
+              value: json
+            {{- if and .Values.operator.hsm.enabled .Values.operator.hsm.pinSecret }}
+            - name: STELE_HSM_PIN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.operator.hsm.pinSecret }}
+                  key: STELE_HSM_PIN
+            {{- end }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.operator.service.port }}
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+              {{- if .Values.operator.tls.enabled }}
+              scheme: HTTPS
+              {{- end }}
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: http
+              {{- if .Values.operator.tls.enabled }}
+              scheme: HTTPS
+              {{- end }}
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          resources:
+            {{- toYaml .Values.operator.resources | nindent 12 }}
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/stele
+            {{- if .Values.operator.keysPersistence.enabled }}
+            - name: keys
+              mountPath: /var/lib/stele/keys
+            {{- end }}
+            {{- if .Values.operator.tls.enabled }}
+            - name: tls
+              mountPath: /etc/stele/tls
+              readOnly: true
+            {{- if .Values.operator.tls.clientCASecretName }}
+            - name: client-ca
+              mountPath: /etc/stele/client-ca
+              readOnly: true
+            {{- end }}
+            {{- end }}
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir: {}
+        {{- if .Values.operator.tls.enabled }}
+        - name: tls
+          secret:
+            secretName: {{ .Values.operator.tls.secretName }}
+        {{- if .Values.operator.tls.clientCASecretName }}
+        - name: client-ca
+          secret:
+            secretName: {{ .Values.operator.tls.clientCASecretName }}
+        {{- end }}
+        {{- end }}
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+        labels:
+          {{- include "stele.labels" . | nindent 10 }}
+          app.kubernetes.io/component: operator
+      spec:
+        accessModes: [{{ .Values.operator.persistence.accessMode }}]
+        {{- if .Values.operator.persistence.storageClass }}
+        storageClassName: {{ .Values.operator.persistence.storageClass }}
+        {{- end }}
+        resources:
+          requests:
+            storage: {{ .Values.operator.persistence.size }}
+    {{- if .Values.operator.keysPersistence.enabled }}
+    - metadata:
+        name: keys
+        labels:
+          {{- include "stele.labels" . | nindent 10 }}
+          app.kubernetes.io/component: operator
+      spec:
+        accessModes: [{{ .Values.operator.keysPersistence.accessMode }}]
+        {{- if .Values.operator.keysPersistence.storageClass }}
+        storageClassName: {{ .Values.operator.keysPersistence.storageClass }}
+        {{- end }}
+        resources:
+          requests:
+            storage: {{ .Values.operator.keysPersistence.size }}
+    {{- end }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "stele.fullname" . }}-operator
+  labels:
+    {{- include "stele.labels" . | nindent 4 }}
+    app.kubernetes.io/component: operator
+spec:
+  type: {{ .Values.operator.service.type }}
+  ports:
+    - name: http
+      port: {{ .Values.operator.service.port }}
+      targetPort: http
+      protocol: TCP
+  selector:
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/component: operator
+{{- end }}

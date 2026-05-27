@@ -1,0 +1,107 @@
+#!/usr/bin/env bash
+# stele-soak-setup — provisions stele services on the soak VM.
+# Invoked by stele-soak.service ExecStartPre.
+
+set -euo pipefail
+. /etc/stele/soak.env
+
+mkdir -p "${SOAK_REPORT_DIR}"
+mkdir -p /var/lib/stele /var/lib/stele-witness-{a,b,c}
+
+# Operator.
+cat > /etc/systemd/system/stele-soak-operator.service <<EOF
+[Unit]
+Description=stele operator (soak)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/steled \\
+    --addr=:8080 \\
+    --dir=/var/lib/stele \\
+    --origin=${STELE_ORIGIN} \\
+    --init \\
+    --checkpoint-every=10s \\
+    --anchor-every=30s \\
+    --beacon= \\
+    --rotate-every=4h \\
+    --watch-keys=true \\
+    --watch-rate=false \\
+    --read-log=true \\
+    --tripwire-every=1h \\
+    --max-concurrent-appends=512 \\
+    --per-producer-rps=200 \\
+    --per-producer-burst=400
+Environment=STELE_LOG_FORMAT=json
+Restart=on-failure
+StandardOutput=append:/var/log/stele-operator.log
+StandardError=append:/var/log/stele-operator.log
+LimitMEMLOCK=4M
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Three witnesses.
+for w in a b c; do
+    case "$w" in
+        a) port=9090;;
+        b) port=9091;;
+        c) port=9092;;
+    esac
+    cat > "/etc/systemd/system/stele-soak-witness-${w}.service" <<EOF
+[Unit]
+Description=stele witness ${w} (soak)
+After=network-online.target stele-soak-operator.service
+Wants=stele-soak-operator.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/stele-witness \\
+    --addr=:${port} \\
+    --dir=/var/lib/stele-witness-${w} \\
+    --id=witness-${w} \\
+    --gossip-every=30s
+Environment=STELE_LOG_FORMAT=json
+Restart=on-failure
+StandardOutput=append:/var/log/stele-witness-${w}.log
+StandardError=append:/var/log/stele-witness-${w}.log
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
+EOF
+done
+
+systemctl daemon-reload
+systemctl enable --now stele-soak-operator.service
+sleep 5
+systemctl enable --now stele-soak-witness-{a,b,c}.service
+sleep 3
+
+# Register witnesses with the operator.
+for w in a b c; do
+    case "$w" in
+        a) port=9090;;
+        b) port=9091;;
+        c) port=9092;;
+    esac
+    /usr/local/bin/stele witness-add \
+        --server http://127.0.0.1:8080 \
+        --id "witness-${w}" \
+        --url "http://127.0.0.1:${port}" \
+        --pubkey "$(curl -fsS http://127.0.0.1:${port}/witness/v0/pubkey | jq -r .public_key)"
+done
+
+# Enroll a soak producer.
+/usr/local/bin/stele producer-init --id soak-prod --out /etc/stele/soak-prod.key
+/usr/local/bin/stele enroll-producer \
+    --server http://127.0.0.1:8080 \
+    --id soak-prod \
+    --key /etc/stele/soak-prod.key \
+    --scope "soak:long-run" \
+    --validity 168h
+
+echo "soak setup complete at $(date -u +%FT%TZ)" >> /var/log/stele-soak.log

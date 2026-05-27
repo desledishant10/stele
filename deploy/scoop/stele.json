@@ -1,0 +1,80 @@
+{
+    "version": "0.1.0",
+    "description": "Provenance-anchored audit log: tamper-evident, signature-chained, witness-cosigned",
+    "homepage": "https://github.com/desledishant10/stele",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://github.com/desledishant10/stele/releases/download/v0.1.0/stele-windows-amd64.exe",
+                "https://github.com/desledishant10/stele/releases/download/v0.1.0/stele-watcher-windows-amd64.exe",
+                "https://github.com/desledishant10/stele/releases/download/v0.1.0/stele-backup-windows-amd64.exe",
+                "https://github.com/desledishant10/stele/releases/download/v0.1.0/stele-export-chain-windows-amd64.exe",
+                "https://github.com/desledishant10/stele/releases/download/v0.1.0/stele-loadgen-windows-amd64.exe"
+            ],
+            "hash": [
+                "sha256:REPLACE_ME_STELE_WINDOWS_AMD64",
+                "sha256:REPLACE_ME_WATCHER_WINDOWS_AMD64",
+                "sha256:REPLACE_ME_BACKUP_WINDOWS_AMD64",
+                "sha256:REPLACE_ME_EXPORT_CHAIN_WINDOWS_AMD64",
+                "sha256:REPLACE_ME_LOADGEN_WINDOWS_AMD64"
+            ]
+        },
+        "arm64": {
+            "url": [
+                "https://github.com/desledishant10/stele/releases/download/v0.1.0/stele-windows-arm64.exe",
+                "https://github.com/desledishant10/stele/releases/download/v0.1.0/stele-watcher-windows-arm64.exe",
+                "https://github.com/desledishant10/stele/releases/download/v0.1.0/stele-backup-windows-arm64.exe",
+                "https://github.com/desledishant10/stele/releases/download/v0.1.0/stele-export-chain-windows-arm64.exe",
+                "https://github.com/desledishant10/stele/releases/download/v0.1.0/stele-loadgen-windows-arm64.exe"
+            ],
+            "hash": [
+                "sha256:REPLACE_ME_STELE_WINDOWS_ARM64",
+                "sha256:REPLACE_ME_WATCHER_WINDOWS_ARM64",
+                "sha256:REPLACE_ME_BACKUP_WINDOWS_ARM64",
+                "sha256:REPLACE_ME_EXPORT_CHAIN_WINDOWS_ARM64",
+                "sha256:REPLACE_ME_LOADGEN_WINDOWS_ARM64"
+            ]
+        }
+    },
+    "bin": [
+        ["stele-windows-amd64.exe", "stele"],
+        ["stele-watcher-windows-amd64.exe", "stele-watcher"],
+        ["stele-backup-windows-amd64.exe", "stele-backup"],
+        ["stele-export-chain-windows-amd64.exe", "stele-export-chain"],
+        ["stele-loadgen-windows-amd64.exe", "stele-loadgen"]
+    ],
+    "checkver": {
+        "github": "https://github.com/desledishant10/stele"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://github.com/desledishant10/stele/releases/download/v$version/stele-windows-amd64.exe",
+                    "https://github.com/desledishant10/stele/releases/download/v$version/stele-watcher-windows-amd64.exe",
+                    "https://github.com/desledishant10/stele/releases/download/v$version/stele-backup-windows-amd64.exe",
+                    "https://github.com/desledishant10/stele/releases/download/v$version/stele-export-chain-windows-amd64.exe",
+                    "https://github.com/desledishant10/stele/releases/download/v$version/stele-loadgen-windows-amd64.exe"
+                ]
+            },
+            "arm64": {
+                "url": [
+                    "https://github.com/desledishant10/stele/releases/download/v$version/stele-windows-arm64.exe",
+                    "https://github.com/desledishant10/stele/releases/download/v$version/stele-watcher-windows-arm64.exe",
+                    "https://github.com/desledishant10/stele/releases/download/v$version/stele-backup-windows-arm64.exe",
+                    "https://github.com/desledishant10/stele/releases/download/v$version/stele-export-chain-windows-arm64.exe",
+                    "https://github.com/desledishant10/stele/releases/download/v$version/stele-loadgen-windows-arm64.exe"
+                ]
+            }
+        }
+    },
+    "notes": [
+        "stele's WINDOWS distribution covers the workstation tools (CLI + auditor).",
+        "For SERVER daemons (steled, stele-witness, stele-mirror, stele-cosigner),",
+        "use the official OCI image (Docker Desktop) or run via WSL2.",
+        "",
+        "Memory-protection note: on Windows, pkg/keyguard returns a 'not supported'",
+        "warning (mlock is a no-op) but does not abort. See PLATFORMS.md."
+    ]
+}

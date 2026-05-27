@@ -1,0 +1,51 @@
+{
+  "name": "stele",
+  "image": "mcr.microsoft.com/devcontainers/go:1.25-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "golang.go",
+        "ms-python.python",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "ms-azuretools.vscode-docker"
+      ],
+      "settings": {
+        "go.toolsManagement.autoUpdate": false,
+        "files.exclude": {
+          "bin/": true,
+          "dist/": true,
+          "sdk/python/.venv/": true,
+          "sdk/typescript/node_modules/": true,
+          "sdk/typescript/dist/": true
+        }
+      }
+    }
+  },
+  "forwardPorts": [8080, 9090, 9091, 9092, 8444, 9094, 9095],
+  "portsAttributes": {
+    "8080": {
+      "label": "stele-operator",
+      "onAutoForward": "openBrowser"
+    },
+    "9094": {
+      "label": "prometheus",
+      "onAutoForward": "silent"
+    },
+    "9095": {
+      "label": "grafana",
+      "onAutoForward": "silent"
+    }
+  },
+  "postCreateCommand": ".devcontainer/postCreate.sh",
+  "remoteUser": "vscode"
+}

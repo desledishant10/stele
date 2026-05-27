@@ -1,0 +1,53 @@
+# Build artifacts
+/bin/
+/dist/
+/verify/
+
+# Binaries left in repo root from local smoke tests. We never commit
+# them; the release workflow produces signed binaries.
+/stele
+/steled
+/stele-witness
+/stele-mirror
+/stele-cosigner
+/stele-tamper
+/stele-backup
+/stele-export-chain
+/stele-loadgen
+/stele-vectors
+
+# Bench output. baseline.txt is committed (the regression gate's
+# reference); current.txt and diff.txt are per-run scratch.
+/bench/current.txt
+/bench/diff.txt
+
+# OS / editor noise.
+.DS_Store
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Test temp dirs that occasionally leak.
+*.test
+testdata/fuzz/*/fuzz/*
+
+# Python SDK build/install scratch.
+sdk/python/.venv/
+sdk/python/build/
+sdk/python/dist/
+sdk/python/*.egg-info/
+**/__pycache__/
+*.pyc
+
+# TypeScript SDK build/install scratch.
+sdk/typescript/node_modules/
+sdk/typescript/dist/
+sdk/typescript/dist-cjs/
+sdk/typescript/*.tgz
+sdk/typescript/.tsbuildinfo
+
+# Soak/pilot local data (never committed; lives in $HOME).
+soak-data/
+.stele-pilot/

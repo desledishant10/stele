@@ -1,0 +1,40 @@
+{
+  "description": "Stele cryptographic test vectors. SDKs in any language pass when they reproduce every expected_* field from the inputs.",
+  "files": [
+    {
+      "file": "envelope_canonical.json",
+      "description": "Envelope.Canonical() bytes for assorted shapes (classical, hybrid, unicode, large, empty)."
+    },
+    {
+      "file": "envelope_hash.json",
+      "description": "Envelope.Hash() = SHA-256(canonical) for replay-protection table."
+    },
+    {
+      "file": "envelope_signing.json",
+      "description": "Deterministic Ed25519-signed envelopes (seed = 0x42 * 32)."
+    },
+    {
+      "file": "merkle_root.json",
+      "description": "RFC 6962 root hashes over deterministic leaf sequences (sizes 0, 1, 2, 3, 4, 7, 8, 100)."
+    },
+    {
+      "file": "merkle_inclusion.json",
+      "description": "RFC 6962 inclusion proofs at assorted (idx, size) pairs."
+    },
+    {
+      "file": "merkle_consistency.json",
+      "description": "RFC 6962 consistency proofs across (old, new) size pairs."
+    },
+    {
+      "file": "checkpoint_canonical.json",
+      "description": "Checkpoint.Canonical() bytes (the operator-signed payload)."
+    }
+  ],
+  "how_to_use": [
+    "Each file lists deterministic inputs and expected outputs in hex.",
+    "For each case: feed the inputs into your implementation; the bytes of the operation should match the expected output byte-for-byte.",
+    "If your implementation's output differs by even one bit, your envelopes will be rejected by the reference operator.",
+    "Auditors: re-run cmd/stele-vectors against the source and diff against this directory. Any difference is a finding."
+  ],
+  "version": "stele/v0.1.0"
+}

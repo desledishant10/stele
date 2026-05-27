@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stele-sdk"
+version = "0.1.0"
+description = "Producer SDK for the stele provenance-anchored audit log"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.9"
+authors = [
+    { name = "stele maintainers" },
+]
+keywords = ["audit-log", "transparency", "tamper-evident", "stele"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security :: Cryptography",
+]
+dependencies = [
+    "cryptography>=42.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7.0",
+    "pytest-httpserver>=1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/desledishant10/stele"
+Documentation = "https://github.com/desledishant10/stele/blob/main/PLAYBOOK.md"
+Source = "https://github.com/desledishant10/stele/tree/main/sdk/python"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["stele*"]
+exclude = ["tests*"]

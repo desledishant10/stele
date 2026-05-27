@@ -1,0 +1,27 @@
+{
+  "cases": [
+    {
+      "name": "deterministic_seed_0x42",
+      "seed_hex": "4242424242424242424242424242424242424242424242424242424242424242",
+      "public_key_hex": "2152f8d19b791d24453242e15f2eab6cb7cffa7b6a5ed30097960e069881db12",
+      "producer_id": "alice",
+      "time_nanos": 1700000000000000000,
+      "source": "/var/log/x",
+      "data_hex": "666972737420656e747279",
+      "expected_canonical_hex": "00000005616c69636517979cfe362a00000000000a2f7661722f6c6f672f780000000b666972737420656e747279000000202152f8d19b791d24453242e15f2eab6cb7cffa7b6a5ed30097960e069881db1200000008736f6674776172650000000000000000",
+      "expected_signature_hex": "375126cf47cad25f521c0ce1663ba31595c2283c7d7fda1b262beb3808ae74bf99f9f8ff4479df96585baa3a6d8e33b196f538f9a3b28fc859a601a976d40e03"
+    },
+    {
+      "name": "empty_data",
+      "seed_hex": "4242424242424242424242424242424242424242424242424242424242424242",
+      "public_key_hex": "2152f8d19b791d24453242e15f2eab6cb7cffa7b6a5ed30097960e069881db12",
+      "producer_id": "alice",
+      "time_nanos": 1700000000000000000,
+      "source": "/var/log/x",
+      "data_hex": "",
+      "expected_canonical_hex": "00000005616c69636517979cfe362a00000000000a2f7661722f6c6f672f7800000000000000202152f8d19b791d24453242e15f2eab6cb7cffa7b6a5ed30097960e069881db1200000008736f6674776172650000000000000000",
+      "expected_signature_hex": "64d8f4c27ecfe5fbf3c087b70d7a2cfb29bde0e4130fffe9fdf043bc00531011c95a74e25943725ed0ec5a1d6b8f902c8f01a3e7de478ac1e87ada675b3ef209"
+    }
+  ],
+  "description": "Full Ed25519-signed envelopes with a deterministic seed. SDKs reproduce these bit-for-bit."
+}

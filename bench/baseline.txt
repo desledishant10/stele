@@ -1,0 +1,52 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/desledishant10/stele/pkg/merkle
+cpu: Apple M3 Pro
+BenchmarkAppendLeaf-12              	 1718160	       669.5 ns/op	   1493594 leaves/sec
+BenchmarkAppendLeaf-12              	 1832046	       683.7 ns/op	   1462614 leaves/sec
+BenchmarkAppendLeaf-12              	 1918094	       708.0 ns/op	   1412448 leaves/sec
+BenchmarkAppendLeaf-12              	 1897008	       694.4 ns/op	   1440091 leaves/sec
+BenchmarkAppendLeaf-12              	 1894069	       710.1 ns/op	   1408279 leaves/sec
+BenchmarkInclusionProof_1K-12       	 2059870	       596.8 ns/op
+BenchmarkInclusionProof_1K-12       	 2014545	       597.0 ns/op
+BenchmarkInclusionProof_1K-12       	 1889762	       597.2 ns/op
+BenchmarkInclusionProof_1K-12       	 2057108	       651.4 ns/op
+BenchmarkInclusionProof_1K-12       	 2039460	       605.9 ns/op
+BenchmarkInclusionProof_10K-12      	 2043495	       594.5 ns/op
+BenchmarkInclusionProof_10K-12      	 2094590	       607.3 ns/op
+BenchmarkInclusionProof_10K-12      	 2087658	       600.2 ns/op
+BenchmarkInclusionProof_10K-12      	 2008941	       587.8 ns/op
+BenchmarkInclusionProof_10K-12      	 1851961	       576.5 ns/op
+BenchmarkInclusionProof_100K-12     	 1327146	       867.7 ns/op
+BenchmarkInclusionProof_100K-12     	 1328967	       883.4 ns/op
+BenchmarkInclusionProof_100K-12     	 1314304	       853.3 ns/op
+BenchmarkInclusionProof_100K-12     	 1311961	       864.2 ns/op
+BenchmarkInclusionProof_100K-12     	 1000000	      1223 ns/op
+BenchmarkConsistencyProof_10K-12    	 2013758	       628.9 ns/op
+BenchmarkConsistencyProof_10K-12    	 1984251	       609.8 ns/op
+BenchmarkConsistencyProof_10K-12    	 2003090	       614.5 ns/op
+BenchmarkConsistencyProof_10K-12    	 2035071	       600.2 ns/op
+BenchmarkConsistencyProof_10K-12    	 1984665	       583.2 ns/op
+BenchmarkRoot_10K-12                	 2593852	       416.2 ns/op
+BenchmarkRoot_10K-12                	 2925412	       432.3 ns/op
+BenchmarkRoot_10K-12                	 2881974	       422.0 ns/op
+BenchmarkRoot_10K-12                	 2953790	       406.3 ns/op
+BenchmarkRoot_10K-12                	 2731156	       406.1 ns/op
+PASS
+ok  	github.com/desledishant10/stele/pkg/merkle	56.226s
+goos: darwin
+goarch: arm64
+pkg: github.com/desledishant10/stele/pkg/core
+cpu: Apple M3 Pro
+BenchmarkLogAppend-12       	    8754	    135442 ns/op	      7383 entries/sec
+BenchmarkLogAppend-12       	    9484	    139779 ns/op	      7154 entries/sec
+BenchmarkLogAppend-12       	    9740	    141601 ns/op	      7062 entries/sec
+BenchmarkLogAppend-12       	   10000	    136133 ns/op	      7346 entries/sec
+BenchmarkLogAppend-12       	    9177	    136819 ns/op	      7309 entries/sec
+BenchmarkProducerSign-12    	   73570	     17587 ns/op
+BenchmarkProducerSign-12    	   73810	     16454 ns/op
+BenchmarkProducerSign-12    	   66666	     17774 ns/op
+BenchmarkProducerSign-12    	   73610	     16918 ns/op
+BenchmarkProducerSign-12    	   71839	     16538 ns/op
+PASS
+ok  	github.com/desledishant10/stele/pkg/core	15.622s

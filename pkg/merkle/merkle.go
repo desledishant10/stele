@@ -1,0 +1,198 @@
+// Package merkle wraps the canonical transparency-dev/merkle library to
+// provide an in-memory RFC 6962 Merkle tree that can produce inclusion and
+// consistency proofs.
+//
+// The tree stores every internal node hash (not just the rightmost spine) so
+// arbitrary proofs are cheap. For a log with N entries this is O(N) memory,
+// which is fine for the MVP — production deployments would back this with a
+// disk-resident node store.
+package merkle
+
+import (
+	"fmt"
+
+	tdmerkle "github.com/transparency-dev/merkle"
+	"github.com/transparency-dev/merkle/compact"
+	"github.com/transparency-dev/merkle/proof"
+	"github.com/transparency-dev/merkle/rfc6962"
+)
+
+// Hasher is the RFC 6962 SHA-256 hasher used by Certificate Transparency and
+// Sigstore Rekor.
+var Hasher tdmerkle.LogHasher = rfc6962.DefaultHasher
+
+// HashSize is the size in bytes of a single hash (SHA-256).
+const HashSize = 32
+
+// Tree is an append-only Merkle tree backed by an in-memory node store.
+type Tree struct {
+	rng   *compact.Range
+	nodes map[compact.NodeID][]byte // every internal + leaf node visited
+}
+
+// NewTree returns an empty tree ready to receive leaves.
+func NewTree() *Tree {
+	factory := &compact.RangeFactory{Hash: Hasher.HashChildren}
+	return &Tree{
+		rng:   factory.NewEmptyRange(0),
+		nodes: make(map[compact.NodeID][]byte),
+	}
+}
+
+// Size returns the current number of leaves.
+func (t *Tree) Size() uint64 { return t.rng.End() }
+
+// Root returns the current Merkle root, or the RFC 6962 empty root when no
+// leaves have been appended.
+func (t *Tree) Root() []byte {
+	if t.Size() == 0 {
+		return Hasher.EmptyRoot()
+	}
+	root, err := t.rng.GetRootHash(nil)
+	if err != nil {
+		// GetRootHash only errors on inconsistent internal state, which we
+		// have not produced. If it ever fires, that is a programmer bug.
+		panic(fmt.Sprintf("merkle: GetRootHash failed: %v", err))
+	}
+	return root
+}
+
+// AppendLeaf hashes raw data as a leaf, appends it, and returns the resulting
+// leaf hash and its 0-based index.
+func (t *Tree) AppendLeaf(data []byte) (leafHash []byte, idx uint64) {
+	leafHash = Hasher.HashLeaf(data)
+	idx = t.AppendLeafHash(leafHash)
+	return leafHash, idx
+}
+
+// AppendLeafHash appends an already-hashed leaf. Used during replay from
+// storage so we do not double-hash.
+func (t *Tree) AppendLeafHash(leafHash []byte) uint64 {
+	idx := t.rng.End()
+	// The leaf itself lives at level 0.
+	t.nodes[compact.NewNodeID(0, idx)] = append([]byte(nil), leafHash...)
+	if err := t.rng.Append(leafHash, func(id compact.NodeID, hash []byte) {
+		t.nodes[id] = append([]byte(nil), hash...)
+	}); err != nil {
+		panic(fmt.Sprintf("merkle: Append failed: %v", err))
+	}
+	return idx
+}
+
+// nodeHash returns the hash at the given node ID. If the node was not
+// previously visited (e.g. an "ephemeral" right-edge node that requires
+// rehashing for a specific proof), the caller must compute it from leaves.
+func (t *Tree) nodeHash(id compact.NodeID) ([]byte, bool) {
+	h, ok := t.nodes[id]
+	return h, ok
+}
+
+// InclusionProof returns the proof that the leaf at `idx` is in the tree of
+// size `treeSize`. The returned proof is a slice of sibling hashes; pass it
+// to VerifyInclusion together with the leaf hash and expected root.
+func (t *Tree) InclusionProof(idx, treeSize uint64) ([][]byte, error) {
+	if treeSize > t.Size() {
+		return nil, fmt.Errorf("merkle: treeSize %d exceeds current size %d", treeSize, t.Size())
+	}
+	nodes, err := proof.Inclusion(idx, treeSize)
+	if err != nil {
+		return nil, fmt.Errorf("merkle: building inclusion node list: %w", err)
+	}
+	return t.materialise(nodes)
+}
+
+// ConsistencyProof returns the proof that a tree of size `oldSize` is a
+// prefix of a tree of size `newSize`. An empty proof is returned when
+// oldSize == 0 (vacuously consistent) or oldSize == newSize.
+func (t *Tree) ConsistencyProof(oldSize, newSize uint64) ([][]byte, error) {
+	if oldSize > newSize {
+		return nil, fmt.Errorf("merkle: oldSize %d > newSize %d", oldSize, newSize)
+	}
+	if newSize > t.Size() {
+		return nil, fmt.Errorf("merkle: newSize %d exceeds current size %d", newSize, t.Size())
+	}
+	if oldSize == 0 || oldSize == newSize {
+		return [][]byte{}, nil
+	}
+	nodes, err := proof.Consistency(oldSize, newSize)
+	if err != nil {
+		return nil, fmt.Errorf("merkle: building consistency node list: %w", err)
+	}
+	return t.materialise(nodes)
+}
+
+// materialise turns a proof.Nodes description into the actual sibling hashes.
+// Some "ephemeral" nodes have to be recomputed by hashing a range of leaves
+// because they correspond to right-edge subtrees that are not aligned to a
+// perfect power of two.
+func (t *Tree) materialise(nodes proof.Nodes) ([][]byte, error) {
+	hashes := make([][]byte, 0, len(nodes.IDs))
+	for _, id := range nodes.IDs {
+		h, ok := t.nodeHash(id)
+		if !ok {
+			rehashed, err := t.computeNode(id)
+			if err != nil {
+				return nil, fmt.Errorf("merkle: cannot materialise node L%d[%d]: %w", id.Level, id.Index, err)
+			}
+			h = rehashed
+		}
+		hashes = append(hashes, h)
+	}
+	return nodes.Rehash(hashes, Hasher.HashChildren)
+}
+
+// computeNode rehashes a subtree node from its leaf coverage. We only ever
+// reach this path for ephemeral right-edge nodes — proper internal nodes
+// are cached when the compact.Range visits them. Because an ephemeral
+// subtree is not aligned to a 2^L boundary, its halves are NOT the
+// standard NodeID children; we have to split at the largest power-of-two
+// boundary inside the leaf range, exactly how RFC 6962 defines an
+// asymmetric subtree's root.
+func (t *Tree) computeNode(id compact.NodeID) ([]byte, error) {
+	begin, end := id.Coverage()
+	if end > t.Size() {
+		end = t.Size()
+	}
+	if begin >= end {
+		return nil, fmt.Errorf("empty coverage for L%d[%d]", id.Level, id.Index)
+	}
+	return t.subRoot(begin, end)
+}
+
+// subRoot computes the root of the subtree covering leaves [begin, end).
+// Recursion bottoms out at single leaves.
+func (t *Tree) subRoot(begin, end uint64) ([]byte, error) {
+	if begin+1 == end {
+		h, ok := t.nodeHash(compact.NewNodeID(0, begin))
+		if !ok {
+			return nil, fmt.Errorf("missing leaf %d", begin)
+		}
+		return h, nil
+	}
+	span := end - begin
+	k := uint64(1)
+	for k*2 < span {
+		k *= 2
+	}
+	split := begin + k
+	left, err := t.subRoot(begin, split)
+	if err != nil {
+		return nil, err
+	}
+	right, err := t.subRoot(split, end)
+	if err != nil {
+		return nil, err
+	}
+	return Hasher.HashChildren(left, right), nil
+}
+
+// VerifyInclusion is a convenience pass-through to the library so callers do
+// not have to import two merkle packages.
+func VerifyInclusion(idx, treeSize uint64, leafHash []byte, prf [][]byte, root []byte) error {
+	return proof.VerifyInclusion(Hasher, idx, treeSize, leafHash, prf, root)
+}
+
+// VerifyConsistency is a convenience pass-through.
+func VerifyConsistency(oldSize, newSize uint64, prf [][]byte, oldRoot, newRoot []byte) error {
+	return proof.VerifyConsistency(Hasher, oldSize, newSize, prf, oldRoot, newRoot)
+}

@@ -1,0 +1,50 @@
+# PR test workflow. Every push runs the whole test suite, including
+# the SoftHSM2-backed HSM tests. Caches Go modules.
+
+name: test
+
+on:
+  pull_request:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.0"
+          cache: true
+
+      - name: Install SoftHSM2
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y softhsm2
+
+      - name: Initialise SoftHSM token
+        id: softhsm
+        run: |
+          mkdir -p /tmp/softhsm-tokens
+          cat > /tmp/softhsm2.conf <<'EOF'
+          directories.tokendir = /tmp/softhsm-tokens
+          objectstore.backend = file
+          log.level = ERROR
+          EOF
+          export SOFTHSM2_CONF=/tmp/softhsm2.conf
+          softhsm2-util --init-token --free --label stele-ci --so-pin 1234 --pin 5678
+          SLOT=$(softhsm2-util --show-slots | grep -B 3 'stele-ci' | grep '^Slot' | head -1 | awk '{print $2}')
+          echo "slot=$SLOT" >> "$GITHUB_OUTPUT"
+          echo "module=/usr/lib/softhsm/libsofthsm2.so" >> "$GITHUB_OUTPUT"
+
+      - name: Run tests
+        env:
+          SOFTHSM2_CONF: /tmp/softhsm2.conf
+          STELE_HSM_MODULE: ${{ steps.softhsm.outputs.module }}
+          STELE_HSM_SLOT: ${{ steps.softhsm.outputs.slot }}
+          STELE_HSM_PIN: "5678"
+        run: go test -race ./...

@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# stele-soak-run — kicks off the long-running loadgen.
+# Invoked by stele-soak.service ExecStart after stele-soak-setup.
+
+set -euo pipefail
+. /etc/stele/soak.env
+
+echo "soak run starting at $(date -u +%FT%TZ)" >> /var/log/stele-soak.log
+echo "duration=${SOAK_DURATION} rps=${SOAK_RPS} producers=${SOAK_PRODUCERS} payload=${SOAK_PAYLOAD}" >> /var/log/stele-soak.log
+
+# Detach: stele-soak.service is Type=oneshot, RemainAfterExit=yes.
+# The loadgen continues in the background; we record its PID for
+# later teardown.
+nohup /usr/local/bin/stele-loadgen \
+    --server "http://127.0.0.1:8080" \
+    --producers "${SOAK_PRODUCERS}" \
+    --rps "${SOAK_RPS}" \
+    --duration "${SOAK_DURATION}" \
+    --warmup 30s \
+    --payload "${SOAK_PAYLOAD}" \
+    --concurrency 128 \
+    --json "${SOAK_REPORT_DIR}/loadgen-final.json" \
+    > /var/log/stele-soak-loadgen.log 2>&1 &
+
+echo $! > "${SOAK_REPORT_DIR}/loadgen.pid"
+echo "loadgen running as PID $(cat ${SOAK_REPORT_DIR}/loadgen.pid)" >> /var/log/stele-soak.log

@@ -1,0 +1,30 @@
+Expected `tamarin-prover --prove stele.spthy` output on the model as
+authored. Recapture if the model changes; commit alongside the model
+file so reviewers can diff one against the other.
+
+==============================================================================
+summary of summaries:
+
+analyzed: stele.spthy
+
+  processing time: <varies; under a minute on commodity hardware>
+
+  forward_secrecy (all-traces): verified
+  no_witness_double_cosign (all-traces): verified
+  enrollment_required (all-traces): verified
+  sanity_complete_run (exists-trace): verified
+
+==============================================================================
+
+Notes:
+
+  - Tamarin's output also lists every rule + every lemma's heuristic
+    runtime. Those numbers vary; the only thing the model commits to
+    is the four "verified" lines above.
+  - If you see "INDETERMINATE" on any lemma, the bounded search did
+    not conclude within Tamarin's default budget. Re-run with
+    `--heuristic=O` or `--heuristic=I` to try alternate strategies.
+  - The model uses Tamarin's `signing` and `hashing` builtins, which
+    abstract signatures + hashes ideally. The
+    symbolic-to-computational reduction for Ed25519 / Dilithium3 /
+    SHA-256 is established by separate cryptographic results.

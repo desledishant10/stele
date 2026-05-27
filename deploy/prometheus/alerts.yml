@@ -1,0 +1,178 @@
+# Prometheus alert rules for stele.
+#
+# Drop into your alertmanager-connected Prometheus config under:
+#   rule_files:
+#     - /etc/prometheus/rules/stele/alerts.yml
+#
+# Thresholds are starting points; tune to your traffic. Severity labels
+# follow the common convention:
+#   page    — wake someone up
+#   ticket  — file an incident, business hours
+#   info    — visibility only
+#
+# All alerts use `component` to scope to the right binary so the same
+# rules cover steled, witness, mirror, and cosigner.
+
+groups:
+  - name: stele.availability
+    rules:
+      - alert: SteleProcessDown
+        # No scrape success for 2 minutes — the operator can't see the
+        # process or it isn't responding.
+        expr: up{job=~"stele.*"} == 0
+        for: 2m
+        labels:
+          severity: page
+        annotations:
+          summary: "stele process {{ $labels.instance }} is down"
+          description: |
+            Prometheus has not scraped {{ $labels.job }} on
+            {{ $labels.instance }} for at least 2 minutes.
+
+      - alert: SteleNotReady
+        # /readyz failing — chain unloaded, store unreachable, or a
+        # registered probe is unhappy. This usually means traffic should
+        # NOT be sent to this instance.
+        expr: probe_success{probe="stele_readyz"} == 0
+        for: 5m
+        labels:
+          severity: ticket
+        annotations:
+          summary: "stele {{ $labels.instance }} not ready for 5m"
+          description: |
+            /readyz has been reporting 503 continuously. Check
+            startup logs and the JSON probe body.
+
+  - name: stele.append_path
+    rules:
+      - alert: SteleAppendErrorRate
+        # >1% of appends ending in error or rejected (over a 5m window).
+        # Note: "duplicate" is excluded — replay protection is a feature,
+        # not an error.
+        expr: |
+          (
+            sum(rate(stele_appends_total{outcome=~"error|rejected"}[5m]))
+            /
+            sum(rate(stele_appends_total[5m]))
+          ) > 0.01
+        for: 5m
+        labels:
+          severity: ticket
+        annotations:
+          summary: ">1% of appends failing for 5m"
+          description: |
+            Producers are submitting bad envelopes or steled is rejecting
+            them. Check producer enrollment + envelope.Verify reasons in
+            the structured logs.
+
+      - alert: SteleAppendLatencyHigh
+        # p99 Append latency over 250ms for 10m.
+        expr: |
+          histogram_quantile(0.99,
+            sum(rate(stele_append_duration_seconds_bucket[5m])) by (le)
+          ) > 0.25
+        for: 10m
+        labels:
+          severity: ticket
+        annotations:
+          summary: "p99 Append latency > 250ms for 10m"
+          description: |
+            Append is dominated by Badger fsyncs in typical workloads;
+            sustained high p99 usually points at slow disk or
+            backpressure. Confirm via traces.
+
+  - name: stele.checkpoints_and_anchors
+    rules:
+      - alert: SteleNoAnchorRecently
+        # No external anchor written in over 1 hour. Either the operator
+        # disabled anchoring (config drift) or every configured sink is
+        # failing. Anchoring is what binds stele's view to a public
+        # ground-truth — letting it lapse silently is bad.
+        expr: stele_last_anchor_age_seconds > 3600
+        for: 5m
+        labels:
+          severity: page
+        annotations:
+          summary: "no anchor written in over 1h"
+          description: |
+            stele_last_anchor_age_seconds = {{ $value }}s on
+            {{ $labels.instance }}. Investigate anchor sinks
+            (file + rekor) — both may be failing.
+
+      - alert: SteleCheckpointFailures
+        # Any error rate at all on checkpoint signing — should be 0.
+        expr: rate(stele_checkpoints_total{outcome="error"}[5m]) > 0
+        for: 5m
+        labels:
+          severity: page
+        annotations:
+          summary: "stele checkpoint signing failing"
+          description: |
+            Checkpoint signing has been failing for 5m. The operator
+            cannot produce auditable proofs without checkpoints. Likely
+            causes: HSM unreachable, threshold cosigner quorum lost,
+            on-disk key permissions changed.
+
+  - name: stele.witness_mesh
+    rules:
+      - alert: SteleWitnessQuorumDegraded
+        # The chain has witnesses but quorum can't be reached. Look at
+        # individual witness errors to identify the offender.
+        expr: stele_witness_quorum_healthy == 0
+        for: 5m
+        labels:
+          severity: page
+        annotations:
+          summary: "witness quorum not reachable"
+          description: |
+            The operator cannot collect the required number of witness
+            cosignatures. Without quorum, third parties cannot verify
+            the chain's freshness independent of the operator.
+
+      - alert: SteleWitnessHighErrorRate
+        # A specific witness erroring >10% of the time.
+        expr: |
+          (
+            sum by (witness) (rate(stele_witness_cosign_total{outcome="error"}[5m]))
+            /
+            sum by (witness) (rate(stele_witness_cosign_total[5m]))
+          ) > 0.10
+        for: 10m
+        labels:
+          severity: ticket
+        annotations:
+          summary: "witness {{ $labels.witness }} failing > 10%"
+          description: |
+            One witness is unreachable or rejecting requests. If this
+            persists, recompute quorum and consider removing the witness
+            from the active set.
+
+  - name: stele.security_signals
+    rules:
+      - alert: SteleHoneypotTriggered
+        # Any read of a honeypot canary entry is a strong signal that
+        # someone is enumerating the log they shouldn't be.
+        expr: increase(stele_honeypots_total[5m]) > 0
+        for: 0m
+        labels:
+          severity: page
+        annotations:
+          summary: "honeypot canary triggered"
+          description: |
+            One or more honeylog entries were appended (or, with the
+            read-honeypot extension, accessed). Treat as compromise
+            signal until proven otherwise.
+
+      - alert: SteleWatchdogRotated
+        # Watchdog firing means stele thinks something is wrong with the
+        # keys or append rate. Always wake someone up.
+        expr: increase(stele_watchdog_rotations_total[5m]) > 0
+        for: 0m
+        labels:
+          severity: page
+        annotations:
+          summary: "watchdog triggered a rotation"
+          description: |
+            Reason: {{ $labels.reason }}. The previous epoch's key is
+            now destroyed. Investigate whether the trigger was benign
+            (scheduled / config change) or adversarial (keydir tamper).

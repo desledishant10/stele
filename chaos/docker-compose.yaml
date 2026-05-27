@@ -1,0 +1,206 @@
+# Stele chaos rig.
+#
+# Topology:
+#
+#     loadgen → operator(steled:8080) → toxiproxy → witness-{a,b,c}:9090
+#                       ↓
+#                     mirror(:8444)
+#                       ↓
+#                  prometheus(:9090) + grafana(:3000)
+#
+# Every operator→witness call goes through toxiproxy. Scenarios use
+# the toxiproxy HTTP API (port 8474) to inject latency, loss, or full
+# partitions on a per-witness basis without restarting any container.
+#
+# Quickstart:
+#
+#   cd chaos/
+#   docker compose up -d --build
+#   ./run-chaos.sh setup           # enroll producer, register witnesses
+#   ./run-chaos.sh baseline        # confirm clean health
+#   ./run-chaos.sh latency witness-c 500
+#   ./run-chaos.sh partition witness-c
+#   ./run-chaos.sh heal witness-c
+#   docker compose down -v
+#
+# Read chaos/README.md for the full playbook.
+
+# Shared build directive for every service that runs a stele binary.
+# Without this each downstream service tries to PULL stele:chaos from
+# a registry (Docker Hub) and fails — the image only exists locally.
+# Anchoring lets compose build once + reuse for every reference.
+x-stele-build: &stele-build
+  context: ..
+  dockerfile: chaos/Dockerfile
+
+services:
+  # ---------- operator + replicas ----------
+  operator:
+    build: *stele-build
+    image: stele:chaos
+    pull_policy: build
+    command:
+      - --addr=:8080
+      - --dir=/data
+      - --origin=chaos.local/log
+      - --init
+      - --checkpoint-every=10s
+      - --anchor-every=10s
+      - --beacon=
+      - --rotate-every=0
+      - --watch-keys=false
+      - --watch-rate=false
+      - --read-log=false
+      - --tripwire-every=0
+      - --max-concurrent-appends=64
+      - --per-producer-rps=200
+      - --per-producer-burst=400
+      - --per-admin-rps=5
+      - --per-admin-burst=10
+    environment:
+      STELE_LOG_FORMAT: json
+      STELE_LOG_LEVEL: info
+    ports:
+      - "18080:8080"
+    volumes:
+      - operator-data:/data
+    depends_on:
+      - toxiproxy
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8080/readyz"]
+      interval: 3s
+      timeout: 2s
+      retries: 20
+
+  mirror:
+    build: *stele-build
+    image: stele:chaos
+    pull_policy: build
+    entrypoint: ["/usr/local/bin/stele-mirror"]
+    command:
+      - --addr=:8444
+      - --dir=/data
+      - --upstream=http://operator:8080
+      - --poll=5s
+    environment:
+      STELE_LOG_FORMAT: json
+    ports:
+      - "18444:8444"
+    volumes:
+      - mirror-data:/data
+    depends_on:
+      operator:
+        condition: service_healthy
+
+  # ---------- witnesses behind toxiproxy ----------
+  # Each witness binds to :9090 internally. The operator reaches them
+  # via toxiproxy on host names witness-a/b/c (but the toxiproxy
+  # service intercepts those flows).
+  witness-a:
+    build: *stele-build
+    image: stele:chaos
+    pull_policy: build
+    entrypoint: ["/usr/local/bin/stele-witness"]
+    command:
+      - --addr=:9090
+      - --dir=/data
+      - --id=witness-a
+      - --gossip-every=10s
+    environment:
+      STELE_LOG_FORMAT: json
+    volumes:
+      - witness-a-data:/data
+
+  witness-b:
+    build: *stele-build
+    image: stele:chaos
+    pull_policy: build
+    entrypoint: ["/usr/local/bin/stele-witness"]
+    command:
+      - --addr=:9090
+      - --dir=/data
+      - --id=witness-b
+      - --gossip-every=10s
+    environment:
+      STELE_LOG_FORMAT: json
+    volumes:
+      - witness-b-data:/data
+
+  witness-c:
+    build: *stele-build
+    image: stele:chaos
+    pull_policy: build
+    entrypoint: ["/usr/local/bin/stele-witness"]
+    command:
+      - --addr=:9090
+      - --dir=/data
+      - --id=witness-c
+      - --gossip-every=10s
+    environment:
+      STELE_LOG_FORMAT: json
+    volumes:
+      - witness-c-data:/data
+
+  # ---------- toxiproxy: controlled network chaos ----------
+  # Listens on :8474 for control (POST toxics to inject latency etc.)
+  # Pre-configured at startup via /toxiproxy.json so each witness has
+  # a proxy named after it; scenarios target proxies by witness name.
+  toxiproxy:
+    image: ghcr.io/shopify/toxiproxy:2.9.0
+    command: ["-host", "0.0.0.0", "-config", "/toxiproxy.json"]
+    volumes:
+      - ./toxiproxy.json:/toxiproxy.json:ro
+    ports:
+      - "18474:8474"
+      - "19090:19090"  # proxy → witness-a
+      - "19091:19091"  # proxy → witness-b
+      - "19092:19092"  # proxy → witness-c
+
+  # ---------- observability ----------
+  prometheus:
+    image: prom/prometheus:v2.55.1
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ../deploy/prometheus/alerts.yml:/etc/prometheus/alerts.yml:ro
+    ports:
+      - "19094:9090"
+    depends_on:
+      - operator
+
+  grafana:
+    image: grafana/grafana-oss:11.3.0
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+      GF_AUTH_DISABLE_LOGIN_FORM: "true"
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ../deploy/grafana:/var/lib/grafana/dashboards:ro
+    ports:
+      - "13000:3000"
+    depends_on:
+      - prometheus
+
+  # ---------- continuous load (optional, started on-demand) ----------
+  # Run with: docker compose --profile load up loadgen
+  loadgen:
+    build: *stele-build
+    image: stele:chaos
+    pull_policy: build
+    profiles: ["load"]
+    entrypoint: ["/usr/local/bin/stele-loadgen"]
+    command:
+      - --server=http://operator:8080
+      - --producers=8
+      - --rps=200
+      - --duration=300s
+    depends_on:
+      operator:
+        condition: service_healthy
+
+volumes:
+  operator-data:
+  mirror-data:
+  witness-a-data:
+  witness-b-data:
+  witness-c-data:

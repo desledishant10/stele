@@ -1,0 +1,85 @@
+[Unit]
+Description=stele operator (provenance-anchored audit log)
+Documentation=https://github.com/desledishant10/stele
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=stele
+Group=stele
+WorkingDirectory=/var/lib/stele
+
+# All flags should be defined in /etc/stele/steled.env (key=value).
+# That file is sourced at startup; sensitive values (STELE_HSM_PIN,
+# webhook URLs) belong there with 0640 root:stele permissions.
+EnvironmentFile=/etc/stele/steled.env
+
+# `/usr/local/bin/steled` is the path installed by install.sh.
+# Override STELE_FLAGS in steled.env for full control.
+ExecStart=/usr/local/bin/steled \
+    --addr=${STELE_ADDR} \
+    --dir=/var/lib/stele \
+    --origin=${STELE_ORIGIN} \
+    $STELE_FLAGS
+
+Restart=on-failure
+RestartSec=5s
+
+# Logs to journald in structured form. Stele's `STELE_LOG_FORMAT=json`
+# pairs well with journald's `-o json` output for downstream parsers.
+StandardOutput=journal
+StandardError=journal
+
+# ---------- security hardening ----------
+# The defaults below should be safe for every stele deployment. Loosen
+# only with a documented reason.
+
+# Filesystem.
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/stele /var/log/stele
+
+# Kernel / namespaces.
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+RestrictNamespaces=true
+RestrictRealtime=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictSUIDSGID=true
+
+# Process / capabilities.
+NoNewPrivileges=true
+# CAP_IPC_LOCK lets pkg/keyguard.mlock the operator's signing key
+# without running as root. No other capability is needed.
+CapabilityBoundingSet=CAP_IPC_LOCK
+AmbientCapabilities=CAP_IPC_LOCK
+
+# Network: stele is HTTP-only and outbound DNS for drand/Rekor.
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+
+# Syscall filter (the @ groups are systemd's curated lists).
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources @debug @mount @swap @reboot @raw-io @cpu-emulation
+
+# mlock budget. pkg/keyguard locks the active epoch's key pages;
+# 64 KiB is comfortable headroom.
+LimitMEMLOCK=4M
+
+# File descriptor limit. Each producer + each witness round-trip
+# briefly holds an FD; the default 1024 is too tight for production.
+LimitNOFILE=65536
+
+# Refuse to start if a critical security setting fails to apply.
+# Comment any individual hardening above and re-evaluate carefully
+# before doing so.
+
+[Install]
+WantedBy=multi-user.target

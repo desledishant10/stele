@@ -1,0 +1,73 @@
+{{- if .Values.networkPolicy.enabled -}}
+# Default-deny ingress for every stele component, then explicitly
+# allow what each one needs. Egress is left to the cluster's default
+# policy — most clusters allow egress; tighten via your CNI's
+# global policy if your threat model demands it.
+{{- if .Values.operator.enabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "stele.fullname" . }}-operator
+  labels:
+    {{- include "stele.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: {{ .Release.Name }}
+      app.kubernetes.io/component: operator
+  policyTypes: [Ingress]
+  ingress:
+    # The mirror always needs ingress to pull entries.
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/instance: {{ .Release.Name }}
+              app.kubernetes.io/component: mirror
+      ports:
+        - port: http
+          protocol: TCP
+    # Any explicitly-allowed pod selectors (producers, audit clients).
+    {{- with .Values.networkPolicy.allowedAppendClients }}
+    - from:
+        {{- toYaml . | nindent 8 }}
+      ports:
+        - port: http
+          protocol: TCP
+    {{- end }}
+{{- end }}
+{{- if .Values.witnesses.enabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "stele.fullname" . }}-witness
+  labels:
+    {{- include "stele.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: {{ .Release.Name }}
+      app.kubernetes.io/component: witness
+  policyTypes: [Ingress]
+  ingress:
+    # Operator reaches each witness to ask for cosignatures.
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/instance: {{ .Release.Name }}
+              app.kubernetes.io/component: operator
+      ports:
+        - port: http
+          protocol: TCP
+    # Witnesses gossip with each other.
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/instance: {{ .Release.Name }}
+              app.kubernetes.io/component: witness
+      ports:
+        - port: http
+          protocol: TCP
+{{- end }}
+{{- end -}}

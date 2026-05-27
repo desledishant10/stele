@@ -1,0 +1,212 @@
+{
+  "title": "Stele — Overview",
+  "uid": "stele-overview",
+  "tags": ["stele"],
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "10s",
+  "time": { "from": "now-6h", "to": "now" },
+  "templating": {
+    "list": [
+      {
+        "name": "datasource",
+        "type": "datasource",
+        "label": "Prometheus",
+        "query": "prometheus",
+        "current": { "selected": false, "text": "Prometheus", "value": "Prometheus" }
+      },
+      {
+        "name": "instance",
+        "type": "query",
+        "label": "Instance",
+        "datasource": { "type": "prometheus", "uid": "${datasource}" },
+        "query": "label_values(stele_tree_size, instance)",
+        "refresh": 2,
+        "includeAll": true,
+        "allValue": ".+",
+        "multi": true,
+        "current": { "selected": true, "text": "All", "value": "$__all" }
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "title": "Append rate",
+      "type": "timeseries",
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "fieldConfig": { "defaults": { "unit": "ops" } },
+      "targets": [
+        {
+          "expr": "sum by (outcome) (rate(stele_appends_total{instance=~\"$instance\"}[1m]))",
+          "legendFormat": "{{outcome}}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Append latency (p50/p95/p99)",
+      "type": "timeseries",
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "fieldConfig": { "defaults": { "unit": "s" } },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.50, sum(rate(stele_append_duration_seconds_bucket{instance=~\"$instance\"}[5m])) by (le))",
+          "legendFormat": "p50"
+        },
+        {
+          "expr": "histogram_quantile(0.95, sum(rate(stele_append_duration_seconds_bucket{instance=~\"$instance\"}[5m])) by (le))",
+          "legendFormat": "p95"
+        },
+        {
+          "expr": "histogram_quantile(0.99, sum(rate(stele_append_duration_seconds_bucket{instance=~\"$instance\"}[5m])) by (le))",
+          "legendFormat": "p99"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Tree size",
+      "type": "stat",
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 4, "w": 6, "x": 0, "y": 8 },
+      "fieldConfig": { "defaults": { "unit": "short", "decimals": 0 } },
+      "targets": [
+        { "expr": "max(stele_tree_size{instance=~\"$instance\"})" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Active epoch",
+      "type": "stat",
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 4, "w": 6, "x": 6, "y": 8 },
+      "fieldConfig": { "defaults": { "unit": "short", "decimals": 0 } },
+      "targets": [
+        { "expr": "max(stele_active_epoch{instance=~\"$instance\"})" }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Last anchor age",
+      "type": "stat",
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 4, "w": 6, "x": 12, "y": 8 },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "yellow", "value": 1800 },
+              { "color": "red", "value": 3600 }
+            ]
+          }
+        }
+      },
+      "targets": [
+        { "expr": "max(stele_last_anchor_age_seconds{instance=~\"$instance\"})" }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Witness quorum healthy",
+      "type": "stat",
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 4, "w": 6, "x": 18, "y": 8 },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            { "type": "value", "options": { "1": { "text": "OK", "color": "green" }, "0": { "text": "DEGRADED", "color": "red" } } }
+          ]
+        }
+      },
+      "targets": [
+        { "expr": "min(stele_witness_quorum_healthy{instance=~\"$instance\"})" }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Rotations (last 24h)",
+      "type": "timeseries",
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 12 },
+      "targets": [
+        {
+          "expr": "increase(stele_rotations_total{instance=~\"$instance\"}[5m])",
+          "legendFormat": "rotations"
+        },
+        {
+          "expr": "increase(stele_watchdog_rotations_total{instance=~\"$instance\"}[5m])",
+          "legendFormat": "watchdog ({{reason}})"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Checkpoint outcomes",
+      "type": "timeseries",
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 12 },
+      "targets": [
+        {
+          "expr": "sum by (outcome) (rate(stele_checkpoints_total{instance=~\"$instance\"}[5m]))",
+          "legendFormat": "{{outcome}}"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Witness cosign rate by witness",
+      "type": "timeseries",
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 20 },
+      "targets": [
+        {
+          "expr": "sum by (witness, outcome) (rate(stele_witness_cosign_total{instance=~\"$instance\"}[5m]))",
+          "legendFormat": "{{witness}} ({{outcome}})"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Witness cosign p99 latency",
+      "type": "timeseries",
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 20 },
+      "fieldConfig": { "defaults": { "unit": "s" } },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.99, sum by (witness, le) (rate(stele_witness_cosign_duration_seconds_bucket{instance=~\"$instance\"}[5m])))",
+          "legendFormat": "{{witness}}"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Anchor writes by sink",
+      "type": "timeseries",
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 28 },
+      "targets": [
+        {
+          "expr": "sum by (sink, outcome) (rate(stele_anchor_writes_total{instance=~\"$instance\"}[5m]))",
+          "legendFormat": "{{sink}} ({{outcome}})"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Honeypots fired (running total)",
+      "type": "timeseries",
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 28 },
+      "targets": [
+        { "expr": "stele_honeypots_total{instance=~\"$instance\"}" }
+      ]
+    }
+  ]
+}

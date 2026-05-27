@@ -1,0 +1,81 @@
+name: Bug report
+description: Report a behavioural defect (NOT a security vulnerability — use the Security tab for those)
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. If you suspect a *security* issue
+        (forgery, signature bypass, key disclosure, etc.) **do not
+        file it here** — use the "Report a vulnerability" button
+        in the Security tab. See [SECURITY.md](../../SECURITY.md).
+
+  - type: input
+    id: version
+    attributes:
+      label: stele version
+      description: Output of `stele --version` or the git commit you built from.
+      placeholder: v0.1.0 / commit a1b2c3d
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - steled (operator)
+        - stele-witness
+        - stele-mirror
+        - stele-cosigner
+        - stele (CLI)
+        - stele-backup / stele-export-chain
+        - stele-watcher
+        - Helm chart / Dockerfile / deploy artifacts
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: platform
+    attributes:
+      label: Platform
+      description: OS + arch, e.g. linux/amd64, darwin/arm64, windows/amd64.
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction steps
+      description: Minimal commands that reproduce the issue. Include the operator config / flags.
+      placeholder: |
+        1. `steled --dir /tmp/x --init --origin foo`
+        2. `stele log --producer alice --key /tmp/alice.priv "hello"`
+        3. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs / metrics
+      description: |
+        Output of the affected daemon, or the relevant `stele_*` metric values.
+        Trim secrets / private keys / TLS cert material first.
+      render: text

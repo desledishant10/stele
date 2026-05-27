@@ -1,0 +1,246 @@
+# Hardening workflow: extended quality checks on every PR.
+#
+#   - quality: race-detector tests + property tests at higher check counts.
+#   - fuzz: short fuzz runs (~30s each) for every FuzzXxx target. New
+#     crashes will be reported under testdata/fuzz/<target>/ in CI logs.
+#   - bench: runs benchmarks for ~1s each to surface panics or regressions
+#     in unmeasured paths; numbers are informational since GH runner
+#     hardware varies.
+#
+# Designed to run alongside test.yml — that workflow handles the SoftHSM-
+# backed integration tests; this one stresses the pure-Go invariants.
+
+name: hardening
+
+on:
+  pull_request:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.0"
+          cache: true
+
+      - name: Build
+        run: go build ./...
+
+      - name: Race-detector tests (non-HSM packages)
+        # HSM tests need SoftHSM; covered separately in test.yml.
+        run: |
+          go test -race -count=1 \
+            ./pkg/merkle/... \
+            ./pkg/logentry/... \
+            ./pkg/readlog/... \
+            ./pkg/witness/... \
+            ./pkg/threshold/... \
+            ./pkg/fwdsec/... \
+            ./pkg/attest/... \
+            ./pkg/checkpoint/... \
+            ./pkg/hybrid/... \
+            ./pkg/mirror/... \
+            ./pkg/watchdog/... \
+            ./pkg/core/...
+
+      - name: Property tests (extended check counts)
+        run: |
+          go test -count=1 -rapid.checks=500 \
+            ./pkg/merkle/ \
+            ./pkg/fwdsec/ \
+            ./pkg/threshold/ \
+            -run TestProp
+
+  fuzz:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.0"
+          cache: true
+
+      - name: Fuzz each parser target briefly
+        # Run each target for 30s. If any seed corpus or new input triggers
+        # a panic, this job fails and the offending input is dumped in the
+        # workflow artifacts.
+        run: |
+          set -euo pipefail
+          targets=$(
+            find pkg -name fuzz_test.go -print0 \
+              | xargs -0 grep -hE '^func (Fuzz[A-Za-z0-9_]+)\(' \
+              | sed -E 's/^func (Fuzz[A-Za-z0-9_]+)\(.*/\1/' \
+              | sort -u
+          )
+          for t in $targets; do
+            pkg=$(grep -rl "^func $t(" pkg | head -1 | xargs dirname)
+            echo "::group::fuzz $t in $pkg"
+            go test "./$pkg" -run=^$ -fuzz="^${t}$" -fuzztime=30s
+            echo "::endgroup::"
+          done
+
+      - name: Upload crashing inputs (if any)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fuzz-corpus
+          path: pkg/**/testdata/fuzz/**
+          if-no-files-found: ignore
+
+  bench:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.0"
+          cache: true
+
+      - name: Capture current benchmarks
+        # Same Makefile target the developer would run locally, so
+        # bench output is identical shape on dev + CI.
+        run: |
+          make bench-current BENCHTIME=1s
+
+      - name: Compare against committed baseline
+        # Strict mode: fail on >2x regression (THRESHOLD_PCT=100).
+        # CI hardware is noisy so the threshold is loose by design —
+        # this gate catches the "we accidentally added a quadratic
+        # loop" class of regression, not the "we lost 5% on this
+        # microbench" class.
+        run: |
+          make bench-compare-strict
+
+      - name: Upload bench diff artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bench-diff
+          path: bench/
+          if-no-files-found: ignore
+
+  # ---------- Supply-chain hardening ----------
+  #
+  # Three independent guard rails:
+  #
+  #   - govulncheck: reachable-call CVE detection. Unlike a plain "is
+  #     this dep version vulnerable" scan, govulncheck only fails the
+  #     build if the *reachable* call graph actually invokes the
+  #     vulnerable function. Far fewer false positives.
+  #
+  #   - gosec: static analysis for typical security mistakes (hardcoded
+  #     creds, weak crypto, insecure tempfiles, sql injection patterns).
+  #     We treat its findings as hard fails — drift only via an explicit
+  #     `// #nosec G... -- justification` annotation reviewed in PR.
+  #
+  #   - govet shadow: catches accidentally-shadowed `err` variables that
+  #     have caused real CVEs in crypto code elsewhere in the ecosystem.
+  govulncheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.0"
+          cache: true
+      - name: Install govulncheck
+        run: go install golang.org/x/vuln/cmd/govulncheck@latest
+      - name: Scan all packages
+        # `-show traces` makes the failure log show the exact call path
+        # so reviewers can see WHY the vuln is reachable, not just that
+        # it exists somewhere in the dep graph.
+        run: govulncheck -show traces ./...
+
+  gosec:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.0"
+          cache: true
+      - name: Run gosec
+        uses: securego/gosec@master
+        with:
+          # `-quiet` suppresses the green-OK lines, leaving only findings.
+          # `-exclude-dir` skips test fixtures; we explicitly fuzz those
+          # in another job. Add new exclusions ONLY with a justification.
+          args: "-quiet -exclude-dir=cmd/stele-tamper ./..."
+
+  vet-shadow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.0"
+          cache: true
+      - name: Install shadow analyzer
+        run: go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow@latest
+      - name: Run shadow
+        # A shadowed `err` in a crypto path has caused real CVEs.
+        # Catching them at PR time is much cheaper than at audit time.
+        run: shadow ./...
+
+  # ---------- Cross-language SDK interop ----------
+  #
+  # The two non-Go SDKs (Python, TypeScript) MUST produce byte-identical
+  # envelope canonical bytes to what the Go reference produces. If they
+  # ever drift, every signature the SDK produces gets rejected by the
+  # operator. The interop tests spin up a real steled and prove
+  # the SDK-signed envelopes are accepted end-to-end.
+
+  sdk-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.0"
+          cache: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build Go binaries for interop
+        run: make build
+      - name: Install Python SDK + test deps
+        working-directory: sdk/python
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e '.[test]'
+      - name: Run Python SDK tests (unit + cross-language interop)
+        working-directory: sdk/python
+        env:
+          STELE_BIN_DIR: ${{ github.workspace }}/bin
+        run: pytest -q
+
+  sdk-typescript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.0"
+          cache: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Build Go binaries for interop
+        run: make build
+      - name: Install + build TS SDK
+        working-directory: sdk/typescript
+        run: |
+          npm install
+          npm run build
+      - name: Run TS SDK tests (unit + cross-language interop)
+        working-directory: sdk/typescript
+        env:
+          STELE_BIN_DIR: ${{ github.workspace }}/bin
+        run: npm run test:nocoverage

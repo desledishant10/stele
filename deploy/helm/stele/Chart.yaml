@@ -1,0 +1,24 @@
+apiVersion: v2
+name: stele
+description: |
+  Provenance-anchored audit log. Deploys an operator (steled), an
+  optional read-only mirror, and N witnesses on independent
+  StatefulSets so each carries its own PV. See
+  https://github.com/desledishant10/stele/blob/main/THREATMODEL.md for
+  what this stack defends against.
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+keywords:
+  - audit-log
+  - transparency
+  - tamper-evident
+  - sigstore
+  - rekor
+home: https://github.com/desledishant10/stele
+sources:
+  - https://github.com/desledishant10/stele
+maintainers:
+  - name: stele
+    url: https://github.com/desledishant10/stele
+icon: https://github.com/desledishant10/stele/raw/main/docs/stele-icon.png
