@@ -32,7 +32,9 @@ ExecStart=/usr/local/bin/steled \\
     --tripwire-every=1h \\
     --max-concurrent-appends=512 \\
     --per-producer-rps=200 \\
-    --per-producer-burst=400
+    --per-producer-burst=400 \\
+    --per-admin-rps=100 \\
+    --per-admin-burst=200
 Environment=STELE_LOG_FORMAT=json
 Restart=on-failure
 StandardOutput=append:/var/log/stele-operator.log
@@ -47,9 +49,9 @@ EOF
 # Three witnesses.
 for w in a b c; do
     case "$w" in
-        a) port=9090;;
-        b) port=9091;;
-        c) port=9092;;
+        a) port=9190;;
+        b) port=9191;;
+        c) port=9192;;
     esac
     cat > "/etc/systemd/system/stele-soak-witness-${w}.service" <<EOF
 [Unit]
@@ -84,15 +86,16 @@ sleep 3
 # Register witnesses with the operator.
 for w in a b c; do
     case "$w" in
-        a) port=9090;;
-        b) port=9091;;
-        c) port=9092;;
+        a) port=9190;;
+        b) port=9191;;
+        c) port=9192;;
     esac
+    # stele witness-add fetches the pubkey from the witness's own
+    # /witness/v0/pubkey endpoint - no need to pass it explicitly.
     /usr/local/bin/stele witness-add \
         --server http://127.0.0.1:8080 \
         --id "witness-${w}" \
-        --url "http://127.0.0.1:${port}" \
-        --pubkey "$(curl -fsS http://127.0.0.1:${port}/witness/v0/pubkey | jq -r .public_key)"
+        --url "http://127.0.0.1:${port}"
 done
 
 # Enroll a soak producer.

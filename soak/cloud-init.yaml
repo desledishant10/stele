@@ -1,3 +1,7 @@
+#cloud-config
+# ^ MAGIC: cloud-init looks for this exact header on line 1. Don't
+#   reformat or add a space before #.
+#
 # cloud-init for a Linux VM that runs a stele 72-hour soak.
 #
 # Usage (AWS EC2 example):
@@ -56,9 +60,11 @@ write_files:
         - job_name: 'stele-witnesses'
           static_configs:
             - targets:
-                - 'localhost:9090'
-                - 'localhost:9091'
-                - 'localhost:9092'
+                # 9190-9192 to avoid colliding with Prometheus itself
+                # on :9090.
+                - 'localhost:9190'
+                - 'localhost:9191'
+                - 'localhost:9192'
         - job_name: 'node'
           static_configs:
             - targets: ['localhost:9100']
@@ -128,4 +134,4 @@ runcmd:
   - systemctl enable --now prometheus prometheus-node-exporter
   - systemctl enable --now stele-soak.service stele-soak-report.timer
 
-  - echo "stele soak running. Watch: tail -f /var/log/stele-soak.log"
+  - 'echo "stele soak running. Watch with sudo tail -f /var/log/stele-soak.log"'
