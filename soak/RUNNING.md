@@ -19,7 +19,7 @@ and the SOAK-72H.md report is committed.
 | Instance launched | 2026-05-27T05:30:00Z (approx) |
 | Loadgen started | 2026-05-27T05:52:06Z |
 | Expected loadgen finish | 2026-05-30T05:52:06Z |
-| Notes | (1) First two instance launches (`i-0bcfd7d3c38df6567`, `i-0d13cf07f12ce2048`) terminated during cloud-init debug. (2) Live VM needed three follow-up fixes after launch: scripts didn't ship via write_files, witness ports collided with Prometheus on `:9090`, and the operator's default admin rate limit blocked enrolling 16 producers in burst. All three are now fixed in soak/ and committed; the live VM has the fixed scripts. |
+| Notes | (1) First two instance launches (`i-0bcfd7d3c38df6567`, `i-0e761246e3851151c`) terminated during cloud-init debug. (2) Live VM needed three follow-up fixes after launch: scripts didn't ship via write_files, witness ports collided with Prometheus on `:9090`, and the operator's default admin rate limit blocked enrolling 16 producers in burst. All three are now fixed in soak/ and committed; the live VM has the fixed scripts. |
 | Estimated cost | ~$6.50 (72h × $0.0851 + ~$0.30 storage) |
 
 ## Health checks
