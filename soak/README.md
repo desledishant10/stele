@@ -81,7 +81,7 @@ In [`cloud-init.yaml`](cloud-init.yaml), the `/etc/stele/soak.env`
 file is written with these tunables:
 
 ```sh
-STELE_VERSION=v0.1.0
+STELE_VERSION=v0.1.1
 STELE_ORIGIN=soak.local/log
 SOAK_DURATION=72h
 SOAK_RPS=500

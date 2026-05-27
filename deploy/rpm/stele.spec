@@ -14,10 +14,18 @@ Release:        1%{?dist}
 Summary:        Provenance-anchored audit log
 License:        ASL 2.0
 URL:            https://github.com/desledishant10/stele
-BuildArch:      %{_stele_arch}
+# Track whatever --target rpmbuild was invoked with. build-rpm.sh
+# passes --target x86_64 or --target aarch64; this expands to match.
+BuildArch:      %{_target_cpu}
 
-%{?systemd_requires}
-BuildRequires:  systemd-rpm-macros
+# NOTE: We deliberately do NOT depend on `systemd-rpm-macros`. That
+# package only exists on Fedora/RHEL, and the release workflow builds
+# RPMs on Ubuntu where it isn't available. The %systemd_post /
+# %systemd_preun / %systemd_postun macros below are guarded with `?`
+# so they expand to nothing when the macros are absent; users who
+# want auto-restart on upgrade can `systemctl daemon-reload` manually
+# after `dnf install`.
+Requires:       systemd
 Requires(pre):  shadow-utils
 
 %description
@@ -80,7 +88,7 @@ getent passwd stele >/dev/null || useradd --system \
 exit 0
 
 %post
-%systemd_post steled.service stele-witness.service stele-mirror.service
+%{?systemd_post:%systemd_post steled.service stele-witness.service stele-mirror.service}
 echo
 echo "stele installed. Next steps:"
 echo "  1. Copy %{_sysconfdir}/stele/*.env.example to *.env and edit."
@@ -89,10 +97,10 @@ echo
 echo "See %{_docdir}/stele/PLAYBOOK.md for full operator guidance."
 
 %preun
-%systemd_preun steled.service stele-witness.service stele-mirror.service
+%{?systemd_preun:%systemd_preun steled.service stele-witness.service stele-mirror.service}
 
 %postun
-%systemd_postun_with_restart steled.service stele-witness.service stele-mirror.service
+%{?systemd_postun_with_restart:%systemd_postun_with_restart steled.service stele-witness.service stele-mirror.service}
 
 %files
 %license %{_docdir}/stele/LICENSE
@@ -119,5 +127,5 @@ echo "See %{_docdir}/stele/PLAYBOOK.md for full operator guidance."
 %dir %attr(0750, stele, stele) %{_sharedstatedir}/stele
 
 %changelog
-* %{?_stele_changelog_date:%(date '+%a %b %d %Y')} stele maintainers <https://github.com/desledishant10/stele>
-- See CHANGELOG.md in /usr/share/doc/stele/
+* %(LC_ALL=C date '+%a %b %d %Y') stele maintainers <https://github.com/desledishant10/stele> - %{version}-%{release}
+- See CHANGELOG.md in /usr/share/doc/stele/ for per-release changes.

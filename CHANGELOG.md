@@ -13,6 +13,37 @@ verifier recipe).
 ### Added
 - (next-version entries go here)
 
+## [0.1.1] - 2026-05-17
+
+Patch release for three packaging / CI bugs that surfaced in the
+v0.1.0 release pipeline. No protocol or wire-format changes; v0.1.0
+and v0.1.1 are runtime-compatible.
+
+### Fixed
+- **RPM build:** `deploy/rpm/stele.spec` no longer depends on the
+  Fedora-only `systemd-rpm-macros` package (broke .rpm production on
+  Ubuntu CI runners). The `%systemd_*` macros are now guarded with
+  `%{?...}` so they're a no-op when absent. Closes [#1].
+- **RPM build:** `%changelog` header now uses a properly-formatted
+  shell-expanded date instead of an undefined macro. Closes [#1].
+- **RPM build:** `BuildArch` now tracks `%{_target_cpu}` so aarch64
+  cross-builds succeed on amd64 runners. Closes [#1].
+- **CI:** the `verify-reproducible` job now filters to `stele*`
+  binaries before diffing hashes, so SBOM and combined-hashes file
+  differences don't masquerade as reproducibility failures.
+  Closes [#2].
+- **Release workflow:** the container image is now also tagged
+  `:0.1.1` (unprefixed) in addition to `:v0.1.1`, matching how
+  docs and adopters naturally write image refs. Closes [#3].
+
+### Changed
+- `soak/cloud-init.yaml` and `soak/README.md` default to
+  `STELE_VERSION=v0.1.1`.
+
+[#1]: https://github.com/desledishant10/stele/issues/1
+[#2]: https://github.com/desledishant10/stele/issues/2
+[#3]: https://github.com/desledishant10/stele/issues/3
+
 ## [0.1.0] - 2026-05-17
 
 Initial public release. Everything below is what landed across the

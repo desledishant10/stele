@@ -252,14 +252,19 @@ jobs:
           name: dist
           path: dist/
       - name: Diff hashes
+        # The first pass produces extra non-binary artifacts (SBOM,
+        # combined hashes.txt) that the second pass does not. Filter
+        # to compiled binaries only - they are the actual
+        # reproducibility claim. SBOM and hashes.txt are derived
+        # files; their determinism does not matter for SLSA.
         run: |
           set -euo pipefail
           cd dist
-          sha256sum * > first.txt
+          sha256sum stele* > /tmp/first.txt
           cd ../verify
-          sha256sum * > second.txt
-          diff <(sort -k2 ../dist/first.txt) <(sort -k2 second.txt)
-          echo "REPRODUCIBLE BUILDS: OK"
+          sha256sum stele* > /tmp/second.txt
+          diff <(sort -k2 /tmp/first.txt) <(sort -k2 /tmp/second.txt)
+          echo "REPRODUCIBLE BUILDS: OK ($(wc -l < /tmp/first.txt) binaries identical)"
 
   # ---- 5. OCI image build + push to GHCR + cosign keyless ----
   # Produces a multi-arch (amd64 + arm64) image with every stele
@@ -287,6 +292,10 @@ jobs:
             tag="0.0.0-dev"
           fi
           echo "version=$tag" >> "$GITHUB_OUTPUT"
+          # Also expose the version with any leading "v" stripped so we
+          # can publish BOTH `:v0.1.0` and `:0.1.0` tags. Docs and humans
+          # tend to write `:0.1.0`; git tags use `v0.1.0`.
+          echo "version_naked=${tag#v}" >> "$GITHUB_OUTPUT"
           # Lowercase the repository owner — required for ghcr.io.
           repo=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')
           echo "image=ghcr.io/${repo}" >> "$GITHUB_OUTPUT"
@@ -318,6 +327,7 @@ jobs:
             COMMIT=${{ github.sha }}
           tags: |
             ${{ steps.ident.outputs.image }}:${{ steps.ident.outputs.version }}
+            ${{ steps.ident.outputs.image }}:${{ steps.ident.outputs.version_naked }}
             ${{ steps.ident.outputs.image }}:latest
 
       - name: Install cosign
