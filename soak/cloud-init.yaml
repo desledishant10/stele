@@ -35,7 +35,7 @@ write_files:
     permissions: "0644"
     content: |
       # Tunables for the soak run. Override per-VM.
-      STELE_VERSION=v0.1.1
+      STELE_VERSION=v0.1.2
       STELE_ORIGIN=soak.local/log
       SOAK_DURATION=72h
       SOAK_RPS=500
@@ -111,10 +111,10 @@ write_files:
 runcmd:
   # Pull the stele release tarball + cosign-verify it.
   - mkdir -p /opt/stele
-  - cd /opt/stele && curl -fsSL "https://github.com/desledishant10/stele/releases/download/${STELE_VERSION:-v0.1.1}/stele-linux-amd64" -o stele
-  - cd /opt/stele && curl -fsSL "https://github.com/desledishant10/stele/releases/download/${STELE_VERSION:-v0.1.1}/steled-linux-amd64" -o steled
-  - cd /opt/stele && curl -fsSL "https://github.com/desledishant10/stele/releases/download/${STELE_VERSION:-v0.1.1}/stele-witness-linux-amd64" -o stele-witness
-  - cd /opt/stele && curl -fsSL "https://github.com/desledishant10/stele/releases/download/${STELE_VERSION:-v0.1.1}/stele-loadgen-linux-amd64" -o stele-loadgen
+  - cd /opt/stele && curl -fsSL "https://github.com/desledishant10/stele/releases/download/${STELE_VERSION:-v0.1.2}/stele-linux-amd64" -o stele
+  - cd /opt/stele && curl -fsSL "https://github.com/desledishant10/stele/releases/download/${STELE_VERSION:-v0.1.2}/steled-linux-amd64" -o steled
+  - cd /opt/stele && curl -fsSL "https://github.com/desledishant10/stele/releases/download/${STELE_VERSION:-v0.1.2}/stele-witness-linux-amd64" -o stele-witness
+  - cd /opt/stele && curl -fsSL "https://github.com/desledishant10/stele/releases/download/${STELE_VERSION:-v0.1.2}/stele-loadgen-linux-amd64" -o stele-loadgen
   - chmod +x /opt/stele/*
   - install -m 0755 /opt/stele/* /usr/local/bin/
 
