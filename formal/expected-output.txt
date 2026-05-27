@@ -1,30 +1,66 @@
-Expected `tamarin-prover --prove stele.spthy` output on the model as
-authored. Recapture if the model changes; commit alongside the model
-file so reviewers can diff one against the other.
+Actual `tamarin-prover --prove stele.spthy` output as of 2026-05-17.
+Generated against Tamarin 1.10.0 + Maude 3.4 (Docker image:
+`lmandrelli/tamarin-prover@sha256:a2e869bbe395f258f124fe17d701f0ab9f00144159937f066b2469405e892773`).
+
+Run each lemma separately to avoid memory blow-up on commodity
+hardware; `--prove` alone OOMs in ~4 GB after the saturation pass.
+
+   docker run --rm --memory=4g \
+       -v $(pwd)/formal:/work -w /work \
+       lmandrelli/tamarin-prover \
+       tamarin-prover --prove=<lemma> --bound=8 stele.spthy
 
 ==============================================================================
-summary of summaries:
+summary of summaries
+==============================================================================
 
-analyzed: stele.spthy
+  WARNING: 1 wellformedness check failed!
+           The analysis results might be wrong!
 
-  processing time: <varies; under a minute on commodity hardware>
-
-  forward_secrecy (all-traces): verified
-  no_witness_double_cosign (all-traces): verified
-  enrollment_required (all-traces): verified
-  sanity_complete_run (exists-trace): verified
+  forward_secrecy        (all-traces):   falsified - found trace (4 steps)
+  no_witness_double_cosign (all-traces): falsified - found trace (4 steps)
+  enrollment_required    (all-traces):   verified (8 steps)
+  sanity_complete_run    (exists-trace): pending re-run
 
 ==============================================================================
 
-Notes:
+Wellformedness warning detail
+=============================
 
-  - Tamarin's output also lists every rule + every lemma's heuristic
-    runtime. Those numbers vary; the only thing the model commits to
-    is the four "verified" lines above.
-  - If you see "INDETERMINATE" on any lemma, the bounded search did
-    not conclude within Tamarin's default budget. Re-run with
-    `--heuristic=O` or `--heuristic=I` to try alternate strategies.
-  - The model uses Tamarin's `signing` and `hashing` builtins, which
-    abstract signatures + hashes ideally. The
-    symbolic-to-computational reduction for Ed25519 / Dilithium3 /
-    SHA-256 is established by separate cryptographic results.
+The model fails one message-derivation check:
+
+   Rule EnrollBegin:  Failed to derive Variable(s): spk
+   Rule AppendEntry:  Failed to derive Variable(s): spk
+
+`spk` (the producer's signing pubkey) appears in those rule bodies
+without being derivable from a premise; Tamarin treats it as adversary-
+controlled, which is more permissive than the protocol allows. Fixing
+this is tracked in issue #4 and is the most likely root cause of the
+two falsified lemmas.
+
+What the current state means
+============================
+
+- `enrollment_required` VERIFIED: every accepted entry is preceded
+  by an Operator-AND-Producer-co-signed enrollment confirmation, in
+  the symbolic model. This claim holds.
+
+- `forward_secrecy` FALSIFIED in the MODEL: the model permits a
+  counter-example trace where an old-epoch signature can be forged
+  after key rotation. Probably (but not certainly) a model bug, not
+  a real protocol flaw — the wellformedness warning above lets the
+  adversary "synthesise" `spk` material the real protocol would
+  never let them touch. Investigation: issue #4.
+
+- `no_witness_double_cosign` FALSIFIED in the MODEL: same root cause
+  suspected. Investigation: issue #5.
+
+The honest version of the v0.1.x claim is therefore:
+
+  "Producer-enrollment correctness is machine-checked. Forward-
+   secrecy and witness-non-equivocation lemmas are in the model but
+   currently fail; we are debugging whether this is a model error
+   or a protocol flaw and will update accordingly."
+
+If you re-run after fixing the wellformedness issue, recapture this
+file alongside the model.

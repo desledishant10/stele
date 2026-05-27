@@ -13,6 +13,40 @@ verifier recipe).
 ### Added
 - (next-version entries go here)
 
+## [0.1.2] - 2026-05-17
+
+Second patch release in the v0.1.x line. Continues the v0.1.1
+packaging fixes (which only landed for half the matrix) and corrects
+overclaims in the formal-proof documentation discovered when we
+actually ran `tamarin-prover` for the first time.
+
+### Fixed
+- **RPM `%{_unitdir}` undefined on Ubuntu CI runners.** That macro
+  ships with `systemd-rpm-macros` (Fedora-only); we now declare a
+  fallback in `deploy/rpm/stele.spec` so the build doesn't fail on
+  "File must begin with /".
+- **RPM cross-arch build:** `deploy/rpm/build-rpm.sh` now explicitly
+  passes `--define '_target_cpu $ARCH'` in addition to `--target`,
+  so `BuildArch: %{_target_cpu}` expands to aarch64 on amd64 hosts.
+
+### Changed
+- **Formal-model documentation: honesty pass.** Running
+  `tamarin-prover --prove` against `formal/stele.spthy` for the
+  first time revealed that 2 of 3 security lemmas currently
+  *falsify* (forward_secrecy, no_witness_double_cosign) due to a
+  wellformedness warning in the model that lets the adversary
+  synthesise the producer signing-pubkey too freely. The remaining
+  lemma (enrollment_required) verifies in 8 steps.
+  - `formal/README.md` now reflects the actual prover state.
+  - `formal/expected-output.txt` now contains the *measured* output,
+    not the previously-aspirational "all verified".
+  - `AUDIT-KIT.md` no longer claims Tamarin proofs for forward
+    secrecy / fork detection; those rows now point only at the unit
+    tests that genuinely cover those properties.
+  - Issues [#4](https://github.com/desledishant10/stele/issues/4)
+    and [#5](https://github.com/desledishant10/stele/issues/5)
+    track the model fix.
+
 ## [0.1.1] - 2026-05-17
 
 Patch release for three packaging / CI bugs that surfaced in the

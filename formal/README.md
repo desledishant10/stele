@@ -1,9 +1,17 @@
 # Formal verification of the stele protocol
 
 This directory contains a [Tamarin](https://tamarin-prover.com/) model
-of stele's three core security claims. It produces machine-checked
-proofs in the symbolic (Dolev-Yao) model — the same kind of evidence
-that landed TLS 1.3 in academic publication.
+of stele's three core security claims, intended to produce machine-
+checked proofs in the symbolic (Dolev-Yao) model.
+
+> **Status (v0.1.x): work in progress.** The model parses and Tamarin
+> can run all four lemmas, but two of them currently *fail*. See
+> [expected-output.txt](expected-output.txt) for the actual results
+> and the [Status](#status) section below. We are debugging whether
+> this is a model error (most likely) or a real protocol flaw. Issues
+> [#4](https://github.com/desledishant10/stele/issues/4) and
+> [#5](https://github.com/desledishant10/stele/issues/5) track the
+> investigation.
 
 ## What's modeled
 
@@ -46,25 +54,61 @@ tamarin-prover stele.spthy
 tamarin-prover --prove stele.spthy
 ```
 
-Expected output ([`expected-output.txt`](expected-output.txt)
-captures what the maintainers observed at last check):
+### Status
+
+Actual current output of the prover (see
+[expected-output.txt](expected-output.txt) for the full transcript):
 
 ```
-==============================================================================
-analyzed: stele.spthy
+WARNING: 1 wellformedness check failed!
+         The analysis results might be wrong!
 
-  forward_secrecy (all-traces): verified
-  no_witness_double_cosign (all-traces): verified
-  enrollment_required (all-traces): verified
-  sanity_complete_run (exists-trace): verified
-==============================================================================
+forward_secrecy          (all-traces):   falsified - found trace (4 steps)
+no_witness_double_cosign (all-traces):   falsified - found trace (4 steps)
+enrollment_required      (all-traces):   verified (8 steps)
+sanity_complete_run      (exists-trace): pending re-run
+```
+
+Note that the wellformedness warning reports that `EnrollBegin` and
+`AppendEntry` rules leak the producer signing-pubkey `spk` to the
+adversary, which is more permissive than the protocol actually is.
+That permissiveness is almost certainly why the two failing lemmas
+fail — fixing the wellformedness (issue #4) is the immediate next
+step.
+
+The lemma that DOES verify is `enrollment_required`: every entry the
+operator accepts is preceded by an operator-and-producer-co-signed
+enrollment confirmation. That part of the protocol is machine-checked
+to be correct as modeled.
+
+If a re-run after fixes succeeds, update both this README and
+`expected-output.txt`.
+
+Running yourself
+----------------
+
+The `--prove` driver OOMs in ~4 GB if it tries every lemma at once on
+this model. Run them one at a time:
+
+```sh
+tamarin-prover --prove=enrollment_required    --bound=8 stele.spthy
+tamarin-prover --prove=forward_secrecy        --bound=8 stele.spthy
+tamarin-prover --prove=no_witness_double_cosign --bound=8 stele.spthy
+tamarin-prover --prove=sanity_complete_run    --bound=8 stele.spthy
+```
+
+If you don't have tamarin locally, the Docker image works:
+
+```sh
+docker run --rm --memory=4g \
+    -v $(pwd):/work -w /work \
+    lmandrelli/tamarin-prover \
+    tamarin-prover --prove=enrollment_required --bound=8 stele.spthy
 ```
 
 If any lemma reports `INDETERMINATE`, the bounded search did not
 conclude. Re-run with `--heuristic=O` or `--heuristic=I` to try
-alternate search strategies; if it still doesn't conclude, the model
-likely needs additional helper lemmas. Open an issue with the output
-and we'll iterate.
+alternate search strategies.
 
 ## What the model does NOT cover
 

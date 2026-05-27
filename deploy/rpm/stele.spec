@@ -8,14 +8,21 @@
 # workflow's Go cross-compile output. We don't build Go inside rpmbuild;
 # the existing reproducible build is the source of truth.
 
+# Fallback definitions for systemd-related macros that come from the
+# Fedora-only `systemd-rpm-macros` package. Ubuntu's rpm doesn't ship
+# them, so we define our own. %{?...} means "use existing value if
+# defined, otherwise the default below"; on Fedora these are no-ops.
+%{!?_unitdir: %global _unitdir /usr/lib/systemd/system}
+
 Name:           stele
 Version:        %{?_stele_version:%{_stele_version}}%{!?_stele_version:0.0.0-dev}
 Release:        1%{?dist}
 Summary:        Provenance-anchored audit log
 License:        ASL 2.0
 URL:            https://github.com/desledishant10/stele
-# Track whatever --target rpmbuild was invoked with. build-rpm.sh
-# passes --target x86_64 or --target aarch64; this expands to match.
+# build-rpm.sh passes both --target and --define '_target_cpu' so this
+# expands to the requested arch even when rpm's host-arch detection
+# disagrees (e.g. aarch64 cross-build on an amd64 runner).
 BuildArch:      %{_target_cpu}
 
 # NOTE: We deliberately do NOT depend on `systemd-rpm-macros`. That

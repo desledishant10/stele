@@ -52,6 +52,12 @@ begin
 
 builtins: signing, hashing
 
+/* pkOperator looks up the operator's pubkey at a given epoch.  In
+ * a real implementation this walks the forward-secure key chain;
+ * here we use a Tamarin abstraction declared at the theory level
+ * so it's in scope from the first rule onward. */
+functions: pkOperator/2
+
 /* ---------------------------------------------------------------- *
  *  1. Setup facts                                                  *
  *  Each fresh execution starts by minting long-term keypairs for   *
@@ -262,11 +268,8 @@ rule RevealProducerKey:
  *  Helper macros                                                   *
  * ---------------------------------------------------------------- */
 
-/* pkOperator looks up the operator's pubkey at a given epoch.  In a
- * real model this would walk the chain; we use a Tamarin macro
- * approximation that pulls the matching !Operator fact's public
- * half. */
-functions: pkOperator/2
+/* (pkOperator/2 is declared near the top of the theory, before any
+ * rule that references it.) */
 
 
 /* ================================================================ *
@@ -343,9 +346,9 @@ lemma enrollment_required:
  * trivially unsatisfiable.
  */
 
-lemma sanity_complete_run [heuristic={producer_complete}]:
+lemma sanity_complete_run:
   exists-trace
-  "Ex O epoch sk size root W swk P data time spk producer_pk scope #r1 #r2 #r3 #r4 #r5.
+  "Ex O sk W swk P data time spk producer_pk scope #r1 #r2 #r3 #r4 #r5.
        OperatorGenesis(sk) @ #r1
      & WitnessGenesis(W, swk) @ #r2
      & ProducerGenesis(P, spk) @ #r3

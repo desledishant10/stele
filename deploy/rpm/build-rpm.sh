@@ -64,7 +64,7 @@ cp "${WORKDIR}/deploy/rpm/stele.spec" "$RPMTOP/SPECS/stele.spec"
 rpmbuild \
     --define "_topdir $RPMTOP" \
     --define "_stele_version $VERSION" \
-    --define "_stele_arch $ARCH" \
+    --define "_target_cpu $ARCH" \
     --target "$ARCH" \
     -bb "$RPMTOP/SPECS/stele.spec"
 
