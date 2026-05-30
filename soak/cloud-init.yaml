@@ -39,7 +39,7 @@ write_files:
     permissions: "0644"
     content: |
       # Tunables for the soak run. Override per-VM.
-      STELE_VERSION=v0.1.2
+      STELE_VERSION=v0.1.3
       STELE_ORIGIN=soak.local/log
       SOAK_DURATION=72h
       SOAK_RPS=500
@@ -115,20 +115,28 @@ write_files:
       WantedBy=timers.target
 
 runcmd:
-  # Pull the stele release tarball + cosign-verify it.
+  # Hardcode STELE_VERSION here because cloud-init runcmd doesn't
+  # source /etc/stele/soak.env. Keep this in sync with the env file
+  # above when bumping versions.
   - mkdir -p /opt/stele
-  - cd /opt/stele && curl -fsSL "https://github.com/desledishant10/stele/releases/download/${STELE_VERSION:-v0.1.2}/stele-linux-amd64" -o stele
-  - cd /opt/stele && curl -fsSL "https://github.com/desledishant10/stele/releases/download/${STELE_VERSION:-v0.1.2}/steled-linux-amd64" -o steled
-  - cd /opt/stele && curl -fsSL "https://github.com/desledishant10/stele/releases/download/${STELE_VERSION:-v0.1.2}/stele-witness-linux-amd64" -o stele-witness
-  - cd /opt/stele && curl -fsSL "https://github.com/desledishant10/stele/releases/download/${STELE_VERSION:-v0.1.2}/stele-loadgen-linux-amd64" -o stele-loadgen
+  - cd /opt/stele && curl -fsSL "https://github.com/desledishant10/stele/releases/download/v0.1.3/stele-linux-amd64" -o stele
+  - cd /opt/stele && curl -fsSL "https://github.com/desledishant10/stele/releases/download/v0.1.3/steled-linux-amd64" -o steled
+  - cd /opt/stele && curl -fsSL "https://github.com/desledishant10/stele/releases/download/v0.1.3/stele-witness-linux-amd64" -o stele-witness
+  - cd /opt/stele && curl -fsSL "https://github.com/desledishant10/stele/releases/download/v0.1.3/stele-loadgen-linux-amd64" -o stele-loadgen
   - chmod +x /opt/stele/*
   - install -m 0755 /opt/stele/* /usr/local/bin/
 
-  # Drop driver scripts into /usr/local/bin (the actual files are
-  # baked below; cloud-init writes them after this block).
-  - install -m 0755 /tmp/stele-soak-setup /usr/local/bin/
-  - install -m 0755 /tmp/stele-soak-run /usr/local/bin/
-  - install -m 0755 /tmp/stele-soak-snapshot /usr/local/bin/
+  # Fetch the soak driver scripts straight from the tagged repo.
+  # (Previous cloud-init.yaml tried to `install` from /tmp but never
+  # actually wrote the files there — that's why the first three
+  # launches all failed during cloud-init.)
+  - curl -fsSL https://raw.githubusercontent.com/desledishant10/stele/v0.1.3/soak/stele-soak-setup    -o /usr/local/bin/stele-soak-setup
+  - curl -fsSL https://raw.githubusercontent.com/desledishant10/stele/v0.1.3/soak/stele-soak-run     -o /usr/local/bin/stele-soak-run
+  - curl -fsSL https://raw.githubusercontent.com/desledishant10/stele/v0.1.3/soak/stele-soak-snapshot -o /usr/local/bin/stele-soak-snapshot
+  - chmod +x /usr/local/bin/stele-soak-setup /usr/local/bin/stele-soak-run /usr/local/bin/stele-soak-snapshot
+
+  # Make sure systemd sees the new unit files before enable.
+  - systemctl daemon-reload
 
   # Enable services.
   - systemctl enable --now prometheus prometheus-node-exporter
