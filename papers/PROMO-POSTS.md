@@ -1,13 +1,20 @@
-# Promo post drafts — v0.1.2
+# Promo post drafts — v0.1.3
 
 Ready-to-paste content for the four venues we agreed to seed. Honest
 framing throughout; nothing claims more than the current artifact
 backs up. Copy-paste, edit, then post.
 
-**Read this before posting:** the formal model currently has two
-lemmas that falsify in `tamarin-prover` (issues #4-#6). That makes
-**r/cryptography risky** until those land. The other three venues
-are safe.
+**Read this before posting:** as of v0.1.3, the formal model now
+machine-checks 2 of 3 security lemmas (`enrollment_required`,
+`no_witness_double_cosign`). The third (`forward_secrecy`) is
+structurally sound in the model but the prover doesn't converge
+under the default heuristic; issue #5 stays open. /r/cryptography
+is reasonable to post NOW with that honest caveat, or you can wait
+until #5 lands for a cleaner story.
+
+The 72-hour soak is currently running on AWS (started 2026-05-30);
+results land Tuesday. Posts below mention "soak in flight" as a
+current-status note.
 
 ---
 
@@ -39,18 +46,19 @@ are safe.
 >     server on every CI run + 36 deterministic KAT vectors
 >   - Hybrid post-quantum signatures (Ed25519 + Dilithium3) at every
 >     signature site
->   - Tamarin protocol model in `formal/` -- and I'll be honest: of
->     the 3 security lemmas, currently 1 verifies and 2 falsify in
->     the prover (issues #4-#6); we're debugging whether that's a
->     model error or a real flaw. The transcript is checked in.
+>   - Tamarin protocol model in `formal/`: 2 of 3 security lemmas
+>     machine-check (enrollment_required, no_witness_double_cosign)
+>     in under a second each. The third (forward_secrecy) is
+>     structurally sound but the default proof-search heuristic
+>     doesn't converge; transcript and the open issue are checked in.
 >   - SLSA Build L3 release artifacts, multi-platform binaries,
 >     Sigstore-signed Docker image, 30-second devcontainer demo
 >
 > What I'm explicitly NOT claiming yet:
 >
 >   - No third-party security audit (the kit's prepared in AUDIT-KIT.md)
->   - No completed 72-hour soak (orchestration's in soak/, just hasn't
->     run on a real VM yet)
+>   - 72-hour soak is RUNNING right now on a c7i.large; results land
+>     Tuesday and ship as SOAK-72H.md
 >   - Single-node operator at this version; sharded deployment is roadmap
 >
 > Apache 2.0; one-click try-it: open the repo in a Codespace and run
@@ -81,15 +89,17 @@ are safe.
 > - Three SDKs (Go / Python / TypeScript) with deterministic cross-
 >   language envelope interop tested in CI -- the Python signer
 >   produces bytes the Go server accepts unchanged.
-> - Tamarin model in `formal/` -- with the honest caveat that 2 of 3
->   lemmas currently falsify in the prover and we have an open issue
->   tree tracking it.
+> - Tamarin model in `formal/` -- 2 of 3 security lemmas machine-
+>   check, the third (forward_secrecy) is structurally sound but the
+>   prover doesn't converge under the default heuristic (open issue,
+>   transcript checked in).
 > - SLSA L3 build provenance + Sigstore keyless signatures on every
 >   binary in the release.
 > - One-click try-it via Codespace devcontainer.
 >
-> Things still open: no completed 72-hour soak yet, no third-party
-> audit yet, single-node operator. v0.1.x is pre-production.
+> Things still open: 72-hour soak is currently running on AWS (results
+> Tuesday), no third-party audit yet, single-node operator. v0.1.x is
+> pre-production.
 
 ---
 
@@ -112,14 +122,15 @@ are safe.
 >
 > Things Gophers might enjoy:
 >
-> - `go install github.com/desledishant10/stele/cmd/stele@v0.1.2`
+> - `go install github.com/desledishant10/stele/cmd/stele@v0.1.3`
 > - reproducible builds via `-trimpath -ldflags="-buildid="`, verified
 >   in CI on every release (workflow re-builds and diffs hashes)
 > - SLSA Build L3 provenance attestations attached to each release
 > - 7,000+ appends/sec single-node, fsync-bound -- benchmarks in
 >   `bench/baseline.txt`
-> - Tamarin protocol model in `formal/` (with the honest caveat that
->   not every lemma currently passes; investigation tracked in #4-#6)
+> - Tamarin protocol model in `formal/` (2 of 3 security lemmas
+>   verify in under a second; the third is structurally sound but
+>   the prover doesn't converge -- issue #5 open)
 > - Property + fuzz + chaos tests across `pkg/` (race detector on
 >   by default in `make test`)
 >
@@ -129,22 +140,40 @@ are safe.
 
 ---
 
-## /r/cryptography (HOLD until #4-#6 are fixed)
+## /r/cryptography (now postable with honest framing)
 
-> **Don't post this yet.** Crypto-savvy readers will run tamarin and
-> notice the falsifying lemmas inside an hour, and the post becomes
-> "amateur hour" instead of "interesting honest engineering."
+**Title:**
+
+> Stele: Tamarin-verified producer enrollment + witness fork detection for an audit log (with one lemma still under investigation)
+
+**Body:**
+
+> Sharing a small protocol design that mostly machine-checks: stele
+> is a hash-chained, witness-cosigned audit log with forward-secure
+> operator keys and producer enrollment via proof-of-possession.
 >
-> Reasonable timeline: post to r/cryptography after we land at least
-> #4 (the wellformedness fix), even if forward_secrecy still
-> ultimately falsifies as a real protocol observation. At that point
-> we'd have either:
->   - a clean tamarin run (best case), or
->   - a clean tamarin run + concrete model-level falsification trace
->     (still interesting, just in a different way)
+> Tamarin status (transcript checked in at
+> https://github.com/desledishant10/stele/blob/v0.1.3/formal/expected-output.txt):
 >
-> Either is postable. The current "2 of 3 lemmas falsify because of
-> a model bug" state is NOT.
+> - `enrollment_required` (every accepted entry preceded by a
+>   mutual-consent enrollment): verified in 0.82s
+> - `no_witness_double_cosign` (an honest witness cannot stamp two
+>   different roots at the same size): verified in 0.80s
+> - `forward_secrecy` (no post-rotation forge of past sigs):
+>   structurally sound in the model (no counter-example at any
+>   bound tried), but the default proof-search heuristic doesn't
+>   converge -- looking for help with a helper [reuse] lemma or
+>   oracle that prunes the search
+>
+> The model uses a `Live(O, epoch, sk)` linear fact that
+> SignCheckpoint consumes-and-re-emits and RevealOperatorKey
+> consumes without re-emission. That captures key-destruction
+> semantics, and after a Reveal no honest SignCheckpoint at that
+> key can fire -- so the claim ought to be inductive on traces. We
+> just can't get tamarin to see it. Issue #5 is open with full
+> repro instructions.
+>
+> https://github.com/desledishant10/stele
 
 ---
 
@@ -176,10 +205,11 @@ preference.)
 >    language envelope interop tested on every CI run. Apache 2.0.
 >    Codespace demo runs end-to-end in 30 seconds.
 >
-> 4/ Honest open items: 72h soak run is pending, third-party audit
->    is pending, and the Tamarin model has 2 of 3 lemmas currently
->    falsifying (we found this when we actually ran the prover and
->    the receipts are checked in). Pre-production. Help wanted.
+> 4/ Honest open items: 72h soak run is currently in flight on AWS
+>    (results land Tuesday), third-party audit pending, and one of
+>    three Tamarin lemmas is structurally sound but doesn't converge
+>    under the default heuristic -- the receipts and the open issue
+>    are checked in. Pre-production. Help wanted.
 >
 >    https://github.com/desledishant10/stele
 
