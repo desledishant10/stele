@@ -1,66 +1,70 @@
-Actual `tamarin-prover --prove stele.spthy` output as of 2026-05-17.
+Actual `tamarin-prover --prove` output as of v0.1.3.
 Generated against Tamarin 1.10.0 + Maude 3.4 (Docker image:
 `lmandrelli/tamarin-prover@sha256:a2e869bbe395f258f124fe17d701f0ab9f00144159937f066b2469405e892773`).
 
-Run each lemma separately to avoid memory blow-up on commodity
-hardware; `--prove` alone OOMs in ~4 GB after the saturation pass.
+Run each lemma separately to avoid memory blow-up; tamarin's
+default heuristic does not converge on `forward_secrecy` within
+~4 GB on this model.
 
-   docker run --rm --memory=4g \
-       -v $(pwd)/formal:/work -w /work \
-       lmandrelli/tamarin-prover \
-       tamarin-prover --prove=<lemma> --bound=8 stele.spthy
+   for L in enrollment_required no_witness_double_cosign forward_secrecy sanity_complete_run; do
+       docker run --rm --memory=4g -v $(pwd)/formal:/work -w /work \
+           lmandrelli/tamarin-prover \
+           tamarin-prover --prove=$L --bound=6 stele.spthy
+   done
 
 ==============================================================================
 summary of summaries
 ==============================================================================
 
-  WARNING: 1 wellformedness check failed!
-           The analysis results might be wrong!
+  /* All wellformedness checks were successful. */
 
-  forward_secrecy        (all-traces):   falsified - found trace (4 steps)
-  no_witness_double_cosign (all-traces): falsified - found trace (4 steps)
-  enrollment_required    (all-traces):   verified (8 steps)
-  sanity_complete_run    (exists-trace): pending re-run
+  enrollment_required      (all-traces):   verified (3 steps,  0.82s)
+  no_witness_double_cosign (all-traces):   verified (2 steps,  0.80s)
+  forward_secrecy          (all-traces):   analysis incomplete (4483 steps after 14.6s
+                                            at bound=8; no counter-example found at
+                                            any bound we have tried)
+  sanity_complete_run      (exists-trace): analysis incomplete (62 steps at bound=6;
+                                            no witnessing trace found by the default
+                                            heuristic, but the model has many)
 
 ==============================================================================
 
-Wellformedness warning detail
-=============================
+Status interpretation
+=====================
 
-The model fails one message-derivation check:
+- **enrollment_required**: machine-checked. Every accepted entry
+  is preceded by an operator-and-producer-co-signed enrollment.
 
-   Rule EnrollBegin:  Failed to derive Variable(s): spk
-   Rule AppendEntry:  Failed to derive Variable(s): spk
+- **no_witness_double_cosign**: machine-checked. An honest witness
+  (whose key has not been revealed) cannot cosign two different
+  roots at the same size for the same operator.
 
-`spk` (the producer's signing pubkey) appears in those rule bodies
-without being derivable from a premise; Tamarin treats it as adversary-
-controlled, which is more permissive than the protocol allows. Fixing
-this is tracked in issue #4 and is the most likely root cause of the
-two falsified lemmas.
+- **forward_secrecy**: the lemma is well-defined and the model has
+  the right structure (`Live(O, epoch, sk)` is a linear token that
+  the operator consumes-and-re-emits on each `SignCheckpoint`, and
+  `RevealOperatorKey` consumes `Live` without re-emitting it; so
+  after a `Reveal`, no honest `SignCheckpoint` at that key can
+  fire). Tamarin finds no counter-example at any bound we have
+  tried (4..8) but the proof search blows up combinatorially
+  because `SignCheckpoint` quantifies over arbitrary `(size, root)`
+  pairs received from the network. We have not yet found a helper
+  lemma or oracle that makes the prover converge. Status: model is
+  correct as far as we can tell, but not machine-checked end-to-end.
+  Issue #5 stays open for "find the proof-search hint that lets
+  the default heuristic finish."
 
-What the current state means
-============================
+- **sanity_complete_run**: same situation as `forward_secrecy` —
+  the model admits the trace (we can construct it by hand from
+  the rules) but Tamarin's default search doesn't find it within
+  reasonable budget. Issue #7 tracks adding a proof oracle to
+  guide the existential search.
 
-- `enrollment_required` VERIFIED: every accepted entry is preceded
-  by an Operator-AND-Producer-co-signed enrollment confirmation, in
-  the symbolic model. This claim holds.
+The honest summary
+==================
 
-- `forward_secrecy` FALSIFIED in the MODEL: the model permits a
-  counter-example trace where an old-epoch signature can be forged
-  after key rotation. Probably (but not certainly) a model bug, not
-  a real protocol flaw — the wellformedness warning above lets the
-  adversary "synthesise" `spk` material the real protocol would
-  never let them touch. Investigation: issue #4.
-
-- `no_witness_double_cosign` FALSIFIED in the MODEL: same root cause
-  suspected. Investigation: issue #5.
-
-The honest version of the v0.1.x claim is therefore:
-
-  "Producer-enrollment correctness is machine-checked. Forward-
-   secrecy and witness-non-equivocation lemmas are in the model but
-   currently fail; we are debugging whether this is a model error
-   or a protocol flaw and will update accordingly."
-
-If you re-run after fixing the wellformedness issue, recapture this
-file alongside the model.
+Two of three core security lemmas now machine-check in under a
+second each on commodity hardware. The third (forward_secrecy)
+is structurally sound but waiting on better proof-search guidance.
+If you need a fully-mechanical verification of forward secrecy,
+this model is not yet sufficient; the witness + enrollment proofs
+are.

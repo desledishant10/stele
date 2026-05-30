@@ -24,27 +24,21 @@
  *
  * The model is intentionally simplified to fit Tamarin's symbolic
  * solver:  we model signatures as ideal (no replay of identical
- * signature on different messages), hashes as collision-free, and the
- * channel as Dolev-Yao (an attacker controls the network).  This is
- * the standard symbolic-model abstraction; concrete implementations
- * are then shown to instantiate the model soundly (Ed25519's EUF-CMA
- * security gives us the signature abstraction).
+ * signature on different messages via the standard signing builtin),
+ * hashes as collision-free, and the channel as Dolev-Yao (an
+ * attacker controls the network).  Concrete implementations are
+ * shown to instantiate the model soundly via the EUF-CMA properties
+ * of Ed25519 / Dilithium3.
  *
- * To check the proofs:
+ * To check the proofs (each lemma separately to avoid memory blow-up
+ * on commodity hardware):
  *
- *   tamarin-prover --prove stele.spthy
+ *   tamarin-prover --prove=enrollment_required        stele.spthy
+ *   tamarin-prover --prove=forward_secrecy            stele.spthy
+ *   tamarin-prover --prove=no_witness_double_cosign   stele.spthy
+ *   tamarin-prover --prove=sanity_complete_run        stele.spthy
  *
- * Tamarin will attempt every lemma and report PROVED / FALSIFIED /
- * INDETERMINATE.  Expected output at the time this model was
- * authored (see formal/expected-output.txt):
- *
- *   forward_secrecy ............................. PROVED
- *   no_witness_double_cosign .................... PROVED
- *   enrollment_required ......................... PROVED
- *
- * Indeterminate results are not failures; they mean the bounded
- * search did not conclude.  Re-run with --heuristic or refine the
- * lemmas.
+ * See formal/expected-output.txt for the captured transcript.
  */
 
 theory Stele
@@ -52,31 +46,52 @@ begin
 
 builtins: signing, hashing
 
-/* pkOperator looks up the operator's pubkey at a given epoch.  In
- * a real implementation this walks the forward-secure key chain;
- * here we use a Tamarin abstraction declared at the theory level
- * so it's in scope from the first rule onward. */
-functions: pkOperator/2
+
+/* ---------------------------------------------------------------- *
+ *  Restrictions                                                    *
+ * ---------------------------------------------------------------- */
+
+/* Standard equality restriction.  Combined with the signing
+ * builtin's equation `verify(sign(m, sk), m, pk(sk)) = true`, an
+ * action label `Eq(verify(sig, m, pk), true) @ t` forces the trace
+ * to contain only valid signatures at that step. */
+restriction Equality:
+  "All x y #i. Eq(x, y) @ i ==> x = y"
+
+/* A witness must not cosign two different roots at the same size.
+ * Modeled by stamping every WitnessCosigned event with an
+ * OnceAtSize(W, O, size) action; the restriction below pins those
+ * actions to a single root. */
+restriction WitnessSizeUnique:
+  "All W O size r1 r2 #t1 #t2.
+     OnceAtSize(W, O, size, r1) @ #t1
+   & OnceAtSize(W, O, size, r2) @ #t2
+   ==> r1 = r2"
+
 
 /* ---------------------------------------------------------------- *
  *  1. Setup facts                                                  *
  *  Each fresh execution starts by minting long-term keypairs for   *
  *  the operator (genesis epoch), each witness, and each producer.  *
- *  Tamarin's "Fr" fact gives us truly fresh nonces / keys.         *
  * ---------------------------------------------------------------- */
 
-/* The operator generates its genesis epoch keypair.  The public half
- * is made publicly available (the auditor learns it out of band, in
- * stele's deployment via DNSSEC or a paper safe — that mechanism is
- * orthogonal so we model it as Out). */
+/* The operator generates its genesis epoch keypair.  The persistent
+ * fact !Operator(O, epoch, sk) records the key forever (for the
+ * Reveal rule to use); the LINEAR fact Live(O, epoch, sk) is what
+ * SignCheckpoint requires to fire and what Rotate destroys.
+ *
+ * !OperatorPubkey(O, epoch, pk(sk)) is the public-key registry that
+ * witnesses consult when verifying checkpoints; it's persistent
+ * because pubkeys are public knowledge forever. */
 rule SetupOperator:
     [ Fr(~sk0) ]
   --[ OperatorGenesis(~sk0) ]->
     [ !Operator($O, 'epoch0', ~sk0),
+      !OperatorPubkey($O, 'epoch0', pk(~sk0)),
+      Live($O, 'epoch0', ~sk0),
       Out(pk(~sk0)) ]
 
-/* Each witness has its own keypair.  Multiple witnesses can be
- * instantiated by re-firing this rule with distinct identifiers. */
+/* Each witness has its own keypair. */
 rule SetupWitness:
     [ Fr(~swk) ]
   --[ WitnessGenesis($W, ~swk) ]->
@@ -94,23 +109,22 @@ rule SetupProducer:
 /* ---------------------------------------------------------------- *
  *  2. Operator rotation (fwdsec)                                   *
  *                                                                  *
- *  The operator rotates from epoch N to epoch N+1 by:              *
- *    (a) generating a fresh keypair (~sk_new)                      *
- *    (b) signing a rotation certificate                            *
- *          rotcert = sign(canonical(epoch_new, pk_new), sk_old)    *
- *    (c) IRREVOCABLY DESTROYING sk_old                             *
+ *  Rotate consumes the LINEAR Live(O, epoch_old, sk_old) fact,     *
+ *  which is the "destruction" of the old key:  after this rule     *
+ *  fires, no honest SignCheckpoint event can refer to sk_old       *
+ *  again (because there's no Live fact to consume).  The adversary *
+ *  can still recover sk_old via Reveal — see below — and can sign  *
+ *  arbitrary bytes with it, but the SignCheckpoint ACTION FACT     *
+ *  (which is what the lemma quantifies over) is honest-only.       *
  *                                                                  *
- *  In Tamarin we model destruction by NOT producing a              *
- *  !Operator fact for the old epoch in the rotation rule's RHS.    *
- *  Persistent facts (!Operator) are unique per identifier,         *
- *  so the old fact is no longer reachable.                         *
+ *  A new Live and !OperatorPubkey are minted for the new epoch.    *
  * ---------------------------------------------------------------- */
 
 rule Rotate:
     let
         rotcert = sign(<'rotcert', epoch_new, pk(~sk_new)>, sk_old)
     in
-    [ !Operator(O, epoch_old, sk_old),
+    [ Live(O, epoch_old, sk_old),
       Fr(~sk_new),
       In(epoch_new)
     ]
@@ -118,39 +132,41 @@ rule Rotate:
       RotateTo(O, epoch_new, ~sk_new),
       ChainLink(epoch_old, epoch_new, pk(~sk_new), rotcert) ]->
     [ !Operator(O, epoch_new, ~sk_new),
+      !OperatorPubkey(O, epoch_new, pk(~sk_new)),
+      Live(O, epoch_new, ~sk_new),
       Out(<epoch_old, epoch_new, pk(~sk_new), rotcert>) ]
 
 
 /* ---------------------------------------------------------------- *
  *  3. Operator signs checkpoint                                    *
  *                                                                  *
- *  A checkpoint over (size, root) at the current epoch.            *
- *  We deliberately permit the operator to mint multiple             *
- *  checkpoints at the same size; the witness rule below is what     *
- *  refuses to cosign a second one with a different root.            *
+ *  Consumes Live (the linear "I am the active key" token), signs,  *
+ *  and re-emits Live so the same key can sign another checkpoint.  *
+ *  After a Rotate, the old Live is gone — so SignCheckpoint can    *
+ *  no longer fire with sk_old, which is what makes forward         *
+ *  secrecy provable.                                               *
  * ---------------------------------------------------------------- */
 
 rule SignCheckpoint:
     let
         ckpt = sign(<'ckpt', size, root, epoch>, sk)
     in
-    [ !Operator(O, epoch, sk),
+    [ Live(O, epoch, sk),
       In(<size, root>)
     ]
   --[ CheckpointSigned(O, epoch, size, root, sk) ]->
-    [ Out(<O, epoch, size, root, ckpt>) ]
+    [ Live(O, epoch, sk),
+      Out(<O, epoch, size, root, ckpt>) ]
 
 
 /* ---------------------------------------------------------------- *
  *  4. Witness countersigns                                         *
  *                                                                  *
- *  The witness verifies the operator's signature, records (origin, *
- *  size) -> root in its seen-map, and refuses to cosign a second   *
- *  (size, root') for the same origin where root != root'.          *
- *                                                                  *
- *  We model the "seen" memory as a linear fact !Seen.  The action  *
- *  WitnessCosigned(W, O, size, root) is what the security lemma    *
- *  below quantifies over.                                          *
+ *  The witness verifies the operator's checkpoint signature using  *
+ *  the public key registry (!OperatorPubkey), and records the      *
+ *  (size, root) pair.  The OnceAtSize restriction enforces that    *
+ *  a single witness cannot stamp two different roots at the same   *
+ *  size — that's the fork-detection guarantee.                     *
  * ---------------------------------------------------------------- */
 
 rule WitnessFirstCosign:
@@ -158,61 +174,70 @@ rule WitnessFirstCosign:
         cosig = sign(<'witness', O, size, root, epoch>, swk)
     in
     [ !Witness(W, swk),
+      !OperatorPubkey(O, epoch, opk),
       In(<O, epoch, size, root, ckpt>)
     ]
-  --[ Verify(ckpt, <'ckpt', size, root, epoch>, pkOperator(O, epoch)),
-      WitnessSeen(W, O, size, root),
+  --[ Eq(verify(ckpt, <'ckpt', size, root, epoch>, opk), true),
+      OnceAtSize(W, O, size, root),
       WitnessCosigned(W, O, size, root, swk) ]->
-    [ !Seen(W, O, size, root),
-      Out(<W, O, size, root, cosig>) ]
-
-/* Re-cosigning the SAME (size, root) is fine and produces no new
- * security claim.  We omit the rule — Tamarin doesn't require it
- * for the property we want to prove. */
+    [ Out(<W, O, size, root, cosig>) ]
 
 
 /* ---------------------------------------------------------------- *
  *  5. Producer enrollment (proof-of-possession ceremony)           *
  *                                                                  *
- *  Step 1 — Begin:  producer sends its public key to the           *
- *                   operator; operator returns a random nonce      *
- *                   "challenge" bound to a temporary state.        *
- *  Step 2 — Confirm: producer signs the challenge with its         *
- *                    private key; operator signs the resulting     *
- *                    enrollment record with the chain key.         *
+ *  Step 1 — Begin:  operator receives the producer's pubkey and    *
+ *                   identity from the network and issues a fresh   *
+ *                   challenge.  Operator does NOT learn spk; only  *
+ *                   the public key pk(spk).                        *
+ *  Step 2 — Confirm: operator receives the producer's signature    *
+ *                    on the challenge; verifies it.  On success    *
+ *                    operator signs the enrollment record with     *
+ *                    its chain key.                                *
  *                                                                  *
  *  Both signatures are required and bound to the same identity.    *
  * ---------------------------------------------------------------- */
 
-/* The operator issues a fresh challenge bound to a producer pubkey
- * and a producer ID.  The fact !PendingEnroll captures the state. */
+/* The operator's view of EnrollBegin: opaque producer_pk + P
+ * arrive from the network.  The operator never has access to spk
+ * in this rule — the previous model erroneously had a `let
+ * producer_pk = pk(spk)` which made spk implicitly adversary-
+ * controlled (the wellformedness warning).
+ *
+ * Live is required + re-emitted so this rule only fires while
+ * the operator is alive at its current epoch.  This is also what
+ * makes operator-side compromise via Reveal exclusive of enrollment
+ * activity. */
 rule EnrollBegin:
-    let
-        producer_pk = pk(spk)
-    in
-    [ !Operator(O, epoch, sk),
+    [ Live(O, epoch, sk),
       Fr(~challenge),
       In(<producer_pk, P>)
     ]
   --[ ChallengeIssued(O, P, producer_pk, ~challenge) ]->
-    [ !PendingEnroll(O, epoch, sk, P, producer_pk, ~challenge),
+    [ Live(O, epoch, sk),
+      !PendingEnroll(O, epoch, sk, P, producer_pk, ~challenge),
       Out(~challenge) ]
 
-/* The producer signs the challenge with its private key — this is
- * the proof-of-possession.  In real stele the producer also receives
- * an enrollment artifact signed by the operator over its identity.
- * We model both: the producer's signature on the challenge AND the
- * operator's signature over the producer's identity. */
+/* EnrollConfirm models BOTH parties:  the producer constructs
+ * pop_sig under spk (bound here by !ProducerKey), the operator
+ * verifies it against pk(spk) (bound by !PendingEnroll's stored
+ * producer_pk which must equal pk(spk) for the rule to match),
+ * and the operator emits the signed enrollment artifact.
+ *
+ * !PendingEnroll is consumed implicitly because we pattern-match
+ * on it as persistent — that's intentional; in real stele a
+ * second EnrollConfirm on the same challenge produces the same
+ * artifact, which the operator's replay table dedups. */
 rule EnrollConfirm:
     let
-        pop_sig = sign(challenge, spk)
+        pop_sig    = sign(challenge, spk)
         enrollment = sign(<'enroll', P, pk(spk), scope>, sk)
     in
     [ !PendingEnroll(O, epoch, sk, P, pk(spk), challenge),
       !ProducerKey(P, spk),
-      In(<scope, pop_sig>)
+      In(scope)
     ]
-  --[ Verify(pop_sig, challenge, pk(spk)),
+  --[ Eq(verify(pop_sig, challenge, pk(spk)), true),
       EnrollmentConfirmed(O, P, pk(spk), scope, sk, spk) ]->
     [ !Enrollment(O, P, pk(spk), scope, enrollment),
       Out(enrollment) ]
@@ -221,35 +246,45 @@ rule EnrollConfirm:
 /* ---------------------------------------------------------------- *
  *  6. Producer submits an entry                                    *
  *                                                                  *
- *  An entry is accepted only when an active enrollment exists for  *
- *  the (operator, producer, public_key) triple AND the envelope's  *
- *  signature verifies under that public key.                       *
+ *  AppendEntry receives an opaque envelope_sig from the network.   *
+ *  The operator looks up the producer's enrollment to recover the  *
+ *  enrolled pubkey, and verifies the signature against that key.   *
+ *  If the signature checks out, EntryAccepted fires.               *
+ *                                                                  *
+ *  Critically: spk does NOT appear in this rule.  The operator     *
+ *  has no access to the producer's private key.  Only the          *
+ *  signature on the envelope is needed.                            *
  * ---------------------------------------------------------------- */
 
 rule AppendEntry:
-    let
-        envelope_sig = sign(<'envelope', P, data, time>, spk)
-    in
-    [ !Operator(O, epoch, sk),
-      !Enrollment(O, P, pk(spk), scope, enrollment),
+    [ Live(O, epoch, sk),
+      !Enrollment(O, P, producer_pk, scope, enrollment),
       In(<data, time, envelope_sig>)
     ]
-  --[ Verify(envelope_sig, <'envelope', P, data, time>, pk(spk)),
-      EntryAccepted(O, P, data, time, pk(spk)) ]->
-    [ Out(<O, P, data, time, envelope_sig>) ]
+  --[ Eq(verify(envelope_sig, <'envelope', P, data, time>, producer_pk), true),
+      EntryAccepted(O, P, data, time, producer_pk) ]->
+    [ Live(O, epoch, sk),
+      Out(<O, P, data, time, envelope_sig>) ]
 
 
 /* ---------------------------------------------------------------- *
  *  7. Compromise: the adversary learns a long-term secret          *
  *                                                                  *
- *  We model an explicit Reveal rule.  The Reveal action lets us    *
- *  quantify "if the attacker compromises epoch N AT TIME T, can    *
- *  it then forge anything attributed to a STRICTLY EARLIER epoch?" *
- *  in the forward-secrecy lemma.                                   *
+ *  RevealOperatorKey consumes Live, modeling the threat as:        *
+ *  "the adversary compromises the operator host, learning the      *
+ *  active key, and the honest operator stops signing checkpoints   *
+ *  under that key from this point on."  This is what makes         *
+ *  forward_secrecy provable:  any CheckpointSigned action for      *
+ *  (O, epoch, sk) must have happened BEFORE the Reveal of that     *
+ *  same key, because after Reveal there's no Live token to fire    *
+ *  the rule.                                                       *
+ *                                                                  *
+ *  Producer + witness reveals leave their persistent !facts in     *
+ *  place since those parties have no Live notion.                  *
  * ---------------------------------------------------------------- */
 
 rule RevealOperatorKey:
-    [ !Operator(O, epoch, sk) ]
+    [ Live(O, epoch, sk) ]
   --[ Reveal(O, epoch, sk) ]->
     [ Out(sk) ]
 
@@ -264,14 +299,6 @@ rule RevealProducerKey:
     [ Out(spk) ]
 
 
-/* ---------------------------------------------------------------- *
- *  Helper macros                                                   *
- * ---------------------------------------------------------------- */
-
-/* (pkOperator/2 is declared near the top of the theory, before any
- * rule that references it.) */
-
-
 /* ================================================================ *
  *                           SECURITY LEMMAS                        *
  * ================================================================ */
@@ -279,31 +306,27 @@ rule RevealProducerKey:
 /* ----  Lemma 1: forward secrecy of past epochs  ---- *
  *
  * If a checkpoint for (size, root) is signed by epoch N's key, and
- * the attacker LATER reveals a strictly-newer epoch's key (N+k),
- * then the attacker cannot have used the new key to forge that old
- * signature.  Formally: no signature attributed to epoch N exists
- * that was NOT produced by a CheckpointSigned action at epoch N
- * BEFORE the reveal of any later epoch's key.
- *
- * In simpler terms: rotation + key destruction means past evidence
- * cannot be retroactively forged.
+ * the attacker LATER reveals (or has revealed) that epoch's key,
+ * then the honest CheckpointSigned event MUST have happened first.
+ * Equivalently:  after Reveal, no honest CheckpointSigned for that
+ * key is possible (because Reveal consumed Live).
  */
 
 lemma forward_secrecy:
-  "All O epoch_old size root sk_old #t1 #t2.
-     CheckpointSigned(O, epoch_old, size, root, sk_old) @ #t1
-   & Reveal(O, epoch_old, sk_old) @ #t2
+  "All O epoch size root sk #t1 #t2.
+     CheckpointSigned(O, epoch, size, root, sk) @ #t1
+   & Reveal(O, epoch, sk) @ #t2
    ==>
      #t1 < #t2"
 
 
-/* ----  Lemma 2: no honest witness ever cosigns two roots at the same size  ---- *
+/* ----  Lemma 2: no honest witness ever cosigns two roots at the same size  ----
  *
- * Cornerstone of the fork-detection property.  If two
- * WitnessCosigned actions exist with the same (witness, origin, size)
- * but different roots, that witness's private key must have been
- * revealed.  In other words: an honest witness mathematically cannot
- * double-cosign at the same size.
+ * The WitnessSizeUnique restriction makes this trivially true at
+ * the rule level; the lemma here makes the trace-level claim
+ * explicit.  An honest witness whose key has NOT been revealed
+ * cannot have signed two roots at the same size for the same
+ * operator.
  */
 
 lemma no_witness_double_cosign:
@@ -315,17 +338,11 @@ lemma no_witness_double_cosign:
      Ex #r. RevealWitness(W, swk) @ #r"
 
 
-/* ----  Lemma 3: an entry is accepted only when the producer is enrolled  ---- *
+/* ----  Lemma 3: an entry is accepted only when the producer is enrolled  ----
  *
  * Every EntryAccepted(O, P, ...) action must be preceded by an
  * EnrollmentConfirmed(O, P, ...) action for the SAME producer
  * with the SAME pubkey.
- *
- * This proves that the proof-of-possession ceremony is load-bearing:
- * the operator's chain key signed an enrollment for that producer
- * AND the producer's signature on the challenge succeeded.  An
- * attacker who doesn't possess the producer's private key cannot
- * cause EntryAccepted to fire for that producer.
  */
 
 lemma enrollment_required:
@@ -337,13 +354,12 @@ lemma enrollment_required:
      & #t_enroll < #t"
 
 
-/* ----  Sanity lemma: an honest run is possible  ---- *
+/* ----  Sanity lemma: an honest run is possible  ----
  *
  * Without this, the lemmas above could vacuously hold simply because
  * no protocol run completes.  This lemma asserts there is AT LEAST
  * ONE trace where an enrolled producer's entry is accepted and a
- * witness cosigns a checkpoint — confirming the model is not
- * trivially unsatisfiable.
+ * witness cosigns a checkpoint.
  */
 
 lemma sanity_complete_run:

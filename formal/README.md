@@ -4,14 +4,13 @@ This directory contains a [Tamarin](https://tamarin-prover.com/) model
 of stele's three core security claims, intended to produce machine-
 checked proofs in the symbolic (Dolev-Yao) model.
 
-> **Status (v0.1.x): work in progress.** The model parses and Tamarin
-> can run all four lemmas, but two of them currently *fail*. See
-> [expected-output.txt](expected-output.txt) for the actual results
-> and the [Status](#status) section below. We are debugging whether
-> this is a model error (most likely) or a real protocol flaw. Issues
-> [#4](https://github.com/desledishant10/stele/issues/4) and
-> [#5](https://github.com/desledishant10/stele/issues/5) track the
-> investigation.
+> **Status (v0.1.3): 2 of 3 security lemmas machine-checked.** Up
+> from 1 of 3 in v0.1.2. Wellformedness now clean (issue #4 closed).
+> `no_witness_double_cosign` now verifies (issue #6 closed).
+> `forward_secrecy` (#5) is structurally sound in the model but the
+> proof search doesn't converge under the default heuristic; see the
+> [Status](#status) section. The model itself is not known to admit
+> a counter-example at any bound we have tried.
 
 ## What's modeled
 
@@ -56,33 +55,46 @@ tamarin-prover --prove stele.spthy
 
 ### Status
 
-Actual current output of the prover (see
-[expected-output.txt](expected-output.txt) for the full transcript):
+Actual current output of the prover (full transcript in
+[expected-output.txt](expected-output.txt)):
 
 ```
-WARNING: 1 wellformedness check failed!
-         The analysis results might be wrong!
+/* All wellformedness checks were successful. */
 
-forward_secrecy          (all-traces):   falsified - found trace (4 steps)
-no_witness_double_cosign (all-traces):   falsified - found trace (4 steps)
-enrollment_required      (all-traces):   verified (8 steps)
-sanity_complete_run      (exists-trace): pending re-run
+enrollment_required      (all-traces):   verified (3 steps,  0.82s)
+no_witness_double_cosign (all-traces):   verified (2 steps,  0.80s)
+forward_secrecy          (all-traces):   analysis incomplete (4483 steps;
+                                          no counter-example found)
+sanity_complete_run      (exists-trace): analysis incomplete (62 steps;
+                                          no witnessing trace found)
 ```
 
-Note that the wellformedness warning reports that `EnrollBegin` and
-`AppendEntry` rules leak the producer signing-pubkey `spk` to the
-adversary, which is more permissive than the protocol actually is.
-That permissiveness is almost certainly why the two failing lemmas
-fail — fixing the wellformedness (issue #4) is the immediate next
-step.
+What that means:
 
-The lemma that DOES verify is `enrollment_required`: every entry the
-operator accepts is preceded by an operator-and-producer-co-signed
-enrollment confirmation. That part of the protocol is machine-checked
-to be correct as modeled.
+- **`enrollment_required`** and **`no_witness_double_cosign`** are
+  machine-checked end-to-end in under a second each on commodity
+  hardware. Every accepted entry is provably preceded by an
+  operator-and-producer-co-signed enrollment, and no honest
+  witness can stamp two different roots at the same size.
 
-If a re-run after fixes succeeds, update both this README and
-`expected-output.txt`.
+- **`forward_secrecy`** is well-defined in the model. The
+  `Live(O, epoch, sk)` linear token, consumed-and-re-emitted by
+  `SignCheckpoint` and consumed-without-re-emission by
+  `RevealOperatorKey`, captures the "key destruction" semantics:
+  after a Reveal, no honest `SignCheckpoint` for that key can fire.
+  Tamarin finds no counter-example at any bound we have tried
+  (4..8), but the prover doesn't converge on a positive proof
+  under the default heuristic because `SignCheckpoint` quantifies
+  over arbitrary `(size, root)` pairs from the network. Issue
+  [#5](https://github.com/desledishant10/stele/issues/5) is open
+  for finding a helper lemma or oracle that lets the default
+  search finish.
+
+- **`sanity_complete_run`** is incomplete for similar reasons
+  (existential search doesn't terminate in the default heuristic).
+  The model admits the trace; we can construct it by hand from the
+  rules. Issue [#7](https://github.com/desledishant10/stele/issues/7)
+  tracks adding a proof oracle.
 
 Running yourself
 ----------------

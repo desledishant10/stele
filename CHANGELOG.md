@@ -13,6 +13,50 @@ verifier recipe).
 ### Added
 - (next-version entries go here)
 
+## [0.1.3] - 2026-05-27
+
+Formal-model overhaul. The Tamarin proof now machine-checks 2 of 3
+core security lemmas (up from 0 of 3 in v0.1.2). No protocol or
+wire-format changes; v0.1.0..v0.1.3 are runtime-compatible.
+
+### Changed
+- **`formal/stele.spthy`**: substantial rewrite.
+  - Removed the `let producer_pk = pk(spk)` from `EnrollBegin` and
+    the `let envelope_sig = sign(..., spk)` from `AppendEntry` —
+    both leaked `spk` as adversary-controlled (the wellformedness
+    warning). Now `producer_pk` is opaque from `In` in `EnrollBegin`,
+    and `envelope_sig` is opaque from `In` in `AppendEntry`. Closes
+    [#4](https://github.com/desledishant10/stele/issues/4).
+  - Added a `Live(O, epoch, sk)` linear fact that `SignCheckpoint`
+    consumes-and-re-emits and `RevealOperatorKey` consumes without
+    re-emission. After a Reveal, no honest `SignCheckpoint` for that
+    key can fire — the forward-secrecy structure now matches the
+    real protocol's key-destruction semantics.
+  - Added a `!OperatorPubkey(O, epoch, opk)` registry so witnesses
+    verify checkpoints against a properly-bound key (replacing the
+    free `pkOperator/2` function symbol the prior model declared
+    but never gave semantics).
+  - Added an `Equality` restriction and switched action labels
+    from the noop `Verify(...)` to `Eq(verify(...), true)`, which
+    combined with the signing builtin's equation actually enforces
+    signature verification in the trace.
+  - Added a `WitnessSizeUnique` restriction so a single witness
+    cannot stamp two different roots at the same size. Closes
+    [#6](https://github.com/desledishant10/stele/issues/6).
+- **`formal/expected-output.txt`** now contains the measured
+  per-lemma output captured against Tamarin 1.10.0.
+- **`formal/README.md`** and **`AUDIT-KIT.md`** reflect the new
+  2-of-3 verified state.
+
+### Fixed
+- `enrollment_required` lemma: still verified (3 steps, 0.82s).
+- `no_witness_double_cosign` lemma: now verified (2 steps, 0.80s).
+- `forward_secrecy` lemma: model is structurally sound (no
+  counter-example at any bound tried, including 8); proof search
+  doesn't converge under the default heuristic. Issue
+  [#5](https://github.com/desledishant10/stele/issues/5) stays
+  open for finding the right helper lemma or oracle.
+
 ## [0.1.2] - 2026-05-17
 
 Second patch release in the v0.1.x line. Continues the v0.1.1

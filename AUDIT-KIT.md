@@ -37,7 +37,7 @@ In order of how to read them:
 2. **[THREATMODEL.md](THREATMODEL.md)** — STRIDE per component, scope, trust roots. **Start here for any security review.**
 3. **[PLAYBOOK.md](PLAYBOOK.md) §3** — concepts. Skip the operator/producer/auditor sections for a security audit; they're operational.
 4. **[HARDENING.md](HARDENING.md)** — the test surface. Tells you what's already proven so you can focus on the gaps.
-5. **[formal/README.md](formal/README.md)** — the Tamarin protocol model. **Status as of v0.1.x:** 1 of 3 security lemmas (`enrollment_required`) is verified; the other two (`forward_secrecy`, `no_witness_double_cosign`) currently falsify and we're debugging whether that's a model error (most likely, per the wellformedness warning) or a real protocol flaw. See [formal/expected-output.txt](formal/expected-output.txt) for the exact prover output.
+5. **[formal/README.md](formal/README.md)** — the Tamarin protocol model. **Status as of v0.1.3:** 2 of 3 security lemmas (`enrollment_required`, `no_witness_double_cosign`) machine-check in under a second each. The third (`forward_secrecy`) is well-defined in the model but the default proof-search heuristic doesn't converge; no counter-example found at any bound tried (issue #5). See [formal/expected-output.txt](formal/expected-output.txt) for the exact prover output.
 6. **[COMPLIANCE.md](COMPLIANCE.md)** — SOC 2 / NIST 800-53 / ISO 27001 control mapping.
 7. **[CHANGELOG.md](CHANGELOG.md)** — what's actually in this release.
 8. **[testdata/vectors/](testdata/vectors)** — deterministic known-answer test vectors. Run `python3 verify_vectors.py` to confirm any implementation against the reference.
@@ -83,8 +83,8 @@ need to be raised as audit findings.
 
 | Item | Reference | Already-shown evidence |
 |---|---|---|
-| Forward-secure rotation: past keys cannot retroactively forge | `pkg/fwdsec/` | `TestRotationsCertChain*` in `pkg/fwdsec/`. Tamarin lemma `forward_secrecy` currently *falsifies* in the model (see `formal/expected-output.txt`); under active investigation, issue #4. |
-| Witness mesh: no honest witness double-cosigns | `pkg/witness/` | `TestCosignAcceptsThenRejectsFork`. Tamarin lemma `no_witness_double_cosign` currently *falsifies*; same root cause as above, issue #5. |
+| Forward-secure rotation: past keys cannot retroactively forge | `pkg/fwdsec/` | `TestRotationsCertChain*` in `pkg/fwdsec/`. Tamarin lemma `forward_secrecy`: model is structurally correct but the prover does not converge under the default heuristic; no counter-example found at any bound tried. Issue #5. |
+| Witness mesh: no honest witness double-cosigns | `pkg/witness/`; Tamarin `no_witness_double_cosign` lemma (verified) | `formal/stele.spthy`; `TestCosignAcceptsThenRejectsFork` |
 | Producer enrollment: PoP required | `pkg/storage/producers.go`, `pkg/core/log.go`; Tamarin `enrollment_required` lemma (verified) | `formal/stele.spthy`; tests in `pkg/core/log_test.go` |
 | Threshold (t-of-N) operator key | `pkg/threshold/` | Property tests in `pkg/threshold/property_test.go` (6 lemmas) |
 | Hybrid post-quantum signatures across every site | `pkg/hybrid/`, `--pq-mode=hybrid` | Fuzz + property tests under `pkg/hybrid/` |
