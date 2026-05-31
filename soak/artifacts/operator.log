@@ -1,0 +1,34 @@
+May 30 18:42:30 ip-172-31-29-219 systemd[1]: Started stele-soak-operator.service - stele operator (soak).
+May 31 12:00:35 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: A process of this unit has been killed by the OOM killer.
+May 31 12:00:35 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Main process exited, code=killed, status=9/KILL
+May 31 12:00:35 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Failed with result 'oom-kill'.
+May 31 12:00:36 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Consumed 1h 10min 57.070s CPU time, 4.4M memory peak, 0B memory swap peak.
+May 31 12:00:36 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Scheduled restart job, restart counter is at 1.
+May 31 12:00:36 ip-172-31-29-219 systemd[1]: Started stele-soak-operator.service - stele operator (soak).
+May 31 12:25:41 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Main process exited, code=killed, status=9/KILL
+May 31 12:25:41 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Failed with result 'signal'.
+May 31 12:25:41 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Consumed 2min 33.409s CPU time.
+May 31 12:25:41 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Scheduled restart job, restart counter is at 2.
+May 31 12:25:41 ip-172-31-29-219 systemd[1]: Started stele-soak-operator.service - stele operator (soak).
+May 31 14:15:16 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Main process exited, code=killed, status=9/KILL
+May 31 14:15:16 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Failed with result 'signal'.
+May 31 14:15:16 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Consumed 16min 18.072s CPU time.
+May 31 14:15:16 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Scheduled restart job, restart counter is at 3.
+May 31 14:15:16 ip-172-31-29-219 systemd[1]: Started stele-soak-operator.service - stele operator (soak).
+May 31 14:44:39 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Main process exited, code=killed, status=9/KILL
+May 31 14:44:39 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Failed with result 'signal'.
+May 31 14:44:39 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Consumed 3min 38.554s CPU time.
+May 31 14:44:40 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Scheduled restart job, restart counter is at 4.
+May 31 14:44:40 ip-172-31-29-219 systemd[1]: Started stele-soak-operator.service - stele operator (soak).
+May 31 15:53:29 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Main process exited, code=killed, status=9/KILL
+May 31 15:53:29 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Failed with result 'signal'.
+May 31 15:53:29 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Consumed 8min 33.846s CPU time.
+May 31 15:53:29 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Scheduled restart job, restart counter is at 5.
+May 31 15:53:29 ip-172-31-29-219 systemd[1]: Started stele-soak-operator.service - stele operator (soak).
+-- Boot b6d64a06077a4286a6c169bd81f4731a --
+May 31 23:12:39 ip-172-31-29-219 systemd[1]: Started stele-soak-operator.service - stele operator (soak).
+May 31 23:13:54 ip-172-31-29-219 systemd[1]: Stopping stele-soak-operator.service - stele operator (soak)...
+May 31 23:13:55 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Main process exited, code=exited, status=1/FAILURE
+May 31 23:13:55 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Failed with result 'exit-code'.
+May 31 23:13:55 ip-172-31-29-219 systemd[1]: Stopped stele-soak-operator.service - stele operator (soak).
+May 31 23:13:55 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Consumed 1min 5.009s CPU time, 1.6G memory peak, 0B memory swap peak.

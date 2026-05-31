@@ -781,29 +781,52 @@ default and the only mode we consider production-shape.
 
 ### 7.2 Sustained soak
 
-**(72-hour soak data lands 2026-06-02. Full numbers and
-`SOAK-72H.md` will be committed at that time and this section
-backfilled. The current placeholder.)**
+We attempted a 72-hour single-host soak against v0.1.3 on AWS
+`c7i.large` (2 vCPU / 4 GB RAM) at 500 RPS target. The full
+report is at `SOAK-72H.md` in the repository; we summarise
+honestly here. **The soak did not complete the planned 72 hours,
+and the reason is itself a useful finding.**
 
-A 72-hour soak at 500 RPS / 16 producers / 256-byte payloads is
-in flight at the time of writing on a `c7i.large` instance in
-us-east-1. The orchestration (`soak/cloud-init.yaml`,
-`soak/stele-soak-*`) is checked in and reproducible. The expected
-shape:
+The operator ran cleanly for the first ~17 hours, sustaining
+~250 RPS (the target was 500 RPS; the loadgen settled lower for
+reasons we believe are loadgen-side and not operator-side, but
+have not confirmed). Tree size grew to 2.6 M entries. The
+operator's resident-set size grew roughly linearly with tree
+size, reaching ~3.4 GB at the 17-hour mark on a 4 GB host. The
+Linux OOM killer took the operator out shortly thereafter; the
+systemd `Restart=always` policy triggered a crash-loop of
+restart-grow-OOM-repeat. Five OOM kills are visible in the
+host kernel log before we terminated the run.
 
-- ~129.6 M envelope appends total
-- BadgerDB on-disk footprint: ~50 GB (raw entries) + ~15 GB
-  (Merkle layer + indexes)
-- /readyz remaining at 200 throughout
-- Tripwire firing zero times (would indicate disk-resident
-  tampering; not expected on a clean VM)
-- Three witnesses cosigning every checkpoint, with cross-
-  attestation lag <30s
+What is interesting for an honest evaluation:
 
-We discuss the actual numbers on commit. The early-life numbers
-at the time of submission (1,778 entries logged after the first
-~3 minutes, all services active, `/readyz` 200) are consistent
-with these projections.
+- **No correctness failure.** BadgerDB persisted entries across
+  every restart. `readyz` returned 200 in every snapshot
+  (including post-OOM snapshots, taken in the brief
+  "fresh-after-restart" window before the next OOM).
+- **Tripwire and honeypot fires: 0.** No disk-resident tampering
+  was observable, even under crash-loop pressure.
+- **Witness mesh kept up cleanly** for every checkpoint that
+  was minted in the clean window.
+
+What we now know that we didn't:
+
+- Single-node operator memory growth is approximately linear in
+  tree size up to ~2 GB RSS, with three identified causes:
+  (1) an unbounded replay-dedup table, (2) an overly-generous
+  Merkle-layer hash cache, (3) BadgerDB's value cache. None are
+  currently tuneable; all should be.
+- A 4 GB host is undersized for any deployment that will hold
+  more than ~1.5 M entries on a sustained basis. We will revise
+  the README's pilot-recipe sizing guidance and revisit the soak
+  on a 16 GB instance after the v0.1.4 tunable-defaults pass
+  (issue #8).
+
+The honest summary: **the soak earned its $2.40 of AWS compute
+by surfacing a sizing issue we would have otherwise discovered
+in production.** The protocol is sound; the implementation
+defaults are not yet right for sustained long-running deployments
+without explicit sizing guidance.
 
 ### 7.3 Chaos coverage
 

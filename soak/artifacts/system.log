@@ -1,0 +1,500 @@
+May 31 23:12:40 ip-172-31-29-219 systemd[1]: Starting udisks2.service - Disk Manager...
+May 31 23:12:40 ip-172-31-29-219 systemd[1]: Started dbus.service - D-Bus System Message Bus.
+May 31 23:12:40 ip-172-31-29-219 systemd[1]: e2scrub_reap.service: Deactivated successfully.
+May 31 23:12:40 ip-172-31-29-219 systemd[1]: Finished e2scrub_reap.service - Remove Stale Online ext4 Metadata Check Snapshots.
+May 31 23:12:40 ip-172-31-29-219 systemd[1]: nvmf-autoconnect.service: Deactivated successfully.
+May 31 23:12:40 ip-172-31-29-219 systemd[1]: Finished nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot.
+May 31 23:12:40 ip-172-31-29-219 systemd[1]: Finished sysstat.service - Resets System Activity Logs.
+May 31 23:12:40 ip-172-31-29-219 udisksd[636]: udisks daemon version 2.10.1 starting
+May 31 23:12:40 ip-172-31-29-219 dbus-daemon[559]: [system] Successfully activated service 'org.freedesktop.systemd1'
+May 31 23:12:40 ip-172-31-29-219 systemd[1]: Reloading requested from client PID 642 ('systemctl') (unit stele-soak.service)...
+May 31 23:12:40 ip-172-31-29-219 systemd[1]: Reloading...
+May 31 23:12:40 ip-172-31-29-219 kernel: kauditd_printk_skb: 112 callbacks suppressed
+May 31 23:12:40 ip-172-31-29-219 kernel: audit: type=1400 audit(1780269160.191:123): apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="rsyslogd" pid=607 comm="apparmor_parser"
+May 31 23:12:40 ip-172-31-29-219 networkd-dispatcher[567]: No valid path found for iwconfig
+May 31 23:12:40 ip-172-31-29-219 networkd-dispatcher[567]: No valid path found for iw
+May 31 23:12:40 ip-172-31-29-219 dbus-daemon[559]: [system] Activating via systemd: service name='org.freedesktop.PolicyKit1' unit='polkit.service' requested by ':1.3' (uid=0 pid=636 comm="/usr/libexec/udisks2/udisksd" label="unconfined")
+May 31 23:12:40 ip-172-31-29-219 systemd-logind[632]: New seat seat0.
+May 31 23:12:40 ip-172-31-29-219 systemd-logind[632]: Watching system buttons on /dev/input/event0 (Power Button)
+May 31 23:12:40 ip-172-31-29-219 systemd-logind[632]: Watching system buttons on /dev/input/event1 (Sleep Button)
+May 31 23:12:40 ip-172-31-29-219 systemd-logind[632]: Watching system buttons on /dev/input/event2 (AT Translated Set 2 keyboard)
+May 31 23:12:40 ip-172-31-29-219 chronyd[724]: chronyd version 4.5 starting (+CMDMON +NTP +REFCLOCK +RTC +PRIVDROP +SCFILTER +SIGND +ASYNCDNS +NTS +SECHASH +IPV6 -DEBUG)
+May 31 23:12:40 ip-172-31-29-219 chronyd[724]: Loaded 0 symmetric keys
+May 31 23:12:40 ip-172-31-29-219 chronyd[724]: Frequency -1.579 +/- 0.007 ppm read from /var/lib/chrony/chrony.drift
+May 31 23:12:40 ip-172-31-29-219 chronyd[724]: Using right/UTC timezone to obtain leap second data
+May 31 23:12:40 ip-172-31-29-219 chronyd[724]: Loaded seccomp filter (level 1)
+May 31 23:12:40 ip-172-31-29-219 polkitd[571]: Started polkitd version 124
+May 31 23:12:40 ip-172-31-29-219 polkitd[571]: Loading rules from directory /etc/polkit-1/rules.d
+May 31 23:12:40 ip-172-31-29-219 polkitd[571]: Loading rules from directory /usr/share/polkit-1/rules.d
+May 31 23:12:40 ip-172-31-29-219 polkitd[571]: Finished loading, compiling and executing 6 rules
+May 31 23:12:40 ip-172-31-29-219 dbus-daemon[559]: [system] Successfully activated service 'org.freedesktop.PolicyKit1'
+May 31 23:12:40 ip-172-31-29-219 polkitd[571]: Acquired the name org.freedesktop.PolicyKit1 on the system bus
+May 31 23:12:40 ip-172-31-29-219 snapd[582]: overlord.go:309: Acquiring state lock file
+May 31 23:12:40 ip-172-31-29-219 snapd[582]: overlord.go:314: Acquired state lock file
+May 31 23:12:40 ip-172-31-29-219 udisksd[636]: Acquired the name org.freedesktop.UDisks2 on the system message bus
+May 31 23:12:40 ip-172-31-29-219 snapd[582]: daemon.go:276: started snapd/2.75.2+ubuntu24.04 (series 16; classic) ubuntu/24.04 (amd64) linux/6.17.0-1017-aws.
+May 31 23:12:40 ip-172-31-29-219 kernel: loop3: detected capacity change from 0 to 8
+May 31 23:12:40 ip-172-31-29-219 snapd[582]: daemon.go:370: adjusting startup timeout by 45s (pessimistic estimate of 30s plus 5s per snap)
+May 31 23:12:40 ip-172-31-29-219 snapd[582]: backends.go:70: AppArmor status: apparmor is enabled and all features are available
+May 31 23:12:40 ip-172-31-29-219 snapd[582]: backend.go:145: reloading profiles for snap-confine
+May 31 23:12:40 ip-172-31-29-219 kernel: audit: type=1400 audit(1780269160.963:124): apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="/usr/lib/snapd/snap-confine" pid=880 comm="apparmor_parser"
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Reloading finished in 851 ms.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Started systemd-logind.service - User Login Management.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Started networkd-dispatcher.service - Dispatcher daemon for systemd-networkd.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Started chrony.service - chrony, an NTP client/server.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: ec2-instance-connect-harvest-hostkeys.service: Deactivated successfully.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Finished ec2-instance-connect-harvest-hostkeys.service - EC2 Instance Connect Host Key Harvesting.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: prometheus-node-exporter-nvme.service: Deactivated successfully.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Finished prometheus-node-exporter-nvme.service - Collect NVMe metrics for prometheus-node-exporter.
+May 31 23:12:41 ip-172-31-29-219 cloud-init[907]: Cloud-init v. 25.3-0ubuntu1~24.04.1 running 'modules:config' at Sun, 31 May 2026 23:12:41 +0000. Up 9.47 seconds.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: grub-common.service: Deactivated successfully.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Finished grub-common.service - Record successful boot for GRUB.
+May 31 23:12:41 ip-172-31-29-219 snapd[582]: standby.go:95: will consider standby after: 5s
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Started snapd.service - Snap Daemon.
+May 31 23:12:41 ip-172-31-29-219 dbus-daemon[559]: [system] Activating via systemd: service name='org.freedesktop.timedate1' unit='dbus-org.freedesktop.timedate1.service' requested by ':1.9' (uid=0 pid=582 comm="/usr/lib/snapd/snapd" label="unconfined")
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Reloading requested from client PID 895 ('systemctl') (unit stele-soak.service)...
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Reloading...
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.263Z caller=node_exporter.go:192 level=info msg="Starting node_exporter" version="(version=1.7.0, branch=debian/sid, revision=1.7.0-1ubuntu0.3)"
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.264Z caller=node_exporter.go:193 level=info msg="Build context" build_context="(go=go1.22.2, platform=linux/amd64, user=team+pkg-go@tracker.debian.org, date=20250721-00:45:45, tags=unknown)"
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.266Z caller=filesystem_common.go:111 level=info collector=filesystem msg="Parsed flag --collector.filesystem.mount-points-exclude" flag=^/(dev|proc|run|sys|mnt|media|var/lib/docker/.+|var/lib/containers/storage/.+)($|/)
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.266Z caller=filesystem_common.go:113 level=info collector=filesystem msg="Parsed flag --collector.filesystem.fs-types-exclude" flag=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs)$
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.266Z caller=netdev_common.go:61 level=info collector=netdev msg="Parsed flag --collector.netdev.device-exclude" flag=^lo$
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.266Z caller=systemd_linux.go:134 level=info collector=systemd msg="Parsed flag --collector.systemd.unit-include" flag=.+
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.266Z caller=systemd_linux.go:136 level=info collector=systemd msg="Parsed flag --collector.systemd.unit-exclude" flag=.+\.(automount|device|mount|scope|slice|target)
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.266Z caller=diskstats_common.go:111 level=info collector=diskstats msg="Parsed flag --collector.diskstats.device-exclude" flag=^(ram|loop|fd|(h|s|v|xv)d[a-z]|nvme\d+n\d+p)\d+$
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:110 level=info msg="Enabled collectors"
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=arp
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=bcache
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=bonding
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=btrfs
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=conntrack
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=cpu
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=cpufreq
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=diskstats
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=dmi
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=edac
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=entropy
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=fibrechannel
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=filefd
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=filesystem
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=hwmon
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=infiniband
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=ipvs
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=loadavg
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=mdadm
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=meminfo
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=netclass
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=netdev
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=netstat
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=nfs
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=nfsd
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=nvme
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=os
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=powersupplyclass
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=pressure
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=rapl
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=schedstat
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=selinux
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=sockstat
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=softnet
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=stat
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=systemd
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=tapestats
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=textfile
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=thermal_zone
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=time
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=timex
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=udp_queues
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=uname
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=vmstat
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=xfs
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.267Z caller=node_exporter.go:117 level=info collector=zfs
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.277Z caller=tls_config.go:313 level=info msg="Listening on" address=[::]:9100
+May 31 23:12:41 ip-172-31-29-219 prometheus-node-exporter[574]: ts=2026-05-31T23:12:41.277Z caller=tls_config.go:316 level=info msg="TLS is disabled." http2=false address=[::]:9100
+May 31 23:12:41 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: Error occurred fetching the seelog config file path:  open /etc/amazon/ssm/seelog.xml: no such file or directory
+May 31 23:12:41 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: Initializing new seelog logger
+May 31 23:12:41 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: New Seelog Logger Creation Complete
+May 31 23:12:41 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.5778 WARN Error adding the directory '/etc/amazon/ssm' to watcher: no such file or directory
+May 31 23:12:41 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.5778 INFO Proxy environment variables:
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Reloading finished in 509 ms.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Finished cloud-config.service - Cloud-init: Config Stage.
+May 31 23:12:41 ip-172-31-29-219 rsyslogd[896]: imuxsock: Acquired UNIX socket '/run/systemd/journal/syslog' (fd 3) from systemd.  [v8.2312.0]
+May 31 23:12:41 ip-172-31-29-219 rsyslogd[896]: rsyslogd's groupid changed to 102
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Started rsyslog.service - System Logging Service.
+May 31 23:12:41 ip-172-31-29-219 rsyslogd[896]: rsyslogd's userid changed to 102
+May 31 23:12:41 ip-172-31-29-219 rsyslogd[896]: [origin software="rsyslogd" swVersion="8.2312.0" x-pid="896" x-info="https://www.rsyslog.com"] start
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Started udisks2.service - Disk Manager.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Started polkit.service - Authorization Manager.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Reached target remote-fs-pre.target - Preparation for Remote File Systems.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Reached target remote-fs.target - Remote File Systems.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Reached target time-sync.target - System Time Synchronized.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Started apt-daily.timer - Daily apt download activities.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Started apt-daily-upgrade.timer - Daily apt upgrade and clean activities.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Started dpkg-db-backup.timer - Daily dpkg database backup timer.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Started e2scrub_all.timer - Periodic ext4 Online Metadata Check for All Filesystems.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Started fstrim.timer - Discard unused filesystem blocks once a week.
+May 31 23:12:41 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.5779 INFO https_proxy:
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Started fwupd-refresh.timer - Refresh fwupd metadata regularly.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Started logrotate.timer - Daily rotation of log files.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Started man-db.timer - Daily man-db regeneration.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Started motd-news.timer - Message of the Day.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: snapd.snap-repair.timer - Timer to automatically fetch and run repair assertions was skipped because no trigger condition checks were met.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Started sysstat-collect.timer - Run system activity accounting tool every 10 minutes.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Started sysstat-summary.timer - Generate summary of yesterday's process accounting.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Started update-notifier-motd.timer - Check to see whether there is a new version of Ubuntu available.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Reached target timers.target - Timer Units.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Starting ModemManager.service - Modem Manager...
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Starting apport.service - automatic crash report generation...
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Started cron.service - Regular background program processing daemon.
+May 31 23:12:41 ip-172-31-29-219 (cron)[968]: cron.service: Referenced but unset environment variable evaluates to an empty string: EXTRA_OPTS
+May 31 23:12:41 ip-172-31-29-219 cron[968]: (CRON) INFO (pidfile fd = 3)
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Starting grub-initrd-fallback.service - GRUB failed boot detection...
+May 31 23:12:41 ip-172-31-29-219 cron[968]: (CRON) INFO (Running @reboot jobs)
+May 31 23:12:41 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.5779 INFO http_proxy:
+May 31 23:12:41 ip-172-31-29-219 ModemManager[966]: <msg> ModemManager (version 1.23.4) starting in system bus...
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Starting hibinit-agent.service - EC2 instance hibernation setup agent...
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Starting openipmi.service - LSB: OpenIPMI Driver init script...
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Started prometheus.service - Monitoring system and time series database.
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Starting ssh.service - OpenBSD Secure Shell server...
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: Starting systemd-hostnamed.service - Hostname Service...
+May 31 23:12:41 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.5779 INFO no_proxy:
+May 31 23:12:41 ip-172-31-29-219 systemd[1]: systemd-pcrphase.service - TPM2 PCR Barrier (User) was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Starting systemd-timedated.service - Time & Date Service...
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Starting systemd-user-sessions.service - Permit User Sessions...
+May 31 23:12:42 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.5779 INFO Checking if agent identity type OnPrem can be assumed
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Started unattended-upgrades.service - Unattended Upgrades Shutdown.
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Finished systemd-user-sessions.service - Permit User Sessions.
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: grub-initrd-fallback.service: Deactivated successfully.
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Finished grub-initrd-fallback.service - GRUB failed boot detection.
+May 31 23:12:42 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.5790 INFO Checking if agent identity type EC2 can be assumed
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Started ModemManager.service - Modem Manager.
+May 31 23:12:42 ip-172-31-29-219 dbus-daemon[559]: [system] Successfully activated service 'org.freedesktop.hostname1'
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Started systemd-hostnamed.service - Hostname Service.
+May 31 23:12:42 ip-172-31-29-219 dbus-daemon[559]: [system] Successfully activated service 'org.freedesktop.timedate1'
+May 31 23:12:42 ip-172-31-29-219 sshd[988]: Server listening on 0.0.0.0 port 22.
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Started systemd-timedated.service - Time & Date Service.
+May 31 23:12:42 ip-172-31-29-219 openipmi[976]:  * Starting ipmi drivers
+May 31 23:12:42 ip-172-31-29-219 sshd[988]: Server listening on :: port 22.
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Started ssh.service - OpenBSD Secure Shell server.
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Finished snapd.seeded.service - Wait until snapd is fully seeded.
+May 31 23:12:42 ip-172-31-29-219 kernel: IPMI message handler: version 39.2
+May 31 23:12:42 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.6976 INFO Agent will take identity from EC2
+May 31 23:12:42 ip-172-31-29-219 kernel: ipmi device interface
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Starting plymouth-quit-wait.service - Hold until boot process finishes up...
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Starting plymouth-quit.service - Terminate Plymouth Boot Screen...
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: snapd.autoimport.service - Auto import assertions from block devices was skipped because no trigger condition checks were met.
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Finished plymouth-quit-wait.service - Hold until boot process finishes up.
+May 31 23:12:42 ip-172-31-29-219 kernel: ipmi_si: IPMI System Interface driver
+May 31 23:12:42 ip-172-31-29-219 kernel: ipmi_si: Unable to find any System Interface(s)
+May 31 23:12:42 ip-172-31-29-219 systemd-hostnamed[983]: Hostname set to <ip-172-31-29-219> (static)
+May 31 23:12:42 ip-172-31-29-219 openipmi[976]:    ...fail!
+May 31 23:12:42 ip-172-31-29-219 openipmi[976]:    ...done.
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Started serial-getty@ttyS0.service - Serial Getty on ttyS0.
+May 31 23:12:42 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.6990 INFO Telemetry initialized
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Starting setvtrgb.service - Set console scheme...
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: openipmi.service: Control process exited, code=exited, status=1/FAILURE
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: openipmi.service: Failed with result 'exit-code'.
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Failed to start openipmi.service - LSB: OpenIPMI Driver init script.
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Finished plymouth-quit.service - Terminate Plymouth Boot Screen.
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Finished setvtrgb.service - Set console scheme.
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Created slice system-getty.slice - Slice /system/getty.
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Started getty@tty1.service - Getty on tty1.
+May 31 23:12:42 ip-172-31-29-219 hibinit-agent[971]: Effective config: {'log_to_syslog': True, 'log_to_stderr': True, 'mkswap': 'mkswap {swapfile}', 'swapon': 'swapon {swapfile}', 'swapoff': 'swapoff {swapfile}', 'touch_swap': False, 'grub_update': True, 'swap_percentage': 100, 'swap_mb': 4000, 'state_dir': '/var/lib/hibinit-agent'}
+May 31 23:12:42 ip-172-31-29-219 hibinit-agent[971]: Effective config: {'log_to_syslog': True, 'log_to_stderr': True, 'mkswap': 'mkswap {swapfile}', 'swapon': 'swapon {swapfile}', 'swapoff': 'swapoff {swapfile}', 'touch_swap': False, 'grub_update': True, 'swap_percentage': 100, 'swap_mb': 4000, 'state_dir': '/var/lib/hibinit-agent'}
+May 31 23:12:42 ip-172-31-29-219 hibinit-agent[971]: Requesting new IMDSv2 token.
+May 31 23:12:42 ip-172-31-29-219 hibinit-agent[971]: Requesting new IMDSv2 token.
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Reached target getty.target - Login Prompts.
+May 31 23:12:42 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.7056 INFO [amazon-ssm-agent] amazon-ssm-agent - v3.3.4121.0
+May 31 23:12:42 ip-172-31-29-219 hibinit-agent[971]: Instance Launch has not enabled Hibernation Configured Flag. hibinit-agent exiting!!
+May 31 23:12:42 ip-172-31-29-219 hibinit-agent[971]: Instance Launch has not enabled Hibernation Configured Flag. hibinit-agent exiting!!
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Finished apport.service - automatic crash report generation.
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: hibinit-agent.service: Deactivated successfully.
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Started hibinit-agent.service - EC2 instance hibernation setup agent.
+May 31 23:12:42 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.7057 INFO [amazon-ssm-agent] OS: linux, Arch: amd64
+May 31 23:12:42 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.7057 INFO [amazon-ssm-agent] Starting Core Agent
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.705Z caller=main.go:525 level=info msg="No time or size retention was set so using the default time retention" duration=15d
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.707Z caller=main.go:563 level=info msg="Starting Prometheus Server" mode=server version="(version=2.45.3+ds, branch=debian/sid, revision=2.45.3+ds-2ubuntu0.3)"
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.707Z caller=main.go:568 level=info build_context="(go=go1.22.2, platform=linux/amd64, user=team+pkg-go@tracker.debian.org, date=20250721-00:51:10, tags=unknown)"
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.707Z caller=main.go:569 level=info host_details="(Linux 6.17.0-1017-aws #17~24.04.1-Ubuntu SMP Tue May 26 21:30:32 UTC 2026 x86_64 ip-172-31-29-219 (none))"
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.707Z caller=main.go:570 level=info fd_limits="(soft=524288, hard=524288)"
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.707Z caller=main.go:571 level=info vm_limits="(soft=unlimited, hard=unlimited)"
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.717Z caller=web.go:504 level=info component=web msg="Start listening for connections" address=0.0.0.0:9090
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.719Z caller=main.go:1004 level=info msg="Starting TSDB ..."
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.722Z caller=tls_config.go:313 level=info component=web msg="Listening on" address=[::]:9090
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.722Z caller=tls_config.go:316 level=info component=web msg="TLS is disabled." http2=false address=[::]:9090
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.722Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1780166557279 maxt=1780171200000 ulid=01KSXDDMJADPQ5VVG2DHZZAE8M
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.723Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1780171207279 maxt=1780178400000 ulid=01KSYYGM0P3XBQZE88HRRD3R94
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.724Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1780228836141 maxt=1780236000000 ulid=01KSZ8Z5Z0A0PJS71KB2ZHCRTP
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.748Z caller=head.go:595 level=info component=tsdb msg="Replaying on-disk memory mappable chunks if any"
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.751Z caller=head.go:676 level=info component=tsdb msg="On-disk memory mappable chunks replay completed" duration=2.823078ms
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.751Z caller=head.go:684 level=info component=tsdb msg="Replaying WAL, this may take a while"
+May 31 23:12:42 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.7057 INFO [amazon-ssm-agent] Registrar detected. Attempting registration
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.776Z caller=head.go:720 level=info component=tsdb msg="WAL checkpoint loaded"
+May 31 23:12:42 ip-172-31-29-219 sshd[999]: Accepted publickey for ubuntu from 71.229.148.177 port 55335 ssh2: ED25519 SHA256:8zbhvGu1AcnrB4xPEApLG2dJenbeCn8nLwltAgFlohA
+May 31 23:12:42 ip-172-31-29-219 sshd[999]: pam_unix(sshd:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Created slice user-1000.slice - User Slice of UID 1000.
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.807Z caller=head.go:755 level=info component=tsdb msg="WAL segment loaded" segment=2 maxSegment=5
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Starting user-runtime-dir@1000.service - User Runtime Directory /run/user/1000...
+May 31 23:12:42 ip-172-31-29-219 systemd-logind[632]: New session 1 of user ubuntu.
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Finished user-runtime-dir@1000.service - User Runtime Directory /run/user/1000.
+May 31 23:12:42 ip-172-31-29-219 systemd[1]: Starting user@1000.service - User Manager for UID 1000...
+May 31 23:12:42 ip-172-31-29-219 (systemd)[1034]: pam_unix(systemd-user:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.860Z caller=head.go:755 level=info component=tsdb msg="WAL segment loaded" segment=3 maxSegment=5
+May 31 23:12:42 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.7057 INFO [Registrar] Starting registrar module
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.909Z caller=head.go:755 level=info component=tsdb msg="WAL segment loaded" segment=4 maxSegment=5
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.909Z caller=head.go:755 level=info component=tsdb msg="WAL segment loaded" segment=5 maxSegment=5
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.910Z caller=head.go:792 level=info component=tsdb msg="WAL replay completed" checkpoint_replay_duration=24.996031ms wal_replay_duration=133.47211ms wbl_replay_duration=286ns total_replay_duration=161.507051ms
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.914Z caller=main.go:1025 level=info fs_type=EXT4_SUPER_MAGIC
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.915Z caller=main.go:1028 level=info msg="TSDB started"
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.915Z caller=main.go:1209 level=info msg="Loading configuration file" filename=/etc/prometheus/prometheus.yml
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.921Z caller=main.go:1246 level=info msg="Completed loading of configuration file" filename=/etc/prometheus/prometheus.yml totalDuration=6.031889ms db_storage=1.5µs remote_storage=3.05µs web_handler=589ns query_engine=15.613µs scrape=4.170631ms scrape_sd=57.067µs notify=583.507µs notify_sd=6.375µs rules=2.048µs tracing=11.346µs
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.921Z caller=main.go:989 level=info msg="Server is ready to receive web requests."
+May 31 23:12:42 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:42.921Z caller=manager.go:999 level=info component="rule manager" msg="Starting rule manager..."
+May 31 23:12:42 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.7072 INFO [EC2Identity] Checking disk for registration info
+May 31 23:12:42 ip-172-31-29-219 systemd[1034]: Queued start job for default target default.target.
+May 31 23:12:43 ip-172-31-29-219 systemd-journald[162]: /var/log/journal/ec24709d82c8ebf1d78a25410c034f91/user-1000.journal: Journal file uses a different sequence number ID, rotating.
+May 31 23:12:43 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.7084 INFO [EC2Identity] Registration info found for ec2 instance
+May 31 23:12:43 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.7084 INFO [amazon-ssm-agent] Registration attempted. Resuming core agent startup.
+May 31 23:12:43 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.7085 INFO [CredentialRefresher] credentialRefresher has started
+May 31 23:12:43 ip-172-31-29-219 systemd[1034]: Created slice app.slice - User Application Slice.
+May 31 23:12:43 ip-172-31-29-219 systemd[1034]: Started launchpadlib-cache-clean.timer - Clean up old files in the Launchpadlib cache.
+May 31 23:12:43 ip-172-31-29-219 systemd[1034]: Reached target paths.target - Paths.
+May 31 23:12:43 ip-172-31-29-219 systemd[1034]: Reached target timers.target - Timers.
+May 31 23:12:43 ip-172-31-29-219 systemd[1034]: Starting dbus.socket - D-Bus User Message Bus Socket...
+May 31 23:12:43 ip-172-31-29-219 systemd[1034]: Listening on dirmngr.socket - GnuPG network certificate management daemon.
+May 31 23:12:43 ip-172-31-29-219 systemd[1034]: Listening on gpg-agent-browser.socket - GnuPG cryptographic agent and passphrase cache (access for web browsers).
+May 31 23:12:43 ip-172-31-29-219 systemd[1034]: Listening on gpg-agent-extra.socket - GnuPG cryptographic agent and passphrase cache (restricted).
+May 31 23:12:43 ip-172-31-29-219 systemd[1034]: Starting gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation)...
+May 31 23:12:43 ip-172-31-29-219 systemd[1034]: Listening on gpg-agent.socket - GnuPG cryptographic agent and passphrase cache.
+May 31 23:12:43 ip-172-31-29-219 systemd[1034]: Listening on keyboxd.socket - GnuPG public key management service.
+May 31 23:12:43 ip-172-31-29-219 systemd[1034]: Listening on pk-debconf-helper.socket - debconf communication socket.
+May 31 23:12:43 ip-172-31-29-219 systemd[1034]: Listening on snapd.session-agent.socket - REST API socket for snapd user session agent.
+May 31 23:12:43 ip-172-31-29-219 systemd[1034]: Listening on gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation).
+May 31 23:12:43 ip-172-31-29-219 systemd[1034]: Listening on dbus.socket - D-Bus User Message Bus Socket.
+May 31 23:12:43 ip-172-31-29-219 systemd[1034]: Reached target sockets.target - Sockets.
+May 31 23:12:43 ip-172-31-29-219 systemd[1034]: Reached target basic.target - Basic System.
+May 31 23:12:43 ip-172-31-29-219 systemd[1]: Started user@1000.service - User Manager for UID 1000.
+May 31 23:12:43 ip-172-31-29-219 systemd[1034]: Reached target default.target - Main User Target.
+May 31 23:12:43 ip-172-31-29-219 systemd[1034]: Startup finished in 217ms.
+May 31 23:12:43 ip-172-31-29-219 systemd[1]: Started session-1.scope - Session 1 of User ubuntu.
+May 31 23:12:43 ip-172-31-29-219 systemd[1]: prometheus-node-exporter-apt.service: Deactivated successfully.
+May 31 23:12:43 ip-172-31-29-219 systemd[1]: Finished prometheus-node-exporter-apt.service - Collect apt metrics for prometheus-node-exporter.
+May 31 23:12:43 ip-172-31-29-219 systemd[1]: prometheus-node-exporter-apt.service: Consumed 1.374s CPU time, 95.0M memory peak, 0B memory swap peak.
+May 31 23:12:43 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.7085 INFO [CredentialRefresher] Starting credentials refresher loop
+May 31 23:12:43 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.7100 WARN EC2RoleProvider Failed to connect to Systems Manager with instance profile role credentials. Err: retrieved credentials failed to report to ssm. Error: EC2RoleRequestError: no EC2 instance role found
+May 31 23:12:43 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.7499 ERROR EC2RoleProvider Failed to connect to Systems Manager with SSM role credentials. error calling RequestManagedInstanceRoleToken: AccessDeniedException: Systems Manager's instance management role is not configured for account: 637423312954
+May 31 23:12:43 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]:         status code: 400, request id: 73fa4efa-f167-4fb6-b1a3-4b77041c315a
+May 31 23:12:43 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.7499 ERROR [CredentialRefresher] Retrieve credentials produced error: no valid credentials could be retrieved for ec2 identity. Default Host Management Err: error calling RequestManagedInstanceRoleToken: AccessDeniedException: Systems Manager's instance management role is not configured for account: 637423312954
+May 31 23:12:43 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]:         status code: 400, request id: 73fa4efa-f167-4fb6-b1a3-4b77041c315a
+May 31 23:12:43 ip-172-31-29-219 snapd[582]: snapmgr.go:1661: performing periodic snap downloads cache cleanup
+May 31 23:12:43 ip-172-31-29-219 snapd[582]: snapmgr.go:1671: cannot clean store downloads cache: open /var/lib/snapd/cache: no such file or directory
+May 31 23:12:43 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.7500 INFO [CredentialRefresher] Sleeping for 29m16s before retrying retrieve credentials
+May 31 23:12:43 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]: 2026-05-31 23:12:41.7576 INFO [SerialPort] Write to serial port: SSM Agent unable to acquire credentials: <error>no valid credentials could be retrieved for ec2 identity. Default Host Management Err: error calling RequestManagedInstanceRoleToken: AccessDeniedException: Systems Manager's instance management role is not configured for account: 637423312954
+May 31 23:12:43 ip-172-31-29-219 amazon-ssm-agent.amazon-ssm-agent[578]:         status code: 400, request id: 73fa4efa-f167-4fb6-b1a3-4b77041c315a</error>
+May 31 23:12:44 ip-172-31-29-219 systemd[1]: dmesg.service: Deactivated successfully.
+May 31 23:12:46 ip-172-31-29-219 ModemManager[966]: <msg> [base-manager] couldn't check support for device '/sys/devices/pci0000:24/0000:24:00.0/0000:25:00.0/0000:26:00.0/0000:27:00.0': not supported by any plugin
+May 31 23:12:46 ip-172-31-29-219 systemd[1]: Reloading requested from client PID 1169 ('systemctl') (unit stele-soak.service)...
+May 31 23:12:46 ip-172-31-29-219 systemd[1]: Reloading...
+May 31 23:12:47 ip-172-31-29-219 systemd[1]: Reloading finished in 196 ms.
+May 31 23:12:47 ip-172-31-29-219 chronyd[724]: Selected source 169.254.169.123
+May 31 23:12:47 ip-172-31-29-219 chronyd[724]: System clock wrong by 1.080314 seconds
+May 31 23:12:48 ip-172-31-29-219 chronyd[724]: System clock was stepped by 1.080314 seconds
+May 31 23:12:48 ip-172-31-29-219 systemd-resolved[378]: Clock change detected. Flushing caches.
+May 31 23:12:48 ip-172-31-29-219 chronyd[724]: System clock TAI offset set to 37 seconds
+May 31 23:12:51 ip-172-31-29-219 sshd[1264]: Received disconnect from 71.229.148.177 port 55335:11: disconnected by user
+May 31 23:12:51 ip-172-31-29-219 sshd[1264]: Disconnected from user ubuntu 71.229.148.177 port 55335
+May 31 23:12:51 ip-172-31-29-219 sshd[999]: pam_unix(sshd:session): session closed for user ubuntu
+May 31 23:12:51 ip-172-31-29-219 systemd[1]: session-1.scope: Deactivated successfully.
+May 31 23:12:51 ip-172-31-29-219 systemd-logind[632]: Session 1 logged out. Waiting for processes to exit.
+May 31 23:12:51 ip-172-31-29-219 systemd-logind[632]: Removed session 1.
+May 31 23:12:52 ip-172-31-29-219 stele-soak-setup[1267]: stele: Post "http://127.0.0.1:8080/api/v0/witnesses": dial tcp 127.0.0.1:8080: connect: connection refused
+May 31 23:12:52 ip-172-31-29-219 systemd[1]: stele-soak.service: Control process exited, code=exited, status=1/FAILURE
+May 31 23:12:52 ip-172-31-29-219 systemd[1]: stele-soak.service: Failed with result 'exit-code'.
+May 31 23:12:52 ip-172-31-29-219 systemd[1]: Failed to start stele-soak.service - stele 72-hour soak driver.
+May 31 23:12:52 ip-172-31-29-219 systemd[1]: Reached target multi-user.target - Multi-User System.
+May 31 23:12:52 ip-172-31-29-219 systemd[1]: Reached target graphical.target - Graphical Interface.
+May 31 23:12:52 ip-172-31-29-219 systemd[1]: Starting cloud-final.service - Cloud-init: Final Stage...
+May 31 23:12:52 ip-172-31-29-219 systemd[1]: Starting systemd-update-utmp-runlevel.service - Record Runlevel Change in UTMP...
+May 31 23:12:52 ip-172-31-29-219 systemd[1]: systemd-update-utmp-runlevel.service: Deactivated successfully.
+May 31 23:12:52 ip-172-31-29-219 systemd[1]: Finished systemd-update-utmp-runlevel.service - Record Runlevel Change in UTMP.
+May 31 23:12:52 ip-172-31-29-219 cloud-init[1279]: Cloud-init v. 25.3-0ubuntu1~24.04.1 running 'modules:final' at Sun, 31 May 2026 23:12:52 +0000. Up 19.74 seconds.
+May 31 23:12:52 ip-172-31-29-219 cloud-init[1279]: Cloud-init v. 25.3-0ubuntu1~24.04.1 finished at Sun, 31 May 2026 23:12:52 +0000. Datasource DataSourceEc2Local.  Up 19.94 seconds
+May 31 23:12:52 ip-172-31-29-219 systemd[1]: Finished cloud-final.service - Cloud-init: Final Stage.
+May 31 23:12:52 ip-172-31-29-219 systemd[1]: Reached target cloud-init.target - Cloud-init target.
+May 31 23:12:52 ip-172-31-29-219 systemd[1]: Startup finished in 1.628s (kernel) + 18.424s (userspace) = 20.053s.
+May 31 23:12:52 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:52.813Z caller=compact.go:523 level=info component=tsdb msg="write block" mint=1780236000000 maxt=1780243200000 ulid=01KT04ZHJSWF8MG5MVY14RN6P6 duration=499.755681ms
+May 31 23:12:52 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:52.815Z caller=head.go:1293 level=info component=tsdb msg="Head GC completed" caller=truncateMemory duration=1.866542ms
+May 31 23:12:53 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:53.237Z caller=compact.go:523 level=info component=tsdb msg="write block" mint=1780243207279 maxt=1780250400000 ulid=01KT04ZJ2FQ4BSK5MGSNAYDHGY duration=421.552669ms
+May 31 23:12:53 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:53.242Z caller=head.go:1293 level=info component=tsdb msg="Head GC completed" caller=truncateMemory duration=5.004138ms
+May 31 23:12:53 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:53.620Z caller=compact.go:523 level=info component=tsdb msg="write block" mint=1780250909687 maxt=1780257600000 ulid=01KT04ZJFTMNPE5TS8T2DEBR7J duration=377.747159ms
+May 31 23:12:53 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:53.621Z caller=head.go:1293 level=info component=tsdb msg="Head GC completed" caller=truncateMemory duration=841.242µs
+May 31 23:12:53 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:53.621Z caller=checkpoint.go:100 level=info component=tsdb msg="Creating checkpoint" from_segment=2 to_segment=3 mint=1780257600000
+May 31 23:12:53 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:53.711Z caller=head.go:1261 level=info component=tsdb msg="WAL checkpoint complete" first=2 last=3 duration=89.302327ms
+May 31 23:12:54 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:54.242Z caller=compact.go:464 level=info component=tsdb msg="compact blocks" count=2 mint=1780166557279 maxt=1780178400000 ulid=01KT04ZJYFD4WJT99CHRF2QWGN sources="[01KSXDDMJADPQ5VVG2DHZZAE8M 01KSYYGM0P3XBQZE88HRRD3R94]" duration=531.284368ms
+May 31 23:12:54 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:54.267Z caller=db.go:1617 level=info component=tsdb msg="Deleting obsolete block" block=01KSXDDMJADPQ5VVG2DHZZAE8M
+May 31 23:12:54 ip-172-31-29-219 prometheus[977]: ts=2026-05-31T23:12:54.282Z caller=db.go:1617 level=info component=tsdb msg="Deleting obsolete block" block=01KSYYGM0P3XBQZE88HRRD3R94
+May 31 23:13:01 ip-172-31-29-219 systemd[1]: Stopping user@1000.service - User Manager for UID 1000...
+May 31 23:13:01 ip-172-31-29-219 systemd[1034]: Activating special unit exit.target...
+May 31 23:13:01 ip-172-31-29-219 systemd[1034]: Stopped target default.target - Main User Target.
+May 31 23:13:01 ip-172-31-29-219 systemd[1034]: Stopped target basic.target - Basic System.
+May 31 23:13:01 ip-172-31-29-219 systemd[1034]: Stopped target paths.target - Paths.
+May 31 23:13:01 ip-172-31-29-219 systemd[1034]: Stopped target sockets.target - Sockets.
+May 31 23:13:01 ip-172-31-29-219 systemd[1034]: Stopped target timers.target - Timers.
+May 31 23:13:01 ip-172-31-29-219 systemd[1034]: Stopped launchpadlib-cache-clean.timer - Clean up old files in the Launchpadlib cache.
+May 31 23:13:01 ip-172-31-29-219 systemd[1034]: Closed dbus.socket - D-Bus User Message Bus Socket.
+May 31 23:13:01 ip-172-31-29-219 systemd[1034]: Closed dirmngr.socket - GnuPG network certificate management daemon.
+May 31 23:13:01 ip-172-31-29-219 systemd[1034]: Closed gpg-agent-browser.socket - GnuPG cryptographic agent and passphrase cache (access for web browsers).
+May 31 23:13:01 ip-172-31-29-219 systemd[1034]: Closed gpg-agent-extra.socket - GnuPG cryptographic agent and passphrase cache (restricted).
+May 31 23:13:01 ip-172-31-29-219 systemd[1034]: Stopping gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation)...
+May 31 23:13:01 ip-172-31-29-219 systemd[1034]: Closed gpg-agent.socket - GnuPG cryptographic agent and passphrase cache.
+May 31 23:13:01 ip-172-31-29-219 systemd[1034]: Closed keyboxd.socket - GnuPG public key management service.
+May 31 23:13:01 ip-172-31-29-219 systemd[1034]: Closed pk-debconf-helper.socket - debconf communication socket.
+May 31 23:13:01 ip-172-31-29-219 systemd[1034]: Closed snapd.session-agent.socket - REST API socket for snapd user session agent.
+May 31 23:13:02 ip-172-31-29-219 systemd[1034]: Closed gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation).
+May 31 23:13:02 ip-172-31-29-219 systemd[1034]: Removed slice app.slice - User Application Slice.
+May 31 23:13:02 ip-172-31-29-219 systemd[1034]: Reached target shutdown.target - Shutdown.
+May 31 23:13:02 ip-172-31-29-219 systemd[1034]: Finished systemd-exit.service - Exit the Session.
+May 31 23:13:02 ip-172-31-29-219 systemd[1034]: Reached target exit.target - Exit the Session.
+May 31 23:13:02 ip-172-31-29-219 systemd[1]: user@1000.service: Deactivated successfully.
+May 31 23:13:02 ip-172-31-29-219 systemd[1]: Stopped user@1000.service - User Manager for UID 1000.
+May 31 23:13:02 ip-172-31-29-219 systemd[1]: Stopping user-runtime-dir@1000.service - User Runtime Directory /run/user/1000...
+May 31 23:13:02 ip-172-31-29-219 systemd[1]: run-user-1000.mount: Deactivated successfully.
+May 31 23:13:02 ip-172-31-29-219 systemd[1]: user-runtime-dir@1000.service: Deactivated successfully.
+May 31 23:13:02 ip-172-31-29-219 systemd[1]: Stopped user-runtime-dir@1000.service - User Runtime Directory /run/user/1000.
+May 31 23:13:02 ip-172-31-29-219 systemd[1]: Removed slice user-1000.slice - User Slice of UID 1000.
+May 31 23:13:02 ip-172-31-29-219 systemd[1]: user-1000.slice: Consumed 1.039s CPU time, 43.9M memory peak, 0B memory swap peak.
+May 31 23:13:05 ip-172-31-29-219 systemd[1]: systemd-fsckd.service: Deactivated successfully.
+May 31 23:13:13 ip-172-31-29-219 systemd[1]: systemd-hostnamed.service: Deactivated successfully.
+May 31 23:13:15 ip-172-31-29-219 systemd[1]: systemd-timedated.service: Deactivated successfully.
+May 31 23:13:54 ip-172-31-29-219 sshd[1307]: Accepted publickey for ubuntu from 71.229.148.177 port 55421 ssh2: ED25519 SHA256:8zbhvGu1AcnrB4xPEApLG2dJenbeCn8nLwltAgFlohA
+May 31 23:13:54 ip-172-31-29-219 sshd[1307]: pam_unix(sshd:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+May 31 23:13:54 ip-172-31-29-219 systemd-logind[632]: New session 3 of user ubuntu.
+May 31 23:13:54 ip-172-31-29-219 systemd[1]: Created slice user-1000.slice - User Slice of UID 1000.
+May 31 23:13:54 ip-172-31-29-219 systemd[1]: Starting user-runtime-dir@1000.service - User Runtime Directory /run/user/1000...
+May 31 23:13:54 ip-172-31-29-219 systemd[1]: Finished user-runtime-dir@1000.service - User Runtime Directory /run/user/1000.
+May 31 23:13:54 ip-172-31-29-219 systemd[1]: Starting user@1000.service - User Manager for UID 1000...
+May 31 23:13:54 ip-172-31-29-219 (systemd)[1312]: pam_unix(systemd-user:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+May 31 23:13:54 ip-172-31-29-219 systemd[1312]: Queued start job for default target default.target.
+May 31 23:13:54 ip-172-31-29-219 systemd[1312]: Created slice app.slice - User Application Slice.
+May 31 23:13:54 ip-172-31-29-219 systemd[1312]: Started launchpadlib-cache-clean.timer - Clean up old files in the Launchpadlib cache.
+May 31 23:13:54 ip-172-31-29-219 systemd[1312]: Reached target paths.target - Paths.
+May 31 23:13:54 ip-172-31-29-219 systemd[1312]: Reached target timers.target - Timers.
+May 31 23:13:54 ip-172-31-29-219 systemd[1312]: Starting dbus.socket - D-Bus User Message Bus Socket...
+May 31 23:13:54 ip-172-31-29-219 systemd[1312]: Listening on dirmngr.socket - GnuPG network certificate management daemon.
+May 31 23:13:54 ip-172-31-29-219 systemd[1312]: Listening on gpg-agent-browser.socket - GnuPG cryptographic agent and passphrase cache (access for web browsers).
+May 31 23:13:54 ip-172-31-29-219 systemd[1312]: Listening on gpg-agent-extra.socket - GnuPG cryptographic agent and passphrase cache (restricted).
+May 31 23:13:54 ip-172-31-29-219 systemd[1312]: Starting gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation)...
+May 31 23:13:54 ip-172-31-29-219 systemd[1312]: Listening on gpg-agent.socket - GnuPG cryptographic agent and passphrase cache.
+May 31 23:13:54 ip-172-31-29-219 systemd[1312]: Listening on keyboxd.socket - GnuPG public key management service.
+May 31 23:13:54 ip-172-31-29-219 systemd[1312]: Listening on pk-debconf-helper.socket - debconf communication socket.
+May 31 23:13:54 ip-172-31-29-219 systemd[1312]: Listening on snapd.session-agent.socket - REST API socket for snapd user session agent.
+May 31 23:13:54 ip-172-31-29-219 systemd[1312]: Listening on dbus.socket - D-Bus User Message Bus Socket.
+May 31 23:13:54 ip-172-31-29-219 systemd[1312]: Listening on gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation).
+May 31 23:13:54 ip-172-31-29-219 systemd[1312]: Reached target sockets.target - Sockets.
+May 31 23:13:54 ip-172-31-29-219 systemd[1312]: Reached target basic.target - Basic System.
+May 31 23:13:54 ip-172-31-29-219 systemd[1]: Started user@1000.service - User Manager for UID 1000.
+May 31 23:13:54 ip-172-31-29-219 systemd[1312]: Reached target default.target - Main User Target.
+May 31 23:13:54 ip-172-31-29-219 systemd[1312]: Startup finished in 206ms.
+May 31 23:13:54 ip-172-31-29-219 systemd[1]: Started session-3.scope - Session 3 of User ubuntu.
+May 31 23:13:54 ip-172-31-29-219 sudo[1377]:   ubuntu : PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/systemctl stop stele-soak.service stele-soak-operator.service stele-soak-witness-a.service stele-soak-witness-b.service stele-soak-witness-c.service stele-soak-report.timer
+May 31 23:13:54 ip-172-31-29-219 sudo[1377]: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
+May 31 23:13:54 ip-172-31-29-219 systemd[1]: Stopping stele-soak-witness-a.service - stele witness a (soak)...
+May 31 23:13:54 ip-172-31-29-219 systemd[1]: Stopping stele-soak-witness-b.service - stele witness b (soak)...
+May 31 23:13:54 ip-172-31-29-219 systemd[1]: Stopping stele-soak-witness-c.service - stele witness c (soak)...
+May 31 23:13:54 ip-172-31-29-219 systemd[1]: stele-soak-report.timer: Deactivated successfully.
+May 31 23:13:54 ip-172-31-29-219 systemd[1]: Stopped stele-soak-report.timer - Run stele-soak-snapshot every 30 minutes.
+May 31 23:13:54 ip-172-31-29-219 systemd[1]: stele-soak-witness-a.service: Deactivated successfully.
+May 31 23:13:54 ip-172-31-29-219 systemd[1]: Stopped stele-soak-witness-a.service - stele witness a (soak).
+May 31 23:13:54 ip-172-31-29-219 systemd[1]: stele-soak-witness-b.service: Deactivated successfully.
+May 31 23:13:54 ip-172-31-29-219 systemd[1]: Stopped stele-soak-witness-b.service - stele witness b (soak).
+May 31 23:13:54 ip-172-31-29-219 systemd[1]: stele-soak-witness-c.service: Deactivated successfully.
+May 31 23:13:54 ip-172-31-29-219 systemd[1]: Stopped stele-soak-witness-c.service - stele witness c (soak).
+May 31 23:13:54 ip-172-31-29-219 systemd[1]: Stopping stele-soak-operator.service - stele operator (soak)...
+May 31 23:13:55 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Main process exited, code=exited, status=1/FAILURE
+May 31 23:13:55 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Failed with result 'exit-code'.
+May 31 23:13:55 ip-172-31-29-219 systemd[1]: Stopped stele-soak-operator.service - stele operator (soak).
+May 31 23:13:55 ip-172-31-29-219 systemd[1]: stele-soak-operator.service: Consumed 1min 5.009s CPU time, 1.6G memory peak, 0B memory swap peak.
+May 31 23:13:55 ip-172-31-29-219 sudo[1377]: pam_unix(sudo:session): session closed for user root
+May 31 23:13:55 ip-172-31-29-219 sudo[1380]:   ubuntu : PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/ls -la /var/lib/stele-soak/
+May 31 23:13:55 ip-172-31-29-219 sudo[1380]: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
+May 31 23:13:55 ip-172-31-29-219 sudo[1380]: pam_unix(sudo:session): session closed for user root
+May 31 23:13:55 ip-172-31-29-219 sudo[1382]:   ubuntu : PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/ls -la /var/log/stele-soak.log
+May 31 23:13:55 ip-172-31-29-219 sudo[1382]: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
+May 31 23:13:55 ip-172-31-29-219 sudo[1382]: pam_unix(sudo:session): session closed for user root
+May 31 23:13:55 ip-172-31-29-219 sshd[1375]: Received disconnect from 71.229.148.177 port 55421:11: disconnected by user
+May 31 23:13:55 ip-172-31-29-219 sshd[1375]: Disconnected from user ubuntu 71.229.148.177 port 55421
+May 31 23:13:55 ip-172-31-29-219 sshd[1307]: pam_unix(sshd:session): session closed for user ubuntu
+May 31 23:13:55 ip-172-31-29-219 systemd[1]: session-3.scope: Deactivated successfully.
+May 31 23:13:55 ip-172-31-29-219 systemd-logind[632]: Session 3 logged out. Waiting for processes to exit.
+May 31 23:13:55 ip-172-31-29-219 systemd-logind[632]: Removed session 3.
+May 31 23:14:05 ip-172-31-29-219 systemd[1]: Stopping user@1000.service - User Manager for UID 1000...
+May 31 23:14:05 ip-172-31-29-219 systemd[1312]: Activating special unit exit.target...
+May 31 23:14:05 ip-172-31-29-219 systemd[1312]: Stopped target default.target - Main User Target.
+May 31 23:14:05 ip-172-31-29-219 systemd[1312]: Stopped target basic.target - Basic System.
+May 31 23:14:05 ip-172-31-29-219 systemd[1312]: Stopped target paths.target - Paths.
+May 31 23:14:05 ip-172-31-29-219 systemd[1312]: Stopped target sockets.target - Sockets.
+May 31 23:14:05 ip-172-31-29-219 systemd[1312]: Stopped target timers.target - Timers.
+May 31 23:14:05 ip-172-31-29-219 systemd[1312]: Stopped launchpadlib-cache-clean.timer - Clean up old files in the Launchpadlib cache.
+May 31 23:14:05 ip-172-31-29-219 systemd[1312]: Closed dbus.socket - D-Bus User Message Bus Socket.
+May 31 23:14:05 ip-172-31-29-219 systemd[1312]: Closed dirmngr.socket - GnuPG network certificate management daemon.
+May 31 23:14:05 ip-172-31-29-219 systemd[1312]: Closed gpg-agent-browser.socket - GnuPG cryptographic agent and passphrase cache (access for web browsers).
+May 31 23:14:05 ip-172-31-29-219 systemd[1312]: Closed gpg-agent-extra.socket - GnuPG cryptographic agent and passphrase cache (restricted).
+May 31 23:14:05 ip-172-31-29-219 systemd[1312]: Stopping gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation)...
+May 31 23:14:05 ip-172-31-29-219 systemd[1312]: Closed gpg-agent.socket - GnuPG cryptographic agent and passphrase cache.
+May 31 23:14:05 ip-172-31-29-219 systemd[1312]: Closed keyboxd.socket - GnuPG public key management service.
+May 31 23:14:05 ip-172-31-29-219 systemd[1312]: Closed pk-debconf-helper.socket - debconf communication socket.
+May 31 23:14:05 ip-172-31-29-219 systemd[1312]: Closed snapd.session-agent.socket - REST API socket for snapd user session agent.
+May 31 23:14:05 ip-172-31-29-219 systemd[1312]: Closed gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation).
+May 31 23:14:05 ip-172-31-29-219 systemd[1312]: Removed slice app.slice - User Application Slice.
+May 31 23:14:05 ip-172-31-29-219 systemd[1312]: Reached target shutdown.target - Shutdown.
+May 31 23:14:05 ip-172-31-29-219 systemd[1312]: Finished systemd-exit.service - Exit the Session.
+May 31 23:14:05 ip-172-31-29-219 systemd[1312]: Reached target exit.target - Exit the Session.
+May 31 23:14:05 ip-172-31-29-219 (sd-pam)[1313]: pam_unix(systemd-user:session): session closed for user ubuntu
+May 31 23:14:05 ip-172-31-29-219 systemd[1]: user@1000.service: Deactivated successfully.
+May 31 23:14:05 ip-172-31-29-219 systemd[1]: Stopped user@1000.service - User Manager for UID 1000.
+May 31 23:14:05 ip-172-31-29-219 systemd[1]: Stopping user-runtime-dir@1000.service - User Runtime Directory /run/user/1000...
+May 31 23:14:05 ip-172-31-29-219 systemd[1]: run-user-1000.mount: Deactivated successfully.
+May 31 23:14:05 ip-172-31-29-219 systemd[1]: user-runtime-dir@1000.service: Deactivated successfully.
+May 31 23:14:05 ip-172-31-29-219 systemd[1]: Stopped user-runtime-dir@1000.service - User Runtime Directory /run/user/1000.
+May 31 23:14:05 ip-172-31-29-219 systemd[1]: Removed slice user-1000.slice - User Slice of UID 1000.
+May 31 23:14:09 ip-172-31-29-219 sshd[1392]: Accepted publickey for ubuntu from 71.229.148.177 port 55477 ssh2: ED25519 SHA256:8zbhvGu1AcnrB4xPEApLG2dJenbeCn8nLwltAgFlohA
+May 31 23:14:09 ip-172-31-29-219 sshd[1392]: pam_unix(sshd:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+May 31 23:14:09 ip-172-31-29-219 systemd[1]: Created slice user-1000.slice - User Slice of UID 1000.
+May 31 23:14:09 ip-172-31-29-219 systemd[1]: Starting user-runtime-dir@1000.service - User Runtime Directory /run/user/1000...
+May 31 23:14:09 ip-172-31-29-219 systemd-logind[632]: New session 5 of user ubuntu.
+May 31 23:14:09 ip-172-31-29-219 systemd[1]: Finished user-runtime-dir@1000.service - User Runtime Directory /run/user/1000.
+May 31 23:14:09 ip-172-31-29-219 systemd[1]: Starting user@1000.service - User Manager for UID 1000...
+May 31 23:14:09 ip-172-31-29-219 (systemd)[1397]: pam_unix(systemd-user:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+May 31 23:14:09 ip-172-31-29-219 systemd[1397]: Queued start job for default target default.target.
+May 31 23:14:09 ip-172-31-29-219 systemd[1397]: Created slice app.slice - User Application Slice.
+May 31 23:14:09 ip-172-31-29-219 systemd[1397]: Started launchpadlib-cache-clean.timer - Clean up old files in the Launchpadlib cache.
+May 31 23:14:09 ip-172-31-29-219 systemd[1397]: Reached target paths.target - Paths.
+May 31 23:14:09 ip-172-31-29-219 systemd[1397]: Reached target timers.target - Timers.
+May 31 23:14:09 ip-172-31-29-219 systemd[1397]: Starting dbus.socket - D-Bus User Message Bus Socket...
+May 31 23:14:09 ip-172-31-29-219 systemd[1397]: Listening on dirmngr.socket - GnuPG network certificate management daemon.
+May 31 23:14:09 ip-172-31-29-219 systemd[1397]: Listening on gpg-agent-browser.socket - GnuPG cryptographic agent and passphrase cache (access for web browsers).
+May 31 23:14:09 ip-172-31-29-219 systemd[1397]: Listening on gpg-agent-extra.socket - GnuPG cryptographic agent and passphrase cache (restricted).
+May 31 23:14:09 ip-172-31-29-219 systemd[1397]: Starting gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation)...
+May 31 23:14:09 ip-172-31-29-219 systemd[1397]: Listening on gpg-agent.socket - GnuPG cryptographic agent and passphrase cache.
+May 31 23:14:09 ip-172-31-29-219 systemd[1397]: Listening on keyboxd.socket - GnuPG public key management service.
+May 31 23:14:09 ip-172-31-29-219 systemd[1397]: Listening on pk-debconf-helper.socket - debconf communication socket.
+May 31 23:14:09 ip-172-31-29-219 systemd[1397]: Listening on snapd.session-agent.socket - REST API socket for snapd user session agent.
+May 31 23:14:09 ip-172-31-29-219 systemd[1397]: Listening on dbus.socket - D-Bus User Message Bus Socket.
+May 31 23:14:09 ip-172-31-29-219 systemd[1397]: Listening on gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation).
+May 31 23:14:09 ip-172-31-29-219 systemd[1397]: Reached target sockets.target - Sockets.
+May 31 23:14:09 ip-172-31-29-219 systemd[1397]: Reached target basic.target - Basic System.
+May 31 23:14:09 ip-172-31-29-219 systemd[1397]: Reached target default.target - Main User Target.
+May 31 23:14:09 ip-172-31-29-219 systemd[1397]: Startup finished in 65ms.
+May 31 23:14:09 ip-172-31-29-219 systemd[1]: Started user@1000.service - User Manager for UID 1000.
+May 31 23:14:09 ip-172-31-29-219 systemd[1]: Started session-5.scope - Session 5 of User ubuntu.
+May 31 23:14:09 ip-172-31-29-219 sudo[1462]:   ubuntu : PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/cp /var/lib/stele-soak/timeline.ndjson /var/log/stele-soak.log /tmp/
+May 31 23:14:09 ip-172-31-29-219 sudo[1462]: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
+May 31 23:14:09 ip-172-31-29-219 sudo[1462]: pam_unix(sudo:session): session closed for user root
+May 31 23:14:09 ip-172-31-29-219 sudo[1464]:   ubuntu : PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/chmod 644 /tmp/timeline.ndjson /tmp/stele-soak.log
+May 31 23:14:09 ip-172-31-29-219 sudo[1464]: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
+May 31 23:14:09 ip-172-31-29-219 sudo[1464]: pam_unix(sudo:session): session closed for user root
+May 31 23:14:09 ip-172-31-29-219 sudo[1466]:   ubuntu : PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/journalctl -u stele-soak-operator -n 200 --no-pager
+May 31 23:14:09 ip-172-31-29-219 sudo[1466]: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
+May 31 23:14:09 ip-172-31-29-219 sudo[1466]: pam_unix(sudo:session): session closed for user root
+May 31 23:14:09 ip-172-31-29-219 sudo[1468]:   ubuntu : PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/journalctl --since '30 hours ago' -n 500 --no-pager
+May 31 23:14:09 ip-172-31-29-219 sudo[1468]: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
