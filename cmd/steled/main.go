@@ -106,6 +106,19 @@ func run() error {
 			"max bytes per admin endpoint request body")
 		retryAfter = flag.Int("retry-after-secs", api.DefaultIngestPolicy.RetryAfter,
 			"Retry-After header value sent with 429/503 responses")
+
+		// Memory tunables (issue #8). All have small-host-safe defaults.
+		// On a 16 GB+ production box you may want to raise these.
+		badgerBlockCacheMB = flag.Int64("badger-block-cache-mb", 64,
+			"BadgerDB block-cache budget in MiB (smaller = lower RSS, more disk reads)")
+		badgerIndexCacheMB = flag.Int64("badger-index-cache-mb", 32,
+			"BadgerDB index-cache budget in MiB")
+		badgerNumMemtables = flag.Int("badger-memtables", 2,
+			"BadgerDB in-flight memtable count (lower = less RSS, more write-stall risk)")
+		replayTTL = flag.Duration("replay-ttl", 24*time.Hour,
+			"per-key TTL on replay-dedup entries; 0 disables (entries persist forever, growing storage + cache forever)")
+		merkleCacheNodes = flag.Int("merkle-cache-nodes", 1_000_000,
+			"max internal Merkle nodes held in memory (~130 B each). Leaves are always retained. 0 = unbounded (legacy v0.1.0 behaviour)")
 	)
 	flag.Parse()
 	if *dir == "" {
@@ -171,7 +184,12 @@ func run() error {
 	if err := os.MkdirAll(storeDir, 0o755); err != nil {
 		return err
 	}
-	st, err := storage.Open(storeDir)
+	st, err := storage.Open(storeDir,
+		storage.WithBlockCacheBytes(*badgerBlockCacheMB<<20),
+		storage.WithIndexCacheBytes(*badgerIndexCacheMB<<20),
+		storage.WithNumMemtables(*badgerNumMemtables),
+		storage.WithReplayTTL(*replayTTL),
+	)
 	if err != nil {
 		return err
 	}
@@ -221,6 +239,7 @@ func run() error {
 		Sinks:             sinks,
 		BeaconFetcher:     beaconFetcher,
 		RequireEnrollment: *requireEnrollment,
+		MerkleCacheNodes:  *merkleCacheNodes,
 	})
 	if err != nil {
 		return err

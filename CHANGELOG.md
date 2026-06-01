@@ -13,6 +13,45 @@ verifier recipe).
 ### Added
 - (next-version entries go here)
 
+## [0.1.4] - 2026-05-31
+
+Memory-defaults pass following the v0.1.3 soak finding (issue #8).
+No protocol or wire-format changes; v0.1.0-v0.1.4 are runtime-
+compatible.
+
+### Fixed
+- **Merkle node store no longer unbounded.** Internal node hashes
+  are now held in an LRU map with a configurable cap
+  (`--merkle-cache-nodes`, default 1,000,000). Leaves are always
+  retained; evicted internal nodes are recomputed on demand from
+  the leaves at proof time (slower proofs for cold nodes, bounded
+  RSS). Closes #8 (primary cause).
+- **Replay-dedup table now supports a TTL.** New `--replay-ttl`
+  flag (default `24h`) sets a per-key TTL on replay-dedup entries;
+  BadgerDB's GC reclaims them after that. Replays remain defeated
+  within the window. Pass `0` to disable.
+- **BadgerDB caches are now tuned for small hosts by default.**
+  Block cache 64 MiB (was BadgerDB's ~256 MiB default), index
+  cache 32 MiB (was unlimited), 2 memtables (was 5). Override
+  with `--badger-block-cache-mb`, `--badger-index-cache-mb`,
+  `--badger-memtables`.
+
+### Added
+- `merkle.NewBoundedTree(maxInternalNodes int)` constructor.
+- `merkle.Tree.CacheSize() (leaves, internal int)` for telemetry.
+- `storage.Open(dir, opts ...Option)` variadic options API with
+  `WithBlockCacheBytes`, `WithIndexCacheBytes`, `WithNumMemtables`,
+  `WithReplayTTL`.
+
+### Sizing guidance (new section in PLAYBOOK)
+
+| Host RAM | `--merkle-cache-nodes` | Expected RSS up to |
+|---|---|---|
+| 4 GB | 500,000 | ~1.5 GiB at 10M entries |
+| 8 GB | 2,000,000 | ~3 GiB at 50M entries |
+| 16 GB | 8,000,000 | ~8 GiB at 100M+ entries |
+| 32 GB+ | 0 (unbounded) | scales with log size |
+
 ## [0.1.3] - 2026-05-27
 
 Formal-model overhaul. The Tamarin proof now machine-checks 2 of 3

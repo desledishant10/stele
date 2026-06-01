@@ -3,12 +3,14 @@
 // consistency proofs.
 //
 // The tree stores every internal node hash (not just the rightmost spine) so
-// arbitrary proofs are cheap. For a log with N entries this is O(N) memory,
-// which is fine for the MVP — production deployments would back this with a
-// disk-resident node store.
+// arbitrary proofs are cheap. For a log with N entries this is O(N) memory
+// unless a max-node bound is configured via NewBoundedTree. With a bound,
+// older nodes are evicted from the in-memory map and recomputed on demand
+// via the leaf store (slower proofs but bounded RSS). See issue #8.
 package merkle
 
 import (
+	"container/list"
 	"fmt"
 
 	tdmerkle "github.com/transparency-dev/merkle"
@@ -25,18 +27,86 @@ var Hasher tdmerkle.LogHasher = rfc6962.DefaultHasher
 const HashSize = 32
 
 // Tree is an append-only Merkle tree backed by an in-memory node store.
+//
+// Memory layout:
+//   - Leaves (level 0 nodes) are ALWAYS retained. They are tiny
+//     (~32 B + overhead each) and required by computeNode to rebuild
+//     any evicted internal node.
+//   - Internal nodes (level >= 1) are LRU-evictable when
+//     NewBoundedTree(maxInternal > 0) is used. On eviction, a
+//     subsequent proof that needs the node will recompute it from
+//     the surviving leaves via computeNode (slower proof, bounded RSS).
+//
+// When maxInternal == 0 (default via NewTree), no internal node is
+// ever evicted — legacy unbounded behaviour.
 type Tree struct {
-	rng   *compact.Range
-	nodes map[compact.NodeID][]byte // every internal + leaf node visited
+	rng         *compact.Range
+	leaves      map[uint64][]byte                // idx -> leaf hash, never evicted
+	internal    map[compact.NodeID]*list.Element // level >= 1, LRU-managed
+	lru         *list.List                       // front = most recent
+	maxInternal int                              // 0 = unbounded
 }
 
-// NewTree returns an empty tree ready to receive leaves.
+type lruEntry struct {
+	id   compact.NodeID
+	hash []byte
+}
+
+// NewTree returns an unbounded in-memory tree. Suitable for tests and
+// short-lived processes; for production-shape steled use NewBoundedTree
+// with a reasonable internal-node cap.
 func NewTree() *Tree {
+	return NewBoundedTree(0)
+}
+
+// NewBoundedTree returns a tree that retains at most maxInternalNodes
+// non-leaf node hashes in memory. Leaves are always retained.
+//
+// Sizing: ~130 B per cached internal node (hash + map + LRU bookkeeping).
+// 1,000,000 internal nodes ≈ 130 MiB. The leaf count scales linearly with
+// log size (~64 B / entry including overhead), so total Merkle RSS for a
+// log of N entries with cap C is roughly N*64 + min(N, C)*130 bytes.
+//
+// Set maxInternalNodes = 0 for legacy unbounded behaviour.
+func NewBoundedTree(maxInternalNodes int) *Tree {
 	factory := &compact.RangeFactory{Hash: Hasher.HashChildren}
 	return &Tree{
-		rng:   factory.NewEmptyRange(0),
-		nodes: make(map[compact.NodeID][]byte),
+		rng:         factory.NewEmptyRange(0),
+		leaves:      make(map[uint64][]byte),
+		internal:    make(map[compact.NodeID]*list.Element),
+		lru:         list.New(),
+		maxInternal: maxInternalNodes,
 	}
+}
+
+// putNode stores hash for id. Leaves go to the leaves map (no eviction);
+// internal nodes go to the LRU-managed internal map.
+func (t *Tree) putNode(id compact.NodeID, hash []byte) {
+	cp := append([]byte(nil), hash...)
+	if id.Level == 0 {
+		t.leaves[id.Index] = cp
+		return
+	}
+	if el, ok := t.internal[id]; ok {
+		el.Value.(*lruEntry).hash = cp
+		t.lru.MoveToFront(el)
+		return
+	}
+	el := t.lru.PushFront(&lruEntry{id: id, hash: cp})
+	t.internal[id] = el
+	if t.maxInternal > 0 && t.lru.Len() > t.maxInternal {
+		oldest := t.lru.Back()
+		if oldest != nil {
+			t.lru.Remove(oldest)
+			delete(t.internal, oldest.Value.(*lruEntry).id)
+		}
+	}
+}
+
+// CacheSize returns (leaf_count, internal_node_count). Useful for
+// telemetry + tests.
+func (t *Tree) CacheSize() (leaves, internal int) {
+	return len(t.leaves), t.lru.Len()
 }
 
 // Size returns the current number of leaves.
@@ -70,9 +140,9 @@ func (t *Tree) AppendLeaf(data []byte) (leafHash []byte, idx uint64) {
 func (t *Tree) AppendLeafHash(leafHash []byte) uint64 {
 	idx := t.rng.End()
 	// The leaf itself lives at level 0.
-	t.nodes[compact.NewNodeID(0, idx)] = append([]byte(nil), leafHash...)
+	t.putNode(compact.NewNodeID(0, idx), leafHash)
 	if err := t.rng.Append(leafHash, func(id compact.NodeID, hash []byte) {
-		t.nodes[id] = append([]byte(nil), hash...)
+		t.putNode(id, hash)
 	}); err != nil {
 		panic(fmt.Sprintf("merkle: Append failed: %v", err))
 	}
@@ -81,10 +151,20 @@ func (t *Tree) AppendLeafHash(leafHash []byte) uint64 {
 
 // nodeHash returns the hash at the given node ID. If the node was not
 // previously visited (e.g. an "ephemeral" right-edge node that requires
-// rehashing for a specific proof), the caller must compute it from leaves.
+// rehashing for a specific proof, or an evicted internal node), the
+// caller must compute it from leaves. A successful internal lookup
+// refreshes the LRU position so frequently-proven nodes stay resident.
 func (t *Tree) nodeHash(id compact.NodeID) ([]byte, bool) {
-	h, ok := t.nodes[id]
-	return h, ok
+	if id.Level == 0 {
+		h, ok := t.leaves[id.Index]
+		return h, ok
+	}
+	el, ok := t.internal[id]
+	if !ok {
+		return nil, false
+	}
+	t.lru.MoveToFront(el)
+	return el.Value.(*lruEntry).hash, true
 }
 
 // InclusionProof returns the proof that the leaf at `idx` is in the tree of

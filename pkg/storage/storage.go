@@ -21,10 +21,78 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"time"
 
 	"github.com/dgraph-io/badger/v4"
 	"github.com/desledishant10/stele/pkg/logentry"
 )
+
+// Option configures a Store at Open time. Apply via Open(dir, opts...).
+// Zero / unset options keep stele's small-host-safe defaults.
+type Option func(*config)
+
+type config struct {
+	blockCacheBytes int64
+	indexCacheBytes int64
+	numMemtables    int
+	replayTTL       time.Duration
+}
+
+// defaultConfig returns the small-host-safe defaults. Tuned for issue #8:
+// a 4 GB pilot host should stay comfortably under 1 GB RSS at 250 RPS
+// for 24 h with these values.
+func defaultConfig() config {
+	return config{
+		blockCacheBytes: 64 << 20, // 64 MiB (badger default ~256 MiB)
+		indexCacheBytes: 32 << 20, // 32 MiB (badger default 0 = unlimited)
+		numMemtables:    2,        // badger default 5
+		replayTTL:       0,        // 0 = no TTL (replay entries persist)
+	}
+}
+
+// WithBlockCacheBytes overrides BadgerDB's block (block-level data) cache
+// budget. Smaller means more disk reads; larger means more RSS. Pass 0
+// to use the package default of 64 MiB.
+func WithBlockCacheBytes(b int64) Option {
+	return func(c *config) {
+		if b > 0 {
+			c.blockCacheBytes = b
+		}
+	}
+}
+
+// WithIndexCacheBytes overrides BadgerDB's index cache budget. Pass 0
+// to use the package default of 32 MiB.
+func WithIndexCacheBytes(b int64) Option {
+	return func(c *config) {
+		if b > 0 {
+			c.indexCacheBytes = b
+		}
+	}
+}
+
+// WithNumMemtables overrides BadgerDB's in-flight memtable count.
+// Lower = less RSS at the cost of write-stall risk under bursts.
+// Pass 0 to use the package default of 2.
+func WithNumMemtables(n int) Option {
+	return func(c *config) {
+		if n > 0 {
+			c.numMemtables = n
+		}
+	}
+}
+
+// WithReplayTTL sets a per-key TTL on replay-dedup entries. After d,
+// BadgerDB's GC deletes them, bounding both disk and cache pressure.
+// Defaults to 0 (no TTL, current behaviour). 24h is a reasonable value
+// for most workloads.
+func WithReplayTTL(d time.Duration) Option {
+	return func(c *config) {
+		if d > 0 {
+			c.replayTTL = d
+		}
+	}
+}
 
 var (
 	prefixEntry  = []byte("entry/")
@@ -36,19 +104,35 @@ var (
 
 // Store wraps a BadgerDB instance.
 type Store struct {
-	db *badger.DB
+	db        *badger.DB
+	replayTTL time.Duration
 }
 
 // Open creates or opens a Store at the given directory.
-func Open(dir string) (*Store, error) {
-	opts := badger.DefaultOptions(dir)
-	opts.Logger = nil // quiet startup logs
-	opts.SyncWrites = true
-	db, err := badger.Open(opts)
+//
+// Without options, Open applies stele's small-host-safe defaults:
+// 64 MiB block cache, 32 MiB index cache, 2 memtables, no replay TTL.
+// These are deliberately tighter than BadgerDB's own defaults; see
+// issue #8.
+//
+// Use the Option helpers (WithBlockCacheBytes, WithReplayTTL, ...)
+// to override individual settings.
+func Open(dir string, opts ...Option) (*Store, error) {
+	cfg := defaultConfig()
+	for _, o := range opts {
+		o(&cfg)
+	}
+	bopts := badger.DefaultOptions(dir)
+	bopts.Logger = nil // quiet startup logs
+	bopts.SyncWrites = true
+	bopts.BlockCacheSize = cfg.blockCacheBytes
+	bopts.IndexCacheSize = cfg.indexCacheBytes
+	bopts.NumMemtables = cfg.numMemtables
+	db, err := badger.Open(bopts)
 	if err != nil {
 		return nil, fmt.Errorf("storage: open %s: %w", dir, err)
 	}
-	return &Store{db: db}, nil
+	return &Store{db: db, replayTTL: cfg.replayTTL}, nil
 }
 
 // Close releases the database handle.

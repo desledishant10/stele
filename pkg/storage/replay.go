@@ -35,6 +35,11 @@ func replayKey(envelopeHash []byte) []byte {
 // seen before and atomically records it pointing at the given entry
 // index. Returns an error containing the original entry index if a
 // replay is detected.
+//
+// When the Store was opened with WithReplayTTL(d), the new entry is
+// written with a per-key TTL of d; BadgerDB's background GC reclaims
+// it after that. This bounds memory + disk for the replay table to
+// approximately (RPS * d * envelope_hash_size).
 func (s *Store) CheckAndRecordEnvelope(envelopeHash []byte, entryIdx uint64) error {
 	return s.db.Update(func(txn *badger.Txn) error {
 		k := replayKey(envelopeHash)
@@ -52,6 +57,10 @@ func (s *Store) CheckAndRecordEnvelope(envelopeHash []byte, entryIdx uint64) err
 		}
 		var v [8]byte
 		binary.BigEndian.PutUint64(v[:], entryIdx)
+		if s.replayTTL > 0 {
+			e := badger.NewEntry(k, v[:]).WithTTL(s.replayTTL)
+			return txn.SetEntry(e)
+		}
 		return txn.Set(k, v[:])
 	})
 }

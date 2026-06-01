@@ -71,6 +71,13 @@ type Options struct {
 	// must re-issue every producer via IssueEnrollment before flipping
 	// this flag.
 	RequireEnrollment bool
+
+	// MerkleCacheNodes bounds the number of internal Merkle node hashes
+	// retained in memory. 0 = unbounded (the v0.1.x default before #8).
+	// Leaves are always retained; only internal nodes are LRU-evicted.
+	// On a small host (4-8 GB), 1_000_000 keeps the Merkle layer under
+	// ~130 MiB even for tens of millions of entries.
+	MerkleCacheNodes int
 }
 
 // New constructs a Log and replays every entry from the store to rebuild
@@ -85,7 +92,7 @@ func New(ctx context.Context, opts Options) (*Log, error) {
 	}
 	l := &Log{
 		store:             opts.Store,
-		tree:              merkle.NewTree(),
+		tree:              merkle.NewBoundedTree(opts.MerkleCacheNodes),
 		signer:            opts.Signer,
 		sinks:             opts.Sinks,
 		beacon:            opts.BeaconFetcher,

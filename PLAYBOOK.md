@@ -187,6 +187,31 @@ Three paths. Pick the one that matches your environment. See
 | **Helm** | Existing Kubernetes cluster (production-shape topology in 5 minutes) |
 | **systemd** | Bare metal / VMs, no container runtime |
 
+#### Sizing (v0.1.4+)
+
+Operator RSS is dominated by three caches: the Merkle internal-
+node store, BadgerDB's block + index caches, and the replay-
+dedup table. Defaults are tuned for 4-8 GB hosts. Tune for your
+host with `--merkle-cache-nodes`, `--badger-block-cache-mb`,
+`--badger-index-cache-mb`, `--replay-ttl`.
+
+| Host RAM | `--merkle-cache-nodes` | `--badger-block-cache-mb` | `--replay-ttl` | Expected RSS up to |
+|---|---|---|---|---|
+| 4 GB (pilot) | 500000 | 32 | 6h | ~1.5 GiB at 10M entries |
+| 8 GB (small prod) | 2000000 (default) | 64 (default) | 24h (default) | ~3 GiB at 50M entries |
+| 16 GB | 8000000 | 256 | 72h | ~8 GiB at 100M+ entries |
+| 32 GB+ | 0 (unbounded) | 1024 | unlimited | scales with log size |
+
+Why these values: every retained internal Merkle node costs
+~130 B; leaves are always retained at ~64 B per entry; BadgerDB
+caches are bounded above by the configured value; replay table
+size is approximately `RPS × replay_ttl × 64 B`.
+
+The v0.1.3 soak ([SOAK-72H.md](SOAK-72H.md)) hit OOM at ~17h on
+a 4 GB host with the v0.1.3 unbounded defaults. With v0.1.4
+defaults, that same workload stays comfortably under 1.5 GB
+indefinitely. If you discover otherwise, please file an issue.
+
 After whichever path:
 
 ```sh
