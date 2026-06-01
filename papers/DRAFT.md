@@ -819,8 +819,8 @@ What we now know that we didn't:
 - A 4 GB host is undersized for any deployment that will hold
   more than ~1.5 M entries on a sustained basis. We will revise
   the README's pilot-recipe sizing guidance and revisit the soak
-  on a 16 GB instance after the v0.1.4 tunable-defaults pass
-  (issue #8).
+  on a 16 GB instance against v0.1.4, which has now landed with
+  the tunable-defaults pass (issue #8 closed).
 
 The honest summary: **the soak earned its $2.40 of AWS compute
 by surfacing a sizing issue we would have otherwise discovered

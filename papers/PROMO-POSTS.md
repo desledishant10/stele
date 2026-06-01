@@ -1,10 +1,10 @@
-# Promo post drafts — v0.1.3
+# Promo post drafts — v0.1.4
 
 Ready-to-paste content for the four venues we agreed to seed. Honest
 framing throughout; nothing claims more than the current artifact
 backs up. Copy-paste, edit, then post.
 
-**Read this before posting:** as of v0.1.3, the formal model now
+**Read this before posting:** as of v0.1.4, the formal model now
 machine-checks 2 of 3 security lemmas (`enrollment_required`,
 `no_witness_double_cosign`). The third (`forward_secrecy`) is
 structurally sound in the model but the prover doesn't converge
@@ -122,7 +122,7 @@ current-status note.
 >
 > Things Gophers might enjoy:
 >
-> - `go install github.com/desledishant10/stele/cmd/stele@v0.1.3`
+> - `go install github.com/desledishant10/stele/cmd/stele@v0.1.4`
 > - reproducible builds via `-trimpath -ldflags="-buildid="`, verified
 >   in CI on every release (workflow re-builds and diffs hashes)
 > - SLSA Build L3 provenance attestations attached to each release
@@ -153,7 +153,7 @@ current-status note.
 > operator keys and producer enrollment via proof-of-possession.
 >
 > Tamarin status (transcript checked in at
-> https://github.com/desledishant10/stele/blob/v0.1.3/formal/expected-output.txt):
+> https://github.com/desledishant10/stele/blob/v0.1.4/formal/expected-output.txt):
 >
 > - `enrollment_required` (every accepted entry preceded by a
 >   mutual-consent enrollment): verified in 0.82s

@@ -122,7 +122,7 @@ under-provisioned. The README's pilot recipe (which uses local
 loopback) should be amended to recommend at least 4 GB for any
 deployment that will hold a non-trivial log size.
 
-**v0.1.4 (proposed) addresses the underlying growth.** A heap
+**v0.1.4 (SHIPPED 2026-05-31, just hours after this report) addresses the underlying growth.** A heap
 profile (`pprof`) capture of steled during a similar run shows the
 major memory consumers are (1) the in-memory replay-dedup table
 (unbounded by default), (2) the Merkle tree's hash cache (LRU but
