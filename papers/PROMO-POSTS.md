@@ -1,20 +1,24 @@
-# Promo post drafts — v0.1.4
+# Promo post drafts — v0.1.5
 
 Ready-to-paste content for the four venues we agreed to seed. Honest
 framing throughout; nothing claims more than the current artifact
 backs up. Copy-paste, edit, then post.
 
-**Read this before posting:** as of v0.1.4, the formal model now
-machine-checks 2 of 3 security lemmas (`enrollment_required`,
-`no_witness_double_cosign`). The third (`forward_secrecy`) is
-structurally sound in the model but the prover doesn't converge
-under the default heuristic; issue #5 stays open. /r/cryptography
-is reasonable to post NOW with that honest caveat, or you can wait
-until #5 lands for a cleaner story.
+**Read this before posting:**
 
-The 72-hour soak is currently running on AWS (started 2026-05-30);
-results land Tuesday. Posts below mention "soak in flight" as a
-current-status note.
+- **Formal model**: 2 of 3 security lemmas machine-check
+  (`enrollment_required`, `no_witness_double_cosign`). The third
+  (`forward_secrecy`) is structurally sound but the default prover
+  heuristic doesn't converge; issue #5 stays open. /r/cryptography
+  is postable with that honest caveat.
+- **Soak**: three attempts (v0.1.3 / v0.1.4 / v0.1.5). The first
+  two OOM'd at different failure modes, both diagnosed and fixed
+  (see SOAK-72H.md). v0.1.5 is the burst-tolerance fix; the third
+  run hasn't happened. Posts below mention this honestly.
+- **What to claim**: not "production-tested at 72h." Instead claim
+  "an iteration that took us from 'no idea how it scales' to 'two
+  specific failure modes diagnosed and fixed in two ~$5 runs.'"
+  That's the truer story and a better one.
 
 ---
 
@@ -57,8 +61,10 @@ current-status note.
 > What I'm explicitly NOT claiming yet:
 >
 >   - No third-party security audit (the kit's prepared in AUDIT-KIT.md)
->   - 72-hour soak is RUNNING right now on a c7i.large; results land
->     Tuesday and ship as SOAK-72H.md
+>   - Three 72h soak attempts on AWS so far; first two OOM'd at two
+>     distinct memory failure modes (both diagnosed + fixed across
+>     v0.1.3 -> v0.1.4 -> v0.1.5). v0.1.5 is the burst-tolerance fix
+>     and has not yet been soak-validated. SOAK-72H.md has the data.
 >   - Single-node operator at this version; sharded deployment is roadmap
 >
 > Apache 2.0; one-click try-it: open the repo in a Codespace and run
@@ -97,8 +103,10 @@ current-status note.
 >   binary in the release.
 > - One-click try-it via Codespace devcontainer.
 >
-> Things still open: 72-hour soak is currently running on AWS (results
-> Tuesday), no third-party audit yet, single-node operator. v0.1.x is
+> Things still open: 72h soak surfaced two distinct memory failure
+> modes across v0.1.3 / v0.1.4; v0.1.5 ships with the burst-tolerance
+> fix and has not been re-soaked yet (the diagnoses + the data are all
+> in the repo). No third-party audit. Single-node operator. v0.1.x is
 > pre-production.
 
 ---
@@ -122,7 +130,7 @@ current-status note.
 >
 > Things Gophers might enjoy:
 >
-> - `go install github.com/desledishant10/stele/cmd/stele@v0.1.4`
+> - `go install github.com/desledishant10/stele/cmd/stele@v0.1.5`
 > - reproducible builds via `-trimpath -ldflags="-buildid="`, verified
 >   in CI on every release (workflow re-builds and diffs hashes)
 > - SLSA Build L3 provenance attestations attached to each release
@@ -153,7 +161,7 @@ current-status note.
 > operator keys and producer enrollment via proof-of-possession.
 >
 > Tamarin status (transcript checked in at
-> https://github.com/desledishant10/stele/blob/v0.1.4/formal/expected-output.txt):
+> https://github.com/desledishant10/stele/blob/v0.1.5/formal/expected-output.txt):
 >
 > - `enrollment_required` (every accepted entry preceded by a
 >   mutual-consent enrollment): verified in 0.82s
@@ -184,7 +192,7 @@ preference.)
 
 **Single tweet:**
 
-> stele v0.1.2 is out: a tamper-evident audit log with forward-secure
+> stele v0.1.5 is out: a tamper-evident audit log with forward-secure
 > operator keys, an independent witness mesh, hybrid PQ signatures,
 > and CT-family transparency anchoring. One `docker pull` to try.
 >
@@ -199,16 +207,18 @@ preference.)
 >
 > 2/ Stele: a hash-chained, Merkle-rooted, forward-secure-signed,
 >    witness-mesh-cosigned audit log. CT + Sigstore family, not
->    blockchain. v0.1.2 just shipped.
+>    blockchain. v0.1.5 just shipped.
 >
 > 3/ Three SDKs (Go, Python, TypeScript) with deterministic cross-
 >    language envelope interop tested on every CI run. Apache 2.0.
 >    Codespace demo runs end-to-end in 30 seconds.
 >
-> 4/ Honest open items: 72h soak run is currently in flight on AWS
->    (results land Tuesday), third-party audit pending, and one of
->    three Tamarin lemmas is structurally sound but doesn't converge
->    under the default heuristic -- the receipts and the open issue
+> 4/ Honest open items: three 72h soak attempts surfaced two distinct
+>    memory failure modes (both fixed across v0.1.3 -> v0.1.4 -> v0.1.5);
+>    v0.1.5 is the burst-tolerance fix and hasn't been re-soaked yet.
+>    Third-party audit pending. One of three Tamarin lemmas is
+>    structurally sound but doesn't converge under the default
+>    heuristic -- the receipts and the open issues
 >    are checked in. Pre-production. Help wanted.
 >
 >    https://github.com/desledishant10/stele

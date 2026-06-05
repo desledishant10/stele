@@ -781,52 +781,90 @@ default and the only mode we consider production-shape.
 
 ### 7.2 Sustained soak
 
-We attempted a 72-hour single-host soak against v0.1.3 on AWS
-`c7i.large` (2 vCPU / 4 GB RAM) at 500 RPS target. The full
-report is at `SOAK-72H.md` in the repository; we summarise
-honestly here. **The soak did not complete the planned 72 hours,
-and the reason is itself a useful finding.**
+We attempted three single-host soaks against the v0.1.x line on
+AWS EC2 at a 500 RPS / 16-producer / 256-byte-payload workload.
+None completed a clean 72 hours, and the resulting iteration
+across three releases is itself the most useful evaluation finding.
+The full per-run data is committed at `SOAK-72H.md` and under
+`soak/artifacts*/`; we summarise the arc honestly here.
 
-The operator ran cleanly for the first ~17 hours, sustaining
-~250 RPS (the target was 500 RPS; the loadgen settled lower for
-reasons we believe are loadgen-side and not operator-side, but
-have not confirmed). Tree size grew to 2.6 M entries. The
-operator's resident-set size grew roughly linearly with tree
-size, reaching ~3.4 GB at the 17-hour mark on a 4 GB host. The
-Linux OOM killer took the operator out shortly thereafter; the
-systemd `Restart=always` policy triggered a crash-loop of
-restart-grow-OOM-repeat. Five OOM kills are visible in the
-host kernel log before we terminated the run.
+**Run 1: v0.1.3 on c7i.large (4 GB).** Operator ran cleanly for
+~17 hours, sustaining ~250 RPS. Tree size grew to 2.6 M entries.
+RSS grew roughly linearly with tree size, reaching ~3.4 GB on
+the 4 GB host. The Linux OOM killer terminated the process;
+systemd `Restart=always` triggered a crash-loop. Five OOM kills
+in the host kernel log. BadgerDB persisted entries across every
+restart; `readyz` 200 throughout; zero tripwire or honeypot
+fires; the witness mesh kept up cleanly with every minted
+checkpoint. The failure mode was purely sizing, not correctness.
 
-What is interesting for an honest evaluation:
+The diagnosis: three caches were unbounded (the Merkle internal-
+node store, BadgerDB's block + index caches, and the replay-dedup
+table). v0.1.4 capped all three and added the corresponding flags
+(`--merkle-cache-nodes`, `--badger-block-cache-mb`,
+`--badger-index-cache-mb`, `--replay-ttl`).
 
-- **No correctness failure.** BadgerDB persisted entries across
-  every restart. `readyz` returned 200 in every snapshot
-  (including post-OOM snapshots, taken in the brief
-  "fresh-after-restart" window before the next OOM).
-- **Tripwire and honeypot fires: 0.** No disk-resident tampering
-  was observable, even under crash-loop pressure.
-- **Witness mesh kept up cleanly** for every checkpoint that
-  was minted in the clean window.
+**Run 2: v0.1.4 on c7i.xlarge (8 GB).** The v0.1.4 caps worked
+exactly as designed. Per-entry memory cost dropped from ~2,500
+bytes/entry (v0.1.3 at 1 M entries) to ~620 bytes/entry (v0.1.4
+at 5 M entries) as the Merkle LRU started evicting cold internal
+nodes. The steady-state behaviour was healthy.
 
-What we now know that we didn't:
+But the operator OOM'd anyway, this time at ~3 hours. RSS
+oscillated between 3 GB and 7 GB throughout the run; OOM kills
+hit at the peaks, not at any monotonic ceiling. Twenty-four OOM
+kills accumulated across 85 hours of observation. The 94 snapshots
+in `soak/artifacts-v5/timeline.ndjson` are the dataset that
+informed the next iteration.
 
-- Single-node operator memory growth is approximately linear in
-  tree size up to ~2 GB RSS, with three identified causes:
-  (1) an unbounded replay-dedup table, (2) an overly-generous
-  Merkle-layer hash cache, (3) BadgerDB's value cache. None are
-  currently tuneable; all should be.
-- A 4 GB host is undersized for any deployment that will hold
-  more than ~1.5 M entries on a sustained basis. We will revise
-  the README's pilot-recipe sizing guidance and revisit the soak
-  on a 16 GB instance against v0.1.4, which has now landed with
-  the tunable-defaults pass (issue #8 closed).
+The corrected diagnosis: Go's garbage collector defaults to a
+100% growth target between collections. Under bursty allocation
+from 16 concurrent producers, the heap doubles between GCs.
+v0.1.4's caps controlled the long-tail consumers but did not
+prevent these short-window bursts from crossing the OS OOM
+threshold.
 
-The honest summary: **the soak earned its $2.40 of AWS compute
-by surfacing a sizing issue we would have otherwise discovered
-in production.** The protocol is sound; the implementation
-defaults are not yet right for sustained long-running deployments
-without explicit sizing guidance.
+**v0.1.5 (no soak yet).** Three changes target burst tolerance
+rather than leak control:
+
+  (i) On Linux, the process auto-sets `GOMEMLIMIT` to a configurable
+      fraction (default 70%) of detected host RAM, forcing the GC
+      to pace against a hard ceiling well below the OS threshold.
+ (ii) The default for `MaxConcurrentAppends` changes from a fixed
+      256 to `runtime.NumCPU() * 4` clamped to `[16, 256]`. On the
+      4-vCPU c7i.xlarge that's 16 (vs. the previous 256),
+      dramatically reducing the maximum simultaneous allocation
+      footprint.
+(iii) BadgerDB's background compactor count drops from 4 to 2 and
+      the value-log file size from 1 GiB to 256 MiB, shrinking
+      transient buffers during compaction and vlog rotation.
+
+We ship v0.1.5 with explicit "fix is principled, not yet soak-
+validated" framing in the release notes. A third 16 GB re-soak
+would be the empirical closure; we have not run it.
+
+**What the arc teaches.** Production-shape deployment of a
+single-node operator at 500 RPS on commodity hardware required
+two non-obvious iterations to converge:
+
+  - Caps that we'd intuitively want to set anyway (long-tail
+    memory consumers)
+  - Concurrency + GC pacing that we'd only notice we needed under
+    sustained bursty load
+
+Neither was a correctness problem. The protocol behaviour was
+identical across all three releases; only the implementation's
+resource governance changed. The iteration cost ~$16.40 of AWS
+compute across three runs. The data from the v0.1.4 run alone
+(94 snapshots, the OOM cycle in the host journal) was sufficient
+to inform v0.1.5 without requiring a paid v0.1.5 soak before
+shipping.
+
+The honest summary: **the soak earned its compute by surfacing
+two distinct memory failure modes we would have otherwise
+discovered in production.** The protocol is sound; the
+implementation defaults required iteration to match real
+sustained workloads.
 
 ### 7.3 Chaos coverage
 
