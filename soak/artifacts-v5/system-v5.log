@@ -1,0 +1,1000 @@
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:1f: resource 2 [mem 0x29d000000-0x29dffffff 64bit pref]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:20: resource 1 [mem 0xc7b00000-0xc7cfffff]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:20: resource 2 [mem 0x29e000000-0x29effffff 64bit pref]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:21: resource 1 [mem 0xc7d00000-0xc7efffff]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:21: resource 2 [mem 0x29f000000-0x29fffffff 64bit pref]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:22: resource 1 [mem 0xc7f00000-0xc80fffff]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:22: resource 2 [mem 0x2a0000000-0x2a0ffffff 64bit pref]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:23: resource 1 [mem 0xc8100000-0xc82fffff]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:23: resource 2 [mem 0x2a1000000-0x2a1ffffff 64bit pref]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:27:00.0: BAR 2 [mem 0x2a2000000-0x2a207ffff 64bit pref]: assigned
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:27:00.0: BAR 0 [mem 0xc8700000-0xc8701fff]: assigned
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:27:00.0: BAR 1 [mem 0xc8702000-0xc8703fff]: assigned
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:26:00.0: PCI bridge to [bus 27]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:26:00.0:   bridge window [mem 0xc8700000-0xc88fffff]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:26:00.0:   bridge window [mem 0x2a2000000-0x2a2ffffff 64bit pref]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:26:00.1: PCI bridge to [bus 28]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:26:00.1:   bridge window [mem 0xc8900000-0xc8afffff]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:26:00.1:   bridge window [mem 0x2a3000000-0x2a3ffffff 64bit pref]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:26:00.2: PCI bridge to [bus 29]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:26:00.2:   bridge window [mem 0xc8b00000-0xc8cfffff]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:26:00.2:   bridge window [mem 0x2a4000000-0x2a4ffffff 64bit pref]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:26:00.3: PCI bridge to [bus 2a]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:26:00.3:   bridge window [mem 0xc8d00000-0xc8efffff]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:26:00.3:   bridge window [mem 0x2a5000000-0x2a5ffffff 64bit pref]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:26:00.4: PCI bridge to [bus 2b]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:26:00.4:   bridge window [mem 0xc8f00000-0xc90fffff]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:26:00.4:   bridge window [mem 0x2a6000000-0x2a6ffffff 64bit pref]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:25:00.0: PCI bridge to [bus 26-2b]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:25:00.0:   bridge window [mem 0xc8600000-0xc90fffff]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:25:00.0:   bridge window [mem 0x2a2000000-0x2a6ffffff 64bit pref]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:24:00.0: PCI bridge to [bus 25-2b]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:24:00.0:   bridge window [mem 0xc8500000-0xc90fffff]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:24:00.0:   bridge window [mem 0x2a2000000-0x2a6ffffff 64bit pref]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:24: resource 4 [mem 0xc8400000-0xc90fffff window]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:24: resource 5 [mem 0x2a2000000-0x2a6ffffff window]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:25: resource 1 [mem 0xc8500000-0xc90fffff]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:25: resource 2 [mem 0x2a2000000-0x2a6ffffff 64bit pref]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:26: resource 1 [mem 0xc8600000-0xc90fffff]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:26: resource 2 [mem 0x2a2000000-0x2a6ffffff 64bit pref]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:27: resource 1 [mem 0xc8700000-0xc88fffff]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:27: resource 2 [mem 0x2a2000000-0x2a2ffffff 64bit pref]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:28: resource 1 [mem 0xc8900000-0xc8afffff]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:28: resource 2 [mem 0x2a3000000-0x2a3ffffff 64bit pref]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:29: resource 1 [mem 0xc8b00000-0xc8cfffff]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:29: resource 2 [mem 0x2a4000000-0x2a4ffffff 64bit pref]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:2a: resource 1 [mem 0xc8d00000-0xc8efffff]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:2a: resource 2 [mem 0x2a5000000-0x2a5ffffff 64bit pref]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:2b: resource 1 [mem 0xc8f00000-0xc90fffff]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci_bus 0000:2b: resource 2 [mem 0x2a6000000-0x2a6ffffff 64bit pref]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pci 0000:00:00.0: Limiting direct PCI/PCI transfers
+Jun 05 16:40:11 ip-172-31-3-184 kernel: PCI: CLS 0 bytes, default 64
+Jun 05 16:40:11 ip-172-31-3-184 kernel: PCI-DMA: Using software bounce buffering for IO (SWIOTLB)
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Trying to unpack rootfs image as initramfs...
+Jun 05 16:40:11 ip-172-31-3-184 kernel: software IO TLB: mapped [mem 0x00000000b41dc000-0x00000000b81dc000] (64MB)
+Jun 05 16:40:11 ip-172-31-3-184 kernel: clocksource: tsc: mask: 0xffffffffffffffff max_cycles: 0x22983777dd9, max_idle_ns: 440795300422 ns
+Jun 05 16:40:11 ip-172-31-3-184 kernel: clocksource: Switched to clocksource tsc
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Freeing initrd memory: 14600K
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Initialise system trusted keyrings
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Key type blacklist registered
+Jun 05 16:40:11 ip-172-31-3-184 kernel: workingset: timestamp_bits=36 max_order=21 bucket_order=0
+Jun 05 16:40:11 ip-172-31-3-184 kernel: squashfs: version 4.0 (2009/01/31) Phillip Lougher
+Jun 05 16:40:11 ip-172-31-3-184 kernel: fuse: init (API version 7.44)
+Jun 05 16:40:11 ip-172-31-3-184 kernel: integrity: Platform Keyring initialized
+Jun 05 16:40:11 ip-172-31-3-184 kernel: integrity: Machine keyring initialized
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Key type asymmetric registered
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Asymmetric key parser 'x509' registered
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Block layer SCSI generic (bsg) driver version 0.4 loaded (major 242)
+Jun 05 16:40:11 ip-172-31-3-184 kernel: io scheduler mq-deadline registered
+Jun 05 16:40:11 ip-172-31-3-184 kernel: ledtrig-cpu: registered to indicate activity on CPUs
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:01:00.0: PME: Signaling with IRQ 24
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:01:00.0: pciehp: Slot #0 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:00.0: pciehp: Slot #2 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:00.1: pciehp: Slot #3 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:00.2: pciehp: Slot #4 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:00.3: pciehp: Slot #5 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:00.4: pciehp: Slot #6 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:00.5: pciehp: Slot #7 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:00.6: pciehp: Slot #8 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:00.7: pciehp: Slot #9 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:01.0: pciehp: Slot #10 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:01.1: pciehp: Slot #11 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:01.2: pciehp: Slot #12 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:01.3: pciehp: Slot #13 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:01.4: pciehp: Slot #14 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:01.5: pciehp: Slot #15 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:01.6: pciehp: Slot #16 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:01.7: pciehp: Slot #17 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:02.0: pciehp: Slot #18 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:02.1: pciehp: Slot #19 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:02.2: pciehp: Slot #20 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:02.3: pciehp: Slot #21 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:02.4: pciehp: Slot #22 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:02.5: pciehp: Slot #23 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:02.6: pciehp: Slot #24 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:02.7: pciehp: Slot #25 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:03.0: pciehp: Slot #26 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:03.1: pciehp: Slot #27 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:03.2: pciehp: Slot #28 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:03.3: pciehp: Slot #29 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:03.4: pciehp: Slot #30 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:03.5: pciehp: Slot #31 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:03.6: pciehp: Slot #32 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:03:03.7: pciehp: Slot #33 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:24:00.0: PME: Signaling with IRQ 57
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:24:00.0: pciehp: Slot #1 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:26:00.0: pciehp: Slot #34 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:26:00.1: pciehp: Slot #35 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:26:00.2: pciehp: Slot #36 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:26:00.3: pciehp: Slot #37 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pcieport 0000:26:00.4: pciehp: Slot #38 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 05 16:40:11 ip-172-31-3-184 kernel: input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+Jun 05 16:40:11 ip-172-31-3-184 kernel: ACPI: button: Power Button [PWRF]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: input: Sleep Button as /devices/LNXSYSTM:00/LNXSLPBN:00/input/input1
+Jun 05 16:40:11 ip-172-31-3-184 kernel: ACPI: button: Sleep Button [SLPF]
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+Jun 05 16:40:11 ip-172-31-3-184 kernel: 00:04: ttyS0 at I/O 0x3f8 (irq = 4, base_baud = 115200) is a 16550A
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Linux agpgart interface v0.103
+Jun 05 16:40:11 ip-172-31-3-184 kernel: loop: module loaded
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Key type psk registered
+Jun 05 16:40:11 ip-172-31-3-184 kernel: ACPI: bus type drm_connector registered
+Jun 05 16:40:11 ip-172-31-3-184 kernel: nvme nvme0: pci function 0000:00:04.0
+Jun 05 16:40:11 ip-172-31-3-184 kernel: tun: Universal TUN/TAP device driver, 1.6
+Jun 05 16:40:11 ip-172-31-3-184 kernel: ena 0000:27:00.0: enabling device (0000 -> 0002)
+Jun 05 16:40:11 ip-172-31-3-184 kernel: ena 0000:27:00.0: ENA device version: 0.10
+Jun 05 16:40:11 ip-172-31-3-184 kernel: ena 0000:27:00.0: ENA controller version: 0.0.1 implementation version 1
+Jun 05 16:40:11 ip-172-31-3-184 kernel: nvme nvme0: 2/0/0 default/read/poll queues
+Jun 05 16:40:11 ip-172-31-3-184 kernel: ena 0000:27:00.0: Elastic Network Adapter (ENA) found at mem c8700000, mac addr 02:ae:72:5b:7d:59
+Jun 05 16:40:11 ip-172-31-3-184 kernel:  nvme0n1: p1 p14 p15 p16
+Jun 05 16:40:11 ip-172-31-3-184 kernel: PPP generic driver version 2.4.2
+Jun 05 16:40:11 ip-172-31-3-184 kernel: i8042: PNP: PS/2 Controller [PNP0303:KBD,PNP0f13:MOU] at 0x60,0x64 irq 1,12
+Jun 05 16:40:11 ip-172-31-3-184 kernel: i8042: Warning: Keylock active
+Jun 05 16:40:11 ip-172-31-3-184 kernel: serio: i8042 KBD port at 0x60,0x64 irq 1
+Jun 05 16:40:11 ip-172-31-3-184 kernel: serio: i8042 AUX port at 0x60,0x64 irq 12
+Jun 05 16:40:11 ip-172-31-3-184 kernel: mousedev: PS/2 mouse device common for all mice
+Jun 05 16:40:11 ip-172-31-3-184 kernel: rtc_cmos 00:00: RTC can wake from S4
+Jun 05 16:40:11 ip-172-31-3-184 kernel: rtc_cmos 00:00: registered as rtc0
+Jun 05 16:40:11 ip-172-31-3-184 kernel: rtc_cmos 00:00: setting system clock to 2026-06-05T16:40:09 UTC (1780677609)
+Jun 05 16:40:11 ip-172-31-3-184 kernel: rtc_cmos 00:00: alarms up to one day, 114 bytes nvram
+Jun 05 16:40:11 ip-172-31-3-184 kernel: i2c_dev: i2c /dev entries driver
+Jun 05 16:40:11 ip-172-31-3-184 kernel: device-mapper: core: CONFIG_IMA_DISABLE_HTABLE is disabled. Duplicate IMA measurements will not be recorded in the IMA log.
+Jun 05 16:40:11 ip-172-31-3-184 kernel: device-mapper: uevent: version 1.0.3
+Jun 05 16:40:11 ip-172-31-3-184 kernel: device-mapper: ioctl: 4.50.0-ioctl (2025-04-28) initialised: dm-devel@lists.linux.dev
+Jun 05 16:40:11 ip-172-31-3-184 kernel: intel_pstate: P-states controlled by the platform
+Jun 05 16:40:11 ip-172-31-3-184 kernel: simple-framebuffer simple-framebuffer.0: [drm] Registered 1 planes with drm panic
+Jun 05 16:40:11 ip-172-31-3-184 kernel: [drm] Initialized simpledrm 1.0.0 for simple-framebuffer.0 on minor 0
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Console: switching to colour frame buffer device 100x37
+Jun 05 16:40:11 ip-172-31-3-184 kernel: simple-framebuffer simple-framebuffer.0: [drm] fb0: simpledrmdrmfb frame buffer device
+Jun 05 16:40:11 ip-172-31-3-184 kernel: drop_monitor: Initializing network drop monitor service
+Jun 05 16:40:11 ip-172-31-3-184 kernel: NET: Registered PF_INET6 protocol family
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Segment Routing with IPv6
+Jun 05 16:40:11 ip-172-31-3-184 kernel: In-situ OAM (IOAM) with IPv6
+Jun 05 16:40:11 ip-172-31-3-184 kernel: NET: Registered PF_PACKET protocol family
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Key type dns_resolver registered
+Jun 05 16:40:11 ip-172-31-3-184 kernel: IPI shorthand broadcast: enabled
+Jun 05 16:40:11 ip-172-31-3-184 kernel: sched_clock: Marking stable (1212005282, 153475316)->(1452796358, -87315760)
+Jun 05 16:40:11 ip-172-31-3-184 kernel: registered taskstats version 1
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Loading compiled-in X.509 certificates
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Loaded X.509 cert 'Build time autogenerated kernel key: fd6f7df877ab80e1a3b90e65d4007feeac493c65'
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Loaded X.509 cert 'Canonical Ltd. Live Patch Signing 2025 Kmod: d541cef61dc7e793b7eb7e899970a2eef0b5dc8c'
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Loaded X.509 cert 'Canonical Ltd. Live Patch Signing: 14df34d1a87cf37625abec039ef2bf521249b969'
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Loaded X.509 cert 'Canonical Ltd. Kernel Module Signing 2025 Kmod: 4627603d2357a2a3f81006370894c221175893e9'
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Loaded X.509 cert 'Canonical Ltd. Kernel Module Signing: 88f752e560a1e0737e31163a466ad7b70a850c19'
+Jun 05 16:40:11 ip-172-31-3-184 kernel: blacklist: Loading compiled-in revocation X.509 certificates
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Loaded X.509 cert 'Canonical Ltd. Secure Boot Signing: 61482aa2830d0ab2ad5af10b7250da9033ddcef0'
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Loaded X.509 cert 'Canonical Ltd. Secure Boot Signing (2017): 242ade75ac4a15e50d50c84b0d45ff3eae707a03'
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Loaded X.509 cert 'Canonical Ltd. Secure Boot Signing (ESM 2018): 365188c1d374d6b07c3c8f240f8ef722433d6a8b'
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Loaded X.509 cert 'Canonical Ltd. Secure Boot Signing (2019): c0746fd6c5da3ae827864651ad66ae47fe24b3e8'
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Loaded X.509 cert 'Canonical Ltd. Secure Boot Signing (2021 v1): a8d54bbb3825cfb94fa13c9f8a594a195c107b8d'
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Loaded X.509 cert 'Canonical Ltd. Secure Boot Signing (2021 v2): 4cf046892d6fd3c9a5b03f98d845f90851dc6a8c'
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Loaded X.509 cert 'Canonical Ltd. Secure Boot Signing (2021 v3): 100437bb6de6e469b581e61cd66bce3ef4ed53af'
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Loaded X.509 cert 'Canonical Ltd. Secure Boot Signing (Ubuntu Core 2019): c1d57b8f6b743f23ee41f4f7ee292f06eecadfb9'
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Demotion targets for Node 0: null
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Key type .fscrypt registered
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Key type fscrypt-provisioning registered
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Key type big_key registered
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Key type encrypted registered
+Jun 05 16:40:11 ip-172-31-3-184 kernel: AppArmor: AppArmor sha256 policy hashing enabled
+Jun 05 16:40:11 ip-172-31-3-184 kernel: ima: No TPM chip found, activating TPM-bypass!
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Loading compiled-in module X.509 certificates
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Loaded X.509 cert 'Build time autogenerated kernel key: fd6f7df877ab80e1a3b90e65d4007feeac493c65'
+Jun 05 16:40:11 ip-172-31-3-184 kernel: ima: Allocated hash algorithm: sha256
+Jun 05 16:40:11 ip-172-31-3-184 kernel: ima: No architecture policies found
+Jun 05 16:40:11 ip-172-31-3-184 kernel: evm: Initialising EVM extended attributes:
+Jun 05 16:40:11 ip-172-31-3-184 kernel: evm: security.selinux
+Jun 05 16:40:11 ip-172-31-3-184 kernel: evm: security.SMACK64
+Jun 05 16:40:11 ip-172-31-3-184 kernel: evm: security.SMACK64EXEC
+Jun 05 16:40:11 ip-172-31-3-184 kernel: evm: security.SMACK64TRANSMUTE
+Jun 05 16:40:11 ip-172-31-3-184 kernel: evm: security.SMACK64MMAP
+Jun 05 16:40:11 ip-172-31-3-184 kernel: evm: security.apparmor
+Jun 05 16:40:11 ip-172-31-3-184 kernel: evm: security.ima
+Jun 05 16:40:11 ip-172-31-3-184 kernel: evm: security.capability
+Jun 05 16:40:11 ip-172-31-3-184 kernel: evm: HMAC attrs: 0x1
+Jun 05 16:40:11 ip-172-31-3-184 kernel: PM:   Magic number: 14:205:691
+Jun 05 16:40:11 ip-172-31-3-184 kernel: RAS: Correctable Errors collector initialized.
+Jun 05 16:40:11 ip-172-31-3-184 kernel: clk: Disabling unused clocks
+Jun 05 16:40:11 ip-172-31-3-184 kernel: PM: genpd: Disabling unused power domains
+Jun 05 16:40:11 ip-172-31-3-184 kernel: check access for rdinit=/init failed: -2, ignoring
+Jun 05 16:40:11 ip-172-31-3-184 kernel: input: AT Translated Set 2 keyboard as /devices/platform/i8042/serio0/input/input2
+Jun 05 16:40:11 ip-172-31-3-184 kernel: md: Waiting for all devices to be available before autodetect
+Jun 05 16:40:11 ip-172-31-3-184 kernel: md: If you don't use raid, use raid=noautodetect
+Jun 05 16:40:11 ip-172-31-3-184 kernel: md: Autodetecting RAID arrays.
+Jun 05 16:40:11 ip-172-31-3-184 kernel: md: autorun ...
+Jun 05 16:40:11 ip-172-31-3-184 kernel: md: ... autorun DONE.
+Jun 05 16:40:11 ip-172-31-3-184 kernel: EXT4-fs (nvme0n1p1): Supports (experimental) DIO atomic writes awu_min: 4096, awu_max: 4096
+Jun 05 16:40:11 ip-172-31-3-184 kernel: EXT4-fs (nvme0n1p1): INFO: recovery required on readonly filesystem
+Jun 05 16:40:11 ip-172-31-3-184 kernel: EXT4-fs (nvme0n1p1): write access will be enabled during recovery
+Jun 05 16:40:11 ip-172-31-3-184 kernel: EXT4-fs (nvme0n1p1): recovery complete
+Jun 05 16:40:11 ip-172-31-3-184 kernel: EXT4-fs (nvme0n1p1): mounted filesystem 43b6b89f-b6e4-481d-ba05-6b2fa37decfb ro with ordered data mode. Quota mode: none.
+Jun 05 16:40:11 ip-172-31-3-184 kernel: VFS: Mounted root (ext4 filesystem) readonly on device 259:1.
+Jun 05 16:40:11 ip-172-31-3-184 kernel: devtmpfs: mounted
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Freeing unused decrypted memory: 2028K
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Freeing unused kernel image (initmem) memory: 5396K
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Write protecting the kernel read-only data: 38912k
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Freeing unused kernel image (text/rodata gap) memory: 368K
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Freeing unused kernel image (rodata/data gap) memory: 808K
+Jun 05 16:40:11 ip-172-31-3-184 kernel: x86/mm: Checked W+X mappings: passed, no W+X pages found.
+Jun 05 16:40:11 ip-172-31-3-184 kernel: Run /sbin/init as init process
+Jun 05 16:40:11 ip-172-31-3-184 kernel:   with arguments:
+Jun 05 16:40:11 ip-172-31-3-184 kernel:     /sbin/init
+Jun 05 16:40:11 ip-172-31-3-184 kernel:   with environment:
+Jun 05 16:40:11 ip-172-31-3-184 kernel:     HOME=/
+Jun 05 16:40:11 ip-172-31-3-184 kernel:     TERM=linux
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Inserted module 'autofs4'
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: systemd 255.4-1ubuntu8.15 running in system mode (+PAM +AUDIT +SELINUX +APPARMOR +IMA +SMACK +SECCOMP +GCRYPT -GNUTLS +OPENSSL +ACL +BLKID +CURL +ELFUTILS +FIDO2 +IDN2 -IDN +IPTC +KMOD +LIBCRYPTSETUP +LIBFDISK +PCRE2 -PWQUALITY +P11KIT +QRENCODE +TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD -BPF_FRAMEWORK -XKBCOMMON +UTMP +SYSVINIT default-hierarchy=unified)
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Detected virtualization amazon.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Detected architecture x86-64.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Hostname set to <ip-172-31-3-184>.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Queued start job for default target graphical.target.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Created slice system-modprobe.slice - Slice /system/modprobe.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Created slice system-serial\x2dgetty.slice - Slice /system/serial-getty.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Created slice system-systemd\x2dfsck.slice - Slice /system/systemd-fsck.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Created slice user.slice - User and Session Slice.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Started systemd-ask-password-wall.path - Forward Password Requests to Wall Directory Watch.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Set up automount proc-sys-fs-binfmt_misc.automount - Arbitrary Executable File Formats File System Automount Point.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Expecting device dev-disk-by\x2dlabel-BOOT.device - /dev/disk/by-label/BOOT...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Expecting device dev-disk-by\x2dlabel-UEFI.device - /dev/disk/by-label/UEFI...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Expecting device dev-ttyS0.device - /dev/ttyS0...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Reached target integritysetup.target - Local Integrity Protected Volumes.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Reached target slices.target - Slice Units.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Reached target snapd.mounts-pre.target - Mounting snaps.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Reached target swap.target - Swaps.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Reached target time-set.target - System Time Set.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Reached target veritysetup.target - Local Verity Protected Volumes.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Listening on dm-event.socket - Device-mapper event daemon FIFOs.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Listening on lvm2-lvmpolld.socket - LVM2 poll daemon socket.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Listening on multipathd.socket - multipathd control socket.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Listening on syslog.socket - Syslog Socket.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Listening on systemd-fsckd.socket - fsck to fsckd communication Socket.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Listening on systemd-initctl.socket - initctl Compatibility Named Pipe.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Listening on systemd-journald-dev-log.socket - Journal Socket (/dev/log).
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Listening on systemd-journald.socket - Journal Socket.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Listening on systemd-networkd.socket - Network Service Netlink Socket.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: systemd-pcrextend.socket - TPM2 PCR Extension (Varlink) was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Listening on systemd-udevd-control.socket - udev Control Socket.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Listening on systemd-udevd-kernel.socket - udev Kernel Socket.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Mounting dev-hugepages.mount - Huge Pages File System...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Mounting dev-mqueue.mount - POSIX Message Queue File System...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Mounting sys-kernel-debug.mount - Kernel Debug File System...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Mounting sys-kernel-tracing.mount - Kernel Trace File System...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting systemd-journald.service - Journal Service...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting keyboard-setup.service - Set the console keyboard layout...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting kmod-static-nodes.service - Create List of Static Device Nodes...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting lvm2-monitor.service - Monitoring of LVM2 mirrors, snapshots etc. using dmeventd or progress polling...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting modprobe@configfs.service - Load Kernel Module configfs...
+Jun 05 16:40:11 ip-172-31-3-184 systemd-journald[180]: Collecting audit messages is disabled.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting modprobe@dm_mod.service - Load Kernel Module dm_mod...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting modprobe@drm.service - Load Kernel Module drm...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting modprobe@efi_pstore.service - Load Kernel Module efi_pstore...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting modprobe@fuse.service - Load Kernel Module fuse...
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pstore: Using crash dump compression: deflate
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting modprobe@loop.service - Load Kernel Module loop...
+Jun 05 16:40:11 ip-172-31-3-184 kernel: pstore: Registered efi_pstore as persistent store backend
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting modprobe@nvme_fabrics.service - Load Kernel Module nvme_fabrics...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: netplan-ovs-cleanup.service - OpenVSwitch configuration for cleanup was skipped because of an unmet condition check (ConditionFileIsExecutable=/usr/bin/ovs-vsctl).
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting systemd-fsck-root.service - File System Check on Root Device...
+Jun 05 16:40:11 ip-172-31-3-184 systemd-journald[180]: Journal started
+Jun 05 16:40:11 ip-172-31-3-184 systemd-journald[180]: Runtime Journal (/run/log/journal/ec22946aff50c9d40c608706bfc5e2e6) is 8.0M, max 155.5M, 147.5M free.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting systemd-modules-load.service - Load Kernel Modules...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: systemd-pcrmachine.service - TPM2 PCR Machine ID Measurement was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: systemd-tpm2-setup-early.service - TPM2 SRK Setup (Early) was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting systemd-udev-trigger.service - Coldplug All udev Devices...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Mounted dev-hugepages.mount - Huge Pages File System.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Started systemd-journald.service - Journal Service.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Mounted dev-mqueue.mount - POSIX Message Queue File System.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Mounted sys-kernel-debug.mount - Kernel Debug File System.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Mounted sys-kernel-tracing.mount - Kernel Trace File System.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Finished keyboard-setup.service - Set the console keyboard layout.
+Jun 05 16:40:11 ip-172-31-3-184 systemd-modules-load[198]: Inserted module 'msr'
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Finished kmod-static-nodes.service - Create List of Static Device Nodes.
+Jun 05 16:40:11 ip-172-31-3-184 systemd-fsck[200]: cloudimg-rootfs: clean, 86056/12976128 files, 5826459/25951995 blocks
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: modprobe@configfs.service: Deactivated successfully.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Finished modprobe@configfs.service - Load Kernel Module configfs.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: modprobe@dm_mod.service: Deactivated successfully.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Finished modprobe@dm_mod.service - Load Kernel Module dm_mod.
+Jun 05 16:40:11 ip-172-31-3-184 systemd-modules-load[198]: Inserted module 'dm_multipath'
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Finished lvm2-monitor.service - Monitoring of LVM2 mirrors, snapshots etc. using dmeventd or progress polling.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: modprobe@drm.service: Deactivated successfully.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Finished modprobe@drm.service - Load Kernel Module drm.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: modprobe@efi_pstore.service: Deactivated successfully.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Finished modprobe@efi_pstore.service - Load Kernel Module efi_pstore.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: modprobe@fuse.service: Deactivated successfully.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Finished modprobe@fuse.service - Load Kernel Module fuse.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: modprobe@loop.service: Deactivated successfully.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Finished modprobe@loop.service - Load Kernel Module loop.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: modprobe@nvme_fabrics.service: Deactivated successfully.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Finished modprobe@nvme_fabrics.service - Load Kernel Module nvme_fabrics.
+Jun 05 16:40:11 ip-172-31-3-184 systemd-modules-load[198]: Inserted module 'nf_conntrack'
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Finished systemd-fsck-root.service - File System Check on Root Device.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Finished systemd-modules-load.service - Load Kernel Modules.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Mounting sys-fs-fuse-connections.mount - FUSE Control File System...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Mounting sys-kernel-config.mount - Kernel Configuration File System...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Started systemd-fsckd.service - File System Check Daemon to report status.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting systemd-remount-fs.service - Remount Root and Kernel File Systems...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: systemd-repart.service - Repartition Root Disk was skipped because no trigger condition checks were met.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting systemd-sysctl.service - Apply Kernel Variables...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting systemd-tmpfiles-setup-dev-early.service - Create Static Device Nodes in /dev gracefully...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Mounted sys-fs-fuse-connections.mount - FUSE Control File System.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Mounted sys-kernel-config.mount - Kernel Configuration File System.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Finished systemd-udev-trigger.service - Coldplug All udev Devices.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Finished systemd-sysctl.service - Apply Kernel Variables.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Finished systemd-tmpfiles-setup-dev-early.service - Create Static Device Nodes in /dev gracefully.
+Jun 05 16:40:11 ip-172-31-3-184 kernel: EXT4-fs (nvme0n1p1): re-mounted 43b6b89f-b6e4-481d-ba05-6b2fa37decfb r/w.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Finished systemd-remount-fs.service - Remount Root and Kernel File Systems.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting multipathd.service - Device-Mapper Multipath Device Controller...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: systemd-hwdb-update.service - Rebuild Hardware Database was skipped because of an unmet condition check (ConditionNeedsUpdate=/etc).
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting systemd-journal-flush.service - Flush Journal to Persistent Storage...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: systemd-pstore.service - Platform Persistent Storage Archival was skipped because of an unmet condition check (ConditionDirectoryNotEmpty=/sys/fs/pstore).
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting systemd-random-seed.service - Load/Save OS Random Seed...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: systemd-sysusers.service - Create System Users was skipped because no trigger condition checks were met.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting systemd-tmpfiles-setup-dev.service - Create Static Device Nodes in /dev...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: systemd-tpm2-setup.service - TPM2 SRK Setup was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+Jun 05 16:40:11 ip-172-31-3-184 systemd-journald[180]: Time spent on flushing to /var/log/journal/ec22946aff50c9d40c608706bfc5e2e6 is 12.296ms for 1200 entries.
+Jun 05 16:40:11 ip-172-31-3-184 systemd-journald[180]: System Journal (/var/log/journal/ec22946aff50c9d40c608706bfc5e2e6) is 96.0M, max 4.0G, 3.9G free.
+Jun 05 16:40:11 ip-172-31-3-184 systemd-journald[180]: Received client request to flush runtime journal.
+Jun 05 16:40:11 ip-172-31-3-184 systemd-journald[180]: File /var/log/journal/ec22946aff50c9d40c608706bfc5e2e6/system.journal corrupted or uncleanly shut down, renaming and replacing.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Finished systemd-tmpfiles-setup-dev.service - Create Static Device Nodes in /dev.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting systemd-udevd.service - Rule-based Manager for Device Events and Files...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Finished systemd-random-seed.service - Load/Save OS Random Seed.
+Jun 05 16:40:11 ip-172-31-3-184 systemd-udevd[248]: Using default interface naming scheme 'v255'.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Finished systemd-journal-flush.service - Flush Journal to Persistent Storage.
+Jun 05 16:40:11 ip-172-31-3-184 multipathd[244]: multipathd v0.9.4: start up
+Jun 05 16:40:11 ip-172-31-3-184 multipathd[244]: reconfigure: setting up paths and maps
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Started multipathd.service - Device-Mapper Multipath Device Controller.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Started systemd-udevd.service - Rule-based Manager for Device Events and Files.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: nvmefc-boot-connections.service - Auto-connect to subsystems on FC-NVME devices found during boot was skipped because of an unmet condition check (ConditionPathExists=/sys/class/fc/fc_udev_device/nvme_discovery).
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Reached target local-fs-pre.target - Preparation for Local File Systems.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Mounting snap-amazon\x2dssm\x2dagent-13009.mount - Mount unit for amazon-ssm-agent, revision 13009...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Mounting snap-core22-2411.mount - Mount unit for core22, revision 2411...
+Jun 05 16:40:11 ip-172-31-3-184 kernel: loop0: detected capacity change from 0 to 57752
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Mounting snap-snapd-26865.mount - Mount unit for snapd, revision 26865...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: plymouth-start.service - Show Plymouth Boot Screen was skipped because of an unmet condition check (ConditionKernelCommandLine=splash).
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Started systemd-ask-password-console.path - Dispatch Password Requests to Console Directory Watch.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: systemd-ask-password-plymouth.path - Forward Password Requests to Plymouth Directory Watch was skipped because of an unmet condition check (ConditionPathExists=/run/plymouth/pid).
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Reached target cryptsetup.target - Local Encrypted Volumes.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Mounted snap-amazon\x2dssm\x2dagent-13009.mount - Mount unit for amazon-ssm-agent, revision 13009.
+Jun 05 16:40:11 ip-172-31-3-184 kernel: loop1: detected capacity change from 0 to 100888
+Jun 05 16:40:11 ip-172-31-3-184 kernel: loop2: detected capacity change from 0 to 151512
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Mounted snap-snapd-26865.mount - Mount unit for snapd, revision 26865.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Mounted snap-core22-2411.mount - Mount unit for core22, revision 2411.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Found device dev-ttyS0.device - /dev/ttyS0.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Reached target snapd.mounts.target - Mounted snaps.
+Jun 05 16:40:11 ip-172-31-3-184 multipath[305]: nvme0n1: uid = uuid.49cbf6b5-9a5f-51af-aca9-a2d5a37c0441 (sysfs)
+Jun 05 16:40:11 ip-172-31-3-184 (udev-worker)[267]: eth0: Could not set WakeOnLan to off, ignoring: Operation not supported
+Jun 05 16:40:11 ip-172-31-3-184 kernel: ena 0000:27:00.0 enp39s0: renamed from eth0
+Jun 05 16:40:11 ip-172-31-3-184 kernel: nvme nvme0: using unchecked data buffer
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Found device dev-disk-by\x2dlabel-UEFI.device - Amazon Elastic Block Store UEFI.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Found device dev-disk-by\x2dlabel-BOOT.device - Amazon Elastic Block Store BOOT.
+Jun 05 16:40:11 ip-172-31-3-184 kernel: parport_pc 00:03: reported by Plug and Play ACPI
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Listening on systemd-rfkill.socket - Load/Save RF Kill Switch Status /dev/rfkill Watch.
+Jun 05 16:40:11 ip-172-31-3-184 (udev-worker)[260]: enp39s0: Could not set WakeOnLan to off, ignoring: Operation not supported
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting systemd-fsck@dev-disk-by\x2dlabel-BOOT.service - File System Check on /dev/disk/by-label/BOOT...
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Starting systemd-fsck@dev-disk-by\x2dlabel-UEFI.service - File System Check on /dev/disk/by-label/UEFI...
+Jun 05 16:40:11 ip-172-31-3-184 kernel: ppdev: user-space parallel port driver
+Jun 05 16:40:11 ip-172-31-3-184 systemd-fsck[346]: BOOT: recovering journal
+Jun 05 16:40:11 ip-172-31-3-184 systemd-fsck[346]: BOOT: clean, 601/58496 files, 32261/233728 blocks
+Jun 05 16:40:11 ip-172-31-3-184 systemd-fsck[347]: fsck.fat 4.2 (2021-01-31)
+Jun 05 16:40:11 ip-172-31-3-184 systemd-fsck[347]: There are differences between boot sector and its backup.
+Jun 05 16:40:11 ip-172-31-3-184 systemd-fsck[347]: This is mostly harmless. Differences: (offset:original/backup)
+Jun 05 16:40:11 ip-172-31-3-184 systemd-fsck[347]:   65:01/00
+Jun 05 16:40:11 ip-172-31-3-184 systemd-fsck[347]:   Not automatically fixing this.
+Jun 05 16:40:11 ip-172-31-3-184 systemd-fsck[347]: Dirty bit is set. Fs was not properly unmounted and some data may be corrupt.
+Jun 05 16:40:11 ip-172-31-3-184 systemd-fsck[347]:  Automatically removing dirty bit.
+Jun 05 16:40:11 ip-172-31-3-184 systemd-fsck[347]: *** Filesystem was changed ***
+Jun 05 16:40:11 ip-172-31-3-184 systemd-fsck[347]: Writing changes.
+Jun 05 16:40:11 ip-172-31-3-184 systemd-fsck[347]: /dev/nvme0n1p15: 12 files, 12499/213663 clusters
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Finished systemd-fsck@dev-disk-by\x2dlabel-UEFI.service - File System Check on /dev/disk/by-label/UEFI.
+Jun 05 16:40:11 ip-172-31-3-184 systemd[1]: Finished systemd-fsck@dev-disk-by\x2dlabel-BOOT.service - File System Check on /dev/disk/by-label/BOOT.
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Mounting boot.mount - /boot...
+Jun 05 16:40:12 ip-172-31-3-184 kernel: EXT4-fs (nvme0n1p16): Supports (experimental) DIO atomic writes awu_min: 4096, awu_max: 4096
+Jun 05 16:40:12 ip-172-31-3-184 kernel: EXT4-fs (nvme0n1p16): mounted filesystem 991e6402-e67a-4f68-85c2-7576d7e12bce r/w with ordered data mode. Quota mode: none.
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Mounted boot.mount - /boot.
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Mounting boot-efi.mount - /boot/efi...
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Mounted boot-efi.mount - /boot/efi.
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Reached target local-fs.target - Local File Systems.
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Listening on systemd-sysext.socket - System Extension Image Management (Varlink).
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Starting apparmor.service - Load AppArmor profiles...
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Starting console-setup.service - Set console font and keymap...
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Starting finalrd.service - Create final runtime dir for shutdown pivot root...
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: ldconfig.service - Rebuild Dynamic Linker Cache was skipped because no trigger condition checks were met.
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Starting plymouth-read-write.service - Tell Plymouth To Write Out Runtime Data...
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Starting systemd-binfmt.service - Set Up Additional Binary Formats...
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Starting systemd-tmpfiles-setup.service - Create Volatile Files and Directories...
+Jun 05 16:40:12 ip-172-31-3-184 apparmor.systemd[359]: Restarting AppArmor
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Starting ufw.service - Uncomplicated firewall...
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Finished console-setup.service - Set console font and keymap.
+Jun 05 16:40:12 ip-172-31-3-184 apparmor.systemd[359]: Reloading AppArmor profiles
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Finished finalrd.service - Create final runtime dir for shutdown pivot root.
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: proc-sys-fs-binfmt_misc.automount: Got automount request for /proc/sys/fs/binfmt_misc, triggered by 366 (systemd-binfmt)
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Mounting proc-sys-fs-binfmt_misc.mount - Arbitrary Executable File Formats File System...
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Finished plymouth-read-write.service - Tell Plymouth To Write Out Runtime Data.
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Finished ufw.service - Uncomplicated firewall.
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Mounted proc-sys-fs-binfmt_misc.mount - Arbitrary Executable File Formats File System.
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Finished systemd-binfmt.service - Set Up Additional Binary Formats.
+Jun 05 16:40:12 ip-172-31-3-184 kernel: audit: type=1400 audit(1780677612.166:2): apparmor="STATUS" operation="profile_load" profile="unconfined" name=4D6F6E676F444220436F6D70617373 pid=386 comm="apparmor_parser"
+Jun 05 16:40:12 ip-172-31-3-184 kernel: audit: type=1400 audit(1780677612.166:3): apparmor="STATUS" operation="profile_load" profile="unconfined" name="Discord" pid=385 comm="apparmor_parser"
+Jun 05 16:40:12 ip-172-31-3-184 kernel: audit: type=1400 audit(1780677612.166:4): apparmor="STATUS" operation="profile_load" profile="unconfined" name="1password" pid=384 comm="apparmor_parser"
+Jun 05 16:40:12 ip-172-31-3-184 kernel: input: ImPS/2 Generic Wheel Mouse as /devices/platform/i8042/serio1/input/input4
+Jun 05 16:40:12 ip-172-31-3-184 kernel: audit: type=1400 audit(1780677612.168:5): apparmor="STATUS" operation="profile_load" profile="unconfined" name="QtWebEngineProcess" pid=387 comm="apparmor_parser"
+Jun 05 16:40:12 ip-172-31-3-184 kernel: audit: type=1400 audit(1780677612.169:6): apparmor="STATUS" operation="profile_load" profile="unconfined" name="balena-etcher" pid=390 comm="apparmor_parser"
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Finished systemd-tmpfiles-setup.service - Create Volatile Files and Directories.
+Jun 05 16:40:12 ip-172-31-3-184 kernel: audit: type=1400 audit(1780677612.170:7): apparmor="STATUS" operation="profile_load" profile="unconfined" name="brave" pid=391 comm="apparmor_parser"
+Jun 05 16:40:12 ip-172-31-3-184 kernel: audit: type=1400 audit(1780677612.170:8): apparmor="STATUS" operation="profile_load" profile="unconfined" name="cam" pid=393 comm="apparmor_parser"
+Jun 05 16:40:12 ip-172-31-3-184 kernel: audit: type=1400 audit(1780677612.171:9): apparmor="STATUS" operation="profile_load" profile="unconfined" name="buildah" pid=392 comm="apparmor_parser"
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: systemd-firstboot.service - First Boot Wizard was skipped because of an unmet condition check (ConditionFirstBoot=yes).
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: first-boot-complete.target - First Boot Complete was skipped because of an unmet condition check (ConditionFirstBoot=yes).
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: systemd-journal-catalog-update.service - Rebuild Journal Catalog was skipped because of an unmet condition check (ConditionNeedsUpdate=/var).
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: systemd-machine-id-commit.service - Commit a transient machine-id on disk was skipped because of an unmet condition check (ConditionPathIsMountPoint=/etc/machine-id).
+Jun 05 16:40:12 ip-172-31-3-184 kernel: audit: type=1400 audit(1780677612.172:10): apparmor="STATUS" operation="profile_load" profile="unconfined" name="ch-checkns" pid=394 comm="apparmor_parser"
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Starting systemd-resolved.service - Network Name Resolution...
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: systemd-update-done.service - Update is Completed was skipped because no trigger condition checks were met.
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Starting systemd-update-utmp.service - Record System Boot/Shutdown in UTMP...
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Finished systemd-update-utmp.service - Record System Boot/Shutdown in UTMP.
+Jun 05 16:40:12 ip-172-31-3-184 systemd-resolved[401]: Positive Trust Anchors:
+Jun 05 16:40:12 ip-172-31-3-184 systemd-resolved[401]: . IN DS 20326 8 2 e06d44b80b8f1d39a95c0b0d7c65d08458e880409bbc683457104237c7f8ec8d
+Jun 05 16:40:12 ip-172-31-3-184 systemd-resolved[401]: Negative trust anchors: home.arpa 10.in-addr.arpa 16.172.in-addr.arpa 17.172.in-addr.arpa 18.172.in-addr.arpa 19.172.in-addr.arpa 20.172.in-addr.arpa 21.172.in-addr.arpa 22.172.in-addr.arpa 23.172.in-addr.arpa 24.172.in-addr.arpa 25.172.in-addr.arpa 26.172.in-addr.arpa 27.172.in-addr.arpa 28.172.in-addr.arpa 29.172.in-addr.arpa 30.172.in-addr.arpa 31.172.in-addr.arpa 170.0.0.192.in-addr.arpa 171.0.0.192.in-addr.arpa 168.192.in-addr.arpa d.f.ip6.arpa ipv4only.arpa corp home internal intranet lan local private test
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Finished apparmor.service - Load AppArmor profiles.
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Starting snapd.apparmor.service - Load AppArmor profiles managed internally by snapd...
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: vgauth.service - Authentication service for virtual machines hosted on VMware was skipped because of an unmet condition check (ConditionVirtualization=vmware).
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: open-vm-tools.service - Service for virtual machines hosted on VMware was skipped because of an unmet condition check (ConditionVirtualization=vmware).
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Starting cloud-init-local.service - Cloud-init: Local Stage (pre-network)...
+Jun 05 16:40:12 ip-172-31-3-184 snapd-apparmor[494]: main.go:146: Loading profiles [/var/lib/snapd/apparmor/profiles/snap-confine.snapd.26865 /var/lib/snapd/apparmor/profiles/snap-update-ns.amazon-ssm-agent /var/lib/snapd/apparmor/profiles/snap.amazon-ssm-agent.amazon-ssm-agent /var/lib/snapd/apparmor/profiles/snap.amazon-ssm-agent.ssm-cli]
+Jun 05 16:40:12 ip-172-31-3-184 systemd-resolved[401]: Using system hostname 'ip-172-31-3-184'.
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Finished snapd.apparmor.service - Load AppArmor profiles managed internally by snapd.
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Started systemd-resolved.service - Network Name Resolution.
+Jun 05 16:40:12 ip-172-31-3-184 systemd[1]: Reached target nss-lookup.target - Host and Network Name Lookups.
+Jun 05 16:40:13 ip-172-31-3-184 cloud-init[511]: Cloud-init v. 25.3-0ubuntu1~24.04.1 running 'init-local' at Fri, 05 Jun 2026 16:40:13 +0000. Up 4.71 seconds.
+Jun 05 16:40:13 ip-172-31-3-184 dhcpcd[514]: dhcpcd-10.0.6 starting
+Jun 05 16:40:13 ip-172-31-3-184 dhcpcd[517]: DUID 00:01:00:01:31:b1:02:ed:02:ae:72:5b:7d:59
+Jun 05 16:40:13 ip-172-31-3-184 kernel: 8021q: 802.1Q VLAN Support v1.8
+Jun 05 16:40:13 ip-172-31-3-184 dhcpcd[517]: enp39s0: IAID 72:5b:7d:59
+Jun 05 16:40:13 ip-172-31-3-184 dhcpcd[517]: enp39s0: soliciting a DHCP lease
+Jun 05 16:40:13 ip-172-31-3-184 dhcpcd[517]: enp39s0: offered 172.31.3.184 from 172.31.0.1
+Jun 05 16:40:13 ip-172-31-3-184 dhcpcd[517]: enp39s0: leased 172.31.3.184 for 3600 seconds
+Jun 05 16:40:13 ip-172-31-3-184 dhcpcd[517]: enp39s0: adding route to 172.31.0.0/20
+Jun 05 16:40:13 ip-172-31-3-184 dhcpcd[517]: enp39s0: adding default route via 172.31.0.1
+Jun 05 16:40:13 ip-172-31-3-184 dhcpcd[517]: control command: dhcpcd --dumplease --ipv4only enp39s0
+Jun 05 16:40:13 ip-172-31-3-184 systemd[1]: Finished cloud-init-local.service - Cloud-init: Local Stage (pre-network).
+Jun 05 16:40:13 ip-172-31-3-184 systemd[1]: Reached target network-pre.target - Preparation for Network.
+Jun 05 16:40:13 ip-172-31-3-184 systemd[1]: Starting systemd-networkd.service - Network Configuration...
+Jun 05 16:40:13 ip-172-31-3-184 systemd-networkd[538]: lo: Link UP
+Jun 05 16:40:13 ip-172-31-3-184 systemd-networkd[538]: lo: Gained carrier
+Jun 05 16:40:13 ip-172-31-3-184 systemd-networkd[538]: Enumeration completed
+Jun 05 16:40:13 ip-172-31-3-184 systemd-networkd[538]: enp39s0: Link UP
+Jun 05 16:40:13 ip-172-31-3-184 systemd-networkd[538]: enp39s0: Gained carrier
+Jun 05 16:40:13 ip-172-31-3-184 systemd[1]: Started systemd-networkd.service - Network Configuration.
+Jun 05 16:40:13 ip-172-31-3-184 systemd-networkd[538]: enp39s0: Link DOWN
+Jun 05 16:40:13 ip-172-31-3-184 systemd-networkd[538]: enp39s0: Lost carrier
+Jun 05 16:40:13 ip-172-31-3-184 systemd[1]: Reached target network.target - Network.
+Jun 05 16:40:13 ip-172-31-3-184 systemd-networkd[538]: enp39s0: Configuring with /run/systemd/network/10-netplan-enp39s0.network.
+Jun 05 16:40:13 ip-172-31-3-184 systemd[1]: Starting systemd-networkd-wait-online.service - Wait for Network to be Configured...
+Jun 05 16:40:13 ip-172-31-3-184 systemd-networkd[538]: enp39s0: Link UP
+Jun 05 16:40:13 ip-172-31-3-184 systemd-networkd[538]: enp39s0: Gained carrier
+Jun 05 16:40:13 ip-172-31-3-184 systemd-networkd[538]: enp39s0: DHCPv4 address 172.31.3.184/20, gateway 172.31.0.1 acquired from 172.31.0.1
+Jun 05 16:40:15 ip-172-31-3-184 systemd-networkd[538]: enp39s0: Gained IPv6LL
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Finished systemd-networkd-wait-online.service - Wait for Network to be Configured.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting cloud-init.service - Cloud-init: Network Stage...
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: Cloud-init v. 25.3-0ubuntu1~24.04.1 running 'init' at Fri, 05 Jun 2026 16:40:15 +0000. Up 6.97 seconds.
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: ++++++++++++++++++++++++++++++++++++++Net device info+++++++++++++++++++++++++++++++++++++++
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: +---------+------+----------------------------+---------------+--------+-------------------+
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: |  Device |  Up  |          Address           |      Mask     | Scope  |     Hw-Address    |
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: +---------+------+----------------------------+---------------+--------+-------------------+
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: | enp39s0 | True |        172.31.3.184        | 255.255.240.0 | global | 02:ae:72:5b:7d:59 |
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: | enp39s0 | True | fe80::ae:72ff:fe5b:7d59/64 |       .       |  link  | 02:ae:72:5b:7d:59 |
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: |    lo   | True |         127.0.0.1          |   255.0.0.0   |  host  |         .         |
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: |    lo   | True |          ::1/128           |       .       |  host  |         .         |
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: +---------+------+----------------------------+---------------+--------+-------------------+
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: +++++++++++++++++++++++++++++Route IPv4 info++++++++++++++++++++++++++++++
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: +-------+-------------+------------+-----------------+-----------+-------+
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: | Route | Destination |  Gateway   |     Genmask     | Interface | Flags |
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: +-------+-------------+------------+-----------------+-----------+-------+
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: |   0   |   0.0.0.0   | 172.31.0.1 |     0.0.0.0     |  enp39s0  |   UG  |
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: |   1   |  172.31.0.0 |  0.0.0.0   |  255.255.240.0  |  enp39s0  |   U   |
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: |   2   |  172.31.0.1 |  0.0.0.0   | 255.255.255.255 |  enp39s0  |   UH  |
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: |   3   |  172.31.0.2 |  0.0.0.0   | 255.255.255.255 |  enp39s0  |   UH  |
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: +-------+-------------+------------+-----------------+-----------+-------+
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: +++++++++++++++++++Route IPv6 info+++++++++++++++++++
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: +-------+-------------+---------+-----------+-------+
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: | Route | Destination | Gateway | Interface | Flags |
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: +-------+-------------+---------+-----------+-------+
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: |   0   |  fe80::/64  |    ::   |  enp39s0  |   U   |
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: |   2   |    local    |    ::   |  enp39s0  |   U   |
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: |   3   |  multicast  |    ::   |  enp39s0  |   U   |
+Jun 05 16:40:15 ip-172-31-3-184 cloud-init[548]: ci-info: +-------+-------------+---------+-----------+-------+
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Finished cloud-init.service - Cloud-init: Network Stage.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Reached target cloud-config.target - Cloud-config availability.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Reached target network-online.target - Network is Online.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Reached target sysinit.target - System Initialization.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Started acpid.path - ACPI Events Check.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: apport-autoreport.path - Process error reports when automatic reporting is enabled (file watch) was skipped because of an unmet condition check (ConditionPathExists=/var/lib/apport/autoreport).
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: tpm-udev.path - Handle dynamically added tpm devices was skipped because of an unmet condition check (ConditionVirtualization=container).
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: apport-autoreport.timer - Process error reports when automatic reporting is enabled (timer based) was skipped because of an unmet condition check (ConditionPathExists=/var/lib/apport/autoreport).
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Started prometheus-node-exporter-apt.timer - Run apt metrics collection every 15 minutes.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: prometheus-node-exporter-ipmitool-sensor.timer - Run ipmitool sensor metrics collection every minute was skipped because of an unmet condition check (ConditionDirectoryNotEmpty=/sys/class/ipmi).
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: prometheus-node-exporter-mellanox-hca-temp.timer - Run Mellanox HCA temperature collection every minute was skipped because of an unmet condition check (ConditionDirectoryNotEmpty=/sys/class/infiniband).
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Started prometheus-node-exporter-nvme.timer - Run NVMe metrics collection every 15 minutes.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: prometheus-node-exporter-smartmon.timer - Run smart metrics collection every 15 minutes was skipped because no trigger condition checks were met.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Started stele-soak-report.timer - Run stele-soak-snapshot every 30 minutes.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Started systemd-tmpfiles-clean.timer - Daily Cleanup of Temporary Directories.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: ua-timer.timer - Ubuntu Pro Timer for running repeated jobs was skipped because of an unmet condition check (ConditionPathExists=/var/lib/ubuntu-advantage/private/machine-token.json).
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Started update-notifier-download.timer - Download data for packages that failed at package install time.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Reached target paths.target - Path Units.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Listening on acpid.socket - ACPID Listen Socket.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: apport-forward.socket - Unix socket for apport crash forwarding was skipped because of an unmet condition check (ConditionVirtualization=container).
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Listening on cloud-init-hotplugd.socket - cloud-init hotplug hook socket.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Listening on dbus.socket - D-Bus System Message Bus Socket.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Listening on iscsid.socket - Open-iSCSI iscsid Socket.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting lxd-installer.socket - Helper to install lxd snap on demand...
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting snapd.socket - Socket activation for snappy daemon...
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Listening on ssh.socket - OpenBSD Secure Shell server socket.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Listening on uuidd.socket - UUID daemon activation socket.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: open-iscsi.service - Login to default iSCSI targets was skipped because no trigger condition checks were met.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Finished blk-availability.service - Availability of block devices.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: systemd-pcrphase-sysinit.service - TPM2 PCR Barrier (Initialization) was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Listening on lxd-installer.socket - Helper to install lxd snap on demand.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Listening on snapd.socket - Socket activation for snappy daemon.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Reached target sockets.target - Socket Units.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Reached target basic.target - Basic System.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Started acpid.service - ACPI event daemon.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting chrony.service - chrony, an NTP client/server...
+Jun 05 16:40:15 ip-172-31-3-184 (acpid)[582]: acpid.service: Referenced but unset environment variable evaluates to an empty string: OPTIONS
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting cloud-config.service - Cloud-init: Config Stage...
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting dbus.service - D-Bus System Message Bus...
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Started dmesg.service - Save initial kernel messages after boot.
+Jun 05 16:40:15 ip-172-31-3-184 acpid[582]: starting up with netlink and the input layer
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting e2scrub_reap.service - Remove Stale Online ext4 Metadata Check Snapshots...
+Jun 05 16:40:15 ip-172-31-3-184 acpid[582]: 2 rules loaded
+Jun 05 16:40:15 ip-172-31-3-184 acpid[582]: waiting for events: event logging is off
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting ec2-instance-connect-harvest-hostkeys.service - EC2 Instance Connect Host Key Harvesting...
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: getty-static.service - getty on tty2-tty6 if dbus and logind are not available was skipped because of an unmet condition check (ConditionPathExists=!/usr/bin/dbus-daemon).
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting grub-common.service - Record successful boot for GRUB...
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Started irqbalance.service - irqbalance daemon.
+Jun 05 16:40:15 ip-172-31-3-184 (qbalance)[590]: irqbalance.service: Referenced but unset environment variable evaluates to an empty string: IRQBALANCE_ARGS
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting networkd-dispatcher.service - Dispatcher daemon for systemd-networkd...
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot...
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting polkit.service - Authorization Manager...
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: pollinate.service - Pollinate to seed the pseudo random number generator was skipped because of an unmet condition check (ConditionPathExists=!/var/cache/pollinate/seeded).
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting prometheus-node-exporter-apt.service - Collect apt metrics for prometheus-node-exporter...
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting prometheus-node-exporter-nvme.service - Collect NVMe metrics for prometheus-node-exporter...
+Jun 05 16:40:15 ip-172-31-3-184 dbus-daemon[585]: [system] AppArmor D-Bus mediation is enabled
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Started prometheus-node-exporter.service - Prometheus exporter for machine metrics.
+Jun 05 16:40:15 ip-172-31-3-184 dbus-daemon[585]: [system] Activating systemd to hand-off: service name='org.freedesktop.hostname1' unit='dbus-org.freedesktop.hostname1.service' requested by ':1.1' (uid=998 pid=538 comm="/usr/lib/systemd/systemd-networkd" label="unconfined")
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting rsyslog.service - System Logging Service...
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: secureboot-db.service - Secure Boot updates for DB and DBX was skipped because of an unmet condition check (ConditionPathExists=/sys/firmware/efi/efivars/db-d719b2cb-3d3a-4596-a3bc-dad00e67656f).
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: smartmontools.service - Self Monitoring and Reporting Technology (SMART) Daemon was skipped because of an unmet condition check (ConditionVirtualization=no).
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Started snap.amazon-ssm-agent.amazon-ssm-agent.service - Service for snap application amazon-ssm-agent.amazon-ssm-agent.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: snapd.core-fixup.service - Automatically repair incorrect owner/permissions on core devices was skipped because no trigger condition checks were met.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: snapd.recovery-chooser-trigger.service - Wait for the Ubuntu Core chooser trigger was skipped because of an unmet condition check (ConditionKernelCommandLine=snapd_recovery_mode).
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Reached target getty-pre.target - Preparation for Logins.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting snapd.seeded.service - Wait until snapd is fully seeded...
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting snapd.service - Snap Daemon...
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Started stele-soak-operator.service - stele operator (soak).
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Started stele-soak-witness-a.service - stele witness a (soak).
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Started stele-soak-witness-b.service - stele witness b (soak).
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Started stele-soak-witness-c.service - stele witness c (soak).
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting stele-soak.service - stele 72-hour soak driver...
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting sysstat.service - Resets System Activity Logs...
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting systemd-logind.service - User Login Management...
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: ua-reboot-cmds.service - Ubuntu Pro reboot cmds was skipped because of an unmet condition check (ConditionPathExists=/var/lib/ubuntu-advantage/private/machine-token.json).
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: ubuntu-advantage.service - Ubuntu Pro Background Auto Attach was skipped because no trigger condition checks were met.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting udisks2.service - Disk Manager...
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Started dbus.service - D-Bus System Message Bus.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: e2scrub_reap.service: Deactivated successfully.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Finished e2scrub_reap.service - Remove Stale Online ext4 Metadata Check Snapshots.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: nvmf-autoconnect.service: Deactivated successfully.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Finished nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Finished sysstat.service - Resets System Activity Logs.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Reached target remote-fs-pre.target - Preparation for Remote File Systems.
+Jun 05 16:40:15 ip-172-31-3-184 dbus-daemon[585]: [system] Successfully activated service 'org.freedesktop.systemd1'
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Reached target remote-fs.target - Remote File Systems.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting apport.service - automatic crash report generation...
+Jun 05 16:40:15 ip-172-31-3-184 kernel: kauditd_printk_skb: 112 callbacks suppressed
+Jun 05 16:40:15 ip-172-31-3-184 kernel: audit: type=1400 audit(1780677615.801:123): apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="rsyslogd" pid=615 comm="apparmor_parser"
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Started cron.service - Regular background program processing daemon.
+Jun 05 16:40:15 ip-172-31-3-184 networkd-dispatcher[593]: No valid path found for iwconfig
+Jun 05 16:40:15 ip-172-31-3-184 networkd-dispatcher[593]: No valid path found for iw
+Jun 05 16:40:15 ip-172-31-3-184 udisksd[635]: udisks daemon version 2.10.1 starting
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting openipmi.service - LSB: OpenIPMI Driver init script...
+Jun 05 16:40:15 ip-172-31-3-184 (cron)[684]: cron.service: Referenced but unset environment variable evaluates to an empty string: EXTRA_OPTS
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: systemd-pcrphase.service - TPM2 PCR Barrier (User) was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Starting systemd-user-sessions.service - Permit User Sessions...
+Jun 05 16:40:15 ip-172-31-3-184 cron[684]: (CRON) INFO (pidfile fd = 3)
+Jun 05 16:40:15 ip-172-31-3-184 cron[684]: (CRON) INFO (Running @reboot jobs)
+Jun 05 16:40:15 ip-172-31-3-184 systemd-logind[623]: New seat seat0.
+Jun 05 16:40:15 ip-172-31-3-184 systemd-logind[623]: Watching system buttons on /dev/input/event0 (Power Button)
+Jun 05 16:40:15 ip-172-31-3-184 systemd-logind[623]: Watching system buttons on /dev/input/event1 (Sleep Button)
+Jun 05 16:40:15 ip-172-31-3-184 systemd-logind[623]: Watching system buttons on /dev/input/event2 (AT Translated Set 2 keyboard)
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Started systemd-logind.service - User Login Management.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Started networkd-dispatcher.service - Dispatcher daemon for systemd-networkd.
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Finished systemd-user-sessions.service - Permit User Sessions.
+Jun 05 16:40:15 ip-172-31-3-184 dbus-daemon[585]: [system] Activating via systemd: service name='org.freedesktop.PolicyKit1' unit='polkit.service' requested by ':1.5' (uid=0 pid=635 comm="/usr/libexec/udisks2/udisksd" label="unconfined")
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Reloading requested from client PID 675 ('systemctl') (unit stele-soak.service)...
+Jun 05 16:40:15 ip-172-31-3-184 systemd[1]: Reloading...
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.930Z caller=node_exporter.go:192 level=info msg="Starting node_exporter" version="(version=1.7.0, branch=debian/sid, revision=1.7.0-1ubuntu0.3)"
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.932Z caller=node_exporter.go:193 level=info msg="Build context" build_context="(go=go1.22.2, platform=linux/amd64, user=team+pkg-go@tracker.debian.org, date=20250721-00:45:45, tags=unknown)"
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.935Z caller=netdev_common.go:61 level=info collector=netdev msg="Parsed flag --collector.netdev.device-exclude" flag=^lo$
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.935Z caller=filesystem_common.go:111 level=info collector=filesystem msg="Parsed flag --collector.filesystem.mount-points-exclude" flag=^/(dev|proc|run|sys|mnt|media|var/lib/docker/.+|var/lib/containers/storage/.+)($|/)
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.935Z caller=filesystem_common.go:113 level=info collector=filesystem msg="Parsed flag --collector.filesystem.fs-types-exclude" flag=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs)$
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=diskstats_common.go:111 level=info collector=diskstats msg="Parsed flag --collector.diskstats.device-exclude" flag=^(ram|loop|fd|(h|s|v|xv)d[a-z]|nvme\d+n\d+p)\d+$
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=systemd_linux.go:134 level=info collector=systemd msg="Parsed flag --collector.systemd.unit-include" flag=.+
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=systemd_linux.go:136 level=info collector=systemd msg="Parsed flag --collector.systemd.unit-exclude" flag=.+\.(automount|device|mount|scope|slice|target)
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:110 level=info msg="Enabled collectors"
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=arp
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=bcache
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=bonding
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=btrfs
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=conntrack
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=cpu
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=cpufreq
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=diskstats
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=dmi
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=edac
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=entropy
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=fibrechannel
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=filefd
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=filesystem
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=hwmon
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=infiniband
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=ipvs
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=loadavg
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=mdadm
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=meminfo
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=netclass
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=netdev
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=netstat
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=nfs
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=nfsd
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=nvme
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=os
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=powersupplyclass
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=pressure
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=rapl
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=schedstat
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=selinux
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=sockstat
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=softnet
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=stat
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=systemd
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=tapestats
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=textfile
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=thermal_zone
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=time
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=timex
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=udp_queues
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=uname
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=vmstat
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=xfs
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.936Z caller=node_exporter.go:117 level=info collector=zfs
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.944Z caller=tls_config.go:313 level=info msg="Listening on" address=[::]:9100
+Jun 05 16:40:15 ip-172-31-3-184 prometheus-node-exporter[600]: ts=2026-06-05T16:40:15.944Z caller=tls_config.go:316 level=info msg="TLS is disabled." http2=false address=[::]:9100
+Jun 05 16:40:15 ip-172-31-3-184 chronyd[757]: chronyd version 4.5 starting (+CMDMON +NTP +REFCLOCK +RTC +PRIVDROP +SCFILTER +SIGND +ASYNCDNS +NTS +SECHASH +IPV6 -DEBUG)
+Jun 05 16:40:15 ip-172-31-3-184 chronyd[757]: Loaded 0 symmetric keys
+Jun 05 16:40:15 ip-172-31-3-184 chronyd[757]: Frequency -6.542 +/- 0.028 ppm read from /var/lib/chrony/chrony.drift
+Jun 05 16:40:15 ip-172-31-3-184 chronyd[757]: Using right/UTC timezone to obtain leap second data
+Jun 05 16:40:15 ip-172-31-3-184 chronyd[757]: Loaded seccomp filter (level 1)
+Jun 05 16:40:15 ip-172-31-3-184 polkitd[596]: Started polkitd version 124
+Jun 05 16:40:16 ip-172-31-3-184 polkitd[596]: Loading rules from directory /etc/polkit-1/rules.d
+Jun 05 16:40:16 ip-172-31-3-184 polkitd[596]: Loading rules from directory /usr/share/polkit-1/rules.d
+Jun 05 16:40:16 ip-172-31-3-184 polkitd[596]: Finished loading, compiling and executing 6 rules
+Jun 05 16:40:16 ip-172-31-3-184 dbus-daemon[585]: [system] Successfully activated service 'org.freedesktop.PolicyKit1'
+Jun 05 16:40:16 ip-172-31-3-184 polkitd[596]: Acquired the name org.freedesktop.PolicyKit1 on the system bus
+Jun 05 16:40:16 ip-172-31-3-184 udisksd[635]: Acquired the name org.freedesktop.UDisks2 on the system message bus
+Jun 05 16:40:16 ip-172-31-3-184 snapd[608]: overlord.go:309: Acquiring state lock file
+Jun 05 16:40:16 ip-172-31-3-184 snapd[608]: overlord.go:314: Acquired state lock file
+Jun 05 16:40:16 ip-172-31-3-184 snapd[608]: daemon.go:276: started snapd/2.75.2+ubuntu24.04 (series 16; classic) ubuntu/24.04 (amd64) linux/6.17.0-1017-aws.
+Jun 05 16:40:16 ip-172-31-3-184 cloud-init[926]: Cloud-init v. 25.3-0ubuntu1~24.04.1 running 'modules:config' at Fri, 05 Jun 2026 16:40:16 +0000. Up 7.93 seconds.
+Jun 05 16:40:16 ip-172-31-3-184 kernel: loop3: detected capacity change from 0 to 8
+Jun 05 16:40:16 ip-172-31-3-184 snapd[608]: daemon.go:370: adjusting startup timeout by 45s (pessimistic estimate of 30s plus 5s per snap)
+Jun 05 16:40:16 ip-172-31-3-184 snapd[608]: backends.go:70: AppArmor status: apparmor is enabled and all features are available
+Jun 05 16:40:16 ip-172-31-3-184 snapd[608]: backend.go:145: reloading profiles for snap-confine
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Reloading finished in 478 ms.
+Jun 05 16:40:16 ip-172-31-3-184 kernel: audit: type=1400 audit(1780677616.420:124): apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="/usr/lib/snapd/snap-confine" pid=941 comm="apparmor_parser"
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started chrony.service - chrony, an NTP client/server.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Finished cloud-config.service - Cloud-init: Config Stage.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: ec2-instance-connect-harvest-hostkeys.service: Deactivated successfully.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Finished ec2-instance-connect-harvest-hostkeys.service - EC2 Instance Connect Host Key Harvesting.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: prometheus-node-exporter-nvme.service: Deactivated successfully.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Finished prometheus-node-exporter-nvme.service - Collect NVMe metrics for prometheus-node-exporter.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Finished apport.service - automatic crash report generation.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: grub-common.service: Deactivated successfully.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Finished grub-common.service - Record successful boot for GRUB.
+Jun 05 16:40:16 ip-172-31-3-184 rsyslogd[703]: imuxsock: Acquired UNIX socket '/run/systemd/journal/syslog' (fd 3) from systemd.  [v8.2312.0]
+Jun 05 16:40:16 ip-172-31-3-184 rsyslogd[703]: rsyslogd's groupid changed to 102
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started rsyslog.service - System Logging Service.
+Jun 05 16:40:16 ip-172-31-3-184 rsyslogd[703]: rsyslogd's userid changed to 102
+Jun 05 16:40:16 ip-172-31-3-184 rsyslogd[703]: [origin software="rsyslogd" swVersion="8.2312.0" x-pid="703" x-info="https://www.rsyslog.com"] start
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Reloading requested from client PID 943 ('systemctl') (unit stele-soak.service)...
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Reloading...
+Jun 05 16:40:16 ip-172-31-3-184 snapd[608]: standby.go:95: will consider standby after: 5s
+Jun 05 16:40:16 ip-172-31-3-184 openipmi[686]:  * Starting ipmi drivers
+Jun 05 16:40:16 ip-172-31-3-184 dbus-daemon[585]: [system] Activating via systemd: service name='org.freedesktop.timedate1' unit='dbus-org.freedesktop.timedate1.service' requested by ':1.9' (uid=0 pid=608 comm="/usr/lib/snapd/snapd" label="unconfined")
+Jun 05 16:40:16 ip-172-31-3-184 kernel: IPMI message handler: version 39.2
+Jun 05 16:40:16 ip-172-31-3-184 kernel: ipmi device interface
+Jun 05 16:40:16 ip-172-31-3-184 kernel: ipmi_si: IPMI System Interface driver
+Jun 05 16:40:16 ip-172-31-3-184 kernel: ipmi_si: Unable to find any System Interface(s)
+Jun 05 16:40:16 ip-172-31-3-184 openipmi[686]:    ...fail!
+Jun 05 16:40:16 ip-172-31-3-184 openipmi[686]:    ...done.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Reloading finished in 164 ms.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started snapd.service - Snap Daemon.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: openipmi.service: Control process exited, code=exited, status=1/FAILURE
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: openipmi.service: Failed with result 'exit-code'.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Failed to start openipmi.service - LSB: OpenIPMI Driver init script.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started udisks2.service - Disk Manager.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started polkit.service - Authorization Manager.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Reached target time-sync.target - System Time Synchronized.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started apt-daily.timer - Daily apt download activities.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started apt-daily-upgrade.timer - Daily apt upgrade and clean activities.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started dpkg-db-backup.timer - Daily dpkg database backup timer.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started e2scrub_all.timer - Periodic ext4 Online Metadata Check for All Filesystems.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started fstrim.timer - Discard unused filesystem blocks once a week.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started fwupd-refresh.timer - Refresh fwupd metadata regularly.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started logrotate.timer - Daily rotation of log files.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started man-db.timer - Daily man-db regeneration.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started motd-news.timer - Message of the Day.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: snapd.snap-repair.timer - Timer to automatically fetch and run repair assertions was skipped because no trigger condition checks were met.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started sysstat-collect.timer - Run system activity accounting tool every 10 minutes.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started sysstat-summary.timer - Generate summary of yesterday's process accounting.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started update-notifier-motd.timer - Check to see whether there is a new version of Ubuntu available.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Reached target timers.target - Timer Units.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Starting ModemManager.service - Modem Manager...
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Starting grub-initrd-fallback.service - GRUB failed boot detection...
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Starting hibinit-agent.service - EC2 instance hibernation setup agent...
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Starting plymouth-quit-wait.service - Hold until boot process finishes up...
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Starting plymouth-quit.service - Terminate Plymouth Boot Screen...
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started prometheus.service - Monitoring system and time series database.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Starting systemd-hostnamed.service - Hostname Service...
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Starting systemd-timedated.service - Time & Date Service...
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started unattended-upgrades.service - Unattended Upgrades Shutdown.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Finished plymouth-quit-wait.service - Hold until boot process finishes up.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Finished plymouth-quit.service - Terminate Plymouth Boot Screen.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started serial-getty@ttyS0.service - Serial Getty on ttyS0.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Starting setvtrgb.service - Set console scheme...
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: grub-initrd-fallback.service: Deactivated successfully.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Finished grub-initrd-fallback.service - GRUB failed boot detection.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Finished setvtrgb.service - Set console scheme.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Created slice system-getty.slice - Slice /system/getty.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started getty@tty1.service - Getty on tty1.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Reached target getty.target - Login Prompts.
+Jun 05 16:40:16 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: Error occurred fetching the seelog config file path:  open /etc/amazon/ssm/seelog.xml: no such file or directory
+Jun 05 16:40:16 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: Initializing new seelog logger
+Jun 05 16:40:16 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: New Seelog Logger Creation Complete
+Jun 05 16:40:16 ip-172-31-3-184 dbus-daemon[585]: [system] Successfully activated service 'org.freedesktop.hostname1'
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started systemd-hostnamed.service - Hostname Service.
+Jun 05 16:40:16 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:16.8575 WARN Error adding the directory '/etc/amazon/ssm' to watcher: no such file or directory
+Jun 05 16:40:16 ip-172-31-3-184 dbus-daemon[585]: [system] Successfully activated service 'org.freedesktop.timedate1'
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started systemd-timedated.service - Time & Date Service.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Finished snapd.seeded.service - Wait until snapd is fully seeded.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: snapd.autoimport.service - Auto import assertions from block devices was skipped because no trigger condition checks were met.
+Jun 05 16:40:16 ip-172-31-3-184 hibinit-agent[1027]: Effective config: {'log_to_syslog': True, 'log_to_stderr': True, 'mkswap': 'mkswap {swapfile}', 'swapon': 'swapon {swapfile}', 'swapoff': 'swapoff {swapfile}', 'touch_swap': False, 'grub_update': True, 'swap_percentage': 100, 'swap_mb': 4000, 'state_dir': '/var/lib/hibinit-agent'}
+Jun 05 16:40:16 ip-172-31-3-184 hibinit-agent[1027]: Effective config: {'log_to_syslog': True, 'log_to_stderr': True, 'mkswap': 'mkswap {swapfile}', 'swapon': 'swapon {swapfile}', 'swapoff': 'swapoff {swapfile}', 'touch_swap': False, 'grub_update': True, 'swap_percentage': 100, 'swap_mb': 4000, 'state_dir': '/var/lib/hibinit-agent'}
+Jun 05 16:40:16 ip-172-31-3-184 hibinit-agent[1027]: Requesting new IMDSv2 token.
+Jun 05 16:40:16 ip-172-31-3-184 hibinit-agent[1027]: Requesting new IMDSv2 token.
+Jun 05 16:40:16 ip-172-31-3-184 hibinit-agent[1027]: Instance Launch has not enabled Hibernation Configured Flag. hibinit-agent exiting!!
+Jun 05 16:40:16 ip-172-31-3-184 hibinit-agent[1027]: Instance Launch has not enabled Hibernation Configured Flag. hibinit-agent exiting!!
+Jun 05 16:40:16 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:16.8576 INFO Proxy environment variables:
+Jun 05 16:40:16 ip-172-31-3-184 ModemManager[1025]: <msg> ModemManager (version 1.23.4) starting in system bus...
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: hibinit-agent.service: Deactivated successfully.
+Jun 05 16:40:16 ip-172-31-3-184 systemd[1]: Started hibinit-agent.service - EC2 instance hibernation setup agent.
+Jun 05 16:40:17 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:16.8576 INFO https_proxy:
+Jun 05 16:40:17 ip-172-31-3-184 systemd-hostnamed[1032]: Hostname set to <ip-172-31-3-184> (static)
+Jun 05 16:40:17 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:16.8576 INFO http_proxy:
+Jun 05 16:40:17 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:16.8576 INFO no_proxy:
+Jun 05 16:40:17 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:16.8576 INFO Checking if agent identity type OnPrem can be assumed
+Jun 05 16:40:17 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:16.8778 INFO Checking if agent identity type EC2 can be assumed
+Jun 05 16:40:17 ip-172-31-3-184 systemd[1]: Started ModemManager.service - Modem Manager.
+Jun 05 16:40:17 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:17.8569 INFO Agent will take identity from EC2
+Jun 05 16:40:17 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:17.8581 INFO Telemetry initialized
+Jun 05 16:40:18 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:17.8616 INFO [amazon-ssm-agent] amazon-ssm-agent - v3.3.4121.0
+Jun 05 16:40:18 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:17.8617 INFO [amazon-ssm-agent] OS: linux, Arch: amd64
+Jun 05 16:40:18 ip-172-31-3-184 systemd[1]: prometheus-node-exporter-apt.service: Deactivated successfully.
+Jun 05 16:40:18 ip-172-31-3-184 systemd[1]: Finished prometheus-node-exporter-apt.service - Collect apt metrics for prometheus-node-exporter.
+Jun 05 16:40:18 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:17.8617 INFO [amazon-ssm-agent] Starting Core Agent
+Jun 05 16:40:18 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:17.8617 INFO [amazon-ssm-agent] Registrar detected. Attempting registration
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.436Z caller=main.go:525 level=info msg="No time or size retention was set so using the default time retention" duration=15d
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.447Z caller=main.go:563 level=info msg="Starting Prometheus Server" mode=server version="(version=2.45.3+ds, branch=debian/sid, revision=2.45.3+ds-2ubuntu0.3)"
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.447Z caller=main.go:568 level=info build_context="(go=go1.22.2, platform=linux/amd64, user=team+pkg-go@tracker.debian.org, date=20250721-00:51:10, tags=unknown)"
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.447Z caller=main.go:569 level=info host_details="(Linux 6.17.0-1017-aws #17~24.04.1-Ubuntu SMP Tue May 26 21:30:32 UTC 2026 x86_64 ip-172-31-3-184 (none))"
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.447Z caller=main.go:570 level=info fd_limits="(soft=524288, hard=524288)"
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.447Z caller=main.go:571 level=info vm_limits="(soft=unlimited, hard=unlimited)"
+Jun 05 16:40:18 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:17.8617 INFO [Registrar] Starting registrar module
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.473Z caller=web.go:504 level=info component=web msg="Start listening for connections" address=0.0.0.0:9090
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.481Z caller=main.go:1004 level=info msg="Starting TSDB ..."
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.493Z caller=tls_config.go:313 level=info component=web msg="Listening on" address=[::]:9090
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.496Z caller=tls_config.go:316 level=info component=web msg="TLS is disabled." http2=false address=[::]:9090
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.500Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1780369042966 maxt=1780380000000 ulid=01KT3ZVBK03AWHJBVRC4KRNE16
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.514Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1780380002390 maxt=1780444800000 ulid=01KT5XMNNJE11S2WZHQHEPZQ8H
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.522Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1780444802390 maxt=1780509600000 ulid=01KT7VECDQ8F5Y3Q0GEMEPBH5D
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.528Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1780509613641 maxt=1780574400000 ulid=01KT9T3P071EGHYVEDKRGYXF3D
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.540Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1780639207969 maxt=1780646400000 ulid=01KTBJDF9MTWAPJEWC5KXGDBXY
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.546Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1780646402393 maxt=1780653600000 ulid=01KTBQ1EN22E1QWPJ5951BVM5J
+Jun 05 16:40:18 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:17.8630 INFO [EC2Identity] Checking disk for registration info
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.552Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1780574402390 maxt=1780639200000 ulid=01KTBQ1EY74M4P99ZHMYTB76BC
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.556Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1780653602390 maxt=1780660800000 ulid=01KTBXX5X55BRJVCDFSK3GYZWW
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.563Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1780660807969 maxt=1780668000000 ulid=01KTC4RXVXJNZVVW0SMTZ7C0WT
+Jun 05 16:40:18 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:17.8716 INFO [EC2Identity] Registration info found for ec2 instance
+Jun 05 16:40:18 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:17.8717 INFO [amazon-ssm-agent] Registration attempted. Resuming core agent startup.
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.789Z caller=head.go:595 level=info component=tsdb msg="Replaying on-disk memory mappable chunks if any"
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.798Z caller=head.go:676 level=info component=tsdb msg="On-disk memory mappable chunks replay completed" duration=9.918736ms
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.799Z caller=head.go:684 level=info component=tsdb msg="Replaying WAL, this may take a while"
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.822Z caller=head.go:720 level=info component=tsdb msg="WAL checkpoint loaded"
+Jun 05 16:40:18 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:17.8717 INFO [CredentialRefresher] credentialRefresher has started
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.875Z caller=head.go:755 level=info component=tsdb msg="WAL segment loaded" segment=40 maxSegment=43
+Jun 05 16:40:18 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:17.8717 INFO [CredentialRefresher] Starting credentials refresher loop
+Jun 05 16:40:18 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:18.967Z caller=head.go:755 level=info component=tsdb msg="WAL segment loaded" segment=41 maxSegment=43
+Jun 05 16:40:19 ip-172-31-3-184 snapd[608]: snapmgr.go:1661: performing periodic snap downloads cache cleanup
+Jun 05 16:40:19 ip-172-31-3-184 snapd[608]: snapmgr.go:1671: cannot clean store downloads cache: open /var/lib/snapd/cache: no such file or directory
+Jun 05 16:40:19 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:17.8733 WARN EC2RoleProvider Failed to connect to Systems Manager with instance profile role credentials. Err: retrieved credentials failed to report to ssm. Error: EC2RoleRequestError: no EC2 instance role found
+Jun 05 16:40:19 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:19.056Z caller=head.go:755 level=info component=tsdb msg="WAL segment loaded" segment=42 maxSegment=43
+Jun 05 16:40:19 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:19.056Z caller=head.go:755 level=info component=tsdb msg="WAL segment loaded" segment=43 maxSegment=43
+Jun 05 16:40:19 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:19.056Z caller=head.go:792 level=info component=tsdb msg="WAL replay completed" checkpoint_replay_duration=23.751903ms wal_replay_duration=233.713077ms wbl_replay_duration=185ns total_replay_duration=267.43111ms
+Jun 05 16:40:19 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:19.057Z caller=main.go:1025 level=info fs_type=EXT4_SUPER_MAGIC
+Jun 05 16:40:19 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:19.057Z caller=main.go:1028 level=info msg="TSDB started"
+Jun 05 16:40:19 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:19.057Z caller=main.go:1209 level=info msg="Loading configuration file" filename=/etc/prometheus/prometheus.yml
+Jun 05 16:40:19 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:19.066Z caller=main.go:1246 level=info msg="Completed loading of configuration file" filename=/etc/prometheus/prometheus.yml totalDuration=8.406734ms db_storage=1.237µs remote_storage=1.647µs web_handler=763ns query_engine=1.304µs scrape=1.880657ms scrape_sd=46.137µs notify=6.277302ms notify_sd=3.199µs rules=1.721µs tracing=8.332µs
+Jun 05 16:40:19 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:19.066Z caller=main.go:989 level=info msg="Server is ready to receive web requests."
+Jun 05 16:40:19 ip-172-31-3-184 prometheus[1030]: ts=2026-06-05T16:40:19.066Z caller=manager.go:999 level=info component="rule manager" msg="Starting rule manager..."
+Jun 05 16:40:19 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:17.9145 ERROR EC2RoleProvider Failed to connect to Systems Manager with SSM role credentials. error calling RequestManagedInstanceRoleToken: AccessDeniedException: Systems Manager's instance management role is not configured for account: 637423312954
+Jun 05 16:40:19 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]:         status code: 400, request id: eb346617-b185-485c-ac69-80a2a11d6bd3
+Jun 05 16:40:19 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:17.9145 ERROR [CredentialRefresher] Retrieve credentials produced error: no valid credentials could be retrieved for ec2 identity. Default Host Management Err: error calling RequestManagedInstanceRoleToken: AccessDeniedException: Systems Manager's instance management role is not configured for account: 637423312954
+Jun 05 16:40:19 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]:         status code: 400, request id: eb346617-b185-485c-ac69-80a2a11d6bd3
+Jun 05 16:40:19 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:17.9145 INFO [CredentialRefresher] Sleeping for 29m52s before retrying retrieve credentials
+Jun 05 16:40:19 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]: 2026-06-05 16:40:17.9147 INFO [SerialPort] Write to serial port: SSM Agent unable to acquire credentials: <error>no valid credentials could be retrieved for ec2 identity. Default Host Management Err: error calling RequestManagedInstanceRoleToken: AccessDeniedException: Systems Manager's instance management role is not configured for account: 637423312954
+Jun 05 16:40:19 ip-172-31-3-184 amazon-ssm-agent.amazon-ssm-agent[604]:         status code: 400, request id: eb346617-b185-485c-ac69-80a2a11d6bd3</error>
+Jun 05 16:40:20 ip-172-31-3-184 systemd[1]: dmesg.service: Deactivated successfully.
+Jun 05 16:40:21 ip-172-31-3-184 ModemManager[1025]: <msg> [base-manager] couldn't check support for device '/sys/devices/pci0000:24/0000:24:00.0/0000:25:00.0/0000:26:00.0/0000:27:00.0': not supported by any plugin
+Jun 05 16:40:21 ip-172-31-3-184 systemd[1]: Reloading requested from client PID 1093 ('systemctl') (unit stele-soak.service)...
+Jun 05 16:40:21 ip-172-31-3-184 systemd[1]: Reloading...
+Jun 05 16:40:21 ip-172-31-3-184 systemd[1]: Reloading finished in 167 ms.
+Jun 05 16:40:22 ip-172-31-3-184 chronyd[757]: Selected source 169.254.169.123
+Jun 05 16:40:22 ip-172-31-3-184 chronyd[757]: System clock wrong by 3.859592 seconds
+Jun 05 16:40:26 ip-172-31-3-184 systemd-resolved[401]: Clock change detected. Flushing caches.
+Jun 05 16:40:26 ip-172-31-3-184 chronyd[757]: System clock was stepped by 3.859592 seconds
+Jun 05 16:40:26 ip-172-31-3-184 chronyd[757]: System clock TAI offset set to 37 seconds
+Jun 05 16:40:28 ip-172-31-3-184 stele-soak-setup[1143]: stele: Post "http://127.0.0.1:8080/api/v0/witnesses": dial tcp 127.0.0.1:8080: connect: connection refused
+Jun 05 16:40:28 ip-172-31-3-184 systemd[1]: stele-soak.service: Control process exited, code=exited, status=1/FAILURE
+Jun 05 16:40:28 ip-172-31-3-184 systemd[1]: stele-soak.service: Failed with result 'exit-code'.
+Jun 05 16:40:28 ip-172-31-3-184 systemd[1]: Failed to start stele-soak.service - stele 72-hour soak driver.
+Jun 05 16:40:28 ip-172-31-3-184 systemd[1]: Reached target multi-user.target - Multi-User System.
+Jun 05 16:40:28 ip-172-31-3-184 systemd[1]: Reached target graphical.target - Graphical Interface.
+Jun 05 16:40:28 ip-172-31-3-184 systemd[1]: Starting cloud-final.service - Cloud-init: Final Stage...
+Jun 05 16:40:28 ip-172-31-3-184 systemd[1]: Starting systemd-update-utmp-runlevel.service - Record Runlevel Change in UTMP...
+Jun 05 16:40:28 ip-172-31-3-184 systemd[1]: systemd-update-utmp-runlevel.service: Deactivated successfully.
+Jun 05 16:40:28 ip-172-31-3-184 systemd[1]: Finished systemd-update-utmp-runlevel.service - Record Runlevel Change in UTMP.
+Jun 05 16:40:29 ip-172-31-3-184 cloud-init[1155]: Cloud-init v. 25.3-0ubuntu1~24.04.1 running 'modules:final' at Fri, 05 Jun 2026 16:40:29 +0000. Up 16.97 seconds.
+Jun 05 16:40:29 ip-172-31-3-184 cloud-init[1155]: Cloud-init v. 25.3-0ubuntu1~24.04.1 finished at Fri, 05 Jun 2026 16:40:29 +0000. Datasource DataSourceEc2Local.  Up 17.04 seconds
+Jun 05 16:40:29 ip-172-31-3-184 systemd[1]: Finished cloud-final.service - Cloud-init: Final Stage.
+Jun 05 16:40:29 ip-172-31-3-184 systemd[1]: Reached target cloud-init.target - Cloud-init target.
+Jun 05 16:40:29 ip-172-31-3-184 systemd[1]: Startup finished in 2.190s (kernel) + 14.906s (userspace) = 17.097s.
+Jun 05 16:40:30 ip-172-31-3-184 irqbalance[590]: Cannot change IRQ 64 affinity: No such file or directory
+Jun 05 16:40:30 ip-172-31-3-184 irqbalance[590]: IRQ 64 affinity is now unmanaged
+Jun 05 16:40:30 ip-172-31-3-184 irqbalance[590]: Cannot change IRQ 65 affinity: No such file or directory
+Jun 05 16:40:30 ip-172-31-3-184 irqbalance[590]: IRQ 65 affinity is now unmanaged
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1]: Starting ssh.service - OpenBSD Secure Shell server...
+Jun 05 16:40:33 ip-172-31-3-184 sshd[1161]: Server listening on 0.0.0.0 port 22.
+Jun 05 16:40:33 ip-172-31-3-184 sshd[1161]: Server listening on :: port 22.
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1]: Started ssh.service - OpenBSD Secure Shell server.
+Jun 05 16:40:33 ip-172-31-3-184 sshd[1162]: Accepted publickey for ubuntu from 130.253.29.12 port 38629 ssh2: ED25519 SHA256:8zbhvGu1AcnrB4xPEApLG2dJenbeCn8nLwltAgFlohA
+Jun 05 16:40:33 ip-172-31-3-184 sshd[1162]: pam_unix(sshd:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1]: Created slice user-1000.slice - User Slice of UID 1000.
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1]: Starting user-runtime-dir@1000.service - User Runtime Directory /run/user/1000...
+Jun 05 16:40:33 ip-172-31-3-184 systemd-logind[623]: New session 1 of user ubuntu.
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1]: Finished user-runtime-dir@1000.service - User Runtime Directory /run/user/1000.
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1]: Starting user@1000.service - User Manager for UID 1000...
+Jun 05 16:40:33 ip-172-31-3-184 (systemd)[1167]: pam_unix(systemd-user:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1167]: Queued start job for default target default.target.
+Jun 05 16:40:33 ip-172-31-3-184 systemd-journald[180]: /var/log/journal/ec22946aff50c9d40c608706bfc5e2e6/user-1000.journal: Journal file uses a different sequence number ID, rotating.
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1167]: Created slice app.slice - User Application Slice.
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1167]: Started launchpadlib-cache-clean.timer - Clean up old files in the Launchpadlib cache.
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1167]: Reached target paths.target - Paths.
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1167]: Reached target timers.target - Timers.
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1167]: Starting dbus.socket - D-Bus User Message Bus Socket...
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1167]: Listening on dirmngr.socket - GnuPG network certificate management daemon.
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1167]: Listening on gpg-agent-browser.socket - GnuPG cryptographic agent and passphrase cache (access for web browsers).
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1167]: Listening on gpg-agent-extra.socket - GnuPG cryptographic agent and passphrase cache (restricted).
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1167]: Starting gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation)...
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1167]: Listening on gpg-agent.socket - GnuPG cryptographic agent and passphrase cache.
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1167]: Listening on keyboxd.socket - GnuPG public key management service.
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1167]: Listening on pk-debconf-helper.socket - debconf communication socket.
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1167]: Listening on snapd.session-agent.socket - REST API socket for snapd user session agent.
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1167]: Listening on dbus.socket - D-Bus User Message Bus Socket.
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1167]: Listening on gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation).
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1167]: Reached target sockets.target - Sockets.
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1167]: Reached target basic.target - Basic System.
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1167]: Reached target default.target - Main User Target.
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1167]: Startup finished in 91ms.
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1]: Started user@1000.service - User Manager for UID 1000.
+Jun 05 16:40:33 ip-172-31-3-184 systemd[1]: Started session-1.scope - Session 1 of User ubuntu.
+Jun 05 16:40:34 ip-172-31-3-184 sshd[1277]: Received disconnect from 130.253.29.12 port 38629:11: disconnected by user
+Jun 05 16:40:34 ip-172-31-3-184 sshd[1277]: Disconnected from user ubuntu 130.253.29.12 port 38629
+Jun 05 16:40:34 ip-172-31-3-184 sshd[1162]: pam_unix(sshd:session): session closed for user ubuntu
+Jun 05 16:40:34 ip-172-31-3-184 systemd-logind[623]: Session 1 logged out. Waiting for processes to exit.
+Jun 05 16:40:34 ip-172-31-3-184 systemd[1]: session-1.scope: Deactivated successfully.
+Jun 05 16:40:34 ip-172-31-3-184 systemd-logind[623]: Removed session 1.
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1]: Stopping user@1000.service - User Manager for UID 1000...
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1167]: Activating special unit exit.target...
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1167]: Stopped target default.target - Main User Target.
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1167]: Stopped target basic.target - Basic System.
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1167]: Stopped target paths.target - Paths.
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1167]: Stopped target sockets.target - Sockets.
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1167]: Stopped target timers.target - Timers.
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1167]: Stopped launchpadlib-cache-clean.timer - Clean up old files in the Launchpadlib cache.
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1167]: Closed dbus.socket - D-Bus User Message Bus Socket.
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1167]: Closed dirmngr.socket - GnuPG network certificate management daemon.
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1167]: Closed gpg-agent-browser.socket - GnuPG cryptographic agent and passphrase cache (access for web browsers).
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1167]: Closed gpg-agent-extra.socket - GnuPG cryptographic agent and passphrase cache (restricted).
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1167]: Stopping gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation)...
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1167]: Closed gpg-agent.socket - GnuPG cryptographic agent and passphrase cache.
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1167]: Closed keyboxd.socket - GnuPG public key management service.
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1167]: Closed pk-debconf-helper.socket - debconf communication socket.
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1167]: Closed snapd.session-agent.socket - REST API socket for snapd user session agent.
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1167]: Closed gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation).
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1167]: Removed slice app.slice - User Application Slice.
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1167]: Reached target shutdown.target - Shutdown.
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1167]: Finished systemd-exit.service - Exit the Session.
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1167]: Reached target exit.target - Exit the Session.
+Jun 05 16:40:45 ip-172-31-3-184 (sd-pam)[1168]: pam_unix(systemd-user:session): session closed for user ubuntu
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1]: user@1000.service: Deactivated successfully.
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1]: Stopped user@1000.service - User Manager for UID 1000.
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1]: Stopping user-runtime-dir@1000.service - User Runtime Directory /run/user/1000...
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1]: run-user-1000.mount: Deactivated successfully.
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1]: user-runtime-dir@1000.service: Deactivated successfully.
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1]: Stopped user-runtime-dir@1000.service - User Runtime Directory /run/user/1000.
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1]: Removed slice user-1000.slice - User Slice of UID 1000.
+Jun 05 16:40:45 ip-172-31-3-184 systemd[1]: systemd-fsckd.service: Deactivated successfully.
+Jun 05 16:40:48 ip-172-31-3-184 sshd[1325]: Accepted publickey for ubuntu from 130.253.29.12 port 11237 ssh2: ED25519 SHA256:8zbhvGu1AcnrB4xPEApLG2dJenbeCn8nLwltAgFlohA
+Jun 05 16:40:48 ip-172-31-3-184 sshd[1325]: pam_unix(sshd:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+Jun 05 16:40:48 ip-172-31-3-184 systemd-logind[623]: New session 3 of user ubuntu.
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1]: Created slice user-1000.slice - User Slice of UID 1000.
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1]: Starting user-runtime-dir@1000.service - User Runtime Directory /run/user/1000...
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1]: Finished user-runtime-dir@1000.service - User Runtime Directory /run/user/1000.
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1]: Starting user@1000.service - User Manager for UID 1000...
+Jun 05 16:40:48 ip-172-31-3-184 (systemd)[1330]: pam_unix(systemd-user:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1330]: Queued start job for default target default.target.
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1330]: Created slice app.slice - User Application Slice.
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1330]: Started launchpadlib-cache-clean.timer - Clean up old files in the Launchpadlib cache.
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1330]: Reached target paths.target - Paths.
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1330]: Reached target timers.target - Timers.
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1330]: Starting dbus.socket - D-Bus User Message Bus Socket...
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1330]: Listening on dirmngr.socket - GnuPG network certificate management daemon.
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1330]: Listening on gpg-agent-browser.socket - GnuPG cryptographic agent and passphrase cache (access for web browsers).
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1330]: Listening on gpg-agent-extra.socket - GnuPG cryptographic agent and passphrase cache (restricted).
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1330]: Starting gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation)...
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1330]: Listening on gpg-agent.socket - GnuPG cryptographic agent and passphrase cache.
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1330]: Listening on keyboxd.socket - GnuPG public key management service.
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1330]: Listening on pk-debconf-helper.socket - debconf communication socket.
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1330]: Listening on snapd.session-agent.socket - REST API socket for snapd user session agent.
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1330]: Listening on dbus.socket - D-Bus User Message Bus Socket.
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1330]: Listening on gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation).
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1330]: Reached target sockets.target - Sockets.
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1330]: Reached target basic.target - Basic System.
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1]: Started user@1000.service - User Manager for UID 1000.
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1330]: Reached target default.target - Main User Target.
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1330]: Startup finished in 68ms.
+Jun 05 16:40:48 ip-172-31-3-184 systemd[1]: Started session-3.scope - Session 3 of User ubuntu.
+Jun 05 16:40:48 ip-172-31-3-184 sudo[1388]:   ubuntu : PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/systemctl stop stele-soak.service stele-soak-operator.service stele-soak-witness-a.service stele-soak-witness-b.service stele-soak-witness-c.service stele-soak-report.timer
+Jun 05 16:40:48 ip-172-31-3-184 sudo[1388]: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
+Jun 05 16:40:49 ip-172-31-3-184 systemd[1]: Stopping stele-soak-operator.service - stele operator (soak)...
+Jun 05 16:40:49 ip-172-31-3-184 systemd[1]: Stopping stele-soak-witness-a.service - stele witness a (soak)...
+Jun 05 16:40:49 ip-172-31-3-184 systemd[1]: Stopping stele-soak-witness-b.service - stele witness b (soak)...
+Jun 05 16:40:49 ip-172-31-3-184 systemd[1]: stele-soak-witness-a.service: Deactivated successfully.
+Jun 05 16:40:49 ip-172-31-3-184 systemd[1]: Stopped stele-soak-witness-a.service - stele witness a (soak).
+Jun 05 16:40:49 ip-172-31-3-184 systemd[1]: Stopping stele-soak-witness-c.service - stele witness c (soak)...
+Jun 05 16:40:49 ip-172-31-3-184 systemd[1]: stele-soak-witness-b.service: Deactivated successfully.
+Jun 05 16:40:49 ip-172-31-3-184 systemd[1]: Stopped stele-soak-witness-b.service - stele witness b (soak).
+Jun 05 16:40:49 ip-172-31-3-184 systemd[1]: stele-soak-witness-c.service: Deactivated successfully.
+Jun 05 16:40:49 ip-172-31-3-184 systemd[1]: Stopped stele-soak-witness-c.service - stele witness c (soak).
+Jun 05 16:40:49 ip-172-31-3-184 systemd[1]: stele-soak-report.timer: Deactivated successfully.
+Jun 05 16:40:49 ip-172-31-3-184 systemd[1]: Stopped stele-soak-report.timer - Run stele-soak-snapshot every 30 minutes.
+Jun 05 16:40:49 ip-172-31-3-184 systemd[1]: stele-soak-operator.service: Main process exited, code=exited, status=1/FAILURE
+Jun 05 16:40:49 ip-172-31-3-184 systemd[1]: stele-soak-operator.service: Failed with result 'exit-code'.
+Jun 05 16:40:49 ip-172-31-3-184 systemd[1]: Stopped stele-soak-operator.service - stele operator (soak).
+Jun 05 16:40:49 ip-172-31-3-184 systemd[1]: stele-soak-operator.service: Consumed 32.613s CPU time, 637.4M memory peak, 0B memory swap peak.
+Jun 05 16:40:49 ip-172-31-3-184 sudo[1388]: pam_unix(sudo:session): session closed for user root
+Jun 05 16:40:49 ip-172-31-3-184 sudo[1390]:   ubuntu : PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/cp /var/lib/stele-soak/timeline.ndjson /var/log/stele-soak.log /tmp/
+Jun 05 16:40:49 ip-172-31-3-184 sudo[1390]: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
+Jun 05 16:40:49 ip-172-31-3-184 sudo[1390]: pam_unix(sudo:session): session closed for user root
+Jun 05 16:40:49 ip-172-31-3-184 sudo[1392]:   ubuntu : PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/chmod 644 /tmp/timeline.ndjson /tmp/stele-soak.log
+Jun 05 16:40:49 ip-172-31-3-184 sudo[1392]: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
+Jun 05 16:40:49 ip-172-31-3-184 sudo[1392]: pam_unix(sudo:session): session closed for user root
+Jun 05 16:40:49 ip-172-31-3-184 sudo[1394]:   ubuntu : PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/journalctl --since '4 days ago' -n 1000 --no-pager
+Jun 05 16:40:49 ip-172-31-3-184 sudo[1394]: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
