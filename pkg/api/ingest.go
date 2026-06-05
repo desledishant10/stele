@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"runtime"
 	"strconv"
 	"sync"
 	"time"
@@ -52,21 +53,45 @@ type IngestPolicy struct {
 	RetryAfter int
 }
 
-// DefaultIngestPolicy is production-ready: bounded concurrency at 256,
+// DefaultIngestPolicy is production-ready: CPU-aware concurrency,
 // per-producer rate at 100 RPS with a 200-burst, per-admin rate at 5
 // RPS with a 10-burst, 1-second Retry-After.
+//
+// Concurrency note (v0.1.5, per issue #8): MaxConcurrentAppends is
+// now derived from runtime.NumCPU() via defaultConcurrency() rather
+// than a fixed 256. On a 4-vCPU host that's 16; on a 32-vCPU host
+// that's 128. The v0.1.4 soak found that the previous fixed 256
+// produced burst-allocation spikes the GC could not keep up with on
+// 4-8 GB hosts. CPU-scaled concurrency naturally tracks host size.
+// Override via --max-concurrent-appends if you have an unusual ratio.
 //
 // Admin RPS is tight on purpose — a legitimate operator runs maybe a
 // few rotations per day, dozens of enrollments per month. 5 RPS still
 // leaves room for an emergency-revocation script processing a list of
 // compromised keys.
 var DefaultIngestPolicy = IngestPolicy{
-	MaxConcurrentAppends: 256,
+	MaxConcurrentAppends: defaultConcurrency(),
 	PerProducerRPS:       100,
 	PerProducerBurst:     200,
 	PerAdminRPS:          5,
 	PerAdminBurst:        10,
 	RetryAfter:           1,
+}
+
+// defaultConcurrency returns the v0.1.5 default for
+// MaxConcurrentAppends: NumCPU * 4, clamped to [16, 256]. The cap is
+// preserved so a very large host doesn't degrade GC pressure
+// indefinitely, and the floor keeps very small hosts (2-vCPU) from
+// undershooting.
+func defaultConcurrency() int {
+	n := runtime.NumCPU() * 4
+	if n < 16 {
+		n = 16
+	}
+	if n > 256 {
+		n = 256
+	}
+	return n
 }
 
 // ingestGate is the runtime guard. It owns:

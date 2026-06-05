@@ -35,6 +35,7 @@ import (
 	"github.com/desledishant10/stele/pkg/honeylog"
 	"github.com/desledishant10/stele/pkg/hsm"
 	"github.com/desledishant10/stele/pkg/httpx"
+	"github.com/desledishant10/stele/pkg/memlimit"
 	"github.com/desledishant10/stele/pkg/obs"
 	"github.com/desledishant10/stele/pkg/readlog"
 	"github.com/desledishant10/stele/pkg/storage"
@@ -119,8 +120,28 @@ func run() error {
 			"per-key TTL on replay-dedup entries; 0 disables (entries persist forever, growing storage + cache forever)")
 		merkleCacheNodes = flag.Int("merkle-cache-nodes", 1_000_000,
 			"max internal Merkle nodes held in memory (~130 B each). Leaves are always retained. 0 = unbounded (legacy v0.1.0 behaviour)")
+
+		// v0.1.5 additions: burst-tolerance.
+		memLimitFrac = flag.Float64("mem-limit-frac", 0.70,
+			"fraction of detected host RAM to set as GOMEMLIMIT, smoothing GC under burst load. 0 disables; ignored if GOMEMLIMIT env var is already set")
+		memLimitBytes = flag.Uint64("mem-limit-bytes", 0,
+			"explicit GOMEMLIMIT in bytes (takes precedence over --mem-limit-frac)")
+		badgerCompactors = flag.Int("badger-compactors", 2,
+			"BadgerDB background compactor count (default 2; lower = less CPU + less transient memory; higher = less write amplification)")
+		badgerVlogMB = flag.Int64("badger-vlog-mb", 256,
+			"BadgerDB value-log file size in MiB; smaller files mean more frequent rotations + smaller transient buffers")
 	)
 	flag.Parse()
+
+	// Apply the memory limit early so every subsequent allocation
+	// is governed by it. Order: explicit --mem-limit-bytes wins,
+	// then fraction-based detection.
+	if *memLimitBytes > 0 {
+		obs.Info("memory limit", "msg", memlimit.ApplyExact(*memLimitBytes))
+	} else if *memLimitFrac > 0 {
+		_, msg := memlimit.Apply(*memLimitFrac)
+		obs.Info("memory limit", "msg", msg)
+	}
 	if *dir == "" {
 		return errors.New("--dir is required")
 	}
@@ -189,6 +210,8 @@ func run() error {
 		storage.WithIndexCacheBytes(*badgerIndexCacheMB<<20),
 		storage.WithNumMemtables(*badgerNumMemtables),
 		storage.WithReplayTTL(*replayTTL),
+		storage.WithNumCompactors(*badgerCompactors),
+		storage.WithValueLogFileSizeBytes(*badgerVlogMB<<20),
 	)
 	if err != nil {
 		return err

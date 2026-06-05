@@ -32,21 +32,31 @@ import (
 type Option func(*config)
 
 type config struct {
-	blockCacheBytes int64
-	indexCacheBytes int64
-	numMemtables    int
-	replayTTL       time.Duration
+	blockCacheBytes      int64
+	indexCacheBytes      int64
+	numMemtables         int
+	replayTTL            time.Duration
+	numCompactors        int
+	valueLogFileSizeBytes int64
 }
 
-// defaultConfig returns the small-host-safe defaults. Tuned for issue #8:
-// a 4 GB pilot host should stay comfortably under 1 GB RSS at 250 RPS
-// for 24 h with these values.
+// defaultConfig returns the small-host-safe defaults. Tuned for
+// issue #8 (memory-burst OOMs); a 4 GB pilot host should stay
+// comfortably under 1 GB RSS at 250 RPS for 24 h with these values.
+//
+// v0.1.5 additions:
+//   - numCompactors capped at 2 (BadgerDB default 4) to limit
+//     transient compaction memory bursts under sustained writes.
+//   - valueLogFileSizeBytes capped at 256 MiB (BadgerDB default 1 GiB)
+//     so vlog rotations come with smaller buffers.
 func defaultConfig() config {
 	return config{
-		blockCacheBytes: 64 << 20, // 64 MiB (badger default ~256 MiB)
-		indexCacheBytes: 32 << 20, // 32 MiB (badger default 0 = unlimited)
-		numMemtables:    2,        // badger default 5
-		replayTTL:       0,        // 0 = no TTL (replay entries persist)
+		blockCacheBytes:       64 << 20,  // 64 MiB (badger default ~256 MiB)
+		indexCacheBytes:       32 << 20,  // 32 MiB (badger default 0 = unlimited)
+		numMemtables:          2,         // badger default 5
+		replayTTL:             0,         // 0 = no TTL (replay entries persist)
+		numCompactors:         2,         // badger default 4
+		valueLogFileSizeBytes: 256 << 20, // 256 MiB (badger default 1 GiB)
 	}
 }
 
@@ -94,6 +104,30 @@ func WithReplayTTL(d time.Duration) Option {
 	}
 }
 
+// WithNumCompactors overrides BadgerDB's background compactor count.
+// Lower = less CPU + less transient memory pressure during writes,
+// at the cost of more write amplification. Pass 0 to use the package
+// default of 2.
+func WithNumCompactors(n int) Option {
+	return func(c *config) {
+		if n > 0 {
+			c.numCompactors = n
+		}
+	}
+}
+
+// WithValueLogFileSizeBytes overrides BadgerDB's per-file value log
+// size budget. Smaller files mean more frequent rotation but smaller
+// transient allocation bursts during the rotation. Pass 0 to use the
+// package default of 256 MiB.
+func WithValueLogFileSizeBytes(b int64) Option {
+	return func(c *config) {
+		if b > 0 {
+			c.valueLogFileSizeBytes = b
+		}
+	}
+}
+
 var (
 	prefixEntry  = []byte("entry/")
 	prefixCkpt   = []byte("ckpt/")
@@ -128,6 +162,8 @@ func Open(dir string, opts ...Option) (*Store, error) {
 	bopts.BlockCacheSize = cfg.blockCacheBytes
 	bopts.IndexCacheSize = cfg.indexCacheBytes
 	bopts.NumMemtables = cfg.numMemtables
+	bopts.NumCompactors = cfg.numCompactors
+	bopts.ValueLogFileSize = cfg.valueLogFileSizeBytes
 	db, err := badger.Open(bopts)
 	if err != nil {
 		return nil, fmt.Errorf("storage: open %s: %w", dir, err)

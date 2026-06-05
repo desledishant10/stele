@@ -13,6 +13,46 @@ verifier recipe).
 ### Added
 - (next-version entries go here)
 
+## [0.1.5] - 2026-06-05
+
+Burst-tolerance pass following the v0.1.4 re-soak finding. The v0.1.4
+caps reduced steady-state memory cost (per-entry bytes dropped from
+~2,500 in v0.1.3 to ~620 at 5M entries) but did NOT prevent
+burst-driven OOMs: RSS oscillated 3-7 GB on an 8 GB host as Go's GC
+fell behind 16-producer × 500-RPS allocation bursts.
+
+v0.1.5 addresses the bursts. No protocol or wire-format changes;
+v0.1.0-v0.1.5 are runtime-compatible.
+
+### Added
+- **Auto-set `GOMEMLIMIT` based on host RAM.** New `pkg/memlimit`
+  package reads `/proc/meminfo` and sets Go's runtime memory limit
+  to `--mem-limit-frac × host_total` (default 70%). Forces the GC to
+  pace itself against a hard ceiling well below the OS OOM threshold,
+  smoothing burst allocation. Override with `--mem-limit-bytes` or
+  the `GOMEMLIMIT` env var.
+- **`--badger-compactors`** (default 2; was BadgerDB's 4): fewer
+  concurrent background compactors means smaller transient
+  allocation bursts during sustained writes.
+- **`--badger-vlog-mb`** (default 256; was BadgerDB's 1024): smaller
+  value-log files mean smaller per-rotation memory bursts.
+- New `storage.WithNumCompactors` and `storage.WithValueLogFileSizeBytes`
+  options.
+
+### Changed
+- **`MaxConcurrentAppends` default is now CPU-aware**: `NumCPU * 4`
+  clamped to `[16, 256]`. Was a fixed 256. On a 4-vCPU c7i.xlarge the
+  effective concurrency drops from 256 to 16, dramatically reducing
+  the maximum size of allocation bursts under sustained load.
+  Override via `--max-concurrent-appends` if you have an unusual
+  CPU-to-RAM ratio.
+
+### Closes
+- Properly closes [#8](https://github.com/desledishant10/stele/issues/8).
+  v0.1.4 was a partial fix (steady-state, not bursts); v0.1.5 is the
+  burst-tolerance counterpart. A third re-soak on a 16 GB instance
+  remains the validation step.
+
 ## [0.1.4] - 2026-05-31
 
 Memory-defaults pass following the v0.1.3 soak finding (issue #8).
