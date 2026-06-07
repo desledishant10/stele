@@ -1,0 +1,500 @@
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Started prometheus-node-exporter-nvme.timer - Run NVMe metrics collection every 15 minutes.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: prometheus-node-exporter-smartmon.timer - Run smart metrics collection every 15 minutes was skipped because no trigger condition checks were met.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Started stele-soak-report.timer - Run stele-soak-snapshot every 30 minutes.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Started systemd-tmpfiles-clean.timer - Daily Cleanup of Temporary Directories.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: ua-timer.timer - Ubuntu Pro Timer for running repeated jobs was skipped because of an unmet condition check (ConditionPathExists=/var/lib/ubuntu-advantage/private/machine-token.json).
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Started update-notifier-download.timer - Download data for packages that failed at package install time.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Reached target paths.target - Path Units.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Listening on acpid.socket - ACPID Listen Socket.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: apport-forward.socket - Unix socket for apport crash forwarding was skipped because of an unmet condition check (ConditionVirtualization=container).
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Listening on cloud-init-hotplugd.socket - cloud-init hotplug hook socket.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Listening on dbus.socket - D-Bus System Message Bus Socket.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Listening on iscsid.socket - Open-iSCSI iscsid Socket.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting lxd-installer.socket - Helper to install lxd snap on demand...
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting snapd.socket - Socket activation for snappy daemon...
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Listening on ssh.socket - OpenBSD Secure Shell server socket.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Listening on uuidd.socket - UUID daemon activation socket.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: open-iscsi.service - Login to default iSCSI targets was skipped because no trigger condition checks were met.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Finished blk-availability.service - Availability of block devices.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: systemd-pcrphase-sysinit.service - TPM2 PCR Barrier (Initialization) was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Listening on lxd-installer.socket - Helper to install lxd snap on demand.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Listening on snapd.socket - Socket activation for snappy daemon.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Reached target sockets.target - Socket Units.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Reached target basic.target - Basic System.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Started acpid.service - ACPI event daemon.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting chrony.service - chrony, an NTP client/server...
+Jun 07 03:56:25 ip-172-31-6-217 (acpid)[585]: acpid.service: Referenced but unset environment variable evaluates to an empty string: OPTIONS
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting cloud-config.service - Cloud-init: Config Stage...
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting dbus.service - D-Bus System Message Bus...
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Started dmesg.service - Save initial kernel messages after boot.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting e2scrub_reap.service - Remove Stale Online ext4 Metadata Check Snapshots...
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting ec2-instance-connect-harvest-hostkeys.service - EC2 Instance Connect Host Key Harvesting...
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: getty-static.service - getty on tty2-tty6 if dbus and logind are not available was skipped because of an unmet condition check (ConditionPathExists=!/usr/bin/dbus-daemon).
+Jun 07 03:56:25 ip-172-31-6-217 acpid[585]: starting up with netlink and the input layer
+Jun 07 03:56:25 ip-172-31-6-217 acpid[585]: 2 rules loaded
+Jun 07 03:56:25 ip-172-31-6-217 acpid[585]: waiting for events: event logging is off
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting grub-common.service - Record successful boot for GRUB...
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Started irqbalance.service - irqbalance daemon.
+Jun 07 03:56:25 ip-172-31-6-217 (qbalance)[594]: irqbalance.service: Referenced but unset environment variable evaluates to an empty string: IRQBALANCE_ARGS
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting networkd-dispatcher.service - Dispatcher daemon for systemd-networkd...
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot...
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting polkit.service - Authorization Manager...
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: pollinate.service - Pollinate to seed the pseudo random number generator was skipped because of an unmet condition check (ConditionPathExists=!/var/cache/pollinate/seeded).
+Jun 07 03:56:25 ip-172-31-6-217 dbus-daemon[588]: [system] AppArmor D-Bus mediation is enabled
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting prometheus-node-exporter-apt.service - Collect apt metrics for prometheus-node-exporter...
+Jun 07 03:56:25 ip-172-31-6-217 dbus-daemon[588]: [system] Activating systemd to hand-off: service name='org.freedesktop.hostname1' unit='dbus-org.freedesktop.hostname1.service' requested by ':1.1' (uid=998 pid=541 comm="/usr/lib/systemd/systemd-networkd" label="unconfined")
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting prometheus-node-exporter-nvme.service - Collect NVMe metrics for prometheus-node-exporter...
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Started prometheus-node-exporter.service - Prometheus exporter for machine metrics.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting rsyslog.service - System Logging Service...
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: secureboot-db.service - Secure Boot updates for DB and DBX was skipped because of an unmet condition check (ConditionPathExists=/sys/firmware/efi/efivars/db-d719b2cb-3d3a-4596-a3bc-dad00e67656f).
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: smartmontools.service - Self Monitoring and Reporting Technology (SMART) Daemon was skipped because of an unmet condition check (ConditionVirtualization=no).
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Started snap.amazon-ssm-agent.amazon-ssm-agent.service - Service for snap application amazon-ssm-agent.amazon-ssm-agent.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: snapd.core-fixup.service - Automatically repair incorrect owner/permissions on core devices was skipped because no trigger condition checks were met.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: snapd.recovery-chooser-trigger.service - Wait for the Ubuntu Core chooser trigger was skipped because of an unmet condition check (ConditionKernelCommandLine=snapd_recovery_mode).
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Reached target getty-pre.target - Preparation for Logins.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting snapd.seeded.service - Wait until snapd is fully seeded...
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting snapd.service - Snap Daemon...
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Started stele-soak-operator.service - stele operator (soak).
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Started stele-soak-witness-a.service - stele witness a (soak).
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Started stele-soak-witness-b.service - stele witness b (soak).
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Started stele-soak-witness-c.service - stele witness c (soak).
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting stele-soak.service - stele 72-hour soak driver...
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting sysstat.service - Resets System Activity Logs...
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting systemd-logind.service - User Login Management...
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: ua-reboot-cmds.service - Ubuntu Pro reboot cmds was skipped because of an unmet condition check (ConditionPathExists=/var/lib/ubuntu-advantage/private/machine-token.json).
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: ubuntu-advantage.service - Ubuntu Pro Background Auto Attach was skipped because no trigger condition checks were met.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting udisks2.service - Disk Manager...
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Started dbus.service - D-Bus System Message Bus.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: e2scrub_reap.service: Deactivated successfully.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Finished e2scrub_reap.service - Remove Stale Online ext4 Metadata Check Snapshots.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: nvmf-autoconnect.service: Deactivated successfully.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Finished nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Finished sysstat.service - Resets System Activity Logs.
+Jun 07 03:56:25 ip-172-31-6-217 networkd-dispatcher[596]: No valid path found for iwconfig
+Jun 07 03:56:25 ip-172-31-6-217 networkd-dispatcher[596]: No valid path found for iw
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Reached target remote-fs-pre.target - Preparation for Remote File Systems.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Reached target remote-fs.target - Remote File Systems.
+Jun 07 03:56:25 ip-172-31-6-217 dbus-daemon[588]: [system] Successfully activated service 'org.freedesktop.systemd1'
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting apport.service - automatic crash report generation...
+Jun 07 03:56:25 ip-172-31-6-217 udisksd[646]: udisks daemon version 2.10.1 starting
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Started cron.service - Regular background program processing daemon.
+Jun 07 03:56:25 ip-172-31-6-217 systemd-logind[634]: New seat seat0.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting openipmi.service - LSB: OpenIPMI Driver init script...
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: systemd-pcrphase.service - TPM2 PCR Barrier (User) was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+Jun 07 03:56:25 ip-172-31-6-217 systemd-logind[634]: Watching system buttons on /dev/input/event0 (Power Button)
+Jun 07 03:56:25 ip-172-31-6-217 systemd-logind[634]: Watching system buttons on /dev/input/event1 (Sleep Button)
+Jun 07 03:56:25 ip-172-31-6-217 systemd-logind[634]: Watching system buttons on /dev/input/event2 (AT Translated Set 2 keyboard)
+Jun 07 03:56:25 ip-172-31-6-217 (cron)[699]: cron.service: Referenced but unset environment variable evaluates to an empty string: EXTRA_OPTS
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Starting systemd-user-sessions.service - Permit User Sessions...
+Jun 07 03:56:25 ip-172-31-6-217 cron[699]: (CRON) INFO (pidfile fd = 3)
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Started networkd-dispatcher.service - Dispatcher daemon for systemd-networkd.
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Started systemd-logind.service - User Login Management.
+Jun 07 03:56:25 ip-172-31-6-217 cron[699]: (CRON) INFO (Running @reboot jobs)
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Reloading requested from client PID 680 ('systemctl') (unit stele-soak.service)...
+Jun 07 03:56:25 ip-172-31-6-217 systemd[1]: Reloading...
+Jun 07 03:56:25 ip-172-31-6-217 dbus-daemon[588]: [system] Activating via systemd: service name='org.freedesktop.PolicyKit1' unit='polkit.service' requested by ':1.5' (uid=0 pid=646 comm="/usr/libexec/udisks2/udisksd" label="unconfined")
+Jun 07 03:56:25 ip-172-31-6-217 kernel: kauditd_printk_skb: 113 callbacks suppressed
+Jun 07 03:56:25 ip-172-31-6-217 kernel: audit: type=1400 audit(1780804585.728:124): apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="rsyslogd" pid=623 comm="apparmor_parser"
+Jun 07 03:56:25 ip-172-31-6-217 chronyd[789]: chronyd version 4.5 starting (+CMDMON +NTP +REFCLOCK +RTC +PRIVDROP +SCFILTER +SIGND +ASYNCDNS +NTS +SECHASH +IPV6 -DEBUG)
+Jun 07 03:56:25 ip-172-31-6-217 chronyd[789]: Loaded 0 symmetric keys
+Jun 07 03:56:25 ip-172-31-6-217 chronyd[789]: Frequency 1.457 +/- 0.006 ppm read from /var/lib/chrony/chrony.drift
+Jun 07 03:56:25 ip-172-31-6-217 chronyd[789]: Using right/UTC timezone to obtain leap second data
+Jun 07 03:56:25 ip-172-31-6-217 chronyd[789]: Loaded seccomp filter (level 1)
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.762Z caller=node_exporter.go:192 level=info msg="Starting node_exporter" version="(version=1.7.0, branch=debian/sid, revision=1.7.0-1ubuntu0.3)"
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.764Z caller=node_exporter.go:193 level=info msg="Build context" build_context="(go=go1.22.2, platform=linux/amd64, user=team+pkg-go@tracker.debian.org, date=20250721-00:45:45, tags=unknown)"
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.764Z caller=systemd_linux.go:134 level=info collector=systemd msg="Parsed flag --collector.systemd.unit-include" flag=.+
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.764Z caller=systemd_linux.go:136 level=info collector=systemd msg="Parsed flag --collector.systemd.unit-exclude" flag=.+\.(automount|device|mount|scope|slice|target)
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.765Z caller=diskstats_common.go:111 level=info collector=diskstats msg="Parsed flag --collector.diskstats.device-exclude" flag=^(ram|loop|fd|(h|s|v|xv)d[a-z]|nvme\d+n\d+p)\d+$
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.765Z caller=filesystem_common.go:111 level=info collector=filesystem msg="Parsed flag --collector.filesystem.mount-points-exclude" flag=^/(dev|proc|run|sys|mnt|media|var/lib/docker/.+|var/lib/containers/storage/.+)($|/)
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.765Z caller=filesystem_common.go:113 level=info collector=filesystem msg="Parsed flag --collector.filesystem.fs-types-exclude" flag=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs)$
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=netdev_common.go:61 level=info collector=netdev msg="Parsed flag --collector.netdev.device-exclude" flag=^lo$
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:110 level=info msg="Enabled collectors"
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=arp
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=bcache
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=bonding
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=btrfs
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=conntrack
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=cpu
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=cpufreq
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=diskstats
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=dmi
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=edac
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=entropy
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=fibrechannel
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=filefd
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=filesystem
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=hwmon
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=infiniband
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=ipvs
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=loadavg
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=mdadm
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=meminfo
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=netclass
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=netdev
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=netstat
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=nfs
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=nfsd
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=nvme
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=os
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=powersupplyclass
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=pressure
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=rapl
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=schedstat
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=selinux
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=sockstat
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=softnet
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=stat
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=systemd
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=tapestats
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=textfile
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=thermal_zone
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=time
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=timex
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=udp_queues
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=uname
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=vmstat
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=xfs
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.766Z caller=node_exporter.go:117 level=info collector=zfs
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.772Z caller=tls_config.go:313 level=info msg="Listening on" address=[::]:9100
+Jun 07 03:56:25 ip-172-31-6-217 prometheus-node-exporter[603]: ts=2026-06-07T03:56:25.772Z caller=tls_config.go:316 level=info msg="TLS is disabled." http2=false address=[::]:9100
+Jun 07 03:56:25 ip-172-31-6-217 polkitd[600]: Started polkitd version 124
+Jun 07 03:56:25 ip-172-31-6-217 polkitd[600]: Loading rules from directory /etc/polkit-1/rules.d
+Jun 07 03:56:25 ip-172-31-6-217 polkitd[600]: Loading rules from directory /usr/share/polkit-1/rules.d
+Jun 07 03:56:25 ip-172-31-6-217 polkitd[600]: Finished loading, compiling and executing 6 rules
+Jun 07 03:56:25 ip-172-31-6-217 dbus-daemon[588]: [system] Successfully activated service 'org.freedesktop.PolicyKit1'
+Jun 07 03:56:25 ip-172-31-6-217 polkitd[600]: Acquired the name org.freedesktop.PolicyKit1 on the system bus
+Jun 07 03:56:25 ip-172-31-6-217 udisksd[646]: Acquired the name org.freedesktop.UDisks2 on the system message bus
+Jun 07 03:56:25 ip-172-31-6-217 snapd[611]: overlord.go:309: Acquiring state lock file
+Jun 07 03:56:25 ip-172-31-6-217 snapd[611]: overlord.go:314: Acquired state lock file
+Jun 07 03:56:26 ip-172-31-6-217 cloud-init[921]: Cloud-init v. 26.1-0ubuntu1~24.04.1 running 'modules:config' at Sun, 07 Jun 2026 03:56:25 +0000. Up 7.61 seconds.
+Jun 07 03:56:26 ip-172-31-6-217 snapd[611]: daemon.go:276: started snapd/2.75.2+ubuntu24.04 (series 16; classic) ubuntu/24.04 (amd64) linux/6.17.0-1017-aws.
+Jun 07 03:56:26 ip-172-31-6-217 kernel: loop3: detected capacity change from 0 to 8
+Jun 07 03:56:26 ip-172-31-6-217 snapd[611]: daemon.go:370: adjusting startup timeout by 45s (pessimistic estimate of 30s plus 5s per snap)
+Jun 07 03:56:26 ip-172-31-6-217 snapd[611]: backends.go:70: AppArmor status: apparmor is enabled and all features are available
+Jun 07 03:56:26 ip-172-31-6-217 snapd[611]: backend.go:145: reloading profiles for snap-confine
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Reloading finished in 467 ms.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started chrony.service - chrony, an NTP client/server.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Finished cloud-config.service - Cloud-init: Config Stage.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: ec2-instance-connect-harvest-hostkeys.service: Deactivated successfully.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Finished ec2-instance-connect-harvest-hostkeys.service - EC2 Instance Connect Host Key Harvesting.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: prometheus-node-exporter-nvme.service: Deactivated successfully.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Finished prometheus-node-exporter-nvme.service - Collect NVMe metrics for prometheus-node-exporter.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Finished apport.service - automatic crash report generation.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Finished systemd-user-sessions.service - Permit User Sessions.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: grub-common.service: Deactivated successfully.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Finished grub-common.service - Record successful boot for GRUB.
+Jun 07 03:56:26 ip-172-31-6-217 kernel: audit: type=1400 audit(1780804586.216:125): apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="/usr/lib/snapd/snap-confine" pid=942 comm="apparmor_parser"
+Jun 07 03:56:26 ip-172-31-6-217 snapd[611]: standby.go:95: will consider standby after: 5s
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Reloading requested from client PID 946 ('systemctl') (unit stele-soak.service)...
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Reloading...
+Jun 07 03:56:26 ip-172-31-6-217 openipmi[702]:  * Starting ipmi drivers
+Jun 07 03:56:26 ip-172-31-6-217 kernel: IPMI message handler: version 39.2
+Jun 07 03:56:26 ip-172-31-6-217 dbus-daemon[588]: [system] Activating via systemd: service name='org.freedesktop.timedate1' unit='dbus-org.freedesktop.timedate1.service' requested by ':1.9' (uid=0 pid=611 comm="/usr/lib/snapd/snapd" label="unconfined")
+Jun 07 03:56:26 ip-172-31-6-217 kernel: ipmi device interface
+Jun 07 03:56:26 ip-172-31-6-217 kernel: ipmi_si: IPMI System Interface driver
+Jun 07 03:56:26 ip-172-31-6-217 kernel: ipmi_si: Unable to find any System Interface(s)
+Jun 07 03:56:26 ip-172-31-6-217 openipmi[702]:    ...fail!
+Jun 07 03:56:26 ip-172-31-6-217 openipmi[702]:    ...done.
+Jun 07 03:56:26 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: Error occurred fetching the seelog config file path:  open /etc/amazon/ssm/seelog.xml: no such file or directory
+Jun 07 03:56:26 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: Initializing new seelog logger
+Jun 07 03:56:26 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: New Seelog Logger Creation Complete
+Jun 07 03:56:26 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.4740 WARN Error adding the directory '/etc/amazon/ssm' to watcher: no such file or directory
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Reloading finished in 234 ms.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started snapd.service - Snap Daemon.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: openipmi.service: Control process exited, code=exited, status=1/FAILURE
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: openipmi.service: Failed with result 'exit-code'.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Failed to start openipmi.service - LSB: OpenIPMI Driver init script.
+Jun 07 03:56:26 ip-172-31-6-217 rsyslogd[947]: imuxsock: Acquired UNIX socket '/run/systemd/journal/syslog' (fd 3) from systemd.  [v8.2312.0]
+Jun 07 03:56:26 ip-172-31-6-217 rsyslogd[947]: rsyslogd's groupid changed to 102
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started rsyslog.service - System Logging Service.
+Jun 07 03:56:26 ip-172-31-6-217 rsyslogd[947]: rsyslogd's userid changed to 102
+Jun 07 03:56:26 ip-172-31-6-217 rsyslogd[947]: [origin software="rsyslogd" swVersion="8.2312.0" x-pid="947" x-info="https://www.rsyslog.com"] start
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started udisks2.service - Disk Manager.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started polkit.service - Authorization Manager.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Reached target time-sync.target - System Time Synchronized.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started apt-daily.timer - Daily apt download activities.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started apt-daily-upgrade.timer - Daily apt upgrade and clean activities.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started dpkg-db-backup.timer - Daily dpkg database backup timer.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started e2scrub_all.timer - Periodic ext4 Online Metadata Check for All Filesystems.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started fstrim.timer - Discard unused filesystem blocks once a week.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started fwupd-refresh.timer - Refresh fwupd metadata regularly.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started logrotate.timer - Daily rotation of log files.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started man-db.timer - Daily man-db regeneration.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started motd-news.timer - Message of the Day.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: snapd.snap-repair.timer - Timer to automatically fetch and run repair assertions was skipped because no trigger condition checks were met.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started sysstat-collect.timer - Run system activity accounting tool every 10 minutes.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started sysstat-summary.timer - Generate summary of yesterday's process accounting.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started update-notifier-motd.timer - Check to see whether there is a new version of Ubuntu available.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Reached target timers.target - Timer Units.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Starting ModemManager.service - Modem Manager...
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Starting grub-initrd-fallback.service - GRUB failed boot detection...
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Starting hibinit-agent.service - EC2 instance hibernation setup agent...
+Jun 07 03:56:26 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.4740 INFO Proxy environment variables:
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Starting plymouth-quit-wait.service - Hold until boot process finishes up...
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Starting plymouth-quit.service - Terminate Plymouth Boot Screen...
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started prometheus.service - Monitoring system and time series database.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Starting systemd-hostnamed.service - Hostname Service...
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Starting systemd-timedated.service - Time & Date Service...
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started unattended-upgrades.service - Unattended Upgrades Shutdown.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Finished plymouth-quit-wait.service - Hold until boot process finishes up.
+Jun 07 03:56:26 ip-172-31-6-217 ModemManager[1033]: <msg> ModemManager (version 1.23.4) starting in system bus...
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Finished plymouth-quit.service - Terminate Plymouth Boot Screen.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started serial-getty@ttyS0.service - Serial Getty on ttyS0.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Starting setvtrgb.service - Set console scheme...
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: grub-initrd-fallback.service: Deactivated successfully.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Finished grub-initrd-fallback.service - GRUB failed boot detection.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Finished setvtrgb.service - Set console scheme.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Created slice system-getty.slice - Slice /system/getty.
+Jun 07 03:56:26 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.4740 INFO https_proxy:
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started getty@tty1.service - Getty on tty1.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Reached target getty.target - Login Prompts.
+Jun 07 03:56:26 ip-172-31-6-217 dbus-daemon[588]: [system] Successfully activated service 'org.freedesktop.timedate1'
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started systemd-timedated.service - Time & Date Service.
+Jun 07 03:56:26 ip-172-31-6-217 dbus-daemon[588]: [system] Successfully activated service 'org.freedesktop.hostname1'
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started systemd-hostnamed.service - Hostname Service.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Finished snapd.seeded.service - Wait until snapd is fully seeded.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: snapd.autoimport.service - Auto import assertions from block devices was skipped because no trigger condition checks were met.
+Jun 07 03:56:26 ip-172-31-6-217 snapd[611]: snapmgr.go:1661: performing periodic snap downloads cache cleanup
+Jun 07 03:56:26 ip-172-31-6-217 snapd[611]: snapmgr.go:1671: cannot clean store downloads cache: open /var/lib/snapd/cache: no such file or directory
+Jun 07 03:56:26 ip-172-31-6-217 systemd-hostnamed[1039]: Hostname set to <ip-172-31-6-217> (static)
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started ModemManager.service - Modem Manager.
+Jun 07 03:56:26 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.4740 INFO http_proxy:
+Jun 07 03:56:26 ip-172-31-6-217 hibinit-agent[1035]: Effective config: {'log_to_syslog': True, 'log_to_stderr': True, 'mkswap': 'mkswap {swapfile}', 'swapon': 'swapon {swapfile}', 'swapoff': 'swapoff {swapfile}', 'touch_swap': False, 'grub_update': True, 'swap_percentage': 100, 'swap_mb': 4000, 'state_dir': '/var/lib/hibinit-agent'}
+Jun 07 03:56:26 ip-172-31-6-217 hibinit-agent[1035]: Effective config: {'log_to_syslog': True, 'log_to_stderr': True, 'mkswap': 'mkswap {swapfile}', 'swapon': 'swapon {swapfile}', 'swapoff': 'swapoff {swapfile}', 'touch_swap': False, 'grub_update': True, 'swap_percentage': 100, 'swap_mb': 4000, 'state_dir': '/var/lib/hibinit-agent'}
+Jun 07 03:56:26 ip-172-31-6-217 hibinit-agent[1035]: Requesting new IMDSv2 token.
+Jun 07 03:56:26 ip-172-31-6-217 hibinit-agent[1035]: Requesting new IMDSv2 token.
+Jun 07 03:56:26 ip-172-31-6-217 hibinit-agent[1035]: Instance Launch has not enabled Hibernation Configured Flag. hibinit-agent exiting!!
+Jun 07 03:56:26 ip-172-31-6-217 hibinit-agent[1035]: Instance Launch has not enabled Hibernation Configured Flag. hibinit-agent exiting!!
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: hibinit-agent.service: Deactivated successfully.
+Jun 07 03:56:26 ip-172-31-6-217 systemd[1]: Started hibinit-agent.service - EC2 instance hibernation setup agent.
+Jun 07 03:56:26 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.4740 INFO no_proxy:
+Jun 07 03:56:26 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.4740 INFO Checking if agent identity type OnPrem can be assumed
+Jun 07 03:56:27 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.4861 INFO Checking if agent identity type EC2 can be assumed
+Jun 07 03:56:27 ip-172-31-6-217 systemd[1]: prometheus-node-exporter-apt.service: Deactivated successfully.
+Jun 07 03:56:27 ip-172-31-6-217 systemd[1]: Finished prometheus-node-exporter-apt.service - Collect apt metrics for prometheus-node-exporter.
+Jun 07 03:56:27 ip-172-31-6-217 systemd[1]: prometheus-node-exporter-apt.service: Consumed 1.030s CPU time, 94.6M memory peak, 0B memory swap peak.
+Jun 07 03:56:27 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.6547 INFO Agent will take identity from EC2
+Jun 07 03:56:27 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.6573 INFO Telemetry initialized
+Jun 07 03:56:27 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.6603 INFO [amazon-ssm-agent] amazon-ssm-agent - v3.3.4121.0
+Jun 07 03:56:27 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.6603 INFO [amazon-ssm-agent] OS: linux, Arch: amd64
+Jun 07 03:56:27 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:27.486Z caller=main.go:525 level=info msg="No time or size retention was set so using the default time retention" duration=15d
+Jun 07 03:56:27 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:27.495Z caller=main.go:563 level=info msg="Starting Prometheus Server" mode=server version="(version=2.45.3+ds, branch=debian/sid, revision=2.45.3+ds-2ubuntu0.3)"
+Jun 07 03:56:27 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:27.495Z caller=main.go:568 level=info build_context="(go=go1.22.2, platform=linux/amd64, user=team+pkg-go@tracker.debian.org, date=20250721-00:51:10, tags=unknown)"
+Jun 07 03:56:27 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:27.495Z caller=main.go:569 level=info host_details="(Linux 6.17.0-1017-aws #17~24.04.1-Ubuntu SMP Tue May 26 21:30:32 UTC 2026 x86_64 ip-172-31-6-217 (none))"
+Jun 07 03:56:27 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:27.495Z caller=main.go:570 level=info fd_limits="(soft=524288, hard=524288)"
+Jun 07 03:56:27 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:27.495Z caller=main.go:571 level=info vm_limits="(soft=unlimited, hard=unlimited)"
+Jun 07 03:56:27 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:27.517Z caller=web.go:504 level=info component=web msg="Start listening for connections" address=0.0.0.0:9090
+Jun 07 03:56:27 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:27.524Z caller=main.go:1004 level=info msg="Starting TSDB ..."
+Jun 07 03:56:27 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:27.536Z caller=tls_config.go:313 level=info component=web msg="Listening on" address=[::]:9090
+Jun 07 03:56:27 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:27.540Z caller=tls_config.go:316 level=info component=web msg="TLS is disabled." http2=false address=[::]:9090
+Jun 07 03:56:27 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:27.543Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1780768800789 maxt=1780776000000 ulid=01KTFBRNWCET2R7R97HN0S0DJK
+Jun 07 03:56:27 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:27.550Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1780776000789 maxt=1780783200000 ulid=01KTFJMD4D3DVZPR74M25ZP1H1
+Jun 07 03:56:27 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:27.553Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1780709823848 maxt=1780768800000 ulid=01KTFJMDB1K7PH5T313YCCS91V
+Jun 07 03:56:27 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.6603 INFO [amazon-ssm-agent] Starting Core Agent
+Jun 07 03:56:27 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:27.584Z caller=db.go:930 level=info component=tsdb msg="Found and deleted tmp block dir" dir=/var/lib/prometheus/metrics2/01KTFSKST0DPV7GQW7RAXKRTWQ.tmp-for-creation
+Jun 07 03:56:27 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.6603 INFO [amazon-ssm-agent] Registrar detected. Attempting registration
+Jun 07 03:56:27 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:27.672Z caller=head.go:595 level=info component=tsdb msg="Replaying on-disk memory mappable chunks if any"
+Jun 07 03:56:27 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:27.694Z caller=head.go:676 level=info component=tsdb msg="On-disk memory mappable chunks replay completed" duration=21.272475ms
+Jun 07 03:56:27 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:27.694Z caller=head.go:684 level=info component=tsdb msg="Replaying WAL, this may take a while"
+Jun 07 03:56:27 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:27.708Z caller=head.go:720 level=info component=tsdb msg="WAL checkpoint loaded"
+Jun 07 03:56:27 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.6603 INFO [Registrar] Starting registrar module
+Jun 07 03:56:27 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:27.806Z caller=head.go:755 level=info component=tsdb msg="WAL segment loaded" segment=8 maxSegment=12
+Jun 07 03:56:27 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.6625 INFO [EC2Identity] Checking disk for registration info
+Jun 07 03:56:27 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:27.893Z caller=head.go:755 level=info component=tsdb msg="WAL segment loaded" segment=9 maxSegment=12
+Jun 07 03:56:27 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.6659 INFO [EC2Identity] Registration info found for ec2 instance
+Jun 07 03:56:27 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:27.988Z caller=head.go:755 level=info component=tsdb msg="WAL segment loaded" segment=10 maxSegment=12
+Jun 07 03:56:28 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:28.051Z caller=head.go:755 level=info component=tsdb msg="WAL segment loaded" segment=11 maxSegment=12
+Jun 07 03:56:28 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:28.051Z caller=head.go:755 level=info component=tsdb msg="WAL segment loaded" segment=12 maxSegment=12
+Jun 07 03:56:28 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:28.051Z caller=head.go:792 level=info component=tsdb msg="WAL replay completed" checkpoint_replay_duration=14.699442ms wal_replay_duration=342.360424ms wbl_replay_duration=225ns total_replay_duration=378.371778ms
+Jun 07 03:56:28 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:28.052Z caller=main.go:1025 level=info fs_type=EXT4_SUPER_MAGIC
+Jun 07 03:56:28 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:28.052Z caller=main.go:1028 level=info msg="TSDB started"
+Jun 07 03:56:28 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:28.052Z caller=main.go:1209 level=info msg="Loading configuration file" filename=/etc/prometheus/prometheus.yml
+Jun 07 03:56:28 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.6659 INFO [amazon-ssm-agent] Registration attempted. Resuming core agent startup.
+Jun 07 03:56:28 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:28.060Z caller=main.go:1246 level=info msg="Completed loading of configuration file" filename=/etc/prometheus/prometheus.yml totalDuration=7.851487ms db_storage=1.103µs remote_storage=1.508µs web_handler=485ns query_engine=793ns scrape=1.96689ms scrape_sd=51.988µs notify=5.56905ms notify_sd=4.563µs rules=1.726µs tracing=7.578µs
+Jun 07 03:56:28 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:28.060Z caller=main.go:989 level=info msg="Server is ready to receive web requests."
+Jun 07 03:56:28 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:28.060Z caller=manager.go:999 level=info component="rule manager" msg="Starting rule manager..."
+Jun 07 03:56:28 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.6660 INFO [CredentialRefresher] credentialRefresher has started
+Jun 07 03:56:28 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.6660 INFO [CredentialRefresher] Starting credentials refresher loop
+Jun 07 03:56:28 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.6672 WARN EC2RoleProvider Failed to connect to Systems Manager with instance profile role credentials. Err: retrieved credentials failed to report to ssm. Error: EC2RoleRequestError: no EC2 instance role found
+Jun 07 03:56:28 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.7140 ERROR EC2RoleProvider Failed to connect to Systems Manager with SSM role credentials. error calling RequestManagedInstanceRoleToken: AccessDeniedException: Systems Manager's instance management role is not configured for account: 637423312954
+Jun 07 03:56:28 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]:         status code: 400, request id: 6396cbd3-c125-41c2-a8e9-ff2e8a93e858
+Jun 07 03:56:28 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.7140 ERROR [CredentialRefresher] Retrieve credentials produced error: no valid credentials could be retrieved for ec2 identity. Default Host Management Err: error calling RequestManagedInstanceRoleToken: AccessDeniedException: Systems Manager's instance management role is not configured for account: 637423312954
+Jun 07 03:56:28 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]:         status code: 400, request id: 6396cbd3-c125-41c2-a8e9-ff2e8a93e858
+Jun 07 03:56:28 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.7141 INFO [CredentialRefresher] Sleeping for 25m23s before retrying retrieve credentials
+Jun 07 03:56:28 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-07 03:56:26.7142 INFO [SerialPort] Write to serial port: SSM Agent unable to acquire credentials: <error>no valid credentials could be retrieved for ec2 identity. Default Host Management Err: error calling RequestManagedInstanceRoleToken: AccessDeniedException: Systems Manager's instance management role is not configured for account: 637423312954
+Jun 07 03:56:28 ip-172-31-6-217 amazon-ssm-agent.amazon-ssm-agent[609]:         status code: 400, request id: 6396cbd3-c125-41c2-a8e9-ff2e8a93e858</error>
+Jun 07 03:56:30 ip-172-31-6-217 systemd[1]: Starting ssh.service - OpenBSD Secure Shell server...
+Jun 07 03:56:30 ip-172-31-6-217 sshd[1086]: Server listening on 0.0.0.0 port 22.
+Jun 07 03:56:30 ip-172-31-6-217 sshd[1086]: Server listening on :: port 22.
+Jun 07 03:56:30 ip-172-31-6-217 systemd[1]: Started ssh.service - OpenBSD Secure Shell server.
+Jun 07 03:56:30 ip-172-31-6-217 systemd[1]: dmesg.service: Deactivated successfully.
+Jun 07 03:56:30 ip-172-31-6-217 ModemManager[1033]: <msg> [base-manager] couldn't check support for device '/sys/devices/pci0000:24/0000:24:00.0/0000:25:00.0/0000:26:00.0/0000:27:00.0': not supported by any plugin
+Jun 07 03:56:31 ip-172-31-6-217 sshd[1087]: Accepted publickey for ubuntu from 71.229.148.177 port 56165 ssh2: ED25519 SHA256:8zbhvGu1AcnrB4xPEApLG2dJenbeCn8nLwltAgFlohA
+Jun 07 03:56:31 ip-172-31-6-217 sshd[1087]: pam_unix(sshd:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1]: Created slice user-1000.slice - User Slice of UID 1000.
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1]: Starting user-runtime-dir@1000.service - User Runtime Directory /run/user/1000...
+Jun 07 03:56:31 ip-172-31-6-217 systemd-logind[634]: New session 1 of user ubuntu.
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1]: Finished user-runtime-dir@1000.service - User Runtime Directory /run/user/1000.
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1]: Starting user@1000.service - User Manager for UID 1000...
+Jun 07 03:56:31 ip-172-31-6-217 (systemd)[1112]: pam_unix(systemd-user:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1]: Reloading requested from client PID 1119 ('systemctl') (unit stele-soak.service)...
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1]: Reloading...
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1]: Reloading finished in 160 ms.
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1112]: Queued start job for default target default.target.
+Jun 07 03:56:33 ip-172-31-6-217 systemd-journald[181]: /var/log/journal/ec242d8ab9654ebe3a7bafca9987d9cd/user-1000.journal: Journal file uses a different sequence number ID, rotating.
+Jun 07 03:56:32 ip-172-31-6-217 chronyd[789]: Selected source 169.254.169.123
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1112]: Created slice app.slice - User Application Slice.
+Jun 07 03:56:32 ip-172-31-6-217 chronyd[789]: System clock TAI offset set to 37 seconds
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1112]: Started launchpadlib-cache-clean.timer - Clean up old files in the Launchpadlib cache.
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1112]: Reached target paths.target - Paths.
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1112]: Reached target timers.target - Timers.
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1112]: Starting dbus.socket - D-Bus User Message Bus Socket...
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1112]: Listening on dirmngr.socket - GnuPG network certificate management daemon.
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1112]: Listening on gpg-agent-browser.socket - GnuPG cryptographic agent and passphrase cache (access for web browsers).
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1112]: Listening on gpg-agent-extra.socket - GnuPG cryptographic agent and passphrase cache (restricted).
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1112]: Starting gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation)...
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1112]: Listening on gpg-agent.socket - GnuPG cryptographic agent and passphrase cache.
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1112]: Listening on keyboxd.socket - GnuPG public key management service.
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1112]: Listening on pk-debconf-helper.socket - debconf communication socket.
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1112]: Listening on snapd.session-agent.socket - REST API socket for snapd user session agent.
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1112]: Listening on dbus.socket - D-Bus User Message Bus Socket.
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1112]: Listening on gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation).
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1112]: Reached target sockets.target - Sockets.
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1112]: Reached target basic.target - Basic System.
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1112]: Reached target default.target - Main User Target.
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1112]: Startup finished in 370ms.
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1]: Started user@1000.service - User Manager for UID 1000.
+Jun 07 03:56:31 ip-172-31-6-217 systemd[1]: Started session-1.scope - Session 1 of User ubuntu.
+Jun 07 03:56:34 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:34.916Z caller=compact.go:523 level=info component=tsdb msg="write block" mint=1780783200000 maxt=1780790400000 ulid=01KTG3KAADM5G13CP8K0QS3BPG duration=918.453588ms
+Jun 07 03:56:34 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:34.920Z caller=head.go:1293 level=info component=tsdb msg="Head GC completed" caller=truncateMemory duration=3.777576ms
+Jun 07 03:56:35 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:35.247Z caller=compact.go:523 level=info component=tsdb msg="write block" mint=1780790458281 maxt=1780797600000 ulid=01KTG3KB78F2KDQVBRGBTR3FMT duration=326.600323ms
+Jun 07 03:56:35 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:35.248Z caller=head.go:1293 level=info component=tsdb msg="Head GC completed" caller=truncateMemory duration=993.18µs
+Jun 07 03:56:35 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:35.249Z caller=checkpoint.go:100 level=info component=tsdb msg="Creating checkpoint" from_segment=8 to_segment=10 mint=1780797600000
+Jun 07 03:56:35 ip-172-31-6-217 irqbalance[594]: Cannot change IRQ 64 affinity: No such file or directory
+Jun 07 03:56:35 ip-172-31-6-217 irqbalance[594]: IRQ 64 affinity is now unmanaged
+Jun 07 03:56:35 ip-172-31-6-217 irqbalance[594]: Cannot change IRQ 65 affinity: No such file or directory
+Jun 07 03:56:35 ip-172-31-6-217 irqbalance[594]: IRQ 65 affinity is now unmanaged
+Jun 07 03:56:35 ip-172-31-6-217 prometheus[1038]: ts=2026-06-07T03:56:35.376Z caller=head.go:1261 level=info component=tsdb msg="WAL checkpoint complete" first=8 last=10 duration=127.621999ms
+Jun 07 03:56:35 ip-172-31-6-217 stele-soak-setup[1274]: stele: Post "http://127.0.0.1:8080/api/v0/witnesses": dial tcp 127.0.0.1:8080: connect: connection refused
+Jun 07 03:56:35 ip-172-31-6-217 systemd[1]: stele-soak.service: Control process exited, code=exited, status=1/FAILURE
+Jun 07 03:56:35 ip-172-31-6-217 systemd[1]: stele-soak.service: Failed with result 'exit-code'.
+Jun 07 03:56:35 ip-172-31-6-217 systemd[1]: Failed to start stele-soak.service - stele 72-hour soak driver.
+Jun 07 03:56:35 ip-172-31-6-217 systemd[1]: Reached target multi-user.target - Multi-User System.
+Jun 07 03:56:35 ip-172-31-6-217 systemd[1]: Reached target graphical.target - Graphical Interface.
+Jun 07 03:56:35 ip-172-31-6-217 systemd[1]: Starting cloud-final.service - Cloud-init: Final Stage...
+Jun 07 03:56:35 ip-172-31-6-217 systemd[1]: Starting systemd-update-utmp-runlevel.service - Record Runlevel Change in UTMP...
+Jun 07 03:56:35 ip-172-31-6-217 systemd[1]: systemd-update-utmp-runlevel.service: Deactivated successfully.
+Jun 07 03:56:35 ip-172-31-6-217 systemd[1]: Finished systemd-update-utmp-runlevel.service - Record Runlevel Change in UTMP.
+Jun 07 03:56:35 ip-172-31-6-217 cloud-init[1292]: Cloud-init v. 26.1-0ubuntu1~24.04.1 running 'modules:final' at Sun, 07 Jun 2026 03:56:35 +0000. Up 17.45 seconds.
+Jun 07 03:56:36 ip-172-31-6-217 cloud-init[1292]: Cloud-init v. 26.1-0ubuntu1~24.04.1 finished at Sun, 07 Jun 2026 03:56:36 +0000. Datasource DataSourceEc2Local.  Up 17.71 seconds
+Jun 07 03:56:36 ip-172-31-6-217 systemd[1]: Finished cloud-final.service - Cloud-init: Final Stage.
+Jun 07 03:56:36 ip-172-31-6-217 systemd[1]: Reached target cloud-init.target - Cloud-init target.
+Jun 07 03:56:36 ip-172-31-6-217 systemd[1]: Startup finished in 1.811s (kernel) + 16.047s (userspace) = 17.858s.
+Jun 07 03:56:43 ip-172-31-6-217 sshd[1335]: Received disconnect from 71.229.148.177 port 56165:11: disconnected by user
+Jun 07 03:56:43 ip-172-31-6-217 sshd[1335]: Disconnected from user ubuntu 71.229.148.177 port 56165
+Jun 07 03:56:43 ip-172-31-6-217 sshd[1087]: pam_unix(sshd:session): session closed for user ubuntu
+Jun 07 03:56:43 ip-172-31-6-217 systemd[1]: session-1.scope: Deactivated successfully.
+Jun 07 03:56:43 ip-172-31-6-217 systemd-logind[634]: Session 1 logged out. Waiting for processes to exit.
+Jun 07 03:56:43 ip-172-31-6-217 systemd-logind[634]: Removed session 1.
+Jun 07 03:56:51 ip-172-31-6-217 systemd[1]: systemd-fsckd.service: Deactivated successfully.
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1]: Stopping user@1000.service - User Manager for UID 1000...
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1112]: Activating special unit exit.target...
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1112]: Stopped target default.target - Main User Target.
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1112]: Stopped target basic.target - Basic System.
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1112]: Stopped target paths.target - Paths.
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1112]: Stopped target sockets.target - Sockets.
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1112]: Stopped target timers.target - Timers.
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1112]: Stopped launchpadlib-cache-clean.timer - Clean up old files in the Launchpadlib cache.
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1112]: Closed dbus.socket - D-Bus User Message Bus Socket.
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1112]: Closed dirmngr.socket - GnuPG network certificate management daemon.
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1112]: Closed gpg-agent-browser.socket - GnuPG cryptographic agent and passphrase cache (access for web browsers).
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1112]: Closed gpg-agent-extra.socket - GnuPG cryptographic agent and passphrase cache (restricted).
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1112]: Stopping gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation)...
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1112]: Closed gpg-agent.socket - GnuPG cryptographic agent and passphrase cache.
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1112]: Closed keyboxd.socket - GnuPG public key management service.
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1112]: Closed pk-debconf-helper.socket - debconf communication socket.
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1112]: Closed snapd.session-agent.socket - REST API socket for snapd user session agent.
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1112]: Closed gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation).
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1112]: Removed slice app.slice - User Application Slice.
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1112]: Reached target shutdown.target - Shutdown.
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1112]: Finished systemd-exit.service - Exit the Session.
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1112]: Reached target exit.target - Exit the Session.
+Jun 07 03:56:53 ip-172-31-6-217 (sd-pam)[1114]: pam_unix(systemd-user:session): session closed for user ubuntu
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1]: user@1000.service: Deactivated successfully.
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1]: Stopped user@1000.service - User Manager for UID 1000.
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1]: Stopping user-runtime-dir@1000.service - User Runtime Directory /run/user/1000...
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1]: run-user-1000.mount: Deactivated successfully.
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1]: user-runtime-dir@1000.service: Deactivated successfully.
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1]: Stopped user-runtime-dir@1000.service - User Runtime Directory /run/user/1000.
+Jun 07 03:56:53 ip-172-31-6-217 systemd[1]: Removed slice user-1000.slice - User Slice of UID 1000.
+Jun 07 03:56:56 ip-172-31-6-217 systemd[1]: systemd-hostnamed.service: Deactivated successfully.
+Jun 07 03:56:56 ip-172-31-6-217 systemd[1]: systemd-timedated.service: Deactivated successfully.
+Jun 07 04:00:12 ip-172-31-6-217 systemd[1]: Starting sysstat-collect.service - system activity accounting tool...
+Jun 07 04:00:12 ip-172-31-6-217 systemd[1]: sysstat-collect.service: Deactivated successfully.
+Jun 07 04:00:12 ip-172-31-6-217 systemd[1]: Finished sysstat-collect.service - system activity accounting tool.
+Jun 07 04:01:26 ip-172-31-6-217 systemd[1]: Starting update-notifier-download.service - Download data for packages that failed at package install time...
+Jun 07 04:01:26 ip-172-31-6-217 systemd[1]: update-notifier-download.service: Deactivated successfully.
+Jun 07 04:01:26 ip-172-31-6-217 systemd[1]: Finished update-notifier-download.service - Download data for packages that failed at package install time.
+Jun 07 04:01:26 ip-172-31-6-217 dbus-daemon[588]: [system] Activating via systemd: service name='org.freedesktop.timedate1' unit='dbus-org.freedesktop.timedate1.service' requested by ':1.9' (uid=0 pid=611 comm="/usr/lib/snapd/snapd" label="unconfined")
+Jun 07 04:01:26 ip-172-31-6-217 systemd[1]: Starting systemd-timedated.service - Time & Date Service...
+Jun 07 04:01:26 ip-172-31-6-217 dbus-daemon[588]: [system] Successfully activated service 'org.freedesktop.timedate1'
+Jun 07 04:01:26 ip-172-31-6-217 systemd[1]: Started systemd-timedated.service - Time & Date Service.
+Jun 07 04:01:27 ip-172-31-6-217 snapd[611]: storehelpers.go:914: cannot refresh: snap has no updates available: "amazon-ssm-agent", "core22", "snapd"
+Jun 07 04:01:57 ip-172-31-6-217 systemd[1]: systemd-timedated.service: Deactivated successfully.
+Jun 07 04:04:06 ip-172-31-6-217 sshd[1371]: Accepted publickey for ubuntu from 71.229.148.177 port 59597 ssh2: ED25519 SHA256:8zbhvGu1AcnrB4xPEApLG2dJenbeCn8nLwltAgFlohA
+Jun 07 04:04:06 ip-172-31-6-217 sshd[1371]: pam_unix(sshd:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+Jun 07 04:04:06 ip-172-31-6-217 systemd-logind[634]: New session 3 of user ubuntu.
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1]: Created slice user-1000.slice - User Slice of UID 1000.
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1]: Starting user-runtime-dir@1000.service - User Runtime Directory /run/user/1000...
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1]: Finished user-runtime-dir@1000.service - User Runtime Directory /run/user/1000.
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1]: Starting user@1000.service - User Manager for UID 1000...
+Jun 07 04:04:06 ip-172-31-6-217 (systemd)[1376]: pam_unix(systemd-user:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1376]: Queued start job for default target default.target.
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1376]: Created slice app.slice - User Application Slice.
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1376]: Started launchpadlib-cache-clean.timer - Clean up old files in the Launchpadlib cache.
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1376]: Reached target paths.target - Paths.
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1376]: Reached target timers.target - Timers.
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1376]: Starting dbus.socket - D-Bus User Message Bus Socket...
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1376]: Listening on dirmngr.socket - GnuPG network certificate management daemon.
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1376]: Listening on gpg-agent-browser.socket - GnuPG cryptographic agent and passphrase cache (access for web browsers).
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1376]: Listening on gpg-agent-extra.socket - GnuPG cryptographic agent and passphrase cache (restricted).
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1376]: Starting gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation)...
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1376]: Listening on gpg-agent.socket - GnuPG cryptographic agent and passphrase cache.
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1376]: Listening on keyboxd.socket - GnuPG public key management service.
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1376]: Listening on pk-debconf-helper.socket - debconf communication socket.
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1376]: Listening on snapd.session-agent.socket - REST API socket for snapd user session agent.
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1376]: Listening on dbus.socket - D-Bus User Message Bus Socket.
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1376]: Listening on gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation).
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1376]: Reached target sockets.target - Sockets.
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1376]: Reached target basic.target - Basic System.
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1376]: Reached target default.target - Main User Target.
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1376]: Startup finished in 121ms.
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1]: Started user@1000.service - User Manager for UID 1000.
+Jun 07 04:04:06 ip-172-31-6-217 systemd[1]: Started session-3.scope - Session 3 of User ubuntu.
+Jun 07 04:04:07 ip-172-31-6-217 sudo[1444]:   ubuntu : PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/systemctl stop stele-soak stele-soak-operator stele-soak-witness-a stele-soak-witness-b stele-soak-witness-c stele-soak-report.timer
+Jun 07 04:04:07 ip-172-31-6-217 sudo[1444]: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
+Jun 07 04:04:07 ip-172-31-6-217 systemd[1]: Stopping stele-soak-operator.service - stele operator (soak)...
+Jun 07 04:04:07 ip-172-31-6-217 systemd[1]: Stopping stele-soak-witness-a.service - stele witness a (soak)...
+Jun 07 04:04:07 ip-172-31-6-217 systemd[1]: Stopping stele-soak-witness-b.service - stele witness b (soak)...
+Jun 07 04:04:07 ip-172-31-6-217 systemd[1]: Stopping stele-soak-witness-c.service - stele witness c (soak)...
+Jun 07 04:04:07 ip-172-31-6-217 systemd[1]: stele-soak-report.timer: Deactivated successfully.
+Jun 07 04:04:07 ip-172-31-6-217 systemd[1]: Stopped stele-soak-report.timer - Run stele-soak-snapshot every 30 minutes.
+Jun 07 04:04:07 ip-172-31-6-217 systemd[1]: stele-soak-witness-c.service: Deactivated successfully.
+Jun 07 04:04:07 ip-172-31-6-217 systemd[1]: Stopped stele-soak-witness-c.service - stele witness c (soak).
+Jun 07 04:04:07 ip-172-31-6-217 systemd[1]: stele-soak-witness-a.service: Deactivated successfully.
+Jun 07 04:04:07 ip-172-31-6-217 systemd[1]: Stopped stele-soak-witness-a.service - stele witness a (soak).
+Jun 07 04:04:07 ip-172-31-6-217 systemd[1]: stele-soak-witness-b.service: Deactivated successfully.
+Jun 07 04:04:07 ip-172-31-6-217 systemd[1]: Stopped stele-soak-witness-b.service - stele witness b (soak).
+Jun 07 04:04:10 ip-172-31-6-217 systemd[1]: stele-soak-operator.service: Main process exited, code=exited, status=1/FAILURE
+Jun 07 04:04:10 ip-172-31-6-217 systemd[1]: stele-soak-operator.service: Failed with result 'exit-code'.
+Jun 07 04:04:10 ip-172-31-6-217 systemd[1]: Stopped stele-soak-operator.service - stele operator (soak).
+Jun 07 04:04:10 ip-172-31-6-217 systemd[1]: stele-soak-operator.service: Consumed 9min 28.045s CPU time, 1.4G memory peak, 0B memory swap peak.
+Jun 07 04:04:10 ip-172-31-6-217 sudo[1444]: pam_unix(sudo:session): session closed for user root
+Jun 07 04:04:10 ip-172-31-6-217 sudo[1447]:   ubuntu : PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/cp /var/lib/stele-soak/timeline.ndjson /var/log/stele-soak.log /tmp/
+Jun 07 04:04:10 ip-172-31-6-217 sudo[1447]: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
+Jun 07 04:04:10 ip-172-31-6-217 sudo[1447]: pam_unix(sudo:session): session closed for user root
+Jun 07 04:04:10 ip-172-31-6-217 sudo[1449]:   ubuntu : PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/chmod 644 /tmp/timeline.ndjson /tmp/stele-soak.log
+Jun 07 04:04:10 ip-172-31-6-217 sudo[1449]: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
+Jun 07 04:04:10 ip-172-31-6-217 sudo[1449]: pam_unix(sudo:session): session closed for user root
+Jun 07 04:04:10 ip-172-31-6-217 sudo[1451]:   ubuntu : PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/journalctl --since '1 hour ago' -n 500 --no-pager
+Jun 07 04:04:10 ip-172-31-6-217 sudo[1451]: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)

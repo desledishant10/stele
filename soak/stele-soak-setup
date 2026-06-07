@@ -30,11 +30,14 @@ ExecStart=/usr/local/bin/steled \\
     --watch-rate=false \\
     --read-log=true \\
     --tripwire-every=1h \\
-    --max-concurrent-appends=512 \\
-    --per-producer-rps=200 \\
-    --per-producer-burst=400 \\
     --per-admin-rps=100 \\
     --per-admin-burst=200
+# NOTE (v0.1.6): we deliberately do NOT pass --max-concurrent-appends,
+# --per-producer-rps, or --per-producer-burst here. The v0.1.5 defaults
+# (NumCPU*4 concurrency, 100 RPS/200 burst per producer) are the right
+# values for the burst-tolerance fix to actually take effect. Setting
+# them explicitly to higher values defeats the GOMEMLIMIT story and
+# causes OOMs (see SOAK-72H.md, v6 run).
 Environment=STELE_LOG_FORMAT=json
 Restart=on-failure
 StandardOutput=append:/var/log/stele-operator.log

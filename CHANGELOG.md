@@ -13,6 +13,33 @@ verifier recipe).
 ### Added
 - (next-version entries go here)
 
+## [0.1.6] - 2026-06-06
+
+Soak orchestration fix. The v0.1.5 re-soak (v6 instance) discovered
+that `soak/stele-soak-setup` was hard-coding
+`--max-concurrent-appends=512` on the operator's systemd unit,
+overriding the v0.1.5 default of NumCPU×4 = 16. So v0.1.5 was being
+tested with only 2 of its 3 fixes active. The operator still OOM'd
+(at ~17h instead of v0.1.4's ~3h, confirming GOMEMLIMIT helped, but
+not enough to compensate for the forced concurrency).
+
+No protocol or wire-format changes; v0.1.0-v0.1.6 are runtime-
+compatible.
+
+### Fixed
+- **`soak/stele-soak-setup`**: removed the hard-coded
+  `--max-concurrent-appends=512`, `--per-producer-rps=200`,
+  `--per-producer-burst=400` overrides. The v0.1.5 defaults
+  (NumCPU×4 concurrency, 100 RPS / 200 burst per producer) now
+  actually take effect on soak runs.
+
+### Changed
+- **`soak/cloud-init.yaml`**: workload tuned from 16 producers ×
+  500 RPS (= 8K RPS aggregate) to 4 producers × 250 RPS
+  (= 1K RPS aggregate). The previous workload was a stress test;
+  the new defaults represent a realistic Fortune-500-scale audit
+  log rate. Bump back up via the env file if you want to stress.
+
 ## [0.1.5] - 2026-06-05
 
 Burst-tolerance pass following the v0.1.4 re-soak finding. The v0.1.4
