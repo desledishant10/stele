@@ -1,0 +1,1000 @@
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pci_bus 0000:28: resource 1 [mem 0xc8900000-0xc8afffff]
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pci_bus 0000:28: resource 2 [mem 0x2a3000000-0x2a3ffffff 64bit pref]
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pci_bus 0000:29: resource 1 [mem 0xc8b00000-0xc8cfffff]
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pci_bus 0000:29: resource 2 [mem 0x2a4000000-0x2a4ffffff 64bit pref]
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pci_bus 0000:2a: resource 1 [mem 0xc8d00000-0xc8efffff]
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pci_bus 0000:2a: resource 2 [mem 0x2a5000000-0x2a5ffffff 64bit pref]
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pci_bus 0000:2b: resource 1 [mem 0xc8f00000-0xc90fffff]
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pci_bus 0000:2b: resource 2 [mem 0x2a6000000-0x2a6ffffff 64bit pref]
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pci 0000:00:00.0: Limiting direct PCI/PCI transfers
+Jun 21 04:21:55 ip-172-31-28-80 kernel: PCI: CLS 0 bytes, default 64
+Jun 21 04:21:55 ip-172-31-28-80 kernel: PCI-DMA: Using software bounce buffering for IO (SWIOTLB)
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Trying to unpack rootfs image as initramfs...
+Jun 21 04:21:55 ip-172-31-28-80 kernel: software IO TLB: mapped [mem 0x00000000b41dc000-0x00000000b81dc000] (64MB)
+Jun 21 04:21:55 ip-172-31-28-80 kernel: clocksource: tsc: mask: 0xffffffffffffffff max_cycles: 0x22983777dd9, max_idle_ns: 440795300422 ns
+Jun 21 04:21:55 ip-172-31-28-80 kernel: clocksource: Switched to clocksource tsc
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Freeing initrd memory: 14600K
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Initialise system trusted keyrings
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Key type blacklist registered
+Jun 21 04:21:55 ip-172-31-28-80 kernel: workingset: timestamp_bits=36 max_order=21 bucket_order=0
+Jun 21 04:21:55 ip-172-31-28-80 kernel: squashfs: version 4.0 (2009/01/31) Phillip Lougher
+Jun 21 04:21:55 ip-172-31-28-80 kernel: fuse: init (API version 7.44)
+Jun 21 04:21:55 ip-172-31-28-80 kernel: integrity: Platform Keyring initialized
+Jun 21 04:21:55 ip-172-31-28-80 kernel: integrity: Machine keyring initialized
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Key type asymmetric registered
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Asymmetric key parser 'x509' registered
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Block layer SCSI generic (bsg) driver version 0.4 loaded (major 242)
+Jun 21 04:21:55 ip-172-31-28-80 kernel: io scheduler mq-deadline registered
+Jun 21 04:21:55 ip-172-31-28-80 kernel: ledtrig-cpu: registered to indicate activity on CPUs
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:01:00.0: PME: Signaling with IRQ 24
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:01:00.0: pciehp: Slot #0 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:00.0: pciehp: Slot #2 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:00.1: pciehp: Slot #3 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:00.2: pciehp: Slot #4 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:00.3: pciehp: Slot #5 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:00.4: pciehp: Slot #6 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:00.5: pciehp: Slot #7 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:00.6: pciehp: Slot #8 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:00.7: pciehp: Slot #9 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:01.0: pciehp: Slot #10 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:01.1: pciehp: Slot #11 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:01.2: pciehp: Slot #12 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:01.3: pciehp: Slot #13 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:01.4: pciehp: Slot #14 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:01.5: pciehp: Slot #15 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:01.6: pciehp: Slot #16 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:01.7: pciehp: Slot #17 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:02.0: pciehp: Slot #18 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:02.1: pciehp: Slot #19 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:02.2: pciehp: Slot #20 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:02.3: pciehp: Slot #21 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:02.4: pciehp: Slot #22 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:02.5: pciehp: Slot #23 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:02.6: pciehp: Slot #24 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:02.7: pciehp: Slot #25 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:03.0: pciehp: Slot #26 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:03.1: pciehp: Slot #27 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:03.2: pciehp: Slot #28 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:03.3: pciehp: Slot #29 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:03.4: pciehp: Slot #30 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:03.5: pciehp: Slot #31 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:03.6: pciehp: Slot #32 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:03:03.7: pciehp: Slot #33 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:24:00.0: PME: Signaling with IRQ 57
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:24:00.0: pciehp: Slot #1 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:26:00.0: pciehp: Slot #34 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:26:00.1: pciehp: Slot #35 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:26:00.2: pciehp: Slot #36 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:26:00.3: pciehp: Slot #37 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pcieport 0000:26:00.4: pciehp: Slot #38 AttnBtn+ PwrCtrl+ MRL- AttnInd+ PwrInd+ HotPlug+ Surprise- Interlock- NoCompl+ IbPresDis- LLActRep+
+Jun 21 04:21:55 ip-172-31-28-80 kernel: input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+Jun 21 04:21:55 ip-172-31-28-80 kernel: ACPI: button: Power Button [PWRF]
+Jun 21 04:21:55 ip-172-31-28-80 kernel: input: Sleep Button as /devices/LNXSYSTM:00/LNXSLPBN:00/input/input1
+Jun 21 04:21:55 ip-172-31-28-80 kernel: ACPI: button: Sleep Button [SLPF]
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+Jun 21 04:21:55 ip-172-31-28-80 kernel: 00:04: ttyS0 at I/O 0x3f8 (irq = 4, base_baud = 115200) is a 16550A
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Linux agpgart interface v0.103
+Jun 21 04:21:55 ip-172-31-28-80 kernel: loop: module loaded
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Key type psk registered
+Jun 21 04:21:55 ip-172-31-28-80 kernel: ACPI: bus type drm_connector registered
+Jun 21 04:21:55 ip-172-31-28-80 kernel: tun: Universal TUN/TAP device driver, 1.6
+Jun 21 04:21:55 ip-172-31-28-80 kernel: nvme nvme0: pci function 0000:00:04.0
+Jun 21 04:21:55 ip-172-31-28-80 kernel: ena 0000:27:00.0: enabling device (0000 -> 0002)
+Jun 21 04:21:55 ip-172-31-28-80 kernel: ena 0000:27:00.0: ENA device version: 0.10
+Jun 21 04:21:55 ip-172-31-28-80 kernel: ena 0000:27:00.0: ENA controller version: 0.0.1 implementation version 1
+Jun 21 04:21:55 ip-172-31-28-80 kernel: nvme nvme0: 2/0/0 default/read/poll queues
+Jun 21 04:21:55 ip-172-31-28-80 kernel: ena 0000:27:00.0: Elastic Network Adapter (ENA) found at mem c8700000, mac addr 0a:ff:e1:a0:4f:37
+Jun 21 04:21:55 ip-172-31-28-80 kernel: PPP generic driver version 2.4.2
+Jun 21 04:21:55 ip-172-31-28-80 kernel:  nvme0n1: p1 p14 p15 p16
+Jun 21 04:21:55 ip-172-31-28-80 kernel: i8042: PNP: PS/2 Controller [PNP0303:KBD,PNP0f13:MOU] at 0x60,0x64 irq 1,12
+Jun 21 04:21:55 ip-172-31-28-80 kernel: i8042: Warning: Keylock active
+Jun 21 04:21:55 ip-172-31-28-80 kernel: serio: i8042 KBD port at 0x60,0x64 irq 1
+Jun 21 04:21:55 ip-172-31-28-80 kernel: serio: i8042 AUX port at 0x60,0x64 irq 12
+Jun 21 04:21:55 ip-172-31-28-80 kernel: mousedev: PS/2 mouse device common for all mice
+Jun 21 04:21:55 ip-172-31-28-80 kernel: rtc_cmos 00:00: RTC can wake from S4
+Jun 21 04:21:55 ip-172-31-28-80 kernel: rtc_cmos 00:00: registered as rtc0
+Jun 21 04:21:55 ip-172-31-28-80 kernel: rtc_cmos 00:00: setting system clock to 2026-06-21T04:21:53 UTC (1782015713)
+Jun 21 04:21:55 ip-172-31-28-80 kernel: rtc_cmos 00:00: alarms up to one day, 114 bytes nvram
+Jun 21 04:21:55 ip-172-31-28-80 kernel: i2c_dev: i2c /dev entries driver
+Jun 21 04:21:55 ip-172-31-28-80 kernel: device-mapper: core: CONFIG_IMA_DISABLE_HTABLE is disabled. Duplicate IMA measurements will not be recorded in the IMA log.
+Jun 21 04:21:55 ip-172-31-28-80 kernel: device-mapper: uevent: version 1.0.3
+Jun 21 04:21:55 ip-172-31-28-80 kernel: device-mapper: ioctl: 4.50.0-ioctl (2025-04-28) initialised: dm-devel@lists.linux.dev
+Jun 21 04:21:55 ip-172-31-28-80 kernel: intel_pstate: P-states controlled by the platform
+Jun 21 04:21:55 ip-172-31-28-80 kernel: simple-framebuffer simple-framebuffer.0: [drm] Registered 1 planes with drm panic
+Jun 21 04:21:55 ip-172-31-28-80 kernel: [drm] Initialized simpledrm 1.0.0 for simple-framebuffer.0 on minor 0
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Console: switching to colour frame buffer device 100x37
+Jun 21 04:21:55 ip-172-31-28-80 kernel: simple-framebuffer simple-framebuffer.0: [drm] fb0: simpledrmdrmfb frame buffer device
+Jun 21 04:21:55 ip-172-31-28-80 kernel: drop_monitor: Initializing network drop monitor service
+Jun 21 04:21:55 ip-172-31-28-80 kernel: NET: Registered PF_INET6 protocol family
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Segment Routing with IPv6
+Jun 21 04:21:55 ip-172-31-28-80 kernel: In-situ OAM (IOAM) with IPv6
+Jun 21 04:21:55 ip-172-31-28-80 kernel: NET: Registered PF_PACKET protocol family
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Key type dns_resolver registered
+Jun 21 04:21:55 ip-172-31-28-80 kernel: IPI shorthand broadcast: enabled
+Jun 21 04:21:55 ip-172-31-28-80 kernel: sched_clock: Marking stable (1230006054, 158983935)->(1485803155, -96813166)
+Jun 21 04:21:55 ip-172-31-28-80 kernel: registered taskstats version 1
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Loading compiled-in X.509 certificates
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Loaded X.509 cert 'Build time autogenerated kernel key: fd6f7df877ab80e1a3b90e65d4007feeac493c65'
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Loaded X.509 cert 'Canonical Ltd. Live Patch Signing 2025 Kmod: d541cef61dc7e793b7eb7e899970a2eef0b5dc8c'
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Loaded X.509 cert 'Canonical Ltd. Live Patch Signing: 14df34d1a87cf37625abec039ef2bf521249b969'
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Loaded X.509 cert 'Canonical Ltd. Kernel Module Signing 2025 Kmod: 4627603d2357a2a3f81006370894c221175893e9'
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Loaded X.509 cert 'Canonical Ltd. Kernel Module Signing: 88f752e560a1e0737e31163a466ad7b70a850c19'
+Jun 21 04:21:55 ip-172-31-28-80 kernel: blacklist: Loading compiled-in revocation X.509 certificates
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Loaded X.509 cert 'Canonical Ltd. Secure Boot Signing: 61482aa2830d0ab2ad5af10b7250da9033ddcef0'
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Loaded X.509 cert 'Canonical Ltd. Secure Boot Signing (2017): 242ade75ac4a15e50d50c84b0d45ff3eae707a03'
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Loaded X.509 cert 'Canonical Ltd. Secure Boot Signing (ESM 2018): 365188c1d374d6b07c3c8f240f8ef722433d6a8b'
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Loaded X.509 cert 'Canonical Ltd. Secure Boot Signing (2019): c0746fd6c5da3ae827864651ad66ae47fe24b3e8'
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Loaded X.509 cert 'Canonical Ltd. Secure Boot Signing (2021 v1): a8d54bbb3825cfb94fa13c9f8a594a195c107b8d'
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Loaded X.509 cert 'Canonical Ltd. Secure Boot Signing (2021 v2): 4cf046892d6fd3c9a5b03f98d845f90851dc6a8c'
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Loaded X.509 cert 'Canonical Ltd. Secure Boot Signing (2021 v3): 100437bb6de6e469b581e61cd66bce3ef4ed53af'
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Loaded X.509 cert 'Canonical Ltd. Secure Boot Signing (Ubuntu Core 2019): c1d57b8f6b743f23ee41f4f7ee292f06eecadfb9'
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Demotion targets for Node 0: null
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Key type .fscrypt registered
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Key type fscrypt-provisioning registered
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Key type big_key registered
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Key type encrypted registered
+Jun 21 04:21:55 ip-172-31-28-80 kernel: AppArmor: AppArmor sha256 policy hashing enabled
+Jun 21 04:21:55 ip-172-31-28-80 kernel: ima: No TPM chip found, activating TPM-bypass!
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Loading compiled-in module X.509 certificates
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Loaded X.509 cert 'Build time autogenerated kernel key: fd6f7df877ab80e1a3b90e65d4007feeac493c65'
+Jun 21 04:21:55 ip-172-31-28-80 kernel: ima: Allocated hash algorithm: sha256
+Jun 21 04:21:55 ip-172-31-28-80 kernel: ima: No architecture policies found
+Jun 21 04:21:55 ip-172-31-28-80 kernel: evm: Initialising EVM extended attributes:
+Jun 21 04:21:55 ip-172-31-28-80 kernel: evm: security.selinux
+Jun 21 04:21:55 ip-172-31-28-80 kernel: evm: security.SMACK64
+Jun 21 04:21:55 ip-172-31-28-80 kernel: evm: security.SMACK64EXEC
+Jun 21 04:21:55 ip-172-31-28-80 kernel: evm: security.SMACK64TRANSMUTE
+Jun 21 04:21:55 ip-172-31-28-80 kernel: evm: security.SMACK64MMAP
+Jun 21 04:21:55 ip-172-31-28-80 kernel: evm: security.apparmor
+Jun 21 04:21:55 ip-172-31-28-80 kernel: evm: security.ima
+Jun 21 04:21:55 ip-172-31-28-80 kernel: evm: security.capability
+Jun 21 04:21:55 ip-172-31-28-80 kernel: evm: HMAC attrs: 0x1
+Jun 21 04:21:55 ip-172-31-28-80 kernel: PM:   Magic number: 14:821:363
+Jun 21 04:21:55 ip-172-31-28-80 kernel: RAS: Correctable Errors collector initialized.
+Jun 21 04:21:55 ip-172-31-28-80 kernel: clk: Disabling unused clocks
+Jun 21 04:21:55 ip-172-31-28-80 kernel: PM: genpd: Disabling unused power domains
+Jun 21 04:21:55 ip-172-31-28-80 kernel: check access for rdinit=/init failed: -2, ignoring
+Jun 21 04:21:55 ip-172-31-28-80 kernel: input: AT Translated Set 2 keyboard as /devices/platform/i8042/serio0/input/input2
+Jun 21 04:21:55 ip-172-31-28-80 kernel: md: Waiting for all devices to be available before autodetect
+Jun 21 04:21:55 ip-172-31-28-80 kernel: md: If you don't use raid, use raid=noautodetect
+Jun 21 04:21:55 ip-172-31-28-80 kernel: md: Autodetecting RAID arrays.
+Jun 21 04:21:55 ip-172-31-28-80 kernel: md: autorun ...
+Jun 21 04:21:55 ip-172-31-28-80 kernel: md: ... autorun DONE.
+Jun 21 04:21:55 ip-172-31-28-80 kernel: EXT4-fs (nvme0n1p1): Supports (experimental) DIO atomic writes awu_min: 4096, awu_max: 4096
+Jun 21 04:21:55 ip-172-31-28-80 kernel: EXT4-fs (nvme0n1p1): INFO: recovery required on readonly filesystem
+Jun 21 04:21:55 ip-172-31-28-80 kernel: EXT4-fs (nvme0n1p1): write access will be enabled during recovery
+Jun 21 04:21:55 ip-172-31-28-80 kernel: EXT4-fs (nvme0n1p1): orphan cleanup on readonly fs
+Jun 21 04:21:55 ip-172-31-28-80 kernel: EXT4-fs (nvme0n1p1): 2 orphan inodes deleted
+Jun 21 04:21:55 ip-172-31-28-80 kernel: EXT4-fs (nvme0n1p1): recovery complete
+Jun 21 04:21:55 ip-172-31-28-80 kernel: EXT4-fs (nvme0n1p1): mounted filesystem f0cbedfa-3bae-4fa8-a9a4-19dc078d0ceb ro with ordered data mode. Quota mode: none.
+Jun 21 04:21:55 ip-172-31-28-80 kernel: VFS: Mounted root (ext4 filesystem) readonly on device 259:1.
+Jun 21 04:21:55 ip-172-31-28-80 kernel: devtmpfs: mounted
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Freeing unused decrypted memory: 2028K
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Freeing unused kernel image (initmem) memory: 5396K
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Write protecting the kernel read-only data: 38912k
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Freeing unused kernel image (text/rodata gap) memory: 368K
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Freeing unused kernel image (rodata/data gap) memory: 808K
+Jun 21 04:21:55 ip-172-31-28-80 kernel: x86/mm: Checked W+X mappings: passed, no W+X pages found.
+Jun 21 04:21:55 ip-172-31-28-80 kernel: Run /sbin/init as init process
+Jun 21 04:21:55 ip-172-31-28-80 kernel:   with arguments:
+Jun 21 04:21:55 ip-172-31-28-80 kernel:     /sbin/init
+Jun 21 04:21:55 ip-172-31-28-80 kernel:   with environment:
+Jun 21 04:21:55 ip-172-31-28-80 kernel:     HOME=/
+Jun 21 04:21:55 ip-172-31-28-80 kernel:     TERM=linux
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Inserted module 'autofs4'
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: systemd 255.4-1ubuntu8.15 running in system mode (+PAM +AUDIT +SELINUX +APPARMOR +IMA +SMACK +SECCOMP +GCRYPT -GNUTLS +OPENSSL +ACL +BLKID +CURL +ELFUTILS +FIDO2 +IDN2 -IDN +IPTC +KMOD +LIBCRYPTSETUP +LIBFDISK +PCRE2 -PWQUALITY +P11KIT +QRENCODE +TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD -BPF_FRAMEWORK -XKBCOMMON +UTMP +SYSVINIT default-hierarchy=unified)
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Detected virtualization amazon.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Detected architecture x86-64.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Hostname set to <ip-172-31-28-80>.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Queued start job for default target graphical.target.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Created slice system-modprobe.slice - Slice /system/modprobe.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Created slice system-serial\x2dgetty.slice - Slice /system/serial-getty.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Created slice system-systemd\x2dfsck.slice - Slice /system/systemd-fsck.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Created slice user.slice - User and Session Slice.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Started systemd-ask-password-wall.path - Forward Password Requests to Wall Directory Watch.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Set up automount proc-sys-fs-binfmt_misc.automount - Arbitrary Executable File Formats File System Automount Point.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Expecting device dev-disk-by\x2dlabel-BOOT.device - /dev/disk/by-label/BOOT...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Expecting device dev-disk-by\x2dlabel-UEFI.device - /dev/disk/by-label/UEFI...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Expecting device dev-ttyS0.device - /dev/ttyS0...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Reached target integritysetup.target - Local Integrity Protected Volumes.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Reached target slices.target - Slice Units.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Reached target snapd.mounts-pre.target - Mounting snaps.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Reached target swap.target - Swaps.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Reached target time-set.target - System Time Set.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Reached target veritysetup.target - Local Verity Protected Volumes.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Listening on dm-event.socket - Device-mapper event daemon FIFOs.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Listening on lvm2-lvmpolld.socket - LVM2 poll daemon socket.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Listening on multipathd.socket - multipathd control socket.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Listening on syslog.socket - Syslog Socket.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Listening on systemd-fsckd.socket - fsck to fsckd communication Socket.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Listening on systemd-initctl.socket - initctl Compatibility Named Pipe.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Listening on systemd-journald-dev-log.socket - Journal Socket (/dev/log).
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Listening on systemd-journald.socket - Journal Socket.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Listening on systemd-networkd.socket - Network Service Netlink Socket.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: systemd-pcrextend.socket - TPM2 PCR Extension (Varlink) was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Listening on systemd-udevd-control.socket - udev Control Socket.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Listening on systemd-udevd-kernel.socket - udev Kernel Socket.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Mounting dev-hugepages.mount - Huge Pages File System...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Mounting dev-mqueue.mount - POSIX Message Queue File System...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Mounting sys-kernel-debug.mount - Kernel Debug File System...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Mounting sys-kernel-tracing.mount - Kernel Trace File System...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting systemd-journald.service - Journal Service...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting keyboard-setup.service - Set the console keyboard layout...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting kmod-static-nodes.service - Create List of Static Device Nodes...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting lvm2-monitor.service - Monitoring of LVM2 mirrors, snapshots etc. using dmeventd or progress polling...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting modprobe@configfs.service - Load Kernel Module configfs...
+Jun 21 04:21:55 ip-172-31-28-80 systemd-journald[179]: Collecting audit messages is disabled.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting modprobe@dm_mod.service - Load Kernel Module dm_mod...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting modprobe@drm.service - Load Kernel Module drm...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting modprobe@efi_pstore.service - Load Kernel Module efi_pstore...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting modprobe@fuse.service - Load Kernel Module fuse...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting modprobe@loop.service - Load Kernel Module loop...
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pstore: Using crash dump compression: deflate
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting modprobe@nvme_fabrics.service - Load Kernel Module nvme_fabrics...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: netplan-ovs-cleanup.service - OpenVSwitch configuration for cleanup was skipped because of an unmet condition check (ConditionFileIsExecutable=/usr/bin/ovs-vsctl).
+Jun 21 04:21:55 ip-172-31-28-80 kernel: pstore: Registered efi_pstore as persistent store backend
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting systemd-fsck-root.service - File System Check on Root Device...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting systemd-modules-load.service - Load Kernel Modules...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: systemd-pcrmachine.service - TPM2 PCR Machine ID Measurement was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: systemd-tpm2-setup-early.service - TPM2 SRK Setup (Early) was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting systemd-udev-trigger.service - Coldplug All udev Devices...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Mounted dev-hugepages.mount - Huge Pages File System.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Mounted dev-mqueue.mount - POSIX Message Queue File System.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Mounted sys-kernel-debug.mount - Kernel Debug File System.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Mounted sys-kernel-tracing.mount - Kernel Trace File System.
+Jun 21 04:21:55 ip-172-31-28-80 systemd-journald[179]: Journal started
+Jun 21 04:21:55 ip-172-31-28-80 systemd-journald[179]: Runtime Journal (/run/log/journal/ec287837fcba21cca6caa298442716fd) is 8.0M, max 155.5M, 147.5M free.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Finished keyboard-setup.service - Set the console keyboard layout.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Started systemd-journald.service - Journal Service.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Finished kmod-static-nodes.service - Create List of Static Device Nodes.
+Jun 21 04:21:55 ip-172-31-28-80 systemd-fsck[199]: cloudimg-rootfs: clean, 86054/12976128 files, 4835776/25951995 blocks
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: modprobe@configfs.service: Deactivated successfully.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Finished modprobe@configfs.service - Load Kernel Module configfs.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: modprobe@dm_mod.service: Deactivated successfully.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Finished modprobe@dm_mod.service - Load Kernel Module dm_mod.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: modprobe@drm.service: Deactivated successfully.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Finished modprobe@drm.service - Load Kernel Module drm.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: modprobe@efi_pstore.service: Deactivated successfully.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Finished modprobe@efi_pstore.service - Load Kernel Module efi_pstore.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: modprobe@fuse.service: Deactivated successfully.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Finished modprobe@fuse.service - Load Kernel Module fuse.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: modprobe@loop.service: Deactivated successfully.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Finished modprobe@loop.service - Load Kernel Module loop.
+Jun 21 04:21:55 ip-172-31-28-80 systemd-modules-load[196]: Inserted module 'msr'
+Jun 21 04:21:55 ip-172-31-28-80 systemd-modules-load[196]: Inserted module 'dm_multipath'
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: modprobe@nvme_fabrics.service: Deactivated successfully.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Finished modprobe@nvme_fabrics.service - Load Kernel Module nvme_fabrics.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Finished systemd-fsck-root.service - File System Check on Root Device.
+Jun 21 04:21:55 ip-172-31-28-80 systemd-modules-load[196]: Inserted module 'nf_conntrack'
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Finished lvm2-monitor.service - Monitoring of LVM2 mirrors, snapshots etc. using dmeventd or progress polling.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Finished systemd-modules-load.service - Load Kernel Modules.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Mounting sys-fs-fuse-connections.mount - FUSE Control File System...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Mounting sys-kernel-config.mount - Kernel Configuration File System...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Started systemd-fsckd.service - File System Check Daemon to report status.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting systemd-remount-fs.service - Remount Root and Kernel File Systems...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: systemd-repart.service - Repartition Root Disk was skipped because no trigger condition checks were met.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting systemd-sysctl.service - Apply Kernel Variables...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting systemd-tmpfiles-setup-dev-early.service - Create Static Device Nodes in /dev gracefully...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Mounted sys-fs-fuse-connections.mount - FUSE Control File System.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Mounted sys-kernel-config.mount - Kernel Configuration File System.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Finished systemd-sysctl.service - Apply Kernel Variables.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Finished systemd-udev-trigger.service - Coldplug All udev Devices.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Finished systemd-tmpfiles-setup-dev-early.service - Create Static Device Nodes in /dev gracefully.
+Jun 21 04:21:55 ip-172-31-28-80 kernel: EXT4-fs (nvme0n1p1): re-mounted f0cbedfa-3bae-4fa8-a9a4-19dc078d0ceb r/w.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Finished systemd-remount-fs.service - Remount Root and Kernel File Systems.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting multipathd.service - Device-Mapper Multipath Device Controller...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: systemd-hwdb-update.service - Rebuild Hardware Database was skipped because of an unmet condition check (ConditionNeedsUpdate=/etc).
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting systemd-journal-flush.service - Flush Journal to Persistent Storage...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: systemd-pstore.service - Platform Persistent Storage Archival was skipped because of an unmet condition check (ConditionDirectoryNotEmpty=/sys/fs/pstore).
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting systemd-random-seed.service - Load/Save OS Random Seed...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: systemd-sysusers.service - Create System Users was skipped because no trigger condition checks were met.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting systemd-tmpfiles-setup-dev.service - Create Static Device Nodes in /dev...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: systemd-tpm2-setup.service - TPM2 SRK Setup was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+Jun 21 04:21:55 ip-172-31-28-80 systemd-journald[179]: Time spent on flushing to /var/log/journal/ec287837fcba21cca6caa298442716fd is 36.535ms for 1202 entries.
+Jun 21 04:21:55 ip-172-31-28-80 systemd-journald[179]: System Journal (/var/log/journal/ec287837fcba21cca6caa298442716fd) is 60.9M, max 4.0G, 3.9G free.
+Jun 21 04:21:55 ip-172-31-28-80 systemd-journald[179]: Received client request to flush runtime journal.
+Jun 21 04:21:55 ip-172-31-28-80 systemd-journald[179]: /var/log/journal/ec287837fcba21cca6caa298442716fd/system.journal: Journal file uses a different sequence number ID, rotating.
+Jun 21 04:21:55 ip-172-31-28-80 systemd-journald[179]: Rotating system journal.
+Jun 21 04:21:55 ip-172-31-28-80 kernel: loop0: detected capacity change from 0 to 57752
+Jun 21 04:21:55 ip-172-31-28-80 kernel: loop1: detected capacity change from 0 to 100888
+Jun 21 04:21:55 ip-172-31-28-80 kernel: loop2: detected capacity change from 0 to 151512
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Finished systemd-tmpfiles-setup-dev.service - Create Static Device Nodes in /dev.
+Jun 21 04:21:55 ip-172-31-28-80 multipathd[242]: multipathd v0.9.4: start up
+Jun 21 04:21:55 ip-172-31-28-80 multipathd[242]: reconfigure: setting up paths and maps
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting systemd-udevd.service - Rule-based Manager for Device Events and Files...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Finished systemd-random-seed.service - Load/Save OS Random Seed.
+Jun 21 04:21:55 ip-172-31-28-80 systemd-udevd[246]: Using default interface naming scheme 'v255'.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Started multipathd.service - Device-Mapper Multipath Device Controller.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Started systemd-udevd.service - Rule-based Manager for Device Events and Files.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: nvmefc-boot-connections.service - Auto-connect to subsystems on FC-NVME devices found during boot was skipped because of an unmet condition check (ConditionPathExists=/sys/class/fc/fc_udev_device/nvme_discovery).
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Reached target local-fs-pre.target - Preparation for Local File Systems.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Mounting snap-amazon\x2dssm\x2dagent-13009.mount - Mount unit for amazon-ssm-agent, revision 13009...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Mounting snap-core22-2411.mount - Mount unit for core22, revision 2411...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Mounting snap-snapd-26865.mount - Mount unit for snapd, revision 26865...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: plymouth-start.service - Show Plymouth Boot Screen was skipped because of an unmet condition check (ConditionKernelCommandLine=splash).
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Started systemd-ask-password-console.path - Dispatch Password Requests to Console Directory Watch.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: systemd-ask-password-plymouth.path - Forward Password Requests to Plymouth Directory Watch was skipped because of an unmet condition check (ConditionPathExists=/run/plymouth/pid).
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Reached target cryptsetup.target - Local Encrypted Volumes.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Mounted snap-amazon\x2dssm\x2dagent-13009.mount - Mount unit for amazon-ssm-agent, revision 13009.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Finished systemd-journal-flush.service - Flush Journal to Persistent Storage.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Mounted snap-core22-2411.mount - Mount unit for core22, revision 2411.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Mounted snap-snapd-26865.mount - Mount unit for snapd, revision 26865.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Reached target snapd.mounts.target - Mounted snaps.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Found device dev-ttyS0.device - /dev/ttyS0.
+Jun 21 04:21:55 ip-172-31-28-80 (udev-worker)[262]: eth0: Could not set WakeOnLan to off, ignoring: Operation not supported
+Jun 21 04:21:55 ip-172-31-28-80 kernel: ena 0000:27:00.0 enp39s0: renamed from eth0
+Jun 21 04:21:55 ip-172-31-28-80 multipath[305]: nvme0n1: uid = uuid.251aeace-c926-5f30-9709-d4dbc99b8d8b (sysfs)
+Jun 21 04:21:55 ip-172-31-28-80 kernel: nvme nvme0: using unchecked data buffer
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Found device dev-disk-by\x2dlabel-BOOT.device - Amazon Elastic Block Store BOOT.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting systemd-fsck@dev-disk-by\x2dlabel-BOOT.service - File System Check on /dev/disk/by-label/BOOT...
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Found device dev-disk-by\x2dlabel-UEFI.device - Amazon Elastic Block Store UEFI.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Starting systemd-fsck@dev-disk-by\x2dlabel-UEFI.service - File System Check on /dev/disk/by-label/UEFI...
+Jun 21 04:21:55 ip-172-31-28-80 kernel: parport_pc 00:03: reported by Plug and Play ACPI
+Jun 21 04:21:55 ip-172-31-28-80 systemd-fsck[322]: BOOT: recovering journal
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Listening on systemd-rfkill.socket - Load/Save RF Kill Switch Status /dev/rfkill Watch.
+Jun 21 04:21:55 ip-172-31-28-80 systemd-fsck[322]: BOOT: clean, 601/58496 files, 32261/233728 blocks
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Finished systemd-fsck@dev-disk-by\x2dlabel-BOOT.service - File System Check on /dev/disk/by-label/BOOT.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Mounting boot.mount - /boot...
+Jun 21 04:21:55 ip-172-31-28-80 (udev-worker)[279]: enp39s0: Could not set WakeOnLan to off, ignoring: Operation not supported
+Jun 21 04:21:55 ip-172-31-28-80 kernel: EXT4-fs (nvme0n1p16): Supports (experimental) DIO atomic writes awu_min: 4096, awu_max: 4096
+Jun 21 04:21:55 ip-172-31-28-80 systemd-fsck[324]: fsck.fat 4.2 (2021-01-31)
+Jun 21 04:21:55 ip-172-31-28-80 systemd-fsck[324]: There are differences between boot sector and its backup.
+Jun 21 04:21:55 ip-172-31-28-80 systemd-fsck[324]: This is mostly harmless. Differences: (offset:original/backup)
+Jun 21 04:21:55 ip-172-31-28-80 systemd-fsck[324]:   65:01/00
+Jun 21 04:21:55 ip-172-31-28-80 systemd-fsck[324]:   Not automatically fixing this.
+Jun 21 04:21:55 ip-172-31-28-80 systemd-fsck[324]: Dirty bit is set. Fs was not properly unmounted and some data may be corrupt.
+Jun 21 04:21:55 ip-172-31-28-80 systemd-fsck[324]:  Automatically removing dirty bit.
+Jun 21 04:21:55 ip-172-31-28-80 systemd-fsck[324]: *** Filesystem was changed ***
+Jun 21 04:21:55 ip-172-31-28-80 systemd-fsck[324]: Writing changes.
+Jun 21 04:21:55 ip-172-31-28-80 systemd-fsck[324]: /dev/nvme0n1p15: 12 files, 12499/213663 clusters
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Finished systemd-fsck@dev-disk-by\x2dlabel-UEFI.service - File System Check on /dev/disk/by-label/UEFI.
+Jun 21 04:21:55 ip-172-31-28-80 kernel: EXT4-fs (nvme0n1p16): mounted filesystem bdb08846-a7af-4454-a79e-b1f71c372743 r/w with ordered data mode. Quota mode: none.
+Jun 21 04:21:55 ip-172-31-28-80 systemd[1]: Mounted boot.mount - /boot.
+Jun 21 04:21:55 ip-172-31-28-80 kernel: ppdev: user-space parallel port driver
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Mounting boot-efi.mount - /boot/efi...
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Mounted boot-efi.mount - /boot/efi.
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Reached target local-fs.target - Local File Systems.
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Listening on systemd-sysext.socket - System Extension Image Management (Varlink).
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Starting apparmor.service - Load AppArmor profiles...
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Starting console-setup.service - Set console font and keymap...
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Starting finalrd.service - Create final runtime dir for shutdown pivot root...
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: ldconfig.service - Rebuild Dynamic Linker Cache was skipped because no trigger condition checks were met.
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Starting plymouth-read-write.service - Tell Plymouth To Write Out Runtime Data...
+Jun 21 04:21:56 ip-172-31-28-80 apparmor.systemd[362]: Restarting AppArmor
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Starting systemd-binfmt.service - Set Up Additional Binary Formats...
+Jun 21 04:21:56 ip-172-31-28-80 apparmor.systemd[362]: Reloading AppArmor profiles
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Starting systemd-tmpfiles-setup.service - Create Volatile Files and Directories...
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Starting ufw.service - Uncomplicated firewall...
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Finished console-setup.service - Set console font and keymap.
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Finished finalrd.service - Create final runtime dir for shutdown pivot root.
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Finished ufw.service - Uncomplicated firewall.
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Finished plymouth-read-write.service - Tell Plymouth To Write Out Runtime Data.
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: proc-sys-fs-binfmt_misc.automount: Got automount request for /proc/sys/fs/binfmt_misc, triggered by 374 (systemd-binfmt)
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Mounting proc-sys-fs-binfmt_misc.mount - Arbitrary Executable File Formats File System...
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Mounted proc-sys-fs-binfmt_misc.mount - Arbitrary Executable File Formats File System.
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Finished systemd-binfmt.service - Set Up Additional Binary Formats.
+Jun 21 04:21:56 ip-172-31-28-80 kernel: audit: type=1400 audit(1782015716.188:2): apparmor="STATUS" operation="profile_load" profile="unconfined" name=4D6F6E676F444220436F6D70617373 pid=387 comm="apparmor_parser"
+Jun 21 04:21:56 ip-172-31-28-80 kernel: audit: type=1400 audit(1782015716.188:3): apparmor="STATUS" operation="profile_load" profile="unconfined" name="Discord" pid=386 comm="apparmor_parser"
+Jun 21 04:21:56 ip-172-31-28-80 kernel: audit: type=1400 audit(1782015716.188:4): apparmor="STATUS" operation="profile_load" profile="unconfined" name="QtWebEngineProcess" pid=388 comm="apparmor_parser"
+Jun 21 04:21:56 ip-172-31-28-80 kernel: audit: type=1400 audit(1782015716.189:5): apparmor="STATUS" operation="profile_load" profile="unconfined" name="1password" pid=385 comm="apparmor_parser"
+Jun 21 04:21:56 ip-172-31-28-80 kernel: audit: type=1400 audit(1782015716.191:6): apparmor="STATUS" operation="profile_load" profile="unconfined" name="brave" pid=393 comm="apparmor_parser"
+Jun 21 04:21:56 ip-172-31-28-80 kernel: audit: type=1400 audit(1782015716.191:7): apparmor="STATUS" operation="profile_load" profile="unconfined" name="buildah" pid=394 comm="apparmor_parser"
+Jun 21 04:21:56 ip-172-31-28-80 kernel: audit: type=1400 audit(1782015716.191:8): apparmor="STATUS" operation="profile_load" profile="unconfined" name="balena-etcher" pid=392 comm="apparmor_parser"
+Jun 21 04:21:56 ip-172-31-28-80 kernel: audit: type=1400 audit(1782015716.191:9): apparmor="STATUS" operation="profile_load" profile="unconfined" name="cam" pid=395 comm="apparmor_parser"
+Jun 21 04:21:56 ip-172-31-28-80 kernel: audit: type=1400 audit(1782015716.193:10): apparmor="STATUS" operation="profile_load" profile="unconfined" name="ch-run" pid=397 comm="apparmor_parser"
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Finished systemd-tmpfiles-setup.service - Create Volatile Files and Directories.
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: systemd-firstboot.service - First Boot Wizard was skipped because of an unmet condition check (ConditionFirstBoot=yes).
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: first-boot-complete.target - First Boot Complete was skipped because of an unmet condition check (ConditionFirstBoot=yes).
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: systemd-journal-catalog-update.service - Rebuild Journal Catalog was skipped because of an unmet condition check (ConditionNeedsUpdate=/var).
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: systemd-machine-id-commit.service - Commit a transient machine-id on disk was skipped because of an unmet condition check (ConditionPathIsMountPoint=/etc/machine-id).
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Starting systemd-resolved.service - Network Name Resolution...
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: systemd-update-done.service - Update is Completed was skipped because no trigger condition checks were met.
+Jun 21 04:21:56 ip-172-31-28-80 kernel: input: ImPS/2 Generic Wheel Mouse as /devices/platform/i8042/serio1/input/input4
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Starting systemd-update-utmp.service - Record System Boot/Shutdown in UTMP...
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Finished systemd-update-utmp.service - Record System Boot/Shutdown in UTMP.
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Finished apparmor.service - Load AppArmor profiles.
+Jun 21 04:21:56 ip-172-31-28-80 systemd-resolved[440]: Positive Trust Anchors:
+Jun 21 04:21:56 ip-172-31-28-80 systemd-resolved[440]: . IN DS 20326 8 2 e06d44b80b8f1d39a95c0b0d7c65d08458e880409bbc683457104237c7f8ec8d
+Jun 21 04:21:56 ip-172-31-28-80 systemd-resolved[440]: Negative trust anchors: home.arpa 10.in-addr.arpa 16.172.in-addr.arpa 17.172.in-addr.arpa 18.172.in-addr.arpa 19.172.in-addr.arpa 20.172.in-addr.arpa 21.172.in-addr.arpa 22.172.in-addr.arpa 23.172.in-addr.arpa 24.172.in-addr.arpa 25.172.in-addr.arpa 26.172.in-addr.arpa 27.172.in-addr.arpa 28.172.in-addr.arpa 29.172.in-addr.arpa 30.172.in-addr.arpa 31.172.in-addr.arpa 170.0.0.192.in-addr.arpa 171.0.0.192.in-addr.arpa 168.192.in-addr.arpa d.f.ip6.arpa ipv4only.arpa corp home internal intranet lan local private test
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Starting snapd.apparmor.service - Load AppArmor profiles managed internally by snapd...
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: vgauth.service - Authentication service for virtual machines hosted on VMware was skipped because of an unmet condition check (ConditionVirtualization=vmware).
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: open-vm-tools.service - Service for virtual machines hosted on VMware was skipped because of an unmet condition check (ConditionVirtualization=vmware).
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Starting cloud-init-local.service - Cloud-init: Local Stage (pre-network)...
+Jun 21 04:21:56 ip-172-31-28-80 snapd-apparmor[497]: main.go:146: Loading profiles [/var/lib/snapd/apparmor/profiles/snap-confine.snapd.26865 /var/lib/snapd/apparmor/profiles/snap-update-ns.amazon-ssm-agent /var/lib/snapd/apparmor/profiles/snap.amazon-ssm-agent.amazon-ssm-agent /var/lib/snapd/apparmor/profiles/snap.amazon-ssm-agent.ssm-cli]
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Finished snapd.apparmor.service - Load AppArmor profiles managed internally by snapd.
+Jun 21 04:21:56 ip-172-31-28-80 systemd-resolved[440]: Using system hostname 'ip-172-31-28-80'.
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Started systemd-resolved.service - Network Name Resolution.
+Jun 21 04:21:56 ip-172-31-28-80 systemd[1]: Reached target nss-lookup.target - Host and Network Name Lookups.
+Jun 21 04:21:57 ip-172-31-28-80 cloud-init[514]: Cloud-init v. 26.1-0ubuntu1~24.04.1 running 'init-local' at Sun, 21 Jun 2026 04:21:57 +0000. Up 4.79 seconds.
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[517]: dhcpcd-10.0.6 starting
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[517]: chrooting as dhcpcd to /usr/lib/dhcpcd
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[519]: spawned manager process on PID 519
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: spawned privileged proxy on PID 520
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: spawned controller proxy on PID 521
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: DUID 00:01:00:01:31:b7:ae:af:0a:ff:e1:a0:4f:37
+Jun 21 04:21:57 ip-172-31-28-80 kernel: 8021q: 802.1Q VLAN Support v1.8
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: enp39s0: executing: /bin/true PREINIT
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: enp39s0: executing: /bin/true CARRIER
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: enp39s0: IAID e1:a0:4f:37
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: enp39s0: delaying IPv4 for 0.3 seconds
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: enp39s0: reading lease: /var/lib/dhcpcd/enp39s0.lease
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: enp39s0: discarding expired lease
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: enp39s0: soliciting a DHCP lease
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: enp39s0: sending DISCOVER (xid 0xfcada009), next in 3.8 seconds
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: enp39s0: spawned BPF BOOTP on PID 527
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: enp39s0: offered 172.31.28.80 from 172.31.16.1
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: enp39s0: sending REQUEST (xid 0xfcada009), next in 4.5 seconds
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: enp39s0: process BPF BOOTP already started on pid 527
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: enp39s0: acknowledged 172.31.28.80 from 172.31.16.1
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: enp39s0: leased 172.31.28.80 for 3600 seconds
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: enp39s0: renew in 1800 seconds, rebind in 3150 seconds
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: enp39s0: writing lease: /var/lib/dhcpcd/enp39s0.lease
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: enp39s0: adding IP address 172.31.28.80/20 broadcast 172.31.31.255
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: enp39s0: adding route to 172.31.16.0/20
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: enp39s0: adding default route via 172.31.16.1
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: enp39s0: executing: /bin/true BOUND
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: enp39s0: spawned BOOTP proxy 172.31.28.80 on PID 529
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: control command: dhcpcd --dumplease --ipv4only enp39s0
+Jun 21 04:21:57 ip-172-31-28-80 dhcpcd[520]: enp39s0: BPF BOOTP exited from PID 527
+Jun 21 04:21:57 ip-172-31-28-80 systemd[1]: Finished cloud-init-local.service - Cloud-init: Local Stage (pre-network).
+Jun 21 04:21:57 ip-172-31-28-80 systemd[1]: Reached target network-pre.target - Preparation for Network.
+Jun 21 04:21:57 ip-172-31-28-80 systemd[1]: Starting systemd-networkd.service - Network Configuration...
+Jun 21 04:21:57 ip-172-31-28-80 systemd-networkd[541]: lo: Link UP
+Jun 21 04:21:57 ip-172-31-28-80 systemd-networkd[541]: lo: Gained carrier
+Jun 21 04:21:57 ip-172-31-28-80 systemd-networkd[541]: Enumeration completed
+Jun 21 04:21:57 ip-172-31-28-80 systemd-networkd[541]: enp39s0: Link UP
+Jun 21 04:21:57 ip-172-31-28-80 systemd-networkd[541]: enp39s0: Gained carrier
+Jun 21 04:21:57 ip-172-31-28-80 systemd[1]: Started systemd-networkd.service - Network Configuration.
+Jun 21 04:21:57 ip-172-31-28-80 systemd-networkd[541]: enp39s0: Link DOWN
+Jun 21 04:21:57 ip-172-31-28-80 systemd-networkd[541]: enp39s0: Lost carrier
+Jun 21 04:21:57 ip-172-31-28-80 systemd[1]: Reached target network.target - Network.
+Jun 21 04:21:57 ip-172-31-28-80 systemd-networkd[541]: enp39s0: Configuring with /run/systemd/network/10-netplan-enp39s0.network.
+Jun 21 04:21:57 ip-172-31-28-80 systemd-networkd[541]: enp39s0: Link UP
+Jun 21 04:21:57 ip-172-31-28-80 systemd-networkd[541]: enp39s0: Gained carrier
+Jun 21 04:21:57 ip-172-31-28-80 systemd[1]: Starting systemd-networkd-wait-online.service - Wait for Network to be Configured...
+Jun 21 04:21:57 ip-172-31-28-80 systemd-networkd[541]: enp39s0: DHCPv4 address 172.31.28.80/20, gateway 172.31.16.1 acquired from 172.31.16.1
+Jun 21 04:21:59 ip-172-31-28-80 systemd-networkd[541]: enp39s0: Gained IPv6LL
+Jun 21 04:21:59 ip-172-31-28-80 systemd[1]: Finished systemd-networkd-wait-online.service - Wait for Network to be Configured.
+Jun 21 04:21:59 ip-172-31-28-80 systemd[1]: Starting cloud-init.service - Cloud-init: Network Stage...
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: Cloud-init v. 26.1-0ubuntu1~24.04.1 running 'init' at Sun, 21 Jun 2026 04:21:59 +0000. Up 7.57 seconds.
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: +++++++++++++++++++++++++++++++++++++++Net device info+++++++++++++++++++++++++++++++++++++++
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: +---------+------+-----------------------------+---------------+--------+-------------------+
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: |  Device |  Up  |           Address           |      Mask     | Scope  |     Hw-Address    |
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: +---------+------+-----------------------------+---------------+--------+-------------------+
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: | enp39s0 | True |         172.31.28.80        | 255.255.240.0 | global | 0a:ff:e1:a0:4f:37 |
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: | enp39s0 | True | fe80::8ff:e1ff:fea0:4f37/64 |       .       |  link  | 0a:ff:e1:a0:4f:37 |
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: |    lo   | True |          127.0.0.1          |   255.0.0.0   |  host  |         .         |
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: |    lo   | True |           ::1/128           |       .       |  host  |         .         |
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: +---------+------+-----------------------------+---------------+--------+-------------------+
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: ++++++++++++++++++++++++++++++Route IPv4 info++++++++++++++++++++++++++++++
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: +-------+-------------+-------------+-----------------+-----------+-------+
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: | Route | Destination |   Gateway   |     Genmask     | Interface | Flags |
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: +-------+-------------+-------------+-----------------+-----------+-------+
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: |   0   |   0.0.0.0   | 172.31.16.1 |     0.0.0.0     |  enp39s0  |   UG  |
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: |   1   |  172.31.0.2 | 172.31.16.1 | 255.255.255.255 |  enp39s0  |  UGH  |
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: |   2   | 172.31.16.0 |   0.0.0.0   |  255.255.240.0  |  enp39s0  |   U   |
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: |   3   | 172.31.16.1 |   0.0.0.0   | 255.255.255.255 |  enp39s0  |   UH  |
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: +-------+-------------+-------------+-----------------+-----------+-------+
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: +++++++++++++++++++Route IPv6 info+++++++++++++++++++
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: +-------+-------------+---------+-----------+-------+
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: | Route | Destination | Gateway | Interface | Flags |
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: +-------+-------------+---------+-----------+-------+
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: |   0   |  fe80::/64  |    ::   |  enp39s0  |   U   |
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: |   2   |    local    |    ::   |  enp39s0  |   U   |
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: |   3   |  multicast  |    ::   |  enp39s0  |   U   |
+Jun 21 04:21:59 ip-172-31-28-80 cloud-init[551]: ci-info: +-------+-------------+---------+-----------+-------+
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Finished cloud-init.service - Cloud-init: Network Stage.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Reached target cloud-config.target - Cloud-config availability.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Reached target network-online.target - Network is Online.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Reached target sysinit.target - System Initialization.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Started acpid.path - ACPI Events Check.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: apport-autoreport.path - Process error reports when automatic reporting is enabled (file watch) was skipped because of an unmet condition check (ConditionPathExists=/var/lib/apport/autoreport).
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: tpm-udev.path - Handle dynamically added tpm devices was skipped because of an unmet condition check (ConditionVirtualization=container).
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: apport-autoreport.timer - Process error reports when automatic reporting is enabled (timer based) was skipped because of an unmet condition check (ConditionPathExists=/var/lib/apport/autoreport).
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Started prometheus-node-exporter-apt.timer - Run apt metrics collection every 15 minutes.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: prometheus-node-exporter-ipmitool-sensor.timer - Run ipmitool sensor metrics collection every minute was skipped because of an unmet condition check (ConditionDirectoryNotEmpty=/sys/class/ipmi).
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: prometheus-node-exporter-mellanox-hca-temp.timer - Run Mellanox HCA temperature collection every minute was skipped because of an unmet condition check (ConditionDirectoryNotEmpty=/sys/class/infiniband).
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Started prometheus-node-exporter-nvme.timer - Run NVMe metrics collection every 15 minutes.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: prometheus-node-exporter-smartmon.timer - Run smart metrics collection every 15 minutes was skipped because no trigger condition checks were met.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Started stele-soak-report.timer - Run stele-soak-snapshot every 30 minutes.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Started systemd-tmpfiles-clean.timer - Daily Cleanup of Temporary Directories.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: ua-timer.timer - Ubuntu Pro Timer for running repeated jobs was skipped because of an unmet condition check (ConditionPathExists=/var/lib/ubuntu-advantage/private/machine-token.json).
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Started update-notifier-download.timer - Download data for packages that failed at package install time.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Reached target paths.target - Path Units.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Listening on acpid.socket - ACPID Listen Socket.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: apport-forward.socket - Unix socket for apport crash forwarding was skipped because of an unmet condition check (ConditionVirtualization=container).
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Listening on cloud-init-hotplugd.socket - cloud-init hotplug hook socket.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Listening on dbus.socket - D-Bus System Message Bus Socket.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Listening on iscsid.socket - Open-iSCSI iscsid Socket.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting lxd-installer.socket - Helper to install lxd snap on demand...
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting snapd.socket - Socket activation for snappy daemon...
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Listening on ssh.socket - OpenBSD Secure Shell server socket.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Listening on uuidd.socket - UUID daemon activation socket.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: open-iscsi.service - Login to default iSCSI targets was skipped because no trigger condition checks were met.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Finished blk-availability.service - Availability of block devices.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: systemd-pcrphase-sysinit.service - TPM2 PCR Barrier (Initialization) was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Listening on lxd-installer.socket - Helper to install lxd snap on demand.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Listening on snapd.socket - Socket activation for snappy daemon.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Reached target sockets.target - Socket Units.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Reached target basic.target - Basic System.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Started acpid.service - ACPI event daemon.
+Jun 21 04:22:00 ip-172-31-28-80 (acpid)[585]: acpid.service: Referenced but unset environment variable evaluates to an empty string: OPTIONS
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting chrony.service - chrony, an NTP client/server...
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting cloud-config.service - Cloud-init: Config Stage...
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting dbus.service - D-Bus System Message Bus...
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Started dmesg.service - Save initial kernel messages after boot.
+Jun 21 04:22:00 ip-172-31-28-80 acpid[585]: starting up with netlink and the input layer
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting e2scrub_reap.service - Remove Stale Online ext4 Metadata Check Snapshots...
+Jun 21 04:22:00 ip-172-31-28-80 acpid[585]: 2 rules loaded
+Jun 21 04:22:00 ip-172-31-28-80 acpid[585]: waiting for events: event logging is off
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting ec2-instance-connect-harvest-hostkeys.service - EC2 Instance Connect Host Key Harvesting...
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: getty-static.service - getty on tty2-tty6 if dbus and logind are not available was skipped because of an unmet condition check (ConditionPathExists=!/usr/bin/dbus-daemon).
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting grub-common.service - Record successful boot for GRUB...
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Started irqbalance.service - irqbalance daemon.
+Jun 21 04:22:00 ip-172-31-28-80 (qbalance)[593]: irqbalance.service: Referenced but unset environment variable evaluates to an empty string: IRQBALANCE_ARGS
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting networkd-dispatcher.service - Dispatcher daemon for systemd-networkd...
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot...
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting polkit.service - Authorization Manager...
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: pollinate.service - Pollinate to seed the pseudo random number generator was skipped because of an unmet condition check (ConditionPathExists=!/var/cache/pollinate/seeded).
+Jun 21 04:22:00 ip-172-31-28-80 dbus-daemon[588]: [system] AppArmor D-Bus mediation is enabled
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting prometheus-node-exporter-apt.service - Collect apt metrics for prometheus-node-exporter...
+Jun 21 04:22:00 ip-172-31-28-80 dbus-daemon[588]: [system] Activating systemd to hand-off: service name='org.freedesktop.hostname1' unit='dbus-org.freedesktop.hostname1.service' requested by ':1.1' (uid=998 pid=541 comm="/usr/lib/systemd/systemd-networkd" label="unconfined")
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting prometheus-node-exporter-nvme.service - Collect NVMe metrics for prometheus-node-exporter...
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Started prometheus-node-exporter.service - Prometheus exporter for machine metrics.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting rsyslog.service - System Logging Service...
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: secureboot-db.service - Secure Boot updates for DB and DBX was skipped because of an unmet condition check (ConditionPathExists=/sys/firmware/efi/efivars/db-d719b2cb-3d3a-4596-a3bc-dad00e67656f).
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: smartmontools.service - Self Monitoring and Reporting Technology (SMART) Daemon was skipped because of an unmet condition check (ConditionVirtualization=no).
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Started snap.amazon-ssm-agent.amazon-ssm-agent.service - Service for snap application amazon-ssm-agent.amazon-ssm-agent.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: snapd.core-fixup.service - Automatically repair incorrect owner/permissions on core devices was skipped because no trigger condition checks were met.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: snapd.recovery-chooser-trigger.service - Wait for the Ubuntu Core chooser trigger was skipped because of an unmet condition check (ConditionKernelCommandLine=snapd_recovery_mode).
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Reached target getty-pre.target - Preparation for Logins.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting snapd.seeded.service - Wait until snapd is fully seeded...
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting snapd.service - Snap Daemon...
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Started stele-soak-operator.service - stele operator (soak).
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Started stele-soak-witness-a.service - stele witness a (soak).
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Started stele-soak-witness-b.service - stele witness b (soak).
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Started stele-soak-witness-c.service - stele witness c (soak).
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting stele-soak.service - stele 72-hour soak driver...
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting sysstat.service - Resets System Activity Logs...
+Jun 21 04:22:00 ip-172-31-28-80 kernel: kauditd_printk_skb: 113 callbacks suppressed
+Jun 21 04:22:00 ip-172-31-28-80 kernel: audit: type=1400 audit(1782015720.442:124): apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="rsyslogd" pid=620 comm="apparmor_parser"
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting systemd-logind.service - User Login Management...
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: ua-reboot-cmds.service - Ubuntu Pro reboot cmds was skipped because of an unmet condition check (ConditionPathExists=/var/lib/ubuntu-advantage/private/machine-token.json).
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: ubuntu-advantage.service - Ubuntu Pro Background Auto Attach was skipped because no trigger condition checks were met.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting udisks2.service - Disk Manager...
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Started dbus.service - D-Bus System Message Bus.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: e2scrub_reap.service: Deactivated successfully.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Finished e2scrub_reap.service - Remove Stale Online ext4 Metadata Check Snapshots.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: nvmf-autoconnect.service: Deactivated successfully.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Finished nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Reached target remote-fs-pre.target - Preparation for Remote File Systems.
+Jun 21 04:22:00 ip-172-31-28-80 dbus-daemon[588]: [system] Successfully activated service 'org.freedesktop.systemd1'
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Reached target remote-fs.target - Remote File Systems.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting apport.service - automatic crash report generation...
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Started cron.service - Regular background program processing daemon.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting openipmi.service - LSB: OpenIPMI Driver init script...
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: systemd-pcrphase.service - TPM2 PCR Barrier (User) was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting systemd-user-sessions.service - Permit User Sessions...
+Jun 21 04:22:00 ip-172-31-28-80 (cron)[671]: cron.service: Referenced but unset environment variable evaluates to an empty string: EXTRA_OPTS
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Finished sysstat.service - Resets System Activity Logs.
+Jun 21 04:22:00 ip-172-31-28-80 systemd-logind[635]: New seat seat0.
+Jun 21 04:22:00 ip-172-31-28-80 cron[671]: (CRON) INFO (pidfile fd = 3)
+Jun 21 04:22:00 ip-172-31-28-80 systemd-logind[635]: Watching system buttons on /dev/input/event0 (Power Button)
+Jun 21 04:22:00 ip-172-31-28-80 systemd-logind[635]: Watching system buttons on /dev/input/event1 (Sleep Button)
+Jun 21 04:22:00 ip-172-31-28-80 systemd-logind[635]: Watching system buttons on /dev/input/event2 (AT Translated Set 2 keyboard)
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Started systemd-logind.service - User Login Management.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Finished systemd-user-sessions.service - Permit User Sessions.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: grub-common.service: Deactivated successfully.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Finished grub-common.service - Record successful boot for GRUB.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting grub-initrd-fallback.service - GRUB failed boot detection...
+Jun 21 04:22:00 ip-172-31-28-80 chronyd[712]: chronyd version 4.5 starting (+CMDMON +NTP +REFCLOCK +RTC +PRIVDROP +SCFILTER +SIGND +ASYNCDNS +NTS +SECHASH +IPV6 -DEBUG)
+Jun 21 04:22:00 ip-172-31-28-80 cron[671]: (CRON) INFO (Running @reboot jobs)
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting plymouth-quit-wait.service - Hold until boot process finishes up...
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting plymouth-quit.service - Terminate Plymouth Boot Screen...
+Jun 21 04:22:00 ip-172-31-28-80 polkitd[600]: Started polkitd version 124
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Starting systemd-hostnamed.service - Hostname Service...
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Started unattended-upgrades.service - Unattended Upgrades Shutdown.
+Jun 21 04:22:00 ip-172-31-28-80 udisksd[640]: udisks daemon version 2.10.1 starting
+Jun 21 04:22:00 ip-172-31-28-80 chronyd[712]: Loaded 0 symmetric keys
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Finished plymouth-quit-wait.service - Hold until boot process finishes up.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Finished plymouth-quit.service - Terminate Plymouth Boot Screen.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Reloading requested from client PID 650 ('systemctl') (unit stele-soak.service)...
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Reloading...
+Jun 21 04:22:00 ip-172-31-28-80 chronyd[712]: Frequency 5.934 +/- 0.008 ppm read from /var/lib/chrony/chrony.drift
+Jun 21 04:22:00 ip-172-31-28-80 networkd-dispatcher[596]: No valid path found for iwconfig
+Jun 21 04:22:00 ip-172-31-28-80 networkd-dispatcher[596]: No valid path found for iw
+Jun 21 04:22:00 ip-172-31-28-80 chronyd[712]: Using right/UTC timezone to obtain leap second data
+Jun 21 04:22:00 ip-172-31-28-80 chronyd[712]: Loaded seccomp filter (level 1)
+Jun 21 04:22:00 ip-172-31-28-80 dbus-daemon[588]: [system] Successfully activated service 'org.freedesktop.hostname1'
+Jun 21 04:22:00 ip-172-31-28-80 dbus-daemon[588]: [system] Activating via systemd: service name='org.freedesktop.PolicyKit1' unit='polkit.service' requested by ':1.5' (uid=0 pid=734 comm="/usr/lib/systemd/systemd-hostnamed" label="unconfined")
+Jun 21 04:22:00 ip-172-31-28-80 cloud-init[842]: Cloud-init v. 26.1-0ubuntu1~24.04.1 running 'modules:config' at Sun, 21 Jun 2026 04:22:00 +0000. Up 8.41 seconds.
+Jun 21 04:22:00 ip-172-31-28-80 polkitd[600]: Loading rules from directory /etc/polkit-1/rules.d
+Jun 21 04:22:00 ip-172-31-28-80 polkitd[600]: Loading rules from directory /usr/share/polkit-1/rules.d
+Jun 21 04:22:00 ip-172-31-28-80 polkitd[600]: Finished loading, compiling and executing 6 rules
+Jun 21 04:22:00 ip-172-31-28-80 dbus-daemon[588]: [system] Successfully activated service 'org.freedesktop.PolicyKit1'
+Jun 21 04:22:00 ip-172-31-28-80 polkitd[600]: Acquired the name org.freedesktop.PolicyKit1 on the system bus
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Reloading finished in 251 ms.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Started networkd-dispatcher.service - Dispatcher daemon for systemd-networkd.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Started chrony.service - chrony, an NTP client/server.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: ec2-instance-connect-harvest-hostkeys.service: Deactivated successfully.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Finished ec2-instance-connect-harvest-hostkeys.service - EC2 Instance Connect Host Key Harvesting.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: prometheus-node-exporter-nvme.service: Deactivated successfully.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Finished prometheus-node-exporter-nvme.service - Collect NVMe metrics for prometheus-node-exporter.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: grub-initrd-fallback.service: Deactivated successfully.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Finished grub-initrd-fallback.service - GRUB failed boot detection.
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Finished cloud-config.service - Cloud-init: Config Stage.
+Jun 21 04:22:00 ip-172-31-28-80 rsyslogd[661]: imuxsock: Acquired UNIX socket '/run/systemd/journal/syslog' (fd 3) from systemd.  [v8.2312.0]
+Jun 21 04:22:00 ip-172-31-28-80 rsyslogd[661]: rsyslogd's groupid changed to 102
+Jun 21 04:22:00 ip-172-31-28-80 rsyslogd[661]: rsyslogd's userid changed to 102
+Jun 21 04:22:00 ip-172-31-28-80 rsyslogd[661]: [origin software="rsyslogd" swVersion="8.2312.0" x-pid="661" x-info="https://www.rsyslog.com"] start
+Jun 21 04:22:00 ip-172-31-28-80 systemd[1]: Started rsyslog.service - System Logging Service.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Reloading requested from client PID 884 ('systemctl') (unit stele-soak.service)...
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Reloading...
+Jun 21 04:22:01 ip-172-31-28-80 openipmi[675]:  * Starting ipmi drivers
+Jun 21 04:22:01 ip-172-31-28-80 systemd-hostnamed[734]: Hostname set to <ip-172-31-28-80> (static)
+Jun 21 04:22:01 ip-172-31-28-80 kernel: IPMI message handler: version 39.2
+Jun 21 04:22:01 ip-172-31-28-80 kernel: ipmi device interface
+Jun 21 04:22:01 ip-172-31-28-80 kernel: ipmi_si: IPMI System Interface driver
+Jun 21 04:22:01 ip-172-31-28-80 kernel: ipmi_si: Unable to find any System Interface(s)
+Jun 21 04:22:01 ip-172-31-28-80 openipmi[675]:    ...fail!
+Jun 21 04:22:01 ip-172-31-28-80 openipmi[675]:    ...done.
+Jun 21 04:22:01 ip-172-31-28-80 udisksd[640]: Acquired the name org.freedesktop.UDisks2 on the system message bus
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Reloading finished in 177 ms.
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.186Z caller=node_exporter.go:192 level=info msg="Starting node_exporter" version="(version=1.7.0, branch=debian/sid, revision=1.7.0-1ubuntu0.3)"
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.188Z caller=node_exporter.go:193 level=info msg="Build context" build_context="(go=go1.22.2, platform=linux/amd64, user=team+pkg-go@tracker.debian.org, date=20250721-00:45:45, tags=unknown)"
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.197Z caller=filesystem_common.go:111 level=info collector=filesystem msg="Parsed flag --collector.filesystem.mount-points-exclude" flag=^/(dev|proc|run|sys|mnt|media|var/lib/docker/.+|var/lib/containers/storage/.+)($|/)
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.197Z caller=filesystem_common.go:113 level=info collector=filesystem msg="Parsed flag --collector.filesystem.fs-types-exclude" flag=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs)$
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.198Z caller=systemd_linux.go:134 level=info collector=systemd msg="Parsed flag --collector.systemd.unit-include" flag=.+
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.198Z caller=systemd_linux.go:136 level=info collector=systemd msg="Parsed flag --collector.systemd.unit-exclude" flag=.+\.(automount|device|mount|scope|slice|target)
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.198Z caller=diskstats_common.go:111 level=info collector=diskstats msg="Parsed flag --collector.diskstats.device-exclude" flag=^(ram|loop|fd|(h|s|v|xv)d[a-z]|nvme\d+n\d+p)\d+$
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.198Z caller=netdev_common.go:61 level=info collector=netdev msg="Parsed flag --collector.netdev.device-exclude" flag=^lo$
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.198Z caller=node_exporter.go:110 level=info msg="Enabled collectors"
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.198Z caller=node_exporter.go:117 level=info collector=arp
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.198Z caller=node_exporter.go:117 level=info collector=bcache
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.198Z caller=node_exporter.go:117 level=info collector=bonding
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.198Z caller=node_exporter.go:117 level=info collector=btrfs
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.198Z caller=node_exporter.go:117 level=info collector=conntrack
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.198Z caller=node_exporter.go:117 level=info collector=cpu
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.198Z caller=node_exporter.go:117 level=info collector=cpufreq
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.198Z caller=node_exporter.go:117 level=info collector=diskstats
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.198Z caller=node_exporter.go:117 level=info collector=dmi
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.198Z caller=node_exporter.go:117 level=info collector=edac
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.198Z caller=node_exporter.go:117 level=info collector=entropy
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.198Z caller=node_exporter.go:117 level=info collector=fibrechannel
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.198Z caller=node_exporter.go:117 level=info collector=filefd
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=filesystem
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=hwmon
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=infiniband
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=ipvs
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=loadavg
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=mdadm
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=meminfo
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=netclass
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=netdev
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=netstat
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=nfs
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=nfsd
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=nvme
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=os
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=powersupplyclass
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=pressure
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=rapl
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=schedstat
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=selinux
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=sockstat
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=softnet
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=stat
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=systemd
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=tapestats
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=textfile
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=thermal_zone
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=time
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=timex
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=udp_queues
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=uname
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=vmstat
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=xfs
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.199Z caller=node_exporter.go:117 level=info collector=zfs
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Finished apport.service - automatic crash report generation.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: openipmi.service: Control process exited, code=exited, status=1/FAILURE
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: openipmi.service: Failed with result 'exit-code'.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Failed to start openipmi.service - LSB: OpenIPMI Driver init script.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Started polkit.service - Authorization Manager.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Started systemd-hostnamed.service - Hostname Service.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Started udisks2.service - Disk Manager.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Reached target time-sync.target - System Time Synchronized.
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.225Z caller=tls_config.go:313 level=info msg="Listening on" address=[::]:9100
+Jun 21 04:22:01 ip-172-31-28-80 prometheus-node-exporter[603]: ts=2026-06-21T04:22:01.225Z caller=tls_config.go:316 level=info msg="TLS is disabled." http2=false address=[::]:9100
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Started apt-daily.timer - Daily apt download activities.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Started apt-daily-upgrade.timer - Daily apt upgrade and clean activities.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Started dpkg-db-backup.timer - Daily dpkg database backup timer.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Started e2scrub_all.timer - Periodic ext4 Online Metadata Check for All Filesystems.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Started fstrim.timer - Discard unused filesystem blocks once a week.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Started fwupd-refresh.timer - Refresh fwupd metadata regularly.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Started logrotate.timer - Daily rotation of log files.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Started man-db.timer - Daily man-db regeneration.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Started motd-news.timer - Message of the Day.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: snapd.snap-repair.timer - Timer to automatically fetch and run repair assertions was skipped because no trigger condition checks were met.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Started sysstat-collect.timer - Run system activity accounting tool every 10 minutes.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Started sysstat-summary.timer - Generate summary of yesterday's process accounting.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Started update-notifier-motd.timer - Check to see whether there is a new version of Ubuntu available.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Reached target timers.target - Timer Units.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Starting ModemManager.service - Modem Manager...
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Starting hibinit-agent.service - EC2 instance hibernation setup agent...
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Started prometheus.service - Monitoring system and time series database.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Started serial-getty@ttyS0.service - Serial Getty on ttyS0.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Starting setvtrgb.service - Set console scheme...
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Finished setvtrgb.service - Set console scheme.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Created slice system-getty.slice - Slice /system/getty.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Started getty@tty1.service - Getty on tty1.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Reached target getty.target - Login Prompts.
+Jun 21 04:22:01 ip-172-31-28-80 ModemManager[975]: <msg> ModemManager (version 1.23.4) starting in system bus...
+Jun 21 04:22:01 ip-172-31-28-80 hibinit-agent[977]: Effective config: {'log_to_syslog': True, 'log_to_stderr': True, 'mkswap': 'mkswap {swapfile}', 'swapon': 'swapon {swapfile}', 'swapoff': 'swapoff {swapfile}', 'touch_swap': False, 'grub_update': True, 'swap_percentage': 100, 'swap_mb': 4000, 'state_dir': '/var/lib/hibinit-agent'}
+Jun 21 04:22:01 ip-172-31-28-80 hibinit-agent[977]: Effective config: {'log_to_syslog': True, 'log_to_stderr': True, 'mkswap': 'mkswap {swapfile}', 'swapon': 'swapon {swapfile}', 'swapoff': 'swapoff {swapfile}', 'touch_swap': False, 'grub_update': True, 'swap_percentage': 100, 'swap_mb': 4000, 'state_dir': '/var/lib/hibinit-agent'}
+Jun 21 04:22:01 ip-172-31-28-80 hibinit-agent[977]: Requesting new IMDSv2 token.
+Jun 21 04:22:01 ip-172-31-28-80 hibinit-agent[977]: Requesting new IMDSv2 token.
+Jun 21 04:22:01 ip-172-31-28-80 hibinit-agent[977]: Instance Launch has not enabled Hibernation Configured Flag. hibinit-agent exiting!!
+Jun 21 04:22:01 ip-172-31-28-80 hibinit-agent[977]: Instance Launch has not enabled Hibernation Configured Flag. hibinit-agent exiting!!
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: hibinit-agent.service: Deactivated successfully.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Started hibinit-agent.service - EC2 instance hibernation setup agent.
+Jun 21 04:22:01 ip-172-31-28-80 snapd[612]: overlord.go:309: Acquiring state lock file
+Jun 21 04:22:01 ip-172-31-28-80 snapd[612]: overlord.go:314: Acquired state lock file
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Started ModemManager.service - Modem Manager.
+Jun 21 04:22:01 ip-172-31-28-80 snapd[612]: daemon.go:276: started snapd/2.75.2+ubuntu24.04 (series 16; classic) ubuntu/24.04 (amd64) linux/6.17.0-1017-aws.
+Jun 21 04:22:01 ip-172-31-28-80 kernel: loop3: detected capacity change from 0 to 8
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: tmp-syscheck\x2dmountpoint\x2d2137353124.mount: Deactivated successfully.
+Jun 21 04:22:01 ip-172-31-28-80 snapd[612]: daemon.go:370: adjusting startup timeout by 45s (pessimistic estimate of 30s plus 5s per snap)
+Jun 21 04:22:01 ip-172-31-28-80 snapd[612]: backends.go:70: AppArmor status: apparmor is enabled and all features are available
+Jun 21 04:22:01 ip-172-31-28-80 snapd[612]: backend.go:145: reloading profiles for snap-confine
+Jun 21 04:22:01 ip-172-31-28-80 kernel: audit: type=1400 audit(1782015721.727:125): apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="/usr/lib/snapd/snap-confine" pid=1065 comm="apparmor_parser"
+Jun 21 04:22:01 ip-172-31-28-80 snapd[612]: standby.go:95: will consider standby after: 5s
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Started snapd.service - Snap Daemon.
+Jun 21 04:22:01 ip-172-31-28-80 dbus-daemon[588]: [system] Activating via systemd: service name='org.freedesktop.timedate1' unit='dbus-org.freedesktop.timedate1.service' requested by ':1.12' (uid=0 pid=612 comm="/usr/lib/snapd/snapd" label="unconfined")
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Starting systemd-timedated.service - Time & Date Service...
+Jun 21 04:22:01 ip-172-31-28-80 dbus-daemon[588]: [system] Successfully activated service 'org.freedesktop.timedate1'
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Started systemd-timedated.service - Time & Date Service.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: Finished snapd.seeded.service - Wait until snapd is fully seeded.
+Jun 21 04:22:01 ip-172-31-28-80 systemd[1]: snapd.autoimport.service - Auto import assertions from block devices was skipped because no trigger condition checks were met.
+Jun 21 04:22:01 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: Error occurred fetching the seelog config file path:  open /etc/amazon/ssm/seelog.xml: no such file or directory
+Jun 21 04:22:01 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: Initializing new seelog logger
+Jun 21 04:22:01 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: New Seelog Logger Creation Complete
+Jun 21 04:22:01 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:01.9804 WARN Error adding the directory '/etc/amazon/ssm' to watcher: no such file or directory
+Jun 21 04:22:02 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:01.9804 INFO Proxy environment variables:
+Jun 21 04:22:02 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:01.9804 INFO https_proxy:
+Jun 21 04:22:02 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:01.9804 INFO http_proxy:
+Jun 21 04:22:02 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:01.9804 INFO no_proxy:
+Jun 21 04:22:02 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:01.9804 INFO Checking if agent identity type OnPrem can be assumed
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.563Z caller=main.go:525 level=info msg="No time or size retention was set so using the default time retention" duration=15d
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.563Z caller=main.go:563 level=info msg="Starting Prometheus Server" mode=server version="(version=2.45.3+ds, branch=debian/sid, revision=2.45.3+ds-2ubuntu0.3)"
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.563Z caller=main.go:568 level=info build_context="(go=go1.22.2, platform=linux/amd64, user=team+pkg-go@tracker.debian.org, date=20250721-00:51:10, tags=unknown)"
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.563Z caller=main.go:569 level=info host_details="(Linux 6.17.0-1017-aws #17~24.04.1-Ubuntu SMP Tue May 26 21:30:32 UTC 2026 x86_64 ip-172-31-28-80 (none))"
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.563Z caller=main.go:570 level=info fd_limits="(soft=524288, hard=524288)"
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.563Z caller=main.go:571 level=info vm_limits="(soft=unlimited, hard=unlimited)"
+Jun 21 04:22:02 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:02.0018 INFO Checking if agent identity type EC2 can be assumed
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.614Z caller=web.go:504 level=info component=web msg="Start listening for connections" address=0.0.0.0:9090
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.624Z caller=main.go:1004 level=info msg="Starting TSDB ..."
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.629Z caller=tls_config.go:313 level=info component=web msg="Listening on" address=[::]:9090
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.629Z caller=tls_config.go:316 level=info component=web msg="TLS is disabled." http2=false address=[::]:9090
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.641Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1780806244587 maxt=1780833600000 ulid=01KTHGDZSKJ8JGNBQAXCTJN151
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.653Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1780833604587 maxt=1780898400000 ulid=01KTR5R8PDB5K7BDG591VFH16F
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.658Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1780898428214 maxt=1780963200000 ulid=01KTR5R8Z4K9SWMFKXZFYQ0PRT
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.665Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1780963262849 maxt=1781028000000 ulid=01KTR5R92P21NH06215NTYAXJV
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.670Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1781030400566 maxt=1781092800000 ulid=01KTS7M4D1JHG35SEM2PS7RK6S
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.678Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1781092804596 maxt=1781157600000 ulid=01KTV5HAZGWP5P331SFRWFR30H
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.684Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1781157604590 maxt=1781222400000 ulid=01KTX3EBV5Y2NYMRBRPE8MHT7S
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.687Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1781222404587 maxt=1781287200000 ulid=01KTZ10RK8HCYEESXGZEATWCZ9
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.693Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1781287204587 maxt=1781352000000 ulid=01KV0YT9BT2CYXK0HDYYBJD0B2
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.698Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1781352004590 maxt=1781416800000 ulid=01KV2WKTZVK414GVMGTK4PQWYQ
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.704Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1781416805014 maxt=1781481600000 ulid=01KV4W6M37EYJ1Z70B2VV77M9R
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.711Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1781481604590 maxt=1781546400000 ulid=01KV6R6XFK3B59AN7H65EVGRK2
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.719Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1781546404587 maxt=1781611200000 ulid=01KV8P0ERBEZ3XV9SDF8R0A7N8
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.724Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1781611955805 maxt=1781676000000 ulid=01KVAKSZH6FMNW3PKWYF0AJZS8
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.731Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1781676004587 maxt=1781740800000 ulid=01KVCMY53FQ2J2WTDNF7Q1V66E
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.739Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1781740804587 maxt=1781805600000 ulid=01KVEJMFHS555PBSYMSRZMRVH7
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.744Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1781805605014 maxt=1781870400000 ulid=01KVGD6KPK519W0TG6B0P5D5D9
+Jun 21 04:22:02 ip-172-31-28-80 systemd[1]: prometheus-node-exporter-apt.service: Deactivated successfully.
+Jun 21 04:22:02 ip-172-31-28-80 systemd[1]: Finished prometheus-node-exporter-apt.service - Collect apt metrics for prometheus-node-exporter.
+Jun 21 04:22:02 ip-172-31-28-80 systemd[1]: prometheus-node-exporter-apt.service: Consumed 1.137s CPU time, 19.2M memory peak, 0B memory swap peak.
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.752Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1781870404587 maxt=1781935200000 ulid=01KVJD8NCAWV70R3MC25G7AAGB
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.759Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1781935204590 maxt=1781956800000 ulid=01KVJZKAPKMBK3PV7EG6V1Z7FM
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.768Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1781978405014 maxt=1781985600000 ulid=01KVKE84GG7EMAJG17NYDP71V8
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.773Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1781985604590 maxt=1781992800000 ulid=01KVKMAGZCVBAETZGBNX1WZG9W
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.778Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1781956804590 maxt=1781978400000 ulid=01KVKMAH52EWHW8AEXC5FS8R0E
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.786Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1781992804590 maxt=1782000000000 ulid=01KVKV27GSS3MT1WG1CDC9JBC7
+Jun 21 04:22:02 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:02.793Z caller=repair.go:56 level=info component=tsdb msg="Found healthy block" mint=1782000005014 maxt=1782007200000 ulid=01KVM1Y24PGEJX3H1112D87J9Z
+Jun 21 04:22:02 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:02.8136 INFO Agent will take identity from EC2
+Jun 21 04:22:02 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:02.8152 INFO Telemetry initialized
+Jun 21 04:22:03 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:02.8181 INFO [amazon-ssm-agent] amazon-ssm-agent - v3.3.4121.0
+Jun 21 04:22:03 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:02.8182 INFO [amazon-ssm-agent] OS: linux, Arch: amd64
+Jun 21 04:22:03 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:02.8182 INFO [amazon-ssm-agent] Starting Core Agent
+Jun 21 04:22:03 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:02.8182 INFO [amazon-ssm-agent] Registrar detected. Attempting registration
+Jun 21 04:22:03 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:03.361Z caller=head.go:595 level=info component=tsdb msg="Replaying on-disk memory mappable chunks if any"
+Jun 21 04:22:03 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:03.386Z caller=head.go:676 level=info component=tsdb msg="On-disk memory mappable chunks replay completed" duration=24.253172ms
+Jun 21 04:22:03 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:03.386Z caller=head.go:684 level=info component=tsdb msg="Replaying WAL, this may take a while"
+Jun 21 04:22:03 ip-172-31-28-80 snapd[612]: snapmgr.go:1661: performing periodic snap downloads cache cleanup
+Jun 21 04:22:03 ip-172-31-28-80 snapd[612]: snapmgr.go:1671: cannot clean store downloads cache: open /var/lib/snapd/cache: no such file or directory
+Jun 21 04:22:03 ip-172-31-28-80 systemd[1]: Starting ssh.service - OpenBSD Secure Shell server...
+Jun 21 04:22:03 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:03.400Z caller=head.go:720 level=info component=tsdb msg="WAL checkpoint loaded"
+Jun 21 04:22:03 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:02.8182 INFO [Registrar] Starting registrar module
+Jun 21 04:22:03 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:03.494Z caller=head.go:755 level=info component=tsdb msg="WAL segment loaded" segment=138 maxSegment=142
+Jun 21 04:22:03 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:02.8201 INFO [EC2Identity] Checking disk for registration info
+Jun 21 04:22:03 ip-172-31-28-80 sshd[1090]: Server listening on 0.0.0.0 port 22.
+Jun 21 04:22:03 ip-172-31-28-80 sshd[1090]: Server listening on :: port 22.
+Jun 21 04:22:03 ip-172-31-28-80 systemd[1]: Started ssh.service - OpenBSD Secure Shell server.
+Jun 21 04:22:03 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:03.540Z caller=head.go:755 level=info component=tsdb msg="WAL segment loaded" segment=139 maxSegment=142
+Jun 21 04:22:03 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:02.8326 INFO [EC2Identity] Registration info found for ec2 instance
+Jun 21 04:22:03 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:03.614Z caller=head.go:755 level=info component=tsdb msg="WAL segment loaded" segment=140 maxSegment=142
+Jun 21 04:22:03 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:03.686Z caller=head.go:755 level=info component=tsdb msg="WAL segment loaded" segment=141 maxSegment=142
+Jun 21 04:22:03 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:03.687Z caller=head.go:755 level=info component=tsdb msg="WAL segment loaded" segment=142 maxSegment=142
+Jun 21 04:22:03 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:03.687Z caller=head.go:792 level=info component=tsdb msg="WAL replay completed" checkpoint_replay_duration=14.250864ms wal_replay_duration=286.786595ms wbl_replay_duration=503ns total_replay_duration=325.361289ms
+Jun 21 04:22:03 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:03.689Z caller=main.go:1025 level=info fs_type=EXT4_SUPER_MAGIC
+Jun 21 04:22:03 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:03.689Z caller=main.go:1028 level=info msg="TSDB started"
+Jun 21 04:22:03 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:03.689Z caller=main.go:1209 level=info msg="Loading configuration file" filename=/etc/prometheus/prometheus.yml
+Jun 21 04:22:03 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:03.696Z caller=main.go:1246 level=info msg="Completed loading of configuration file" filename=/etc/prometheus/prometheus.yml totalDuration=7.540856ms db_storage=1.698µs remote_storage=2.034µs web_handler=650ns query_engine=1.793µs scrape=2.023439ms scrape_sd=65.822µs notify=5.153315ms notify_sd=12.983µs rules=2.503µs tracing=15.578µs
+Jun 21 04:22:03 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:03.696Z caller=main.go:989 level=info msg="Server is ready to receive web requests."
+Jun 21 04:22:03 ip-172-31-28-80 prometheus[981]: ts=2026-06-21T04:22:03.696Z caller=manager.go:999 level=info component="rule manager" msg="Starting rule manager..."
+Jun 21 04:22:03 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:02.8326 INFO [amazon-ssm-agent] Registration attempted. Resuming core agent startup.
+Jun 21 04:22:03 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:02.8327 INFO [CredentialRefresher] credentialRefresher has started
+Jun 21 04:22:03 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:02.8327 INFO [CredentialRefresher] Starting credentials refresher loop
+Jun 21 04:22:04 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:02.8351 WARN EC2RoleProvider Failed to connect to Systems Manager with instance profile role credentials. Err: retrieved credentials failed to report to ssm. Error: EC2RoleRequestError: no EC2 instance role found
+Jun 21 04:22:04 ip-172-31-28-80 sshd[1092]: Accepted publickey for ubuntu from 71.229.148.177 port 49598 ssh2: ED25519 SHA256:8zbhvGu1AcnrB4xPEApLG2dJenbeCn8nLwltAgFlohA
+Jun 21 04:22:04 ip-172-31-28-80 sshd[1092]: pam_unix(sshd:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1]: Created slice user-1000.slice - User Slice of UID 1000.
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1]: Starting user-runtime-dir@1000.service - User Runtime Directory /run/user/1000...
+Jun 21 04:22:04 ip-172-31-28-80 systemd-logind[635]: New session 1 of user ubuntu.
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1]: Finished user-runtime-dir@1000.service - User Runtime Directory /run/user/1000.
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1]: Starting user@1000.service - User Manager for UID 1000...
+Jun 21 04:22:04 ip-172-31-28-80 (systemd)[1099]: pam_unix(systemd-user:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+Jun 21 04:22:04 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:02.8749 ERROR EC2RoleProvider Failed to connect to Systems Manager with SSM role credentials. error calling RequestManagedInstanceRoleToken: AccessDeniedException: Systems Manager's instance management role is not configured for account: 637423312954
+Jun 21 04:22:04 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]:         status code: 400, request id: ee768f5a-fc1f-4be9-bc83-8056fc4ec68c
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1099]: Queued start job for default target default.target.
+Jun 21 04:22:04 ip-172-31-28-80 systemd-journald[179]: /var/log/journal/ec287837fcba21cca6caa298442716fd/user-1000.journal: Journal file uses a different sequence number ID, rotating.
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1099]: Created slice app.slice - User Application Slice.
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1099]: Started launchpadlib-cache-clean.timer - Clean up old files in the Launchpadlib cache.
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1099]: Reached target paths.target - Paths.
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1099]: Reached target timers.target - Timers.
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1099]: Starting dbus.socket - D-Bus User Message Bus Socket...
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1099]: Listening on dirmngr.socket - GnuPG network certificate management daemon.
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1099]: Listening on gpg-agent-browser.socket - GnuPG cryptographic agent and passphrase cache (access for web browsers).
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1099]: Listening on gpg-agent-extra.socket - GnuPG cryptographic agent and passphrase cache (restricted).
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1099]: Starting gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation)...
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1099]: Listening on gpg-agent.socket - GnuPG cryptographic agent and passphrase cache.
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1099]: Listening on keyboxd.socket - GnuPG public key management service.
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1099]: Listening on pk-debconf-helper.socket - debconf communication socket.
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1099]: Listening on snapd.session-agent.socket - REST API socket for snapd user session agent.
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1099]: Listening on dbus.socket - D-Bus User Message Bus Socket.
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1099]: Listening on gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation).
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1099]: Reached target sockets.target - Sockets.
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1099]: Reached target basic.target - Basic System.
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1099]: Reached target default.target - Main User Target.
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1099]: Startup finished in 95ms.
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1]: Started user@1000.service - User Manager for UID 1000.
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1]: Started session-1.scope - Session 1 of User ubuntu.
+Jun 21 04:22:04 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:02.8749 ERROR [CredentialRefresher] Retrieve credentials produced error: no valid credentials could be retrieved for ec2 identity. Default Host Management Err: error calling RequestManagedInstanceRoleToken: AccessDeniedException: Systems Manager's instance management role is not configured for account: 637423312954
+Jun 21 04:22:04 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]:         status code: 400, request id: ee768f5a-fc1f-4be9-bc83-8056fc4ec68c
+Jun 21 04:22:04 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:02.8749 INFO [CredentialRefresher] Sleeping for 25m37s before retrying retrieve credentials
+Jun 21 04:22:04 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]: 2026-06-21 04:22:02.8751 INFO [SerialPort] Write to serial port: SSM Agent unable to acquire credentials: <error>no valid credentials could be retrieved for ec2 identity. Default Host Management Err: error calling RequestManagedInstanceRoleToken: AccessDeniedException: Systems Manager's instance management role is not configured for account: 637423312954
+Jun 21 04:22:04 ip-172-31-28-80 amazon-ssm-agent.amazon-ssm-agent[609]:         status code: 400, request id: ee768f5a-fc1f-4be9-bc83-8056fc4ec68c</error>
+Jun 21 04:22:04 ip-172-31-28-80 sshd[1211]: Received disconnect from 71.229.148.177 port 49598:11: disconnected by user
+Jun 21 04:22:04 ip-172-31-28-80 sshd[1211]: Disconnected from user ubuntu 71.229.148.177 port 49598
+Jun 21 04:22:04 ip-172-31-28-80 sshd[1092]: pam_unix(sshd:session): session closed for user ubuntu
+Jun 21 04:22:04 ip-172-31-28-80 systemd[1]: session-1.scope: Deactivated successfully.
+Jun 21 04:22:04 ip-172-31-28-80 systemd-logind[635]: Session 1 logged out. Waiting for processes to exit.
+Jun 21 04:22:04 ip-172-31-28-80 systemd-logind[635]: Removed session 1.
+Jun 21 04:22:05 ip-172-31-28-80 systemd[1]: dmesg.service: Deactivated successfully.
+Jun 21 04:22:05 ip-172-31-28-80 ModemManager[975]: <msg> [base-manager] couldn't check support for device '/sys/devices/pci0000:24/0000:24:00.0/0000:25:00.0/0000:26:00.0/0000:27:00.0': not supported by any plugin
+Jun 21 04:22:06 ip-172-31-28-80 systemd[1]: Reloading requested from client PID 1231 ('systemctl') (unit stele-soak.service)...
+Jun 21 04:22:06 ip-172-31-28-80 systemd[1]: Reloading...
+Jun 21 04:22:06 ip-172-31-28-80 systemd[1]: Reloading finished in 182 ms.
+Jun 21 04:22:07 ip-172-31-28-80 chronyd[712]: Selected source 169.254.169.123
+Jun 21 04:22:07 ip-172-31-28-80 chronyd[712]: System clock wrong by 12.313364 seconds
+Jun 21 04:22:19 ip-172-31-28-80 chronyd[712]: System clock was stepped by 12.313364 seconds
+Jun 21 04:22:19 ip-172-31-28-80 chronyd[712]: System clock TAI offset set to 37 seconds
+Jun 21 04:22:19 ip-172-31-28-80 systemd-resolved[440]: Clock change detected. Flushing caches.
+Jun 21 04:22:21 ip-172-31-28-80 stele-soak-setup[1282]: stele: Post "http://127.0.0.1:8080/api/v0/witnesses": dial tcp 127.0.0.1:8080: connect: connection refused
+Jun 21 04:22:22 ip-172-31-28-80 systemd[1]: stele-soak.service: Control process exited, code=exited, status=1/FAILURE
+Jun 21 04:22:22 ip-172-31-28-80 systemd[1]: stele-soak.service: Failed with result 'exit-code'.
+Jun 21 04:22:22 ip-172-31-28-80 systemd[1]: Failed to start stele-soak.service - stele 72-hour soak driver.
+Jun 21 04:22:22 ip-172-31-28-80 systemd[1]: Reached target multi-user.target - Multi-User System.
+Jun 21 04:22:22 ip-172-31-28-80 systemd[1]: Reached target graphical.target - Graphical Interface.
+Jun 21 04:22:22 ip-172-31-28-80 systemd[1]: Starting cloud-final.service - Cloud-init: Final Stage...
+Jun 21 04:22:22 ip-172-31-28-80 systemd[1]: Starting systemd-update-utmp-runlevel.service - Record Runlevel Change in UTMP...
+Jun 21 04:22:22 ip-172-31-28-80 systemd[1]: systemd-update-utmp-runlevel.service: Deactivated successfully.
+Jun 21 04:22:22 ip-172-31-28-80 systemd[1]: Finished systemd-update-utmp-runlevel.service - Record Runlevel Change in UTMP.
+Jun 21 04:22:22 ip-172-31-28-80 cloud-init[1294]: Cloud-init v. 26.1-0ubuntu1~24.04.1 running 'modules:final' at Sun, 21 Jun 2026 04:22:22 +0000. Up 17.64 seconds.
+Jun 21 04:22:22 ip-172-31-28-80 cloud-init[1294]: Cloud-init v. 26.1-0ubuntu1~24.04.1 finished at Sun, 21 Jun 2026 04:22:22 +0000. Datasource DataSourceEc2Local.  Up 17.71 seconds
+Jun 21 04:22:22 ip-172-31-28-80 systemd[1]: Finished cloud-final.service - Cloud-init: Final Stage.
+Jun 21 04:22:22 ip-172-31-28-80 systemd[1]: Reached target cloud-init.target - Cloud-init target.
+Jun 21 04:22:22 ip-172-31-28-80 systemd[1]: Startup finished in 1.914s (kernel) + 15.884s (userspace) = 17.799s.
+Jun 21 04:22:22 ip-172-31-28-80 irqbalance[593]: Cannot change IRQ 64 affinity: No such file or directory
+Jun 21 04:22:22 ip-172-31-28-80 irqbalance[593]: IRQ 64 affinity is now unmanaged
+Jun 21 04:22:22 ip-172-31-28-80 irqbalance[593]: Cannot change IRQ 65 affinity: No such file or directory
+Jun 21 04:22:22 ip-172-31-28-80 irqbalance[593]: IRQ 65 affinity is now unmanaged
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1]: Stopping user@1000.service - User Manager for UID 1000...
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1099]: Activating special unit exit.target...
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1099]: Stopped target default.target - Main User Target.
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1099]: Stopped target basic.target - Basic System.
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1099]: Stopped target paths.target - Paths.
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1099]: Stopped target sockets.target - Sockets.
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1099]: Stopped target timers.target - Timers.
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1099]: Stopped launchpadlib-cache-clean.timer - Clean up old files in the Launchpadlib cache.
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1099]: Closed dbus.socket - D-Bus User Message Bus Socket.
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1099]: Closed dirmngr.socket - GnuPG network certificate management daemon.
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1099]: Closed gpg-agent-browser.socket - GnuPG cryptographic agent and passphrase cache (access for web browsers).
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1099]: Closed gpg-agent-extra.socket - GnuPG cryptographic agent and passphrase cache (restricted).
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1099]: Stopping gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation)...
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1099]: Closed gpg-agent.socket - GnuPG cryptographic agent and passphrase cache.
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1099]: Closed keyboxd.socket - GnuPG public key management service.
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1099]: Closed pk-debconf-helper.socket - debconf communication socket.
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1099]: Closed snapd.session-agent.socket - REST API socket for snapd user session agent.
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1099]: Closed gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation).
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1099]: Removed slice app.slice - User Application Slice.
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1099]: Reached target shutdown.target - Shutdown.
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1099]: Finished systemd-exit.service - Exit the Session.
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1099]: Reached target exit.target - Exit the Session.
+Jun 21 04:22:27 ip-172-31-28-80 (sd-pam)[1100]: pam_unix(systemd-user:session): session closed for user ubuntu
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1]: user@1000.service: Deactivated successfully.
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1]: Stopped user@1000.service - User Manager for UID 1000.
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1]: Stopping user-runtime-dir@1000.service - User Runtime Directory /run/user/1000...
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1]: run-user-1000.mount: Deactivated successfully.
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1]: user-runtime-dir@1000.service: Deactivated successfully.
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1]: Stopped user-runtime-dir@1000.service - User Runtime Directory /run/user/1000.
+Jun 21 04:22:27 ip-172-31-28-80 systemd[1]: Removed slice user-1000.slice - User Slice of UID 1000.
+Jun 21 04:22:37 ip-172-31-28-80 systemd[1]: systemd-fsckd.service: Deactivated successfully.
+Jun 21 04:22:40 ip-172-31-28-80 sshd[1307]: Accepted publickey for ubuntu from 71.229.148.177 port 49607 ssh2: ED25519 SHA256:8zbhvGu1AcnrB4xPEApLG2dJenbeCn8nLwltAgFlohA
+Jun 21 04:22:40 ip-172-31-28-80 sshd[1307]: pam_unix(sshd:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+Jun 21 04:22:40 ip-172-31-28-80 systemd[1]: Created slice user-1000.slice - User Slice of UID 1000.
+Jun 21 04:22:40 ip-172-31-28-80 systemd[1]: Starting user-runtime-dir@1000.service - User Runtime Directory /run/user/1000...
+Jun 21 04:22:40 ip-172-31-28-80 systemd-logind[635]: New session 3 of user ubuntu.
+Jun 21 04:22:40 ip-172-31-28-80 systemd[1]: Finished user-runtime-dir@1000.service - User Runtime Directory /run/user/1000.
+Jun 21 04:22:40 ip-172-31-28-80 systemd[1]: Starting user@1000.service - User Manager for UID 1000...
+Jun 21 04:22:40 ip-172-31-28-80 (systemd)[1312]: pam_unix(systemd-user:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+Jun 21 04:22:40 ip-172-31-28-80 systemd[1312]: Queued start job for default target default.target.
+Jun 21 04:22:40 ip-172-31-28-80 systemd[1312]: Created slice app.slice - User Application Slice.
+Jun 21 04:22:40 ip-172-31-28-80 systemd[1312]: Started launchpadlib-cache-clean.timer - Clean up old files in the Launchpadlib cache.
+Jun 21 04:22:40 ip-172-31-28-80 systemd[1312]: Reached target paths.target - Paths.
+Jun 21 04:22:40 ip-172-31-28-80 systemd[1312]: Reached target timers.target - Timers.
+Jun 21 04:22:40 ip-172-31-28-80 systemd[1312]: Starting dbus.socket - D-Bus User Message Bus Socket...
+Jun 21 04:22:40 ip-172-31-28-80 systemd[1312]: Listening on dirmngr.socket - GnuPG network certificate management daemon.
+Jun 21 04:22:40 ip-172-31-28-80 systemd[1312]: Listening on gpg-agent-browser.socket - GnuPG cryptographic agent and passphrase cache (access for web browsers).
+Jun 21 04:22:40 ip-172-31-28-80 systemd[1312]: Listening on gpg-agent-extra.socket - GnuPG cryptographic agent and passphrase cache (restricted).
+Jun 21 04:22:40 ip-172-31-28-80 systemd[1312]: Starting gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation)...
+Jun 21 04:22:40 ip-172-31-28-80 systemd[1312]: Listening on gpg-agent.socket - GnuPG cryptographic agent and passphrase cache.
+Jun 21 04:22:40 ip-172-31-28-80 systemd[1312]: Listening on keyboxd.socket - GnuPG public key management service.
+Jun 21 04:22:40 ip-172-31-28-80 systemd[1312]: Listening on pk-debconf-helper.socket - debconf communication socket.
+Jun 21 04:22:40 ip-172-31-28-80 systemd[1312]: Listening on snapd.session-agent.socket - REST API socket for snapd user session agent.
+Jun 21 04:22:40 ip-172-31-28-80 systemd[1312]: Listening on dbus.socket - D-Bus User Message Bus Socket.
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1312]: Listening on gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation).
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1312]: Reached target sockets.target - Sockets.
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1312]: Reached target basic.target - Basic System.
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1312]: Reached target default.target - Main User Target.
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1312]: Startup finished in 78ms.
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1]: Started user@1000.service - User Manager for UID 1000.
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1]: Started session-3.scope - Session 3 of User ubuntu.
+Jun 21 04:22:41 ip-172-31-28-80 sudo[1373]:   ubuntu : PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/systemctl stop stele-soak stele-soak-operator stele-soak-witness-a stele-soak-witness-b stele-soak-witness-c stele-soak-report.timer
+Jun 21 04:22:41 ip-172-31-28-80 sudo[1373]: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1]: Stopping stele-soak-operator.service - stele operator (soak)...
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1]: Stopping stele-soak-witness-a.service - stele witness a (soak)...
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1]: Stopping stele-soak-witness-b.service - stele witness b (soak)...
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1]: Stopping stele-soak-witness-c.service - stele witness c (soak)...
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1]: stele-soak-witness-a.service: Deactivated successfully.
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1]: Stopped stele-soak-witness-a.service - stele witness a (soak).
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1]: stele-soak-witness-b.service: Deactivated successfully.
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1]: Stopped stele-soak-witness-b.service - stele witness b (soak).
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1]: stele-soak-witness-c.service: Deactivated successfully.
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1]: Stopped stele-soak-witness-c.service - stele witness c (soak).
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1]: stele-soak-report.timer: Deactivated successfully.
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1]: Stopped stele-soak-report.timer - Run stele-soak-snapshot every 30 minutes.
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1]: stele-soak-operator.service: Main process exited, code=exited, status=1/FAILURE
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1]: stele-soak-operator.service: Failed with result 'exit-code'.
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1]: Stopped stele-soak-operator.service - stele operator (soak).
+Jun 21 04:22:41 ip-172-31-28-80 systemd[1]: stele-soak-operator.service: Consumed 32.698s CPU time, 513.0M memory peak, 0B memory swap peak.
+Jun 21 04:22:41 ip-172-31-28-80 sudo[1373]: pam_unix(sudo:session): session closed for user root
+Jun 21 04:22:41 ip-172-31-28-80 sudo[1376]:   ubuntu : PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/cp /var/lib/stele-soak/timeline.ndjson /var/log/stele-soak.log /tmp/
+Jun 21 04:22:41 ip-172-31-28-80 sudo[1376]: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
+Jun 21 04:22:41 ip-172-31-28-80 sudo[1376]: pam_unix(sudo:session): session closed for user root
+Jun 21 04:22:41 ip-172-31-28-80 sudo[1378]:   ubuntu : PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/chmod 644 /tmp/timeline.ndjson /tmp/stele-soak.log
+Jun 21 04:22:41 ip-172-31-28-80 sudo[1378]: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
+Jun 21 04:22:41 ip-172-31-28-80 sudo[1378]: pam_unix(sudo:session): session closed for user root
+Jun 21 04:22:41 ip-172-31-28-80 sudo[1380]:   ubuntu : PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/journalctl --since '24 hours ago' -n 1000 --no-pager
+Jun 21 04:22:41 ip-172-31-28-80 sudo[1380]: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)

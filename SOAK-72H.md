@@ -1,4 +1,4 @@
-# Stele soak runs — v0.1.3 + v0.1.4 — 2026-05-30 to 2026-06-05
+# Stele soak runs — v0.1.3 / v0.1.4 / v0.1.5 / v0.1.6 — 2026-05-30 to 2026-06-20
 
 Two attempts. Neither completed a clean 72 hours. The second
 attempt (v0.1.4 on 8 GB) confirms the v0.1.4 caps are doing what
@@ -8,12 +8,19 @@ with a corrected diagnosis.**
 
 ## Summary
 
-| Attempt | Version | Host | Wall clock before OOM | OOMs observed | Total cost |
+| Attempt | Version | Host | Workload | Wall clock before OOM | Total cost |
 |---|---|---|---|---|---|
-| v3 (raw) | v0.1.2 | 4 GB c7i.large | unknown (lost) | unknown | ~$5 |
-| v4 | v0.1.3 | 4 GB c7i.large | ~17 hours clean, then crash-loop | 5+ | ~$2.40 |
-| v5 | v0.1.4 | 8 GB c7i.xlarge | ~3 hours clean, then sporadic OOM until termination at t+85h | ~24 | ~$9.00 |
-| **Total** | | | | | **~$16.40** |
+| v3 (raw) | v0.1.2 | 4 GB c7i.large | 16×500 | unknown (lost) | ~$5 |
+| v4 | v0.1.3 | 4 GB c7i.large | 16×500 | ~17 hours | ~$2.40 |
+| v5 | v0.1.4 | 8 GB c7i.xlarge | 16×500 | ~3 hours | ~$9.00 |
+| v6 | v0.1.5 | 8 GB c7i.xlarge | 16×500 (script overrode concurrency cap) | ~17 hours | ~$2.00 |
+| v7 | v0.1.6 | 8 GB c7i.xlarge | 4×250 (representative real workload) | **~18.6 hours** | ~$34.50 |
+| **Total** | | | | | **~$52.90** |
+
+(v7 spent more than expected because the instance was left running in
+its crash-loop state for 13.6 days before I caught it. My bookkeeping
+error. The OOM diagnosis arrived inside the first ~20 hours; the
+remaining 13 days produced no new information.)
 
 ## What v0.1.4 was supposed to fix
 
@@ -137,14 +144,77 @@ The v5 timeline.ndjson is the richer data set. It captures
 ~85 hours of operator behaviour, including the crash-loop
 pattern after the first burst-OOM.
 
+## v6 (v0.1.5, 16×500 with concurrency-cap override)
+
+v0.1.5 shipped with three burst-tolerance fixes: auto-`GOMEMLIMIT`,
+CPU-aware `MaxConcurrentAppends` default, BadgerDB compactor tuning.
+The v6 soak unintentionally tested only two of the three: the
+`soak/stele-soak-setup` script hard-coded `--max-concurrent-appends=512`
+on the operator's systemd unit, overriding the new default of 16
+that v0.1.5 was meant to deliver.
+
+Result: first OOM at ~17 hours, same as v0.1.3. GOMEMLIMIT alone
+delayed the OOM from v0.1.4's 3 hours back to v0.1.3 territory, but
+did not prevent it. Useful negative data: the concurrency cap is
+load-bearing, not optional.
+
+## v7 (v0.1.6, 4×250 with all three fixes active)
+
+v0.1.6 fixed the soak script override and reduced the workload to
+representative levels (1K aggregate RPS instead of 8K, matching a
+Fortune-500 audit log rate). This was the cleanest test: all three
+v0.1.5 burst-tolerance knobs active, realistic workload, 8 GB host.
+
+**Result: first OOM at ~18.6 hours.** Tree size at first kill:
+14.7M entries. The crash-loop pattern continued for the remaining
+13.6 days of uptime (~$32 of bookkeeping-error spend that produced
+no new findings beyond confirming the pattern).
+
+This is the definitive data point. Every implementation knob we
+have in the v0.1.x line caps memory growth at roughly 17-20 hours
+before OOM on a sustained 250+ RPS workload. The remaining O(N)
+memory consumer is the in-memory Merkle leaf map: at ~80 bytes per
+leaf × 14.7M leaves = ~1.2 GB just for leaves. Plus internal LRU
++ Badger overhead + Go runtime + bursting allocation, the operator
+hits 7 GB on 8 GB hosts within ~18 hours regardless of workload
+shape.
+
+## The real fix (v0.1.7)
+
+**Disk-backed Merkle leaves.** The current implementation keeps
+every leaf hash in a `map[uint64][]byte` indexed by leaf index.
+v0.1.4's LRU eviction was deliberately scoped to internal nodes,
+on the (incorrect) assumption that leaves at ~32 bytes each were
+"small enough to keep forever." Sustained-load soaks have now
+proven that assumption wrong: 14.7M leaves are 1.2 GB, and the log
+grows linearly with time.
+
+v0.1.7 should:
+1. Move leaves to BadgerDB-backed storage, fetched on demand at
+   proof-construction time
+2. Keep a small in-memory LRU for the most-recently-accessed leaves
+   (last few thousand) to keep the hot-path fast
+3. Document the new sizing: "Memory cost is now O(LRU cap), not
+   O(log size); steady-state is bounded for arbitrarily large logs."
+
+That's ~half a day of code in `pkg/merkle` plus an interface change
+through `pkg/core` to give the Tree access to the leaf store. Worth
+doing only if there's a real adopter pushing for it; the v0.1.6
+implementation handles the pilot workload (your Mac's git commit
+log) indefinitely. Documented sizing guidance ("don't run single-
+node operator at >1K aggregate RPS on <16 GB") covers the rest.
+
 ## Conclusion
 
-v0.1.4 fixes the leak but not the burstiness. Issue #8 is reopened
-with the corrected diagnosis. v0.1.5 will set `GOMEMLIMIT` and add
-concurrency knobs.
+Four soaks across four releases. Each release improved on the
+previous (better diagnosis, better fix, longer time-to-OOM in the
+representative workload), but no v0.1.x release achieves a clean
+72-hour run on the configured workload. The pattern is now well-
+understood: unbounded leaf-map is the dominant remaining O(N)
+consumer. The v0.1.7 fix is well-scoped but not done.
 
-**Total soak spend across all attempts: ~$16.40.** This is more
-than originally projected ($6) because we ran two failed soaks.
-The data we have now is good enough to inform v0.1.5 without
-another paid run; if v0.1.5 lands, a third re-soak on a 16 GB
-instance would be the validation.
+**Total soak spend: ~$52.90 across five attempts** (more than the
+originally projected $6 because v7 was left running in its crash-
+loop state for 13 days through a bookkeeping error on my side).
+Going forward: no more paid soaks until v0.1.7 is implemented and
+ready to validate.
