@@ -51,12 +51,15 @@ jobs:
             ./pkg/core/...
 
       - name: Property tests (extended check counts)
+        # NOTE: -rapid.checks is a test-binary flag unknown to `go test`,
+        # so the package list MUST come before it; otherwise `go test`
+        # stops treating the paths as packages and tries to build ".".
         run: |
-          go test -count=1 -rapid.checks=500 \
+          go test -count=1 -run TestProp \
             ./pkg/merkle/ \
             ./pkg/fwdsec/ \
             ./pkg/threshold/ \
-            -run TestProp
+            -rapid.checks=500
 
   fuzz:
     runs-on: ubuntu-latest
