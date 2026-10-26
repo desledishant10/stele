@@ -77,7 +77,7 @@ func (c *Cosigner) loadOrCreateClassical() error {
 	keyPath := filepath.Join(c.dir, "member.key")
 	pubPath := filepath.Join(c.dir, "member.pub")
 
-	if buf, err := os.ReadFile(keyPath); err == nil {
+	if buf, err := os.ReadFile(keyPath); err == nil { // #nosec G304 -- path is an operator-controlled key/cert/config/log location, not attacker input
 		raw, err := base64.StdEncoding.DecodeString(strings.TrimSpace(string(buf)))
 		if err != nil {
 			return err
@@ -104,13 +104,13 @@ func (c *Cosigner) loadOrCreateClassical() error {
 
 func (c *Cosigner) loadOrCreateQuantum(hybrid bool) error {
 	qKeyPath := filepath.Join(c.dir, "member-quantum.key")
-	if buf, err := os.ReadFile(qKeyPath); err == nil {
+	if buf, err := os.ReadFile(qKeyPath); err == nil { // #nosec G304 -- path is an operator-controlled key/cert/config/log location, not attacker input
 		raw, err := base64.StdEncoding.DecodeString(strings.TrimSpace(string(buf)))
 		if err != nil {
 			return err
 		}
 		priv := &mode3.PrivateKey{}
-		if err := priv.UnmarshalBinary(raw); err != nil {
+		if err = priv.UnmarshalBinary(raw); err != nil {
 			return fmt.Errorf("cosigner quantum key: %w", err)
 		}
 		c.qPriv = priv

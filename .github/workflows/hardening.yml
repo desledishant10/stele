@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.0"
+          go-version: "1.26.10" # pinned exactly: 1.26.10 is the first patch with the crypto/x509 fix (GO-2026-6809); "1.26.x" floats to 1.26.9, which is one short
           cache: true
 
       - name: Build
@@ -51,12 +51,15 @@ jobs:
             ./pkg/core/...
 
       - name: Property tests (extended check counts)
+        # NOTE: -rapid.checks is a test-binary flag unknown to `go test`,
+        # so the package list MUST come before it; otherwise `go test`
+        # stops treating the paths as packages and tries to build ".".
         run: |
-          go test -count=1 -rapid.checks=500 \
+          go test -count=1 -run TestProp \
             ./pkg/merkle/ \
             ./pkg/fwdsec/ \
             ./pkg/threshold/ \
-            -run TestProp
+            -rapid.checks=500
 
   fuzz:
     runs-on: ubuntu-latest
@@ -64,7 +67,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.0"
+          go-version: "1.26.10" # pinned exactly: 1.26.10 is the first patch with the crypto/x509 fix (GO-2026-6809); "1.26.x" floats to 1.26.9, which is one short
           cache: true
 
       - name: Fuzz each parser target briefly
@@ -100,7 +103,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.0"
+          go-version: "1.26.10" # pinned exactly: 1.26.10 is the first patch with the crypto/x509 fix (GO-2026-6809); "1.26.x" floats to 1.26.9, which is one short
           cache: true
 
       - name: Capture current benchmarks
@@ -148,7 +151,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.0"
+          go-version: "1.26.10" # pinned exactly: 1.26.10 is the first patch with the crypto/x509 fix (GO-2026-6809); "1.26.x" floats to 1.26.9, which is one short
           cache: true
       - name: Install govulncheck
         run: go install golang.org/x/vuln/cmd/govulncheck@latest
@@ -164,7 +167,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.0"
+          go-version: "1.26.10" # pinned exactly: 1.26.10 is the first patch with the crypto/x509 fix (GO-2026-6809); "1.26.x" floats to 1.26.9, which is one short
           cache: true
       - name: Run gosec
         uses: securego/gosec@master
@@ -172,7 +175,17 @@ jobs:
           # `-quiet` suppresses the green-OK lines, leaving only findings.
           # `-exclude-dir` skips test fixtures; we explicitly fuzz those
           # in another job. Add new exclusions ONLY with a justification.
-          args: "-quiet -exclude-dir=cmd/stele-tamper ./..."
+          #
+          # -exclude=G301,G302,G306: these flag 0755/0644 perms on files and
+          # dirs that are PUBLIC by design — public keys (*.pub), the
+          # transparency/anchor logs, and checkpoints are meant to be
+          # world-readable. Every PRIVATE key/secret is already written with
+          # 0600 (see fwdsec/keystore.go, hsm, etc.). Blanket-tightening these
+          # to 0600 would break the public-artifact contract, so the rule IDs
+          # are excluded wholesale rather than annotated per-site. All other
+          # findings (G115 overflow, G304 path, G402 TLS, G104) are handled
+          # inline with per-site `#nosec … -- reason`, so new ones still fail.
+          args: "-quiet -exclude-dir=cmd/stele-tamper -exclude=G301,G302,G306 ./..."
 
   vet-shadow:
     runs-on: ubuntu-latest
@@ -180,7 +193,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.0"
+          go-version: "1.26.10" # pinned exactly: 1.26.10 is the first patch with the crypto/x509 fix (GO-2026-6809); "1.26.x" floats to 1.26.9, which is one short
           cache: true
       - name: Install shadow analyzer
         run: go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow@latest
@@ -203,7 +216,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.0"
+          go-version: "1.26.10" # pinned exactly: 1.26.10 is the first patch with the crypto/x509 fix (GO-2026-6809); "1.26.x" floats to 1.26.9, which is one short
           cache: true
       - uses: actions/setup-python@v5
         with:
@@ -227,7 +240,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.0"
+          go-version: "1.26.10" # pinned exactly: 1.26.10 is the first patch with the crypto/x509 fix (GO-2026-6809); "1.26.x" floats to 1.26.9, which is one short
           cache: true
       - uses: actions/setup-node@v4
         with:

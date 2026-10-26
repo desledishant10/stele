@@ -21,7 +21,7 @@ func appendLine(path string, line []byte) error {
 	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
 		return err
 	}
-	f, err := os.OpenFile(path, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0o644)
+	f, err := os.OpenFile(path, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0o644) // #nosec G304 -- path is an operator-controlled key/cert/config/log location, not attacker input
 	if err != nil {
 		return err
 	}

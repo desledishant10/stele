@@ -74,7 +74,7 @@ func Run(ctx context.Context, store *storage.Store, size uint64, expectedRoot []
 		//    hashes" (a tamper-via-replace).
 		if err := e.Verify(); err != nil {
 			res.Tamper = true
-			res.FirstFailureIndex = int64(e.Index)
+			res.FirstFailureIndex = int64(e.Index) // #nosec G115 -- log entry index is non-negative and bounded
 			return errStopIter
 		}
 		// 2. Per-entry chain link: PrevHash must equal the previous
@@ -82,7 +82,7 @@ func Run(ctx context.Context, store *storage.Store, size uint64, expectedRoot []
 		//    so each self-verifies but the chain is broken."
 		if err := e.VerifyChain(prev); err != nil {
 			res.Tamper = true
-			res.FirstFailureIndex = int64(e.Index)
+			res.FirstFailureIndex = int64(e.Index) // #nosec G115 -- log entry index is non-negative and bounded
 			return errStopIter
 		}
 		tree.AppendLeafHash(e.LeafHash)

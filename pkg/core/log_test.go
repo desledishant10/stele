@@ -92,7 +92,7 @@ func TestAppendGetAndProof(t *testing.T) {
 		t.Fatal(err)
 	}
 	v := &verify.Verifier{Origin: r.Signer.Origin(), RootPublicKey: r.Signer.Chain().RootPublicKey(), Chain: r.Signer.Chain()}
-	if err := v.Checkpoint(cp); err != nil {
+	if err = v.Checkpoint(cp); err != nil {
 		t.Fatalf("checkpoint verify: %v", err)
 	}
 
@@ -194,10 +194,10 @@ func TestReplayProtectionRefusesDuplicateEnvelope(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if _, err := r.Log.Append(env, false); err != nil {
+	if _, err = r.Log.Append(env, false); err != nil {
 		t.Fatalf("first append: %v", err)
 	}
-	if _, err := r.Log.Append(env, false); err == nil {
+	if _, err = r.Log.Append(env, false); err == nil {
 		t.Fatal("second append of the SAME envelope should have been refused (replay protection)")
 	}
 	// Submitting a DIFFERENT envelope from the same producer still works.

@@ -170,7 +170,7 @@ func (p *Producer) CanonicalEnrollment() []byte {
 	var u32 [4]byte
 	var u64 [8]byte
 	put := func(b []byte) {
-		binary.BigEndian.PutUint32(u32[:], uint32(len(b)))
+		binary.BigEndian.PutUint32(u32[:], uint32(len(b))) // #nosec G115 -- slice length is bounded well under 2^32 by append/admin body-size limits
 		buf = append(buf, u32[:]...)
 		buf = append(buf, b...)
 	}
@@ -180,9 +180,9 @@ func (p *Producer) CanonicalEnrollment() []byte {
 	put(p.QuantumPublicKey)
 	put([]byte(p.Scope))
 	put([]byte(p.AttestationType))
-	binary.BigEndian.PutUint64(u64[:], uint64(p.IssuedAt))
+	binary.BigEndian.PutUint64(u64[:], uint64(p.IssuedAt)) // #nosec G115 -- UnixNano timestamp is non-negative
 	buf = append(buf, u64[:]...)
-	binary.BigEndian.PutUint64(u64[:], uint64(p.ExpiresAt))
+	binary.BigEndian.PutUint64(u64[:], uint64(p.ExpiresAt)) // #nosec G115 -- UnixNano timestamp is non-negative
 	buf = append(buf, u64[:]...)
 	binary.BigEndian.PutUint64(u64[:], p.OperatorEpoch)
 	buf = append(buf, u64[:]...)

@@ -85,13 +85,13 @@ func (e *Envelope) Canonical() []byte {
 	buf := make([]byte, 0, 256+len(e.Data)+len(e.Evidence)+len(e.QuantumPublicKey))
 	put := func(b []byte) {
 		var l [4]byte
-		binary.BigEndian.PutUint32(l[:], uint32(len(b)))
+		binary.BigEndian.PutUint32(l[:], uint32(len(b))) // #nosec G115 -- slice length is bounded well under 2^32 by append/admin body-size limits
 		buf = append(buf, l[:]...)
 		buf = append(buf, b...)
 	}
 	put([]byte(e.ProducerID))
 	var u64 [8]byte
-	binary.BigEndian.PutUint64(u64[:], uint64(e.TimeNanos))
+	binary.BigEndian.PutUint64(u64[:], uint64(e.TimeNanos)) // #nosec G115 -- UnixNano timestamp is non-negative and fits the fixed-width field
 	buf = append(buf, u64[:]...)
 	put([]byte(e.Source))
 	put(e.Data)

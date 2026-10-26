@@ -158,7 +158,7 @@ func newServer(id, dir string, hybrid bool) (*Server, error) {
 
 func (s *Server) loadOrCreateKey() error {
 	keyPath := filepath.Join(s.dir, "witness.key")
-	if buf, err := os.ReadFile(keyPath); err == nil {
+	if buf, err := os.ReadFile(keyPath); err == nil { // #nosec G304 -- path is an operator-controlled key/cert/config/log location, not attacker input
 		raw, err := base64.StdEncoding.DecodeString(stripWS(string(buf)))
 		if err != nil {
 			return err
@@ -196,7 +196,7 @@ func (s *Server) loadOrCreateKey() error {
 // see us downgrade).
 func (s *Server) loadOrCreateQuantumKey(hybrid bool) error {
 	qKeyPath := filepath.Join(s.dir, "witness-quantum.key")
-	if buf, err := os.ReadFile(qKeyPath); err == nil {
+	if buf, err := os.ReadFile(qKeyPath); err == nil { // #nosec G304 -- path is an operator-controlled key/cert/config/log location, not attacker input
 		raw, err := base64.StdEncoding.DecodeString(stripWS(string(buf)))
 		if err != nil {
 			return err

@@ -116,7 +116,7 @@ func (c *CA) WriteCA(certPath, keyPath string) error {
 
 // LoadCA reads a CA certificate + private key from disk.
 func LoadCA(certPath, keyPath string) (*CA, error) {
-	certPEM, err := os.ReadFile(certPath)
+	certPEM, err := os.ReadFile(certPath) // #nosec G304 -- path is an operator-controlled key/cert/config/log location, not attacker input
 	if err != nil {
 		return nil, fmt.Errorf("read CA cert: %w", err)
 	}
@@ -124,7 +124,7 @@ func LoadCA(certPath, keyPath string) (*CA, error) {
 	if err != nil {
 		return nil, fmt.Errorf("parse CA cert: %w", err)
 	}
-	keyPEM, err := os.ReadFile(keyPath)
+	keyPEM, err := os.ReadFile(keyPath) // #nosec G304 -- path is an operator-controlled key/cert/config/log location, not attacker input
 	if err != nil {
 		return nil, fmt.Errorf("read CA key: %w", err)
 	}

@@ -48,7 +48,7 @@ func buildLogWithBeacon(t *testing.T, fetcher CheckpointBeaconFetcher) *Log {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if err := l.RegisterProducer(&storage.Producer{
+	if err = l.RegisterProducer(&storage.Producer{
 		ID:              "chaos-prod",
 		PublicKey:       prod.PublicKey(),
 		AttestationType: string(attest.TypeSoftware),

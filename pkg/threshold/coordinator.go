@@ -96,12 +96,12 @@ func (c *Coordinator) Sign(ctx context.Context, msg []byte, contextLabel string)
 			continue
 		}
 		gathered = append(gathered, r.sig)
-		if uint32(len(gathered)) >= c.Group.Threshold {
+		if uint32(len(gathered)) >= c.Group.Threshold { // #nosec G115 -- slice length is bounded well under 2^32 by append/admin body-size limits
 			cancel() // got enough; tell remaining goroutines to stop
 		}
 	}
 
-	if uint32(len(gathered)) < c.Group.Threshold {
+	if uint32(len(gathered)) < c.Group.Threshold { // #nosec G115 -- slice length is bounded well under 2^32 by append/admin body-size limits
 		return gathered, fmt.Errorf("threshold not reached: %d/%d valid sigs (need %d); errors=%v",
 			len(gathered), len(c.Group.Members), c.Group.Threshold, errs)
 	}

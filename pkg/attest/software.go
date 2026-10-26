@@ -64,7 +64,7 @@ func NewHybridSoftwareAttestor(producerID string) (*SoftwareAttestor, error) {
 // LoadSoftwareAttestor reads a previously-written keypair, auto-
 // detecting the classical vs hybrid file format.
 func LoadSoftwareAttestor(producerID, privPath string) (*SoftwareAttestor, error) {
-	buf, err := os.ReadFile(privPath)
+	buf, err := os.ReadFile(privPath) // #nosec G304 -- path is an operator-controlled key/cert/config/log location, not attacker input
 	if err != nil {
 		return nil, fmt.Errorf("read producer key: %w", err)
 	}

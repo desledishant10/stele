@@ -57,20 +57,20 @@ func main() {
 	}
 
 	err = db.Update(func(txn *badger.Txn) error {
-		item, err := txn.Get(key)
-		if err != nil {
-			return err
+		item, txErr := txn.Get(key)
+		if txErr != nil {
+			return txErr
 		}
 		var raw []byte
-		if err := item.Value(func(v []byte) error {
+		if txErr = item.Value(func(v []byte) error {
 			raw = append([]byte(nil), v...)
 			return nil
-		}); err != nil {
-			return err
+		}); txErr != nil {
+			return txErr
 		}
 		var e logentry.Entry
-		if err := json.Unmarshal(raw, &e); err != nil {
-			return err
+		if txErr = json.Unmarshal(raw, &e); txErr != nil {
+			return txErr
 		}
 		fmt.Printf("before: entry %d data = %q\n", e.Index, string(e.Envelope.Data))
 		e.Envelope.Data = []byte(*newData)
@@ -78,9 +78,9 @@ func main() {
 		// We leave EntryHash, LeafHash, and Envelope.Signature stale on
 		// purpose — those are the three independent crypto bindings stele
 		// uses to catch tampering.
-		updated, err := json.Marshal(&e)
-		if err != nil {
-			return err
+		updated, txErr := json.Marshal(&e)
+		if txErr != nil {
+			return txErr
 		}
 		fmt.Printf("after : entry %d data = %q (NO hashes/signatures recomputed)\n", e.Index, string(e.Envelope.Data))
 		return txn.Set(key, updated)

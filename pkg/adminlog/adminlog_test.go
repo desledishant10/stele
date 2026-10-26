@@ -16,13 +16,13 @@ func TestAppendAndReplay(t *testing.T) {
 	}
 
 	// Record three actions.
-	if _, err := j.Action("rotate", "", "ok", "", map[string]int{"from_epoch": 0, "to_epoch": 1}, "alice", "10.0.0.1", "stele/test"); err != nil {
+	if _, err = j.Action("rotate", "", "ok", "", map[string]int{"from_epoch": 0, "to_epoch": 1}, "alice", "10.0.0.1", "stele/test"); err != nil {
 		t.Fatal(err)
 	}
-	if _, err := j.Action("producer_register", "alice@svc", "ok", "", map[string]string{"public_key": "AAAA="}, "alice", "10.0.0.1", "stele/test"); err != nil {
+	if _, err = j.Action("producer_register", "alice@svc", "ok", "", map[string]string{"public_key": "AAAA="}, "alice", "10.0.0.1", "stele/test"); err != nil {
 		t.Fatal(err)
 	}
-	if _, err := j.Action("witness_remove", "stale-witness", "error", "witness not found", nil, "bob", "10.0.0.2", "stele/test"); err != nil {
+	if _, err = j.Action("witness_remove", "stale-witness", "error", "witness not found", nil, "bob", "10.0.0.2", "stele/test"); err != nil {
 		t.Fatal(err)
 	}
 	if got := j.Size(); got != 3 {
@@ -132,7 +132,7 @@ func TestRangeRoundTripPreservesAction(t *testing.T) {
 		{"witness_add", "w1", "ok"},
 	}
 	for _, c := range cases {
-		if _, err := j.Action(c.Action, c.Subject, c.Outcome, "", nil, "", "", ""); err != nil {
+		if _, err = j.Action(c.Action, c.Subject, c.Outcome, "", nil, "", "", ""); err != nil {
 			t.Fatal(err)
 		}
 	}

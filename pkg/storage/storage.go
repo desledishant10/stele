@@ -270,7 +270,7 @@ func (s *Store) AppendEntry(e *logentry.Entry) error {
 		}
 		// Reject if a key with this index somehow already exists.
 		key := entryKey(e.Index)
-		if _, err := txn.Get(key); err == nil {
+		if _, err = txn.Get(key); err == nil {
 			return fmt.Errorf("storage: entry %d already present", e.Index)
 		} else if !errors.Is(err, badger.ErrKeyNotFound) {
 			return err

@@ -168,7 +168,7 @@ func TestRequireEnrollment_ExpiredEnrollmentRefused(t *testing.T) {
 	// test only checks that the time check fires, not that the time
 	// check is the only barrier.
 	rec.ExpiresAt = time.Now().Add(-1 * time.Hour).UnixNano()
-	if err := l.store.RegisterProducer(rec); err != nil {
+	if err = l.store.RegisterProducer(rec); err != nil {
 		t.Fatal(err)
 	}
 	env, err := prod.Sign("src", []byte("payload"))
@@ -197,7 +197,7 @@ func TestRequireEnrollment_TamperedEnrollmentRefused(t *testing.T) {
 		t.Fatal(err)
 	}
 	rec.Scope = "logs:admin" // post-signing tamper
-	if err := l.store.RegisterProducer(rec); err != nil {
+	if err = l.store.RegisterProducer(rec); err != nil {
 		t.Fatal(err)
 	}
 	env, err := prod.Sign("src", []byte("payload"))

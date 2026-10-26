@@ -384,13 +384,13 @@ func summarizeCheckpoint(c *checkpoint.Checkpoint, v *verify.Verifier) Checkpoin
 
 func sampleInclusion(ctx context.Context, client *http.Client, cfg Config, size uint64, ckpt *checkpoint.Checkpoint) []InclusionSample {
 	n := cfg.SampleN
-	if n > int(size) {
-		n = int(size)
+	if n > int(size) { // #nosec G115 -- Merkle tree size/sample count is non-negative and bounded
+		n = int(size) // #nosec G115 -- Merkle tree size/sample count is non-negative and bounded
 	}
 	// Deterministic sampling: evenly-spaced indices 0..size-1.
 	// Predictable, easy to re-run, and covers the full range.
 	out := make([]InclusionSample, 0, n)
-	step := size / uint64(n)
+	step := size / uint64(n) // #nosec G115 -- Merkle tree size/sample count is non-negative and bounded
 	if step == 0 {
 		step = 1
 	}

@@ -48,7 +48,7 @@ func TestCosignAcceptsThenRejectsFork(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if _, err := w.Cosign(c1, op.Chain(), nil); err != nil {
+	if _, err = w.Cosign(c1, op.Chain(), nil); err != nil {
 		t.Fatalf("first cosign should succeed: %v", err)
 	}
 
@@ -58,7 +58,7 @@ func TestCosignAcceptsThenRejectsFork(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if _, err := w.Cosign(c2, op.Chain(), nil); err == nil {
+	if _, err = w.Cosign(c2, op.Chain(), nil); err == nil {
 		t.Fatal("second cosign should detect fork and refuse")
 	}
 	// Origin should now be flagged forked; subsequent appends refused.

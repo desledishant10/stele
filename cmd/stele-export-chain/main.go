@@ -198,7 +198,7 @@ func full(args []string) error {
 // missing — there is nothing to back up before init.
 func readChain(dir string) (*fwdsec.Chain, error) {
 	chainPath := filepath.Join(dir, "keys", "chain.json")
-	buf, err := os.ReadFile(chainPath)
+	buf, err := os.ReadFile(chainPath) // #nosec G304 -- path is an operator-controlled key/cert/config/log location, not attacker input
 	if err != nil {
 		return nil, fmt.Errorf("read %s: %w", chainPath, err)
 	}

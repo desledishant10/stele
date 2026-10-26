@@ -35,7 +35,7 @@ func TestProp_ChainVerifiesAfterAnyRotations(t *testing.T) {
 		t.Cleanup(func() { _ = s.Close() })
 
 		for i := 0; i < nRotations; i++ {
-			if _, err := s.Rotate(); err != nil {
+			if _, err = s.Rotate(); err != nil {
 				t.Fatalf("Rotate(%d): %v", i, err)
 			}
 		}
@@ -44,7 +44,7 @@ func TestProp_ChainVerifiesAfterAnyRotations(t *testing.T) {
 		if uint64(len(chain.Certs)) != uint64(nRotations)+1 {
 			t.Fatalf("expected %d certs, got %d", nRotations+1, len(chain.Certs))
 		}
-		if err := chain.VerifyChain(s.RootPublicKey()); err != nil {
+		if err = chain.VerifyChain(s.RootPublicKey()); err != nil {
 			t.Fatalf("chain failed to verify after %d rotations: %v", nRotations, err)
 		}
 		// Active signature round-trip.

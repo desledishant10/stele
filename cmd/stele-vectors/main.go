@@ -350,10 +350,10 @@ func emitMerkleInclusion(path string) error {
 		}
 		root := tree.Root()
 		for _, idx := range indices {
-			if idx >= uint64(sz) {
+			if idx >= uint64(sz) { // #nosec G115 -- Merkle tree size/sample count is non-negative and bounded
 				continue
 			}
-			prf, err := tree.InclusionProof(idx, uint64(sz))
+			prf, err := tree.InclusionProof(idx, uint64(sz)) // #nosec G115 -- Merkle tree size/sample count is non-negative and bounded
 			if err != nil {
 				return err
 			}
@@ -404,7 +404,7 @@ func emitMerkleConsistency(path string) error {
 		for _, l := range leaves {
 			newTree.AppendLeaf(l)
 		}
-		prf, err := newTree.ConsistencyProof(uint64(oldSz), uint64(newSz))
+		prf, err := newTree.ConsistencyProof(uint64(oldSz), uint64(newSz)) // #nosec G115 -- Merkle tree size/sample count is non-negative and bounded
 		if err != nil {
 			return err
 		}
