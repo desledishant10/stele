@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.0"
+          go-version: "1.25.x" # latest 1.25 patch: picks up stdlib security fixes without leaving the 1.25 line
           cache: true
 
       - name: Build
@@ -64,7 +64,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.0"
+          go-version: "1.25.x" # latest 1.25 patch: picks up stdlib security fixes without leaving the 1.25 line
           cache: true
 
       - name: Fuzz each parser target briefly
@@ -100,7 +100,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.0"
+          go-version: "1.25.x" # latest 1.25 patch: picks up stdlib security fixes without leaving the 1.25 line
           cache: true
 
       - name: Capture current benchmarks
@@ -148,7 +148,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.0"
+          go-version: "1.25.x" # latest 1.25 patch: picks up stdlib security fixes without leaving the 1.25 line
           cache: true
       - name: Install govulncheck
         run: go install golang.org/x/vuln/cmd/govulncheck@latest
@@ -164,7 +164,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.0"
+          go-version: "1.25.x" # latest 1.25 patch: picks up stdlib security fixes without leaving the 1.25 line
           cache: true
       - name: Run gosec
         uses: securego/gosec@master
@@ -180,7 +180,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.0"
+          go-version: "1.25.x" # latest 1.25 patch: picks up stdlib security fixes without leaving the 1.25 line
           cache: true
       - name: Install shadow analyzer
         run: go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow@latest
@@ -203,7 +203,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.0"
+          go-version: "1.25.x" # latest 1.25 patch: picks up stdlib security fixes without leaving the 1.25 line
           cache: true
       - uses: actions/setup-python@v5
         with:
@@ -227,7 +227,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.0"
+          go-version: "1.25.x" # latest 1.25 patch: picks up stdlib security fixes without leaving the 1.25 line
           cache: true
       - uses: actions/setup-node@v4
         with:
