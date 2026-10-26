@@ -186,7 +186,10 @@ jobs:
           go-version: "1.25.x" # latest 1.25 patch: picks up stdlib security fixes without leaving the 1.25 line
           cache: true
       - name: Install shadow analyzer
-        run: go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow@latest
+        # Pinned: shadow@latest pulls golang.org/x/tools >= v0.50.0, which
+        # requires Go 1.26 and so fails to `go install` on this 1.25 runner.
+        # v0.49.0 is the last x/tools release on the 1.25 line.
+        run: go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow@v0.49.0
       - name: Run shadow
         # A shadowed `err` in a crypto path has caused real CVEs.
         # Catching them at PR time is much cheaper than at audit time.
