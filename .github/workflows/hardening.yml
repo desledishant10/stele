@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.x" # latest 1.25 patch: picks up stdlib security fixes without leaving the 1.25 line
+          go-version: "1.26.x" # latest 1.26 patch: pulls the patched stdlib (1.26.9/1.26.10 fix the HTTP/2 + x509 CVEs)
           cache: true
 
       - name: Build
@@ -67,7 +67,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.x" # latest 1.25 patch: picks up stdlib security fixes without leaving the 1.25 line
+          go-version: "1.26.x" # latest 1.26 patch: pulls the patched stdlib (1.26.9/1.26.10 fix the HTTP/2 + x509 CVEs)
           cache: true
 
       - name: Fuzz each parser target briefly
@@ -103,7 +103,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.x" # latest 1.25 patch: picks up stdlib security fixes without leaving the 1.25 line
+          go-version: "1.26.x" # latest 1.26 patch: pulls the patched stdlib (1.26.9/1.26.10 fix the HTTP/2 + x509 CVEs)
           cache: true
 
       - name: Capture current benchmarks
@@ -151,7 +151,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.x" # latest 1.25 patch: picks up stdlib security fixes without leaving the 1.25 line
+          go-version: "1.26.x" # latest 1.26 patch: pulls the patched stdlib (1.26.9/1.26.10 fix the HTTP/2 + x509 CVEs)
           cache: true
       - name: Install govulncheck
         run: go install golang.org/x/vuln/cmd/govulncheck@latest
@@ -167,7 +167,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.x" # latest 1.25 patch: picks up stdlib security fixes without leaving the 1.25 line
+          go-version: "1.26.x" # latest 1.26 patch: pulls the patched stdlib (1.26.9/1.26.10 fix the HTTP/2 + x509 CVEs)
           cache: true
       - name: Run gosec
         uses: securego/gosec@master
@@ -183,13 +183,10 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.x" # latest 1.25 patch: picks up stdlib security fixes without leaving the 1.25 line
+          go-version: "1.26.x" # latest 1.26 patch: pulls the patched stdlib (1.26.9/1.26.10 fix the HTTP/2 + x509 CVEs)
           cache: true
       - name: Install shadow analyzer
-        # Pinned: shadow@latest pulls golang.org/x/tools >= v0.50.0, which
-        # requires Go 1.26 and so fails to `go install` on this 1.25 runner.
-        # v0.49.0 is the last x/tools release on the 1.25 line.
-        run: go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow@v0.49.0
+        run: go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow@latest
       - name: Run shadow
         # A shadowed `err` in a crypto path has caused real CVEs.
         # Catching them at PR time is much cheaper than at audit time.
@@ -209,7 +206,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.x" # latest 1.25 patch: picks up stdlib security fixes without leaving the 1.25 line
+          go-version: "1.26.x" # latest 1.26 patch: pulls the patched stdlib (1.26.9/1.26.10 fix the HTTP/2 + x509 CVEs)
           cache: true
       - uses: actions/setup-python@v5
         with:
@@ -233,7 +230,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.25.x" # latest 1.25 patch: picks up stdlib security fixes without leaving the 1.25 line
+          go-version: "1.26.x" # latest 1.26 patch: pulls the patched stdlib (1.26.9/1.26.10 fix the HTTP/2 + x509 CVEs)
           cache: true
       - uses: actions/setup-node@v4
         with:
