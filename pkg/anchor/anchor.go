@@ -61,7 +61,7 @@ func NewFileSink(path string) (*FileSink, error) {
 		return nil, err
 	}
 	// Touch the file so subsequent Stat / append calls succeed.
-	f, err := os.OpenFile(path, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0o644)
+	f, err := os.OpenFile(path, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0o644) // #nosec G304 -- path is an operator-controlled key/cert/config/log location, not attacker input
 	if err != nil {
 		return nil, err
 	}

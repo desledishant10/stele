@@ -207,7 +207,7 @@ func (k *PrivateKey) WriteFiles(privPath, pubPath string) error {
 
 // LoadPrivate reads a keypair previously written by WriteFiles.
 func LoadPrivate(privPath string) (*PrivateKey, error) {
-	buf, err := os.ReadFile(privPath)
+	buf, err := os.ReadFile(privPath) // #nosec G304 -- path is an operator-controlled key/cert/config/log location, not attacker input
 	if err != nil {
 		return nil, err
 	}

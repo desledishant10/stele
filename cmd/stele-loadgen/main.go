@@ -443,7 +443,7 @@ func (s *stats) writeJSON(path, server string, rps float64, duration time.Durati
 func (s *stats) writeCSV(path, server string, rps float64, duration time.Duration, producers, payload int) error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
-	f, err := os.Create(path)
+	f, err := os.Create(path) // #nosec G304 -- path is an operator-controlled key/cert/config/log location, not attacker input
 	if err != nil {
 		return err
 	}

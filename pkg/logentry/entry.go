@@ -65,12 +65,12 @@ func (e *Entry) Canonical() []byte {
 	var u32 [4]byte
 	binary.BigEndian.PutUint64(u64[:], e.Index)
 	buf = append(buf, u64[:]...)
-	binary.BigEndian.PutUint64(u64[:], uint64(e.TimeNanos))
+	binary.BigEndian.PutUint64(u64[:], uint64(e.TimeNanos)) // #nosec G115 -- UnixNano timestamp is non-negative and fits uint64
 	buf = append(buf, u64[:]...)
-	binary.BigEndian.PutUint32(u32[:], uint32(len(prev)))
+	binary.BigEndian.PutUint32(u32[:], uint32(len(prev))) // #nosec G115 -- slice length is bounded well under 2^32 by append/admin body-size limits
 	buf = append(buf, u32[:]...)
 	buf = append(buf, prev...)
-	binary.BigEndian.PutUint32(u32[:], uint32(len(envHash)))
+	binary.BigEndian.PutUint32(u32[:], uint32(len(envHash))) // #nosec G115 -- slice length is bounded well under 2^32 by append/admin body-size limits
 	buf = append(buf, u32[:]...)
 	buf = append(buf, envHash...)
 	if e.Honeypot {

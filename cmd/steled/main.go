@@ -525,7 +525,7 @@ func buildTLSConfig(certPath, keyPath, clientCAPath string) (*tls.Config, bool, 
 		MinVersion:   tls.VersionTLS13, // TLS 1.3 only; older versions allow downgrade
 	}
 	if clientCAPath != "" {
-		caPEM, err := os.ReadFile(clientCAPath)
+		caPEM, err := os.ReadFile(clientCAPath) // #nosec G304 -- path is an operator-controlled key/cert/config/log location, not attacker input
 		if err != nil {
 			return nil, false, fmt.Errorf("read client CA: %w", err)
 		}
@@ -556,7 +556,7 @@ func (s *thresholdRotatorShim) Group() *threshold.Group { return s.coord.Group }
 // ensures Origin matches the operator's --origin flag (so a typo
 // can't accidentally bind the wrong group).
 func loadThresholdGroup(path, origin string) (*threshold.Group, error) {
-	buf, err := os.ReadFile(path)
+	buf, err := os.ReadFile(path) // #nosec G304 -- path is an operator-controlled key/cert/config/log location, not attacker input
 	if err != nil {
 		return nil, fmt.Errorf("read threshold group: %w", err)
 	}

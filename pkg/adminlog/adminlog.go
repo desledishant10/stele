@@ -78,10 +78,10 @@ func (e *Event) Canonical() []byte {
 	var u64 [8]byte
 	binary.BigEndian.PutUint64(u64[:], e.Index)
 	buf = append(buf, u64[:]...)
-	binary.BigEndian.PutUint64(u64[:], uint64(e.TimeNanos))
+	binary.BigEndian.PutUint64(u64[:], uint64(e.TimeNanos)) // #nosec G115 -- UnixNano timestamp is non-negative and fits the fixed-width field
 	buf = append(buf, u64[:]...)
 	put := func(b []byte) {
-		binary.BigEndian.PutUint32(u32[:], uint32(len(b)))
+		binary.BigEndian.PutUint32(u32[:], uint32(len(b))) // #nosec G115 -- slice length is bounded well under 2^32 by append/admin body-size limits
 		buf = append(buf, u32[:]...)
 		buf = append(buf, b...)
 	}
@@ -332,7 +332,7 @@ func (j *Journal) replay() error {
 }
 
 func (j *Journal) loadOrCreateKey(keyPath, pubPath string) error {
-	if buf, err := os.ReadFile(keyPath); err == nil {
+	if buf, err := os.ReadFile(keyPath); err == nil { // #nosec G304 -- path is an operator-controlled key/cert/config/log location, not attacker input
 		raw, err := base64.StdEncoding.DecodeString(strings.TrimSpace(string(buf)))
 		if err != nil {
 			return err
@@ -358,7 +358,7 @@ func (j *Journal) loadOrCreateKey(keyPath, pubPath string) error {
 
 func (j *Journal) loadOrCreateQuantum(dir string, hybrid bool) error {
 	qKey := filepath.Join(dir, "admin-quantum.key")
-	if buf, err := os.ReadFile(qKey); err == nil {
+	if buf, err := os.ReadFile(qKey); err == nil { // #nosec G304 -- path is an operator-controlled key/cert/config/log location, not attacker input
 		raw, err := base64.StdEncoding.DecodeString(strings.TrimSpace(string(buf)))
 		if err != nil {
 			return err

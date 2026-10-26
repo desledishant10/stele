@@ -230,8 +230,7 @@ func (w *Watchdog) startFSWatcher(ctx context.Context) error {
 		return fmt.Errorf("watchdog: fsnotify: %w", err)
 	}
 	if err := watcher.Add(w.cfg.KeyDir); err != nil {
-		watcher.Close()
-		return fmt.Errorf("watchdog: watch %s: %w", w.cfg.KeyDir, err)
+		return errors.Join(fmt.Errorf("watchdog: watch %s: %w", w.cfg.KeyDir, err), watcher.Close())
 	}
 	go func() {
 		defer w.wg.Done()

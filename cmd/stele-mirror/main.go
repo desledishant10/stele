@@ -118,10 +118,10 @@ func buildClient(caPath string, skipVerify bool) (*http.Client, error) {
 	}
 	cfg := &tls.Config{
 		MinVersion:         tls.VersionTLS13,
-		InsecureSkipVerify: skipVerify, //nolint:gosec
+		InsecureSkipVerify: skipVerify, // #nosec G402 -- opt-in operator flag (default false) for self-signed/dev endpoints; TLS 1.3 floor still enforced
 	}
 	if caPath != "" {
-		caPEM, err := os.ReadFile(caPath)
+		caPEM, err := os.ReadFile(caPath) // #nosec G304 -- path is an operator-controlled key/cert/config/log location, not attacker input
 		if err != nil {
 			return nil, err
 		}

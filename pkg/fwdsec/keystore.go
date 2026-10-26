@@ -150,7 +150,7 @@ func (f *FileKeyStore) Load(locator string) (LiveKey, error) {
 	if locator == "" {
 		return nil, errors.New("file keystore: empty locator")
 	}
-	raw, err := os.ReadFile(locator)
+	raw, err := os.ReadFile(locator) // #nosec G304 -- locator is an operator-controlled key path, not attacker input
 	if err != nil {
 		return nil, fmt.Errorf("file keystore: read %s: %w", locator, err)
 	}

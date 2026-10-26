@@ -146,16 +146,16 @@ func (g *Group) Canonical() []byte {
 	binary.BigEndian.PutUint32(u32[:], g.Version)
 	buf = append(buf, u32[:]...)
 	put := func(b []byte) {
-		binary.BigEndian.PutUint32(u32[:], uint32(len(b)))
+		binary.BigEndian.PutUint32(u32[:], uint32(len(b))) // #nosec G115 -- slice length is bounded well under 2^32 by append/admin body-size limits
 		buf = append(buf, u32[:]...)
 		buf = append(buf, b...)
 	}
 	put([]byte(g.Origin))
 	binary.BigEndian.PutUint32(u32[:], g.Threshold)
 	buf = append(buf, u32[:]...)
-	binary.BigEndian.PutUint64(u64[:], uint64(g.CreatedAt))
+	binary.BigEndian.PutUint64(u64[:], uint64(g.CreatedAt)) // #nosec G115 -- UnixNano timestamp is non-negative
 	buf = append(buf, u64[:]...)
-	binary.BigEndian.PutUint32(u32[:], uint32(len(members)))
+	binary.BigEndian.PutUint32(u32[:], uint32(len(members))) // #nosec G115 -- slice length is bounded well under 2^32 by append/admin body-size limits
 	buf = append(buf, u32[:]...)
 	for _, m := range members {
 		put([]byte(m.ID))

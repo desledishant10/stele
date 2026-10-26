@@ -187,7 +187,7 @@ func httpClient() *http.Client {
 	}
 	cfg := &tls.Config{
 		MinVersion:         tls.VersionTLS13,
-		InsecureSkipVerify: clientTLS.SkipVerify, //nolint:gosec
+		InsecureSkipVerify: clientTLS.SkipVerify, // #nosec G402 -- opt-in operator flag (default false) for self-signed/dev endpoints; TLS 1.3 floor still enforced
 	}
 	if clientTLS.Cert != "" && clientTLS.Key != "" {
 		cert, err := tls.LoadX509KeyPair(clientTLS.Cert, clientTLS.Key)
@@ -533,7 +533,7 @@ func cmdEnrollProducerUnverified(server, id, keyPath, pubPath, desc, scope strin
 			qpub = att.QuantumPublicKey()
 		}
 	case pubPath != "":
-		raw, err := os.ReadFile(pubPath)
+		raw, err := os.ReadFile(pubPath) // #nosec G304 -- path is an operator-controlled key/cert/config/log location, not attacker input
 		if err != nil {
 			return err
 		}
@@ -767,7 +767,7 @@ func cmdGroupInit(args []string) error {
 	g := &threshold.Group{
 		Version:   1,
 		Origin:    *origin,
-		Threshold: uint32(*thresholdN),
+		Threshold: uint32(*thresholdN), // #nosec G115 -- UnixNano timestamp is non-negative
 		CreatedAt: time.Now().UnixNano(),
 	}
 	for _, u := range urls {

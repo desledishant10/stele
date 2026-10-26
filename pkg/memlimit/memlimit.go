@@ -110,7 +110,7 @@ func ApplyExact(bytes uint64) string {
 	if bytes == 0 {
 		return "0 bytes; not setting memory limit"
 	}
-	prev := debug.SetMemoryLimit(int64(bytes))
+	prev := debug.SetMemoryLimit(int64(bytes)) // #nosec G115 -- memory-limit byte count is non-negative and within int64
 	return fmt.Sprintf(
 		"GOMEMLIMIT set to %d MiB (explicit; previous %d)",
 		bytes/(1<<20), prev,

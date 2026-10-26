@@ -633,7 +633,7 @@ func (l *Log) CheckpointCtx(ctx context.Context) (*checkpoint.Checkpoint, error)
 	if beacon != nil && beacon.Round > 0 && beacon.Source == "drand" {
 		const drandGenesis = int64(1692489600)
 		const drandPeriod = int64(3)
-		expected := drandGenesis + drandPeriod*int64(beacon.Round)
+		expected := drandGenesis + drandPeriod*int64(beacon.Round) // #nosec G115 -- drand round number is small and non-negative
 		nowSec := time.Now().Unix()
 		skew := nowSec - expected
 		if skew < 0 {
