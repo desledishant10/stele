@@ -106,7 +106,7 @@ func TestLoadAfterReopen(t *testing.T) {
 	}
 	locator := key.Locator()
 	expectedPub := append([]byte(nil), key.Public()...)
-	if err := store1.Close(); err != nil {
+	if err = store1.Close(); err != nil {
 		t.Fatal(err)
 	}
 
@@ -195,12 +195,12 @@ func TestForwardSecureSignerWithHSM(t *testing.T) {
 	}
 
 	// Chain must validate.
-	if err := s.Chain().VerifyChain(s.RootPublicKey()); err != nil {
+	if err = s.Chain().VerifyChain(s.RootPublicKey()); err != nil {
 		t.Fatalf("chain invalid: %v", err)
 	}
 
 	// Re-open: persistence and locator-based key load.
-	if err := s.Close(); err != nil {
+	if err = s.Close(); err != nil {
 		t.Fatal(err)
 	}
 
@@ -216,7 +216,7 @@ func TestForwardSecureSignerWithHSM(t *testing.T) {
 	if s2.ActiveEpoch() != 1 {
 		t.Fatalf("expected reopened active epoch 1, got %d", s2.ActiveEpoch())
 	}
-	if err := s2.Chain().VerifyChain(s2.RootPublicKey()); err != nil {
+	if err = s2.Chain().VerifyChain(s2.RootPublicKey()); err != nil {
 		t.Fatalf("reopened chain invalid: %v", err)
 	}
 
@@ -247,7 +247,7 @@ func TestNoPrivateKeyMaterialOnDisk(t *testing.T) {
 	}
 	defer s.Close()
 
-	if _, _, err := s.Sign([]byte("x")); err != nil {
+	if _, _, err = s.Sign([]byte("x")); err != nil {
 		t.Fatal(err)
 	}
 

@@ -13,14 +13,14 @@ func TestAppendVerifyReplay(t *testing.T) {
 	}
 	leaf := []byte("01234567890123456789012345678901")
 	for i := 0; i < 5; i++ {
-		ev, err := j.Append(uint64(i), leaf, "get_entry", "127.0.0.1:12345", "test-agent")
-		if err != nil {
-			t.Fatal(err)
+		ev, appendErr := j.Append(uint64(i), leaf, "get_entry", "127.0.0.1:12345", "test-agent")
+		if appendErr != nil {
+			t.Fatal(appendErr)
 		}
 		if ev.Index != uint64(i) {
 			t.Fatalf("event index %d, want %d", ev.Index, i)
 		}
-		if err := ev.Verify(); err != nil {
+		if err = ev.Verify(); err != nil {
 			t.Fatalf("event self-verify: %v", err)
 		}
 	}

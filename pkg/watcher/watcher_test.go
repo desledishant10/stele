@@ -95,7 +95,7 @@ func newRig(t *testing.T, n int) *testRig {
 		if err != nil {
 			t.Fatal(err)
 		}
-		if err := w.AddOperator(&witness.WatchedOperator{
+		if err = w.AddOperator(&witness.WatchedOperator{
 			Origin:        rig.origin,
 			RootPublicKey: signer.Chain().RootPublicKey(),
 		}); err != nil {
@@ -157,7 +157,7 @@ func TestRun_DetectsLyingWitness(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if err := w.AddOperator(&witness.WatchedOperator{
+	if err = w.AddOperator(&witness.WatchedOperator{
 		Origin:        rig.origin,
 		RootPublicKey: rig.witnesses[0].PublicKey(), // dummy; we don't validate against the chain in the watcher right now
 	}); err != nil {

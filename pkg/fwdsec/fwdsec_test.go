@@ -90,10 +90,10 @@ func TestChainAcrossSignerReopens(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if _, err := s1.Rotate(); err != nil {
+	if _, err = s1.Rotate(); err != nil {
 		t.Fatal(err)
 	}
-	if _, err := s1.Rotate(); err != nil {
+	if _, err = s1.Rotate(); err != nil {
 		t.Fatal(err)
 	}
 	// Now epoch 2 is active.

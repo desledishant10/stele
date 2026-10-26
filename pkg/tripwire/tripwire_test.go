@@ -50,7 +50,7 @@ func buildRig(t *testing.T, n int) (*storage.Store, *checkpoint.Checkpoint, stri
 	if err != nil {
 		t.Fatal(err)
 	}
-	if err := l.RegisterProducer(&storage.Producer{
+	if err = l.RegisterProducer(&storage.Producer{
 		ID:              "trip-prod",
 		PublicKey:       prod.PublicKey(),
 		AttestationType: string(attest.TypeSoftware),
@@ -58,11 +58,11 @@ func buildRig(t *testing.T, n int) (*storage.Store, *checkpoint.Checkpoint, stri
 		t.Fatal(err)
 	}
 	for i := 0; i < n; i++ {
-		env, err := prod.Sign("trip-src", []byte("payload"))
-		if err != nil {
-			t.Fatal(err)
+		env, signErr := prod.Sign("trip-src", []byte("payload"))
+		if signErr != nil {
+			t.Fatal(signErr)
 		}
-		if _, err := l.Append(env, false); err != nil {
+		if _, err = l.Append(env, false); err != nil {
 			t.Fatal(err)
 		}
 	}

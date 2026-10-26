@@ -16,7 +16,7 @@ func TestLockUnlockRoundtrip(t *testing.T) {
 	switch {
 	case err == nil:
 		// Locked. Confirm Unlock is happy.
-		if err := Unlock(buf); err != nil {
+		if err = Unlock(buf); err != nil {
 			t.Fatalf("Unlock after Lock failed: %v", err)
 		}
 	case errors.Is(err, ErrUnsupported):
