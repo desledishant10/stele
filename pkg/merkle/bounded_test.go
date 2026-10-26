@@ -2,8 +2,35 @@ package merkle
 
 import (
 	"crypto/rand"
+	"errors"
 	"testing"
 )
+
+// countingLeafStore is an in-memory LeafStore that records reads and can be
+// made to fail, so tests can assert read-through behaviour and error
+// propagation on the proof hot path.
+type countingLeafStore struct {
+	leaves map[uint64][]byte
+	reads  int
+	failAt uint64 // index whose read returns an error; use ^uint64(0) for none
+}
+
+func newCountingLeafStore() *countingLeafStore {
+	return &countingLeafStore{leaves: make(map[uint64][]byte), failAt: ^uint64(0)}
+}
+
+func (c *countingLeafStore) GetLeafHash(idx uint64) ([]byte, bool, error) {
+	c.reads++
+	if idx == c.failAt {
+		return nil, false, errors.New("simulated leaf store failure")
+	}
+	h, ok := c.leaves[idx]
+	return h, ok, nil
+}
+
+func (c *countingLeafStore) PutLeafHash(idx uint64, hash []byte) {
+	c.leaves[idx] = append([]byte(nil), hash...)
+}
 
 // TestBoundedTree_CapsInternalNodes confirms the LRU bound on internal
 // nodes does not exceed the configured cap, even when the tree grows
@@ -61,6 +88,90 @@ func TestBoundedTree_ProofsSurviveEviction(t *testing.T) {
 		if err := VerifyInclusion(idx, uint64(N), leafHashes[idx], prf, root); err != nil {
 			t.Fatalf("VerifyInclusion(%d) failed: %v", idx, err)
 		}
+	}
+}
+
+// TestStoreBackedTree_CapsLeaves confirms the leaf LRU honours its cap while
+// the tree grows well past it — the property that makes Merkle RSS O(cap)
+// rather than O(log size).
+func TestStoreBackedTree_CapsLeaves(t *testing.T) {
+	const N = 1000
+	const leafCap = 64
+	ls := newCountingLeafStore()
+	tree := NewBoundedTreeWithStore(50, leafCap, ls)
+
+	for i := 0; i < N; i++ {
+		buf := make([]byte, 16)
+		_, _ = rand.Read(buf)
+		tree.AppendLeaf(buf)
+	}
+
+	leaves, internal := tree.CacheSize()
+	if leaves > leafCap {
+		t.Fatalf("resident leaf count %d exceeded cap %d", leaves, leafCap)
+	}
+	if internal > 50 {
+		t.Fatalf("internal node count %d exceeded cap 50", internal)
+	}
+	if len(ls.leaves) != N {
+		t.Fatalf("store should hold every leaf: got %d want %d", len(ls.leaves), N)
+	}
+}
+
+// TestStoreBackedTree_ProofsReadThroughStore confirms proofs still verify
+// when leaves have been evicted from the in-memory LRU and must be read back
+// from the store, and that doing so actually touches the store.
+func TestStoreBackedTree_ProofsReadThroughStore(t *testing.T) {
+	const N = 300
+	const leafCap = 8
+	ls := newCountingLeafStore()
+	tree := NewBoundedTreeWithStore(5, leafCap, ls)
+
+	leafHashes := make([][]byte, N)
+	for i := 0; i < N; i++ {
+		buf := make([]byte, 16)
+		_, _ = rand.Read(buf)
+		h, _ := tree.AppendLeaf(buf)
+		leafHashes[i] = h
+	}
+	root := tree.Root()
+
+	before := ls.reads
+	for _, idx := range []uint64{0, 1, 7, 42, 99, 150, 299} {
+		prf, err := tree.InclusionProof(idx, uint64(N))
+		if err != nil {
+			t.Fatalf("InclusionProof(%d): %v", idx, err)
+		}
+		if err := VerifyInclusion(idx, uint64(N), leafHashes[idx], prf, root); err != nil {
+			t.Fatalf("VerifyInclusion(%d) failed: %v", idx, err)
+		}
+	}
+	if ls.reads == before {
+		t.Fatalf("expected proofs on an evicted log to read leaves from the store, but store was never hit")
+	}
+}
+
+// TestStoreBackedTree_PropagatesStoreError confirms a backing-store read
+// failure surfaces as a proof error rather than a silent wrong answer.
+func TestStoreBackedTree_PropagatesStoreError(t *testing.T) {
+	const N = 128
+	ls := newCountingLeafStore()
+	tree := NewBoundedTreeWithStore(2, 2, ls) // tiny caps force reads
+
+	for i := 0; i < N; i++ {
+		buf := make([]byte, 16)
+		_, _ = rand.Read(buf)
+		tree.AppendLeaf(buf)
+	}
+	// A proof for leaf 0 does not read leaf 0 itself (the subject is supplied
+	// to the verifier), but under these tiny caps it recomputes evicted
+	// right-hand siblings by reading their leaf ranges. Fail one of those
+	// (index 50, not among the few LRU-resident recent leaves) and the error
+	// must surface rather than yield a silent wrong proof.
+	ls.failAt = 50
+
+	if _, err := tree.InclusionProof(0, uint64(N)); err == nil {
+		t.Fatalf("expected InclusionProof to surface the leaf store error, got nil")
 	}
 }
 

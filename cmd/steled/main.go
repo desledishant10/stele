@@ -60,35 +60,35 @@ func main() {
 
 func run() error {
 	var (
-		addr        = flag.String("addr", ":8080", "HTTP listen address")
-		dir         = flag.String("dir", "", "data directory (required)")
-		origin      = flag.String("origin", "stele.local/default", "log origin label")
-		anchorPath  = flag.String("anchor", "", "path to the append-only anchor file (defaults to <dir>/anchors/anchor.log)")
-		initialise  = flag.Bool("init", false, "generate keys and create dir if missing")
-		ckptEvery   = flag.Duration("checkpoint-every", 30*time.Second, "auto-checkpoint interval (0 to disable)")
-		anchorEvery = flag.Duration("anchor-every", 30*time.Second, "auto-anchor interval (0 to disable)")
-		beaconURL   = flag.String("beacon", beacon.DefaultEndpoint, "drand endpoint for time anchoring (empty = disable)")
-		honeyURL    = flag.String("honey-webhook", "", "webhook URL to POST honeypot alerts (empty = stderr only)")
-		rekorURL    = flag.String("rekor", "", "Sigstore Rekor endpoint for external anchoring (empty = disable)")
-		hsmModule   = flag.String("hsm-module", "", "PKCS#11 module path (e.g. libsofthsm2.so); empty uses on-disk key files")
-		hsmSlot     = flag.Uint("hsm-slot", 0, "PKCS#11 slot ID")
-		hsmPIN      = flag.String("hsm-pin", "", "PKCS#11 user PIN (consider STELE_HSM_PIN env var instead)")
-		hsmPINEnv   = flag.String("hsm-pin-env", "STELE_HSM_PIN", "env var to read the HSM PIN from (used if --hsm-pin is empty)")
-		hsmPrefix   = flag.String("hsm-key-prefix", "stele", "label prefix used for HSM key objects")
-		rotateEvery   = flag.Duration("rotate-every", 0, "auto-rotate the operator key every N (0 disables scheduled rotation)")
-		watchKeyDir   = flag.Bool("watch-keys", true, "rotate immediately if anything modifies <dir>/keys/")
-		watchRate     = flag.Bool("watch-rate", false, "rotate on anomalous append-rate surges or drops")
-		watchDebounce = flag.Duration("watch-debounce", 30*time.Second, "minimum interval between watchdog-triggered rotations")
-		tlsCert       = flag.String("tls-cert", "", "server certificate (PEM) — enables HTTPS")
-		tlsKey        = flag.String("tls-key", "", "server private key (PEM)")
-		clientCA      = flag.String("client-ca", "", "PEM file of CA(s) that sign producer client certs — enables mTLS")
-		tlsRequireCN  = flag.Bool("tls-require-cn-match", true, "with mTLS, require client cert CN == envelope.ProducerID")
-		thresholdPath = flag.String("threshold-group", "", "path to group.json — enables t-of-N threshold checkpoint signing via cosigners")
-		thresholdTag  = flag.String("threshold-caller-tag", "", "X-Stele-Caller token sent to each cosigner (matched against cosigner --trusted-caller list)")
-		readLog       = flag.Bool("read-log", true, "append every served read into a tamper-evident journal at <dir>/read-log/")
-		pqMode        = flag.String("pq-mode", "classical", "post-quantum mode: 'classical' (Ed25519 only) or 'hybrid' (Ed25519 + Dilithium3)")
-		otlpEndpoint  = flag.String("otlp-endpoint", "", "OpenTelemetry OTLP/HTTP traces endpoint, e.g. http://otelcol:4318 (empty = disable; also honors OTEL_EXPORTER_OTLP_*_ENDPOINT)")
-		tripwireEvery = flag.Duration("tripwire-every", 1*time.Hour, "continuous integrity check interval; re-derives Merkle root from disk and compares to last checkpoint (0 disables)")
+		addr              = flag.String("addr", ":8080", "HTTP listen address")
+		dir               = flag.String("dir", "", "data directory (required)")
+		origin            = flag.String("origin", "stele.local/default", "log origin label")
+		anchorPath        = flag.String("anchor", "", "path to the append-only anchor file (defaults to <dir>/anchors/anchor.log)")
+		initialise        = flag.Bool("init", false, "generate keys and create dir if missing")
+		ckptEvery         = flag.Duration("checkpoint-every", 30*time.Second, "auto-checkpoint interval (0 to disable)")
+		anchorEvery       = flag.Duration("anchor-every", 30*time.Second, "auto-anchor interval (0 to disable)")
+		beaconURL         = flag.String("beacon", beacon.DefaultEndpoint, "drand endpoint for time anchoring (empty = disable)")
+		honeyURL          = flag.String("honey-webhook", "", "webhook URL to POST honeypot alerts (empty = stderr only)")
+		rekorURL          = flag.String("rekor", "", "Sigstore Rekor endpoint for external anchoring (empty = disable)")
+		hsmModule         = flag.String("hsm-module", "", "PKCS#11 module path (e.g. libsofthsm2.so); empty uses on-disk key files")
+		hsmSlot           = flag.Uint("hsm-slot", 0, "PKCS#11 slot ID")
+		hsmPIN            = flag.String("hsm-pin", "", "PKCS#11 user PIN (consider STELE_HSM_PIN env var instead)")
+		hsmPINEnv         = flag.String("hsm-pin-env", "STELE_HSM_PIN", "env var to read the HSM PIN from (used if --hsm-pin is empty)")
+		hsmPrefix         = flag.String("hsm-key-prefix", "stele", "label prefix used for HSM key objects")
+		rotateEvery       = flag.Duration("rotate-every", 0, "auto-rotate the operator key every N (0 disables scheduled rotation)")
+		watchKeyDir       = flag.Bool("watch-keys", true, "rotate immediately if anything modifies <dir>/keys/")
+		watchRate         = flag.Bool("watch-rate", false, "rotate on anomalous append-rate surges or drops")
+		watchDebounce     = flag.Duration("watch-debounce", 30*time.Second, "minimum interval between watchdog-triggered rotations")
+		tlsCert           = flag.String("tls-cert", "", "server certificate (PEM) — enables HTTPS")
+		tlsKey            = flag.String("tls-key", "", "server private key (PEM)")
+		clientCA          = flag.String("client-ca", "", "PEM file of CA(s) that sign producer client certs — enables mTLS")
+		tlsRequireCN      = flag.Bool("tls-require-cn-match", true, "with mTLS, require client cert CN == envelope.ProducerID")
+		thresholdPath     = flag.String("threshold-group", "", "path to group.json — enables t-of-N threshold checkpoint signing via cosigners")
+		thresholdTag      = flag.String("threshold-caller-tag", "", "X-Stele-Caller token sent to each cosigner (matched against cosigner --trusted-caller list)")
+		readLog           = flag.Bool("read-log", true, "append every served read into a tamper-evident journal at <dir>/read-log/")
+		pqMode            = flag.String("pq-mode", "classical", "post-quantum mode: 'classical' (Ed25519 only) or 'hybrid' (Ed25519 + Dilithium3)")
+		otlpEndpoint      = flag.String("otlp-endpoint", "", "OpenTelemetry OTLP/HTTP traces endpoint, e.g. http://otelcol:4318 (empty = disable; also honors OTEL_EXPORTER_OTLP_*_ENDPOINT)")
+		tripwireEvery     = flag.Duration("tripwire-every", 1*time.Hour, "continuous integrity check interval; re-derives Merkle root from disk and compares to last checkpoint (0 disables)")
 		requireEnrollment = flag.Bool("require-enrollment", false, "refuse Append for any producer without a verifiable signed enrollment from the operator chain (use /enrollments to mint)")
 		// ---- ingest hardening ----
 		maxConcurrentAppends = flag.Int("max-concurrent-appends", api.DefaultIngestPolicy.MaxConcurrentAppends,
@@ -119,7 +119,9 @@ func run() error {
 		replayTTL = flag.Duration("replay-ttl", 24*time.Hour,
 			"per-key TTL on replay-dedup entries; 0 disables (entries persist forever, growing storage + cache forever)")
 		merkleCacheNodes = flag.Int("merkle-cache-nodes", 1_000_000,
-			"max internal Merkle nodes held in memory (~130 B each). Leaves are always retained. 0 = unbounded (legacy v0.1.0 behaviour)")
+			"max internal Merkle nodes held in memory (~130 B each). 0 = unbounded (legacy v0.1.0 behaviour)")
+		merkleLeafCacheNodes = flag.Int("merkle-leaf-cache-nodes", 500_000,
+			"max leaf hashes held in memory (~80 B each); leaves live on disk and are read through on a miss. 0 = retain every leaf (legacy footprint, grows with log size)")
 
 		// v0.1.5 additions: burst-tolerance.
 		memLimitFrac = flag.Float64("mem-limit-frac", 0.70,
@@ -257,12 +259,13 @@ func run() error {
 	}
 
 	logInst, err := core.New(ctx, core.Options{
-		Store:             st,
-		Signer:            signer,
-		Sinks:             sinks,
-		BeaconFetcher:     beaconFetcher,
-		RequireEnrollment: *requireEnrollment,
-		MerkleCacheNodes:  *merkleCacheNodes,
+		Store:                st,
+		Signer:               signer,
+		Sinks:                sinks,
+		BeaconFetcher:        beaconFetcher,
+		RequireEnrollment:    *requireEnrollment,
+		MerkleCacheNodes:     *merkleCacheNodes,
+		MerkleLeafCacheNodes: *merkleLeafCacheNodes,
 	})
 	if err != nil {
 		return err

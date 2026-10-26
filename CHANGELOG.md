@@ -13,6 +13,58 @@ verifier recipe).
 ### Added
 - (next-version entries go here)
 
+## [0.1.7] - 2026-10-25
+
+Disk-backed Merkle leaves — the fix for the remaining O(N) memory
+consumer that every v0.1.x soak hit (issue #8). Sustained-load soaks
+through v0.1.6 traced the dominant remaining growth to the in-memory
+Merkle leaf map: ~80 B × every leaf, growing linearly with the log
+(~1.2 GB at 14.7M entries). The caps and burst-tolerance knobs from
+v0.1.4–v0.1.6 could not bound it because leaves were pinned forever.
+
+Leaf hashes already live durably on disk inside each entry; v0.1.7
+mirrors them into a compact `leaf/` keyspace and has the tree read a
+leaf through that store on an LRU miss instead of retaining them all.
+Steady-state Merkle RSS is now O(LRU caps), not O(log size), for
+arbitrarily large logs.
+
+No protocol or wire-format changes; v0.1.0–v0.1.7 are runtime-
+compatible. Logs created before v0.1.7 are backfilled automatically
+on the first startup (replay already reads every entry).
+
+### Added
+- **`storage` `leaf/<index>` keyspace**: a 32-byte mirror of each
+  entry's RFC 6962 leaf hash, written atomically with the entry in
+  `AppendEntry`. New `Store.GetLeafHash`, `PutLeafHash`, and
+  `DeleteLeafHash` (the mirror is a derived cache, so deleting a
+  leaf key is safe — replay reconstructs it from the entry).
+- **`merkle.LeafStore`** interface + `merkle.NewBoundedTreeWithStore`:
+  the tree now reads leaves through a store with a bounded in-memory
+  LRU. `NewTree` / `NewBoundedTree` keep an unbounded in-memory store
+  for tests and short-lived processes (unchanged behaviour).
+- **`--merkle-leaf-cache-nodes`** (`steled`, default 500,000;
+  ~80 B each): max leaf hashes held in memory. 0 = retain every leaf
+  (legacy footprint that grows with the log).
+
+### Changed
+- **`core`**: `Options.MerkleLeafCacheNodes` wires the leaf cap
+  through to the tree; `replay` backfills the `leaf/` mirror for
+  pre-v0.1.7 logs.
+- Proof construction now surfaces a backing-store read failure as a
+  proof error instead of a silent miss.
+
+### Notes
+- Sizing guidance updated: a single-node operator's Merkle memory is
+  now bounded by `--merkle-cache-nodes` + `--merkle-leaf-cache-nodes`
+  regardless of log size. A clean 72-hour soak has NOT yet been run
+  against this release; that validation is the next step before the
+  paper's §7.2 soak numbers can be finalised.
+- Potential follow-up: under very aggressive internal-node caps, a
+  proof for an old entry can recompute evicted right-edge siblings by
+  reading their leaf ranges from disk. The default 1M internal cap
+  keeps this rare; if deep-recompute read amplification shows up in
+  the soak, cache ephemeral subtree roots too (measure first).
+
 ## [0.1.6] - 2026-06-06
 
 Soak orchestration fix. The v0.1.5 re-soak (v6 instance) discovered

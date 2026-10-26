@@ -3,10 +3,17 @@
 // Layout in BadgerDB (all big-endian integers):
 //
 //	entry/<u64 index>     -> JSON-encoded logentry.Entry
+//	leaf/<u64 index>      -> 32 bytes (RFC 6962 LeafHash of that entry)
 //	ckpt/<u64 size>       -> JSON-encoded checkpoint
 //	anchor/<u64 size>     -> JSON-encoded anchor proof
 //	meta/size             -> u64 (current tree size)
 //	meta/head_hash        -> 32 bytes (EntryHash of last entry)
+//
+// The leaf/ keyspace is a compact mirror of each entry's LeafHash. It lets
+// the in-memory Merkle tree fetch a single leaf on the proof hot path with a
+// 32-byte raw read instead of unmarshalling the whole entry, so the tree no
+// longer has to retain every leaf in RAM (issue #8). Written atomically with
+// its entry; backfilled lazily on replay for logs created before v0.1.7.
 //
 // The storage layer intentionally exposes no update or delete API for
 // entries — appends are the only mutation. The underlying DB can still be
@@ -23,8 +30,8 @@ import (
 	"io"
 	"time"
 
-	"github.com/dgraph-io/badger/v4"
 	"github.com/desledishant10/stele/pkg/logentry"
+	"github.com/dgraph-io/badger/v4"
 )
 
 // Option configures a Store at Open time. Apply via Open(dir, opts...).
@@ -32,11 +39,11 @@ import (
 type Option func(*config)
 
 type config struct {
-	blockCacheBytes      int64
-	indexCacheBytes      int64
-	numMemtables         int
-	replayTTL            time.Duration
-	numCompactors        int
+	blockCacheBytes       int64
+	indexCacheBytes       int64
+	numMemtables          int
+	replayTTL             time.Duration
+	numCompactors         int
 	valueLogFileSizeBytes int64
 }
 
@@ -130,6 +137,7 @@ func WithValueLogFileSizeBytes(b int64) Option {
 
 var (
 	prefixEntry  = []byte("entry/")
+	prefixLeaf   = []byte("leaf/")
 	prefixCkpt   = []byte("ckpt/")
 	prefixAnchor = []byte("anchor/")
 	keyMetaSize  = []byte("meta/size")
@@ -282,6 +290,10 @@ func (s *Store) AppendEntry(e *logentry.Entry) error {
 		if err := txn.Set(key, buf); err != nil {
 			return err
 		}
+		// Compact mirror of the leaf hash for the Merkle proof hot path.
+		if err := txn.Set(leafKey(e.Index), append([]byte(nil), e.LeafHash...)); err != nil {
+			return err
+		}
 		var size [8]byte
 		binary.BigEndian.PutUint64(size[:], curSize+1)
 		if err := txn.Set(keyMetaSize, size[:]); err != nil {
@@ -312,6 +324,51 @@ func (s *Store) GetEntry(idx uint64) (*logentry.Entry, error) {
 		})
 	})
 	return entry, err
+}
+
+// GetLeafHash fetches the RFC 6962 leaf hash for the entry at idx from the
+// compact leaf/ mirror. The boolean is false when no leaf is stored for idx
+// (an out-of-range index, or a pre-v0.1.7 log that has not yet been
+// backfilled). The returned slice is a private copy owned by the caller.
+func (s *Store) GetLeafHash(idx uint64) ([]byte, bool, error) {
+	var hash []byte
+	err := s.db.View(func(txn *badger.Txn) error {
+		item, err := txn.Get(leafKey(idx))
+		if errors.Is(err, badger.ErrKeyNotFound) {
+			return nil
+		}
+		if err != nil {
+			return err
+		}
+		return item.Value(func(val []byte) error {
+			hash = append([]byte(nil), val...)
+			return nil
+		})
+	})
+	if err != nil {
+		return nil, false, err
+	}
+	return hash, hash != nil, nil
+}
+
+// PutLeafHash writes the leaf/ mirror entry for idx. Used by the core replay
+// path to backfill logs created before the leaf/ keyspace existed; AppendEntry
+// writes it inline for new entries.
+func (s *Store) PutLeafHash(idx uint64, hash []byte) error {
+	return s.db.Update(func(txn *badger.Txn) error {
+		return txn.Set(leafKey(idx), append([]byte(nil), hash...))
+	})
+}
+
+// DeleteLeafHash removes the leaf/ mirror entry for idx. This is safe because
+// the mirror is a derived cache of the authoritative entry (unlike entries,
+// which are never deleted): a subsequent replay reconstructs it from the
+// entry's LeafHash. Exposed for maintenance (forcing a mirror rebuild) and to
+// let tests emulate a pre-v0.1.7 log.
+func (s *Store) DeleteLeafHash(idx uint64) error {
+	return s.db.Update(func(txn *badger.Txn) error {
+		return txn.Delete(leafKey(idx))
+	})
 }
 
 // IterateEntries calls fn for every entry in index order, starting from `from`
@@ -428,6 +485,13 @@ func (s *Store) IterateAnchors(fn func(size uint64, body []byte) error) error {
 }
 
 // ---- internal helpers ----
+
+func leafKey(idx uint64) []byte {
+	k := make([]byte, len(prefixLeaf)+8)
+	copy(k, prefixLeaf)
+	binary.BigEndian.PutUint64(k[len(prefixLeaf):], idx)
+	return k
+}
 
 func entryKey(idx uint64) []byte {
 	k := make([]byte, len(prefixEntry)+8)

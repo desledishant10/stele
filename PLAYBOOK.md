@@ -187,30 +187,43 @@ Three paths. Pick the one that matches your environment. See
 | **Helm** | Existing Kubernetes cluster (production-shape topology in 5 minutes) |
 | **systemd** | Bare metal / VMs, no container runtime |
 
-#### Sizing (v0.1.4+)
+#### Sizing (v0.1.7+)
 
-Operator RSS is dominated by three caches: the Merkle internal-
-node store, BadgerDB's block + index caches, and the replay-
-dedup table. Defaults are tuned for 4-8 GB hosts. Tune for your
-host with `--merkle-cache-nodes`, `--badger-block-cache-mb`,
+Operator RSS is dominated by four caches: the Merkle internal-
+node store, the Merkle leaf cache, BadgerDB's block + index
+caches, and the replay-dedup table. Defaults are tuned for
+4-8 GB hosts. Tune for your host with `--merkle-cache-nodes`,
+`--merkle-leaf-cache-nodes`, `--badger-block-cache-mb`,
 `--badger-index-cache-mb`, `--replay-ttl`.
 
-| Host RAM | `--merkle-cache-nodes` | `--badger-block-cache-mb` | `--replay-ttl` | Expected RSS up to |
-|---|---|---|---|---|
-| 4 GB (pilot) | 500000 | 32 | 6h | ~1.5 GiB at 10M entries |
-| 8 GB (small prod) | 2000000 (default) | 64 (default) | 24h (default) | ~3 GiB at 50M entries |
-| 16 GB | 8000000 | 256 | 72h | ~8 GiB at 100M+ entries |
-| 32 GB+ | 0 (unbounded) | 1024 | unlimited | scales with log size |
+Since v0.1.7 both Merkle caches are LRU-bounded: leaves live in
+BadgerDB's `leaf/` keyspace and are read through on a miss, so
+Merkle memory is O(cap), **not** O(log size). The "Expected RSS"
+column below is therefore a steady-state ceiling that holds for
+arbitrarily large logs, not a figure that grows with entry count.
 
-Why these values: every retained internal Merkle node costs
-~130 B; leaves are always retained at ~64 B per entry; BadgerDB
-caches are bounded above by the configured value; replay table
-size is approximately `RPS × replay_ttl × 64 B`.
+| Host RAM | `--merkle-cache-nodes` | `--merkle-leaf-cache-nodes` | `--badger-block-cache-mb` | `--replay-ttl` | Steady-state RSS |
+|---|---|---|---|---|---|
+| 4 GB (pilot) | 500000 | 250000 | 32 | 6h | ~1.3 GiB |
+| 8 GB (small prod) | 1000000 (default) | 500000 (default) | 64 (default) | 24h (default) | ~2 GiB |
+| 16 GB | 4000000 | 2000000 | 256 | 72h | ~5 GiB |
+| 32 GB+ | 0 (unbounded) | 0 (unbounded) | 1024 | unlimited | grows with log size (legacy) |
 
-The v0.1.3 soak ([SOAK-72H.md](SOAK-72H.md)) hit OOM at ~17h on
-a 4 GB host with the v0.1.3 unbounded defaults. With v0.1.4
-defaults, that same workload stays comfortably under 1.5 GB
-indefinitely. If you discover otherwise, please file an issue.
+Why these values: every resident internal Merkle node costs
+~130 B and every resident leaf ~80 B, so the two caps set the
+Merkle ceiling directly; BadgerDB caches are bounded above by the
+configured value; replay table size is approximately
+`RPS × replay_ttl × 64 B`. Setting either Merkle cap to 0 restores
+the pre-v0.1.7 unbounded-in-memory behaviour, whose RSS grows with
+the log — only appropriate on 32 GB+ hosts or short-lived logs.
+
+The v0.1.3 soak ([SOAK-72H.md](SOAK-72H.md)) hit OOM at ~17h on a
+4 GB host with unbounded defaults; v0.1.4–v0.1.6 improved the
+diagnosis but still OOM'd at ~18h because leaves were pinned in
+RAM. v0.1.7 removes that last unbounded consumer. A clean 72-hour
+soak validating the new ceiling has not yet been run — treat the
+RSS figures above as designed targets until that soak lands, and
+please file an issue if you observe otherwise.
 
 After whichever path:
 
