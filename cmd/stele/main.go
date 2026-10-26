@@ -485,7 +485,7 @@ func cmdEnrollProducer(args []string) error {
 		ValiditySeconds:  int64(validity.Seconds()),
 	}
 	var begin api.BeginEnrollmentResponse
-	if err := httpPost(*server, "/api/v0/enrollments/begin", beginReq, &begin); err != nil {
+	if err = httpPost(*server, "/api/v0/enrollments/begin", beginReq, &begin); err != nil {
 		return fmt.Errorf("enroll-producer: begin: %w", err)
 	}
 	if begin.ChallengeID == "" || len(begin.ChallengeBytes) == 0 {

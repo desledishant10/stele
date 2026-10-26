@@ -364,7 +364,7 @@ func (j *Journal) loadOrCreateQuantum(dir string, hybrid bool) error {
 			return err
 		}
 		priv := &mode3.PrivateKey{}
-		if err := priv.UnmarshalBinary(raw); err != nil {
+		if err = priv.UnmarshalBinary(raw); err != nil {
 			return fmt.Errorf("adminlog quantum key: %w", err)
 		}
 		j.qPriv = priv

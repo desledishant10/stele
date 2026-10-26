@@ -110,7 +110,7 @@ func (c *Cosigner) loadOrCreateQuantum(hybrid bool) error {
 			return err
 		}
 		priv := &mode3.PrivateKey{}
-		if err := priv.UnmarshalBinary(raw); err != nil {
+		if err = priv.UnmarshalBinary(raw); err != nil {
 			return fmt.Errorf("cosigner quantum key: %w", err)
 		}
 		c.qPriv = priv

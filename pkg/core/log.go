@@ -231,7 +231,7 @@ func (l *Log) AppendCtx(ctx context.Context, env *attest.Envelope, honeypot bool
 			return nil, fmt.Errorf("core: producer %q enrollment expired at %d", env.ProducerID, prod.ExpiresAt)
 		}
 		chain := l.signer.Chain()
-		if err := prod.VerifyEnrollment(chain.PublicKeyAt, chain.QuantumPublicKeyAt); err != nil {
+		if err = prod.VerifyEnrollment(chain.PublicKeyAt, chain.QuantumPublicKeyAt); err != nil {
 			outcome = "rejected"
 			return nil, fmt.Errorf("core: producer %q enrollment invalid: %w", env.ProducerID, err)
 		}
@@ -246,7 +246,7 @@ func (l *Log) AppendCtx(ctx context.Context, env *attest.Envelope, honeypot bool
 	// canonical bytes — re-submitting the same envelope produces the
 	// same hash. This closes the "network attacker records a past
 	// valid request and replays it later" attack.
-	if err := l.store.CheckAndRecordEnvelope(env.Hash(), idx); err != nil {
+	if err = l.store.CheckAndRecordEnvelope(env.Hash(), idx); err != nil {
 		outcome = "duplicate"
 		return nil, fmt.Errorf("core: %w", err)
 	}

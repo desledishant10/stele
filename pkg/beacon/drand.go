@@ -79,7 +79,7 @@ func (c *Client) Latest(ctx context.Context) (*checkpoint.Beacon, error) {
 		return nil, fmt.Errorf("beacon: HTTP %d: %s", resp.StatusCode, string(body))
 	}
 	var dr drandResponse
-	if err := json.Unmarshal(body, &dr); err != nil {
+	if err = json.Unmarshal(body, &dr); err != nil {
 		return nil, fmt.Errorf("beacon: parse: %w", err)
 	}
 	if dr.Round == 0 || dr.Randomness == "" {

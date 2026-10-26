@@ -173,9 +173,9 @@ func run() error {
 	// If a threshold-group config was supplied, swap the single-sig
 	// checkpoint signer for a threshold one that fans out to cosigners.
 	if *thresholdPath != "" {
-		group, err := loadThresholdGroup(*thresholdPath, *origin)
-		if err != nil {
-			return err
+		group, grpErr := loadThresholdGroup(*thresholdPath, *origin)
+		if grpErr != nil {
+			return grpErr
 		}
 		coord := threshold.NewCoordinator(group)
 		coord.CallerTag = *thresholdTag
@@ -183,9 +183,9 @@ func run() error {
 		// the one returned by loadOrInitSigner — preserve the fwdsec
 		// signer (used for KeyID + epoch metadata) but adopt
 		// threshold mode for actual signing.
-		threshSigner, err := checkpoint.NewThresholdSigner(signer.UnsafeFWS(), group, coord)
-		if err != nil {
-			return err
+		threshSigner, tsErr := checkpoint.NewThresholdSigner(signer.UnsafeFWS(), group, coord)
+		if tsErr != nil {
+			return tsErr
 		}
 		signer = threshSigner
 		// ALSO use the same coordinator for rotation-cert signing so
@@ -202,7 +202,7 @@ func run() error {
 	}
 
 	storeDir := filepath.Join(*dir, "db")
-	if err := os.MkdirAll(storeDir, 0o755); err != nil {
+	if err = os.MkdirAll(storeDir, 0o755); err != nil {
 		return err
 	}
 	st, err := storage.Open(storeDir,
@@ -275,14 +275,14 @@ func run() error {
 	// Schedule background checkpoint + anchor.
 	if *ckptEvery > 0 {
 		go schedule(ctx, *ckptEvery, "checkpoint", func() error {
-			_, err := logInst.Checkpoint()
-			return err
+			_, cerr := logInst.Checkpoint()
+			return cerr
 		})
 	}
 	if *anchorEvery > 0 {
 		go schedule(ctx, *anchorEvery, "anchor", func() error {
-			_, err := logInst.Anchor()
-			return err
+			_, aerr := logInst.Anchor()
+			return aerr
 		})
 	}
 
@@ -314,7 +314,6 @@ func run() error {
 
 	if *readLog {
 		var rl *readlog.Journal
-		var err error
 		if *pqMode == "hybrid" {
 			rl, err = readlog.OpenHybrid(filepath.Join(*dir, "read-log"))
 		} else {
@@ -338,7 +337,6 @@ func run() error {
 	// retroactively cover the gap.
 	var alJournal *adminlog.Journal
 	{
-		var err error
 		if *pqMode == "hybrid" {
 			alJournal, err = adminlog.OpenHybrid(filepath.Join(*dir, "admin-log"))
 		} else {
@@ -378,7 +376,6 @@ func run() error {
 		if *watchKeyDir {
 			wdCfg.KeyDir = keyDir
 		}
-		var err error
 		wd, err = watchdog.Start(ctx, logInst, wdCfg)
 		if err != nil {
 			return fmt.Errorf("watchdog start: %w", err)
