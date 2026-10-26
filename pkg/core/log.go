@@ -26,20 +26,20 @@ import (
 
 // Log is the running provenance-log instance.
 type Log struct {
-	store              *storage.Store
-	tree               *merkle.Tree
-	signer             *checkpoint.Signer
-	sinks              []anchor.Sink
-	beacon             CheckpointBeaconFetcher
-	requireEnrollment  bool
+	store             *storage.Store
+	tree              *merkle.Tree
+	signer            *checkpoint.Signer
+	sinks             []anchor.Sink
+	beacon            CheckpointBeaconFetcher
+	requireEnrollment bool
 
 	mu sync.Mutex // serialises Append + tree mutation
 
 	// Pending enrollments awaiting producer-side challenge response.
 	// In-memory only — if steled restarts mid-ceremony, the producer
 	// just retries.
-	pendingMu  sync.Mutex
-	pending    map[string]*pendingEnrollment
+	pendingMu sync.Mutex
+	pending   map[string]*pendingEnrollment
 }
 
 // pendingEnrollment is the server-side state of an in-flight
@@ -74,11 +74,30 @@ type Options struct {
 
 	// MerkleCacheNodes bounds the number of internal Merkle node hashes
 	// retained in memory. 0 = unbounded (the v0.1.x default before #8).
-	// Leaves are always retained; only internal nodes are LRU-evicted.
-	// On a small host (4-8 GB), 1_000_000 keeps the Merkle layer under
+	// On a small host (4-8 GB), 1_000_000 keeps the internal layer under
 	// ~130 MiB even for tens of millions of entries.
 	MerkleCacheNodes int
+
+	// MerkleLeafCacheNodes bounds the number of leaf hashes held in memory.
+	// Leaves live durably in the store's leaf/ keyspace and are read through
+	// on an LRU miss, so this is a performance knob, not a correctness one:
+	// 0 = unbounded (retain every leaf, the pre-v0.1.7 footprint). A finite
+	// cap makes steady-state Merkle RSS O(cap) regardless of log size, which
+	// is what keeps steled from growing without bound on long soaks (#8).
+	MerkleLeafCacheNodes int
 }
+
+// leafStoreAdapter lets the Merkle tree read leaves through the Store's
+// leaf/ keyspace. PutLeafHash is a no-op: steled persists each leaf inside
+// AppendEntry's transaction (and replay backfills via Store.PutLeafHash
+// directly), so the tree must not issue a second, non-transactional write.
+type leafStoreAdapter struct{ store *storage.Store }
+
+func (a leafStoreAdapter) GetLeafHash(idx uint64) ([]byte, bool, error) {
+	return a.store.GetLeafHash(idx)
+}
+
+func (a leafStoreAdapter) PutLeafHash(uint64, []byte) {}
 
 // New constructs a Log and replays every entry from the store to rebuild
 // the in-memory Merkle tree. Replay is O(N) and integrity-checks the chain
@@ -92,7 +111,7 @@ func New(ctx context.Context, opts Options) (*Log, error) {
 	}
 	l := &Log{
 		store:             opts.Store,
-		tree:              merkle.NewBoundedTree(opts.MerkleCacheNodes),
+		tree:              merkle.NewBoundedTreeWithStore(opts.MerkleCacheNodes, opts.MerkleLeafCacheNodes, leafStoreAdapter{opts.Store}),
 		signer:            opts.Signer,
 		sinks:             opts.Sinks,
 		beacon:            opts.BeaconFetcher,
@@ -118,6 +137,17 @@ func (l *Log) replay(ctx context.Context) error {
 		}
 		if err := e.VerifyChain(prev); err != nil {
 			return fmt.Errorf("replay: %w", err)
+		}
+		// Backfill the leaf/ mirror for logs created before v0.1.7, so the
+		// Merkle tree can read any leaf through the store after eviction.
+		// New entries get their leaf/ key written atomically by AppendEntry;
+		// this only pays a write on the first replay of an old log.
+		if _, ok, err := l.store.GetLeafHash(e.Index); err != nil {
+			return fmt.Errorf("replay: leaf check for entry %d: %w", e.Index, err)
+		} else if !ok {
+			if err := l.store.PutLeafHash(e.Index, e.LeafHash); err != nil {
+				return fmt.Errorf("replay: leaf backfill for entry %d: %w", e.Index, err)
+			}
 		}
 		l.tree.AppendLeafHash(e.LeafHash)
 		prev = e
