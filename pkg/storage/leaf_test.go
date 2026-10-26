@@ -18,7 +18,7 @@ func TestAppendEntry_WritesLeafMirror(t *testing.T) {
 
 	e := &logentry.Entry{Index: 0, PrevHash: logentry.ZeroHash}
 	e.Seal()
-	if err := st.AppendEntry(e); err != nil {
+	if err = st.AppendEntry(e); err != nil {
 		t.Fatalf("AppendEntry: %v", err)
 	}
 
@@ -59,7 +59,7 @@ func TestPutLeafHash_Roundtrip(t *testing.T) {
 	defer st.Close()
 
 	want := bytes.Repeat([]byte{0xab}, 32)
-	if err := st.PutLeafHash(7, want); err != nil {
+	if err = st.PutLeafHash(7, want); err != nil {
 		t.Fatalf("PutLeafHash: %v", err)
 	}
 	got, ok, err := st.GetLeafHash(7)
